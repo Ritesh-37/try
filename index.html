@@ -31,10 +31,8 @@ body{
 
 body{
     overflow:hidden;
-
     font-family:"Poppins",sans-serif;
-
-    color:#fff;
+    color:white;
 
     background:
         radial-gradient(
@@ -57,12 +55,12 @@ body{
     background:#02020b;
 
     z-index:9999;
-
     pointer-events:none;
 
     opacity:1;
 
-    transition:opacity 1.5s ease;
+    transition:
+        opacity 1.5s ease;
 }
 
 #pageTransition.fade-out{
@@ -148,7 +146,7 @@ body{
 
 
 /* =========================================================
-   BACKGROUND STARS
+   STARS
 ========================================================= */
 
 .stars{
@@ -167,17 +165,13 @@ body{
 
     font-size:5px;
 
-    transition:transform .3s ease;
-
     animation:
-        twinkle
-        3s ease-in-out infinite;
+        twinkle 3s ease-in-out infinite;
 }
 
 @keyframes twinkle{
 
-    0%,
-    100%{
+    0%,100%{
         opacity:.15;
     }
 
@@ -216,6 +210,7 @@ body{
 }
 
 .shooting-star::after{
+
     content:"";
 
     position:absolute;
@@ -264,7 +259,6 @@ body{
 
 .intro-screen{
     position:fixed;
-
     inset:0;
 
     display:flex;
@@ -292,7 +286,6 @@ body{
 
 .intro-screen.active{
     opacity:1;
-
     visibility:visible;
 
     transform:scale(1);
@@ -308,14 +301,12 @@ body{
     margin-bottom:15px;
 
     animation:
-        starPulse
-        3s ease-in-out infinite;
+        starPulse 3s ease-in-out infinite;
 }
 
 @keyframes starPulse{
 
-    0%,
-    100%{
+    0%,100%{
         transform:scale(.8);
         opacity:.55;
     }
@@ -337,7 +328,10 @@ body{
 }
 
 .intro-content h1{
-    font-family:"Cormorant Garamond",serif;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
     font-size:
         clamp(55px,10vw,100px);
@@ -350,11 +344,17 @@ body{
 }
 
 .intro-content h1 span{
-    font-family:"Great Vibes",cursive;
+
+    font-family:
+        "Great Vibes",
+        cursive;
 }
 
 .intro-text{
-    font-family:"Cormorant Garamond",serif;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
     font-size:
         clamp(22px,4vw,30px);
@@ -370,6 +370,7 @@ body{
 ========================================================= */
 
 .main-button{
+
     margin-top:35px;
 
     padding:14px 27px;
@@ -403,14 +404,18 @@ body{
 }
 
 .main-button:hover{
-    transform:translateY(-4px);
+
+    transform:
+        translateY(-4px);
 
     box-shadow:
         0 20px 50px rgba(0,0,0,.45);
 }
 
 .main-button:active{
-    transform:scale(.96);
+
+    transform:
+        scale(.94);
 }
 
 
@@ -419,6 +424,7 @@ body{
 ========================================================= */
 
 .universe{
+
     position:fixed;
 
     inset:0;
@@ -434,6 +440,7 @@ body{
 }
 
 .universe.active{
+
     opacity:1;
 
     visibility:visible;
@@ -445,10 +452,10 @@ body{
 ========================================================= */
 
 .universe-heading{
+
     position:absolute;
 
     top:6%;
-
     left:50%;
 
     transform:
@@ -462,7 +469,10 @@ body{
 }
 
 .universe-heading h2{
-    font-family:"Great Vibes",cursive;
+
+    font-family:
+        "Great Vibes",
+        cursive;
 
     font-size:
         clamp(45px,7vw,70px);
@@ -473,7 +483,10 @@ body{
 }
 
 .universe-heading > p:not(.eyebrow){
-    font-family:"Cormorant Garamond",serif;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
     font-size:20px;
 
@@ -486,12 +499,14 @@ body{
 ========================================================= */
 
 .progress{
+
     width:min(260px,80%);
 
     margin:18px auto;
 }
 
 .progress span{
+
     font-size:9px;
 
     letter-spacing:2px;
@@ -500,6 +515,7 @@ body{
 }
 
 .progress-bar{
+
     height:3px;
 
     margin-top:8px;
@@ -513,6 +529,7 @@ body{
 }
 
 .progress-fill{
+
     width:0%;
 
     height:100%;
@@ -529,10 +546,33 @@ body{
 
 
 /* =========================================================
+   CONSTELLATION
+========================================================= */
+
+#constellation-svg{
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    width:100vw;
+    height:100vh;
+
+    pointer-events:none;
+
+    z-index:5;
+
+    overflow:visible;
+}
+
+
+/* =========================================================
    MEMORY STARS
 ========================================================= */
 
 .memory-star{
+
     position:absolute;
 
     width:100px;
@@ -558,10 +598,13 @@ body{
 }
 
 .memory-star:hover{
-    transform:scale(1.2);
+
+    transform:
+        scale(1.2);
 }
 
 .star-symbol{
+
     position:relative;
 
     font-size:28px;
@@ -573,14 +616,12 @@ body{
         0 0 35px rgba(180,190,255,.9);
 
     animation:
-        starBreathe
-        3s ease-in-out infinite;
+        starBreathe 3s ease-in-out infinite;
 }
 
 @keyframes starBreathe{
 
-    0%,
-    100%{
+    0%,100%{
         transform:scale(.8);
     }
 
@@ -590,6 +631,7 @@ body{
 }
 
 .star-glow{
+
     position:absolute;
 
     width:70px;
@@ -603,14 +645,12 @@ body{
     filter:blur(12px);
 
     animation:
-        glowBreathe
-        3s ease-in-out infinite;
+        glowBreathe 3s ease-in-out infinite;
 }
 
 @keyframes glowBreathe{
 
-    0%,
-    100%{
+    0%,100%{
         transform:scale(.7);
         opacity:.3;
     }
@@ -622,6 +662,7 @@ body{
 }
 
 .star-label{
+
     position:absolute;
 
     top:76px;
@@ -683,10 +724,12 @@ body{
 ========================================================= */
 
 .memory-star.discovered{
+
     opacity:.45;
 }
 
 .memory-star.discovered .star-symbol{
+
     color:#ffd9e7;
 
     text-shadow:
@@ -695,11 +738,13 @@ body{
 }
 
 .memory-star.discovered .star-glow{
+
     background:
         rgba(255,170,205,.2);
 }
 
 .memory-star.discovered::after{
+
     content:"✓";
 
     position:absolute;
@@ -718,6 +763,7 @@ body{
 ========================================================= */
 
 .memory-modal{
+
     position:fixed;
 
     inset:0;
@@ -741,12 +787,14 @@ body{
 }
 
 .memory-modal.show{
+
     opacity:1;
 
     visibility:visible;
 }
 
 .modal-backdrop{
+
     position:absolute;
 
     inset:0;
@@ -759,6 +807,7 @@ body{
 }
 
 .memory-card{
+
     position:relative;
 
     width:min(92%,540px);
@@ -796,6 +845,7 @@ body{
 }
 
 .memory-modal.show .memory-card{
+
     transform:
         translateY(0)
         scale(1)
@@ -803,6 +853,7 @@ body{
 }
 
 .close-button{
+
     position:absolute;
 
     right:17px;
@@ -822,12 +873,14 @@ body{
 }
 
 .memory-icon{
+
     font-size:36px;
 
     margin-bottom:10px;
 }
 
 .memory-number{
+
     font-size:9px;
 
     letter-spacing:3px;
@@ -838,7 +891,10 @@ body{
 }
 
 .memory-card h2{
-    font-family:"Great Vibes",cursive;
+
+    font-family:
+        "Great Vibes",
+        cursive;
 
     font-size:55px;
 
@@ -846,6 +902,7 @@ body{
 }
 
 .memory-line{
+
     width:60px;
 
     height:1px;
@@ -857,7 +914,10 @@ body{
 }
 
 .memory-text{
-    font-family:"Cormorant Garamond",serif;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
     font-size:25px;
 
@@ -874,6 +934,7 @@ body{
 ========================================================= */
 
 .memory-photo{
+
     height:180px;
 
     border-radius:15px;
@@ -899,6 +960,7 @@ body{
 }
 
 .memory-photo:hover{
+
     transform:scale(1.02);
 
     border-color:
@@ -906,12 +968,14 @@ body{
 }
 
 .memory-photo span{
+
     font-size:42px;
 
     margin-bottom:7px;
 }
 
 .memory-photo small{
+
     font-size:8px;
 
     letter-spacing:2px;
@@ -920,6 +984,7 @@ body{
 }
 
 .memory-done{
+
     padding:12px 22px;
 
     border-radius:999px;
@@ -945,15 +1010,18 @@ body{
 }
 
 .memory-done:hover{
-    transform:translateY(-3px);
+
+    transform:
+        translateY(-3px);
 }
 
 
 /* =========================================================
-   COMPLETION
+   FINAL SCREEN
 ========================================================= */
 
 .universe-complete{
+
     position:fixed;
 
     inset:0;
@@ -987,12 +1055,14 @@ body{
 }
 
 .universe-complete.show{
+
     opacity:1;
 
     visibility:visible;
 }
 
 .complete-stars{
+
     font-size:28px;
 
     letter-spacing:12px;
@@ -1000,14 +1070,12 @@ body{
     margin-bottom:20px;
 
     animation:
-        completionStars
-        2s ease-in-out infinite;
+        completionStars 2s ease-in-out infinite;
 }
 
 @keyframes completionStars{
 
-    0%,
-    100%{
+    0%,100%{
         transform:scale(.9);
     }
 
@@ -1017,7 +1085,10 @@ body{
 }
 
 .universe-complete h2{
-    font-family:"Great Vibes",cursive;
+
+    font-family:
+        "Great Vibes",
+        cursive;
 
     font-size:
         clamp(50px,8vw,80px);
@@ -1028,7 +1099,10 @@ body{
 }
 
 .universe-complete p{
-    font-family:"Cormorant Garamond",serif;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
     font-size:25px;
 
@@ -1037,10 +1111,11 @@ body{
 
 
 /* =========================================================
-   MUSIC
+   MUSIC BUTTON
 ========================================================= */
 
 .music-button{
+
     position:fixed;
 
     right:20px;
@@ -1066,6 +1141,68 @@ body{
     font-size:18px;
 
     backdrop-filter:blur(10px);
+
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+.music-button:hover{
+
+    transform:scale(1.1);
+
+    background:
+        rgba(255,255,255,.16);
+}
+
+.music-button.playing{
+
+    animation:
+        musicPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes musicPulse{
+
+    0%,100%{
+        box-shadow:
+            0 0 0 rgba(255,255,255,0);
+    }
+
+    50%{
+        box-shadow:
+            0 0 25px rgba(255,190,225,.35);
+    }
+}
+
+
+/* =========================================================
+   AUDIO START MESSAGE
+========================================================= */
+
+.audio-hint{
+
+    position:fixed;
+
+    bottom:78px;
+    right:20px;
+
+    font-size:8px;
+
+    letter-spacing:1.5px;
+
+    color:rgba(255,255,255,.6);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity .8s ease;
+
+    z-index:190;
+}
+
+.audio-hint.show{
+    opacity:1;
 }
 
 
@@ -1074,38 +1211,43 @@ body{
 ========================================================= */
 
 .click-ripple{
+
     position:fixed;
 
-    width:12px;
-    height:12px;
+    width:20px;
+    height:20px;
 
     border-radius:50%;
+
+    border:
+        1px solid rgba(255,255,255,.7);
 
     pointer-events:none;
 
     z-index:9998;
 
-    border:
-        1px solid rgba(255,255,255,.8);
-
-    transform:translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%)
+        scale(.3);
 
     animation:
-        ripple .7s ease-out forwards;
+        ripple .65s ease-out forwards;
 }
 
 @keyframes ripple{
 
     0%{
-        width:10px;
-        height:10px;
-        opacity:1;
+        opacity:.9;
+        transform:
+            translate(-50%,-50%)
+            scale(.3);
     }
 
     100%{
-        width:90px;
-        height:90px;
         opacity:0;
+        transform:
+            translate(-50%,-50%)
+            scale(5);
     }
 }
 
@@ -1160,7 +1302,6 @@ body{
 
     .star-label{
         font-size:8px;
-
         width:110px;
     }
 
@@ -1250,8 +1391,6 @@ body{
 <main class="universe" id="universe">
 
 
-    <!-- HEADING -->
-
     <div class="universe-heading">
 
         <p class="eyebrow">
@@ -1287,9 +1426,7 @@ body{
     </div>
 
 
-    <!-- =================================================
-         STAR 1
-    ================================================== -->
+    <!-- STAR 1 -->
 
     <button
         class="memory-star star-one"
@@ -1297,10 +1434,7 @@ body{
         aria-label="Our Beginning">
 
         <span class="star-glow"></span>
-
-        <span class="star-symbol">
-            ✦
-        </span>
+        <span class="star-symbol">✦</span>
 
         <span class="star-label">
             Our Beginning
@@ -1317,10 +1451,7 @@ body{
         aria-label="12.03.26">
 
         <span class="star-glow"></span>
-
-        <span class="star-symbol">
-            ✦
-        </span>
+        <span class="star-symbol">✦</span>
 
         <span class="star-label">
             12.03.26
@@ -1337,10 +1468,7 @@ body{
         aria-label="That First Day">
 
         <span class="star-glow"></span>
-
-        <span class="star-symbol">
-            ✦
-        </span>
+        <span class="star-symbol">✦</span>
 
         <span class="star-label">
             That First Day
@@ -1357,10 +1485,7 @@ body{
         aria-label="A Little Confession">
 
         <span class="star-glow"></span>
-
-        <span class="star-symbol">
-            ✦
-        </span>
+        <span class="star-symbol">✦</span>
 
         <span class="star-label">
             A Little Confession
@@ -1377,10 +1502,7 @@ body{
         aria-label="Something I Love">
 
         <span class="star-glow"></span>
-
-        <span class="star-symbol">
-            ✦
-        </span>
+        <span class="star-symbol">✦</span>
 
         <span class="star-label">
             Something I Love
@@ -1397,10 +1519,7 @@ body{
         aria-label="A Secret">
 
         <span class="star-glow"></span>
-
-        <span class="star-symbol">
-            ✦
-        </span>
+        <span class="star-symbol">✦</span>
 
         <span class="star-label">
             A Secret
@@ -1409,9 +1528,7 @@ body{
     </button>
 
 
-    <!-- =================================================
-         COMPLETION
-    ================================================== -->
+    <!-- COMPLETION -->
 
     <div
         id="universeComplete"
@@ -1499,9 +1616,7 @@ body{
 
         <div class="memory-photo">
 
-            <span>
-                📷
-            </span>
+            <span>📷</span>
 
             <small>
                 YOUR PHOTO WILL GO HERE
@@ -1527,14 +1642,6 @@ body{
      MUSIC
 ===================================================== -->
 
-<audio
-    id="bgMusic"
-    src="universe-bgm.mp3"
-    loop
-    preload="auto">
-</audio>
-
-
 <button
     id="musicButton"
     class="music-button"
@@ -1544,845 +1651,1241 @@ body{
 
 </button>
 
+<div
+    id="audioHint"
+    class="audio-hint">
+
+    MUSIC IS PLAYING ♫
+
+</div>
+
 
 <script>
 
 /* =========================================================
-   UNIVERSE PAGE JAVASCRIPT
+   ELEMENTS
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded",function(){
+const transition =
+    document.getElementById("pageTransition");
 
-    /* -----------------------------------------------------
-       ELEMENTS
-    ----------------------------------------------------- */
+const introScreen =
+    document.getElementById("introScreen");
 
-    const transition =
-        document.getElementById("pageTransition");
+const universe =
+    document.getElementById("universe");
 
-    const introScreen =
-        document.getElementById("introScreen");
+const exploreButton =
+    document.getElementById("exploreButton");
 
-    const universe =
-        document.getElementById("universe");
+const memoryStars =
+    document.querySelectorAll(".memory-star");
 
-    const exploreButton =
-        document.getElementById("exploreButton");
+const memoryModal =
+    document.getElementById("memoryModal");
 
-    const memoryStars =
-        document.querySelectorAll(".memory-star");
+const closeMemory =
+    document.getElementById("closeMemory");
 
-    const memoryModal =
-        document.getElementById("memoryModal");
+const memoryDone =
+    document.getElementById("memoryDone");
 
-    const closeMemory =
-        document.getElementById("closeMemory");
+const memoryTitle =
+    document.getElementById("memoryTitle");
 
-    const memoryDone =
-        document.getElementById("memoryDone");
+const memoryText =
+    document.getElementById("memoryText");
 
-    const memoryTitle =
-        document.getElementById("memoryTitle");
+const memoryNumber =
+    document.getElementById("memoryNumber");
 
-    const memoryText =
-        document.getElementById("memoryText");
+const memoryIcon =
+    document.getElementById("memoryIcon");
 
-    const memoryNumber =
-        document.getElementById("memoryNumber");
+const progressText =
+    document.getElementById("progressText");
 
-    const memoryIcon =
-        document.getElementById("memoryIcon");
+const progressFill =
+    document.getElementById("progressFill");
 
-    const progressText =
-        document.getElementById("progressText");
+const universeComplete =
+    document.getElementById("universeComplete");
 
-    const progressFill =
-        document.getElementById("progressFill");
+const continueButton =
+    document.getElementById("continueButton");
 
-    const universeComplete =
-        document.getElementById("universeComplete");
+const starContainer =
+    document.getElementById("stars");
 
-    const continueButton =
-        document.getElementById("continueButton");
+const musicButton =
+    document.getElementById("musicButton");
 
-    const starContainer =
-        document.getElementById("stars");
-
-    const bgMusic =
-        document.getElementById("bgMusic");
-
-    const musicButton =
-        document.getElementById("musicButton");
+const audioHint =
+    document.getElementById("audioHint");
 
 
-    /* -----------------------------------------------------
-       MEMORY DATA
-    ----------------------------------------------------- */
+/* =========================================================
+   MEMORY CONTENT
+========================================================= */
 
-    const memories = [
+const memories = [
 
-        {
-            title:"Our Beginning",
-            icon:"💫",
-            text:
-            'It all started with something so simple. I sent you a follow request... and one day, you accepted it. Then came one tiny word that started something much bigger than either of us knew... "Hi." ❤️'
-        },
+    {
+        title:"Our Beginning",
+        icon:"💫",
+        text:
+        'It all started with something so simple. I sent you a follow request... and one day, you accepted it. Then came one tiny word that started something much bigger than either of us knew... "Hi." ❤️'
+    },
 
-        {
-            title:"12.03.26",
-            icon:"📅",
-            text:
-            "12.03.26 — the day we started talking. Just a date on a calendar, but one that became the beginning of so many conversations, little moments and memories."
-        },
+    {
+        title:"12.03.26",
+        icon:"📅",
+        text:
+        "12.03.26 — the day we started talking. Just a date on a calendar, but one that became the beginning of so many conversations, little moments and memories."
+    },
 
-        {
-            title:"That First Day",
-            icon:"🥹",
-            text:
-            "One of my favorite little memories... you falling asleep on my lap when we were together for the first day. Maybe it was a small moment, but it made me feel incredibly lucky."
-        },
+    {
+        title:"That First Day",
+        icon:"🥹",
+        text:
+        "One of my favorite little memories... you falling asleep on my lap when we were together for the first day. Maybe it was a small moment, but it made me feel incredibly lucky."
+    },
 
-        {
-            title:"A Little Confession",
-            icon:"😂",
-            text:
-            'The first time I heard your voice, I told you that you sounded very young. Looking back... I have absolutely no idea why I thought saying that was a good idea. 😂'
-        },
+    {
+        title:"A Little Confession",
+        icon:"😂",
+        text:
+        'The first time I heard your voice, I told you that you sounded very young. Looking back... I have absolutely no idea why I thought saying that was a good idea. 😂'
+    },
 
-        {
-            title:"Something I Love",
-            icon:"✨",
-            text:
-            "I love how charismatic you are. How interactive you are. How full of life you are. You have this energy that makes being around you feel different... and I absolutely love that about you."
-        },
+    {
+        title:"Something I Love",
+        icon:"✨",
+        text:
+        "I love how charismatic you are. How interactive you are. How full of life you are. You have this energy that makes being around you feel different... and I absolutely love that about you."
+    },
 
-        {
-            title:"A Secret",
-            icon:"❤️",
-            text:
-            "Here's something I hope you never forget: I'm genuinely blessed to have you as someone so close to me. Around you, I feel comfortable. I feel loved. And you have a very special place in my life."
-        }
-
-    ];
-
-
-    /* -----------------------------------------------------
-       STATE
-    ----------------------------------------------------- */
-
-    let discovered = 0;
-
-    let currentMemory = null;
-
-    const discoveredStars = [];
-
-    let musicStarted = false;
-
-
-    /* =====================================================
-       MUSIC
-    ===================================================== */
-
-    function startMusic(){
-
-        if(musicStarted){
-            return;
-        }
-
-        bgMusic.volume = 0.42;
-
-        const promise =
-            bgMusic.play();
-
-        if(promise){
-
-            promise.then(function(){
-
-                musicStarted = true;
-
-                musicButton.textContent = "♫";
-
-            }).catch(function(){
-
-                console.log(
-                    "Music waiting for interaction."
-                );
-
-            });
-
-        }
-
+    {
+        title:"A Secret",
+        icon:"❤️",
+        text:
+        "Here's something I hope you never forget: I'm genuinely blessed to have you as someone so close to me. Around you, I feel comfortable. I feel loved. And you have a very special place in my life."
     }
 
+];
 
-    function toggleMusic(){
 
-        if(bgMusic.paused){
+let discovered = 0;
+let currentMemory = null;
+const discoveredStars = [];
 
-            bgMusic.volume = 0.42;
 
-            bgMusic.play();
+/* =========================================================
+   WEB AUDIO ENGINE
+   Cute dreamy background music — no external file needed
+========================================================= */
 
-            musicButton.textContent = "♫";
+let audioContext = null;
+let masterGain = null;
+let musicGain = null;
+let musicStarted = false;
 
-        }else{
+let musicTimer = null;
+let musicStep = 0;
 
-            bgMusic.pause();
 
-            musicButton.textContent = "🔇";
+/* Initialize audio */
 
-        }
+function initAudio(){
 
+    if(audioContext){
+        return;
     }
 
+    const AudioCtx =
+        window.AudioContext ||
+        window.webkitAudioContext;
 
-    musicButton.addEventListener(
-        "click",
-        function(event){
+    if(!AudioCtx){
+        return;
+    }
 
-            event.stopPropagation();
+    audioContext =
+        new AudioCtx();
 
-            toggleMusic();
+    masterGain =
+        audioContext.createGain();
 
-        }
+    musicGain =
+        audioContext.createGain();
+
+    masterGain.gain.value = .8;
+
+    musicGain.gain.value = .0001;
+
+    musicGain.connect(masterGain);
+    masterGain.connect(
+        audioContext.destination
+    );
+}
+
+
+/* =========================================================
+   SOFT SYNTH SOUND
+========================================================= */
+
+function playTone(
+    frequency,
+    duration=.18,
+    type="sine",
+    volume=.08,
+    delay=0
+){
+
+    if(!audioContext){
+        return;
+    }
+
+    const oscillator =
+        audioContext.createOscillator();
+
+    const gain =
+        audioContext.createGain();
+
+    oscillator.type = type;
+
+    oscillator.frequency.value =
+        frequency;
+
+    oscillator.connect(gain);
+    gain.connect(masterGain);
+
+    const now =
+        audioContext.currentTime +
+        delay;
+
+    gain.gain.setValueAtTime(
+        .0001,
+        now
     );
 
-
-    /*
-     * First user interaction starts music.
-     */
-
-    document.addEventListener(
-        "pointerdown",
-        function(){
-
-            startMusic();
-
-        },
-        {
-            once:true
-        }
+    gain.gain.exponentialRampToValueAtTime(
+        volume,
+        now + .015
     );
 
+    gain.gain.exponentialRampToValueAtTime(
+        .0001,
+        now + duration
+    );
 
-    /* =====================================================
-       PAGE FADE
-    ===================================================== */
-
-    setTimeout(function(){
-
-        if(transition){
-
-            transition.classList.add(
-                "fade-out"
-            );
-
-        }
-
-    },300);
+    oscillator.start(now);
+    oscillator.stop(
+        now + duration + .03
+    );
+}
 
 
-    /* =====================================================
-       BACKGROUND STARS
-    ===================================================== */
+/* =========================================================
+   PREMIUM UI SOUNDS
+========================================================= */
 
-    function createBackgroundStars(){
+function clickSound(){
 
-        if(!starContainer){
-            return;
-        }
+    playTone(
+        660,
+        .08,
+        "sine",
+        .055
+    );
 
-        for(let i=0;i<100;i++){
+    playTone(
+        990,
+        .12,
+        "sine",
+        .025,
+        .035
+    );
+}
 
-            const star =
-                document.createElement("span");
 
-            star.className =
-                "background-star";
+function openSound(){
 
-            star.textContent =
-                Math.random() > .8
-                    ? "✦"
-                    : "•";
+    playTone(
+        392,
+        .18,
+        "sine",
+        .055
+    );
 
-            star.style.left =
-                Math.random()*100 + "%";
+    playTone(
+        523.25,
+        .25,
+        "sine",
+        .06,
+        .08
+    );
 
-            star.style.top =
-                Math.random()*100 + "%";
+    playTone(
+        783.99,
+        .45,
+        "sine",
+        .045,
+        .18
+    );
+}
 
-            star.style.animationDelay =
-                Math.random()*4 + "s";
 
-            star.style.animationDuration =
-                2 + Math.random()*4 + "s";
+function discoverySound(){
 
-            starContainer.appendChild(
-                star
-            );
+    playTone(
+        523.25,
+        .14,
+        "sine",
+        .06
+    );
 
-        }
+    playTone(
+        659.25,
+        .16,
+        "sine",
+        .06,
+        .08
+    );
 
+    playTone(
+        783.99,
+        .3,
+        "sine",
+        .07,
+        .16
+    );
+
+    playTone(
+        1046.5,
+        .55,
+        "sine",
+        .035,
+        .28
+    );
+}
+
+
+function completionSound(){
+
+    playTone(
+        523.25,
+        .18,
+        "sine",
+        .05
+    );
+
+    playTone(
+        659.25,
+        .18,
+        "sine",
+        .055,
+        .12
+    );
+
+    playTone(
+        783.99,
+        .22,
+        "sine",
+        .06,
+        .24
+    );
+
+    playTone(
+        1046.5,
+        .7,
+        "sine",
+        .07,
+        .38
+    );
+}
+
+
+function transitionSound(){
+
+    playTone(
+        220,
+        .35,
+        "sine",
+        .035
+    );
+
+    playTone(
+        329.63,
+        .5,
+        "sine",
+        .045,
+        .18
+    );
+
+    playTone(
+        659.25,
+        .8,
+        "sine",
+        .035,
+        .35
+    );
+}
+
+
+/* =========================================================
+   DREAMY BACKGROUND MUSIC
+========================================================= */
+
+const melody = [
+
+    261.63,
+    329.63,
+    392.00,
+    523.25,
+
+    392.00,
+    329.63,
+    293.66,
+    392.00,
+
+    261.63,
+    329.63,
+    440.00,
+    523.25,
+
+    493.88,
+    392.00,
+    329.63,
+    261.63
+
+];
+
+
+function playMusicNote(){
+
+    if(!audioContext){
+        return;
     }
 
-    createBackgroundStars();
+    if(!musicStarted){
+        return;
+    }
+
+    const frequency =
+        melody[musicStep % melody.length];
+
+    const oscillator =
+        audioContext.createOscillator();
+
+    const gain =
+        audioContext.createGain();
+
+    oscillator.type =
+        "sine";
+
+    oscillator.frequency.value =
+        frequency;
+
+    oscillator.connect(gain);
+    gain.connect(musicGain);
+
+    const now =
+        audioContext.currentTime;
+
+    gain.gain.setValueAtTime(
+        .0001,
+        now
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .045,
+        now + .08
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .0001,
+        now + 1.5
+    );
+
+    oscillator.start(now);
+
+    oscillator.stop(
+        now + 1.55
+    );
+
+    musicStep++;
+}
 
 
-    /* =====================================================
-       SHOOTING STARS
-    ===================================================== */
+function startMusic(){
 
-    function createShootingStar(){
+    initAudio();
 
-        if(
-            !universe.classList.contains(
-                "active"
-            )
-        ){
-            return;
-        }
+    if(!audioContext){
+        return;
+    }
 
-        const shootingStar =
-            document.createElement("div");
+    if(audioContext.state === "suspended"){
+        audioContext.resume();
+    }
 
-        shootingStar.className =
-            "shooting-star";
+    if(musicStarted){
+        return;
+    }
 
-        shootingStar.style.left =
-            65 + Math.random()*35 + "%";
+    musicStarted = true;
 
-        shootingStar.style.top =
-            5 + Math.random()*35 + "%";
+    musicGain.gain.cancelScheduledValues(
+        audioContext.currentTime
+    );
 
-        document.body.appendChild(
-            shootingStar
+    musicGain.gain.setValueAtTime(
+        .0001,
+        audioContext.currentTime
+    );
+
+    musicGain.gain.exponentialRampToValueAtTime(
+        .075,
+        audioContext.currentTime + 3
+    );
+
+    musicTimer =
+        setInterval(
+            playMusicNote,
+            900
         );
 
-        setTimeout(function(){
+    playMusicNote();
 
-            shootingStar.remove();
+    musicButton.classList.add(
+        "playing"
+    );
 
-        },1600);
+    audioHint.classList.add(
+        "show"
+    );
+
+    setTimeout(
+        ()=>{
+            audioHint.classList.remove(
+                "show"
+            );
+        },
+        2500
+    );
+}
+
+
+function toggleMusic(){
+
+    initAudio();
+
+    if(!audioContext){
+        return;
+    }
+
+    if(audioContext.state === "suspended"){
+        audioContext.resume();
+    }
+
+    if(!musicStarted){
+
+        startMusic();
+        return;
 
     }
 
+    const current =
+        audioContext.currentTime;
 
-    setInterval(
-        createShootingStar,
-        5000
+    const target =
+        musicGain.gain.value > .01
+            ? .0001
+            : .075;
+
+    musicGain.gain.cancelScheduledValues(
+        current
     );
 
+    musicGain.gain.setTargetAtTime(
+        target,
+        current,
+        .25
+    );
 
-    /* =====================================================
-       CLICK RIPPLE
-    ===================================================== */
+    if(target < .01){
 
-    document.addEventListener(
-        "click",
-        function(event){
+        musicButton.classList.remove(
+            "playing"
+        );
 
-            const ripple =
-                document.createElement(
-                    "div"
-                );
+        musicButton.textContent =
+            "🔇";
 
-            ripple.className =
-                "click-ripple";
+    }else{
 
-            ripple.style.left =
-                event.clientX + "px";
+        musicButton.classList.add(
+            "playing"
+        );
 
-            ripple.style.top =
-                event.clientY + "px";
+        musicButton.textContent =
+            "♫";
+    }
+}
 
-            document.body.appendChild(
-                ripple
-            );
 
-            setTimeout(function(){
+/* =========================================================
+   FIRST INTERACTION
+========================================================= */
 
+let firstInteraction = true;
+
+function handleFirstInteraction(){
+
+    if(firstInteraction){
+
+        firstInteraction = false;
+
+        startMusic();
+
+    }
+
+}
+
+
+document.addEventListener(
+    "pointerdown",
+    handleFirstInteraction,
+    {
+        once:true
+    }
+);
+
+
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
+musicButton.addEventListener(
+    "click",
+    function(event){
+
+        event.stopPropagation();
+
+        toggleMusic();
+
+    }
+);
+
+
+/* =========================================================
+   RIPPLE EFFECT
+========================================================= */
+
+document.addEventListener(
+    "pointerdown",
+    function(event){
+
+        const ripple =
+            document.createElement("div");
+
+        ripple.className =
+            "click-ripple";
+
+        ripple.style.left =
+            event.clientX + "px";
+
+        ripple.style.top =
+            event.clientY + "px";
+
+        document.body.appendChild(
+            ripple
+        );
+
+        setTimeout(
+            ()=>{
                 ripple.remove();
+            },
+            700
+        );
 
-            },700);
+    }
+);
 
-        }
+
+/* =========================================================
+   PAGE FADE IN
+========================================================= */
+
+setTimeout(
+    function(){
+
+        transition.classList.add(
+            "fade-out"
+        );
+
+    },
+    300
+);
+
+
+/* =========================================================
+   CREATE BACKGROUND STARS
+========================================================= */
+
+function createBackgroundStars(){
+
+    for(let i=0;i<120;i++){
+
+        const star =
+            document.createElement("span");
+
+        star.className =
+            "background-star";
+
+        star.textContent =
+            Math.random() > .82
+                ? "✦"
+                : "•";
+
+        star.style.left =
+            Math.random()*100 + "%";
+
+        star.style.top =
+            Math.random()*100 + "%";
+
+        star.style.animationDelay =
+            Math.random()*4 + "s";
+
+        star.style.animationDuration =
+            2 + Math.random()*4 + "s";
+
+        starContainer.appendChild(
+            star
+        );
+    }
+}
+
+createBackgroundStars();
+
+
+/* =========================================================
+   SHOOTING STAR
+========================================================= */
+
+function createShootingStar(){
+
+    if(
+        !universe.classList.contains(
+            "active"
+        )
+    ){
+        return;
+    }
+
+    const star =
+        document.createElement("div");
+
+    star.className =
+        "shooting-star";
+
+    star.style.left =
+        65 + Math.random()*35 + "%";
+
+    star.style.top =
+        5 + Math.random()*35 + "%";
+
+    document.body.appendChild(
+        star
     );
 
+    playTone(
+        1100,
+        .12,
+        "sine",
+        .018
+    );
 
-    /* =====================================================
-       MOUSE REACTIVE STARS
-    ===================================================== */
+    setTimeout(
+        ()=>{
+            star.remove();
+        },
+        1600
+    );
+}
 
-    document.addEventListener(
-        "mousemove",
-        function(event){
+setInterval(
+    createShootingStar,
+    5000
+);
 
-            memoryStars.forEach(
-                function(star){
 
-                    const rect =
-                        star.getBoundingClientRect();
+/* =========================================================
+   MOUSE REACTIVE STARS
+========================================================= */
 
-                    const centerX =
-                        rect.left +
-                        rect.width/2;
+document.addEventListener(
+    "mousemove",
+    function(event){
 
-                    const centerY =
-                        rect.top +
-                        rect.height/2;
+        memoryStars.forEach(
+            function(star){
 
-                    const distance =
-                        Math.sqrt(
-                            Math.pow(
-                                event.clientX-centerX,
-                                2
-                            )+
-                            Math.pow(
-                                event.clientY-centerY,
-                                2
-                            )
-                        );
+                const rect =
+                    star.getBoundingClientRect();
 
-                    if(distance < 180){
+                const centerX =
+                    rect.left +
+                    rect.width/2;
 
-                        const strength =
-                            (180-distance)/180;
+                const centerY =
+                    rect.top +
+                    rect.height/2;
 
-                        const xDirection =
-                            centerX < event.clientX
-                                ? -1
-                                : 1;
+                const distance =
+                    Math.sqrt(
+                        Math.pow(
+                            event.clientX-centerX,
+                            2
+                        )+
+                        Math.pow(
+                            event.clientY-centerY,
+                            2
+                        )
+                    );
 
-                        const yDirection =
-                            centerY < event.clientY
-                                ? -1
-                                : 1;
+                if(distance < 180){
 
-                        star.style.transform =
-                            "translate("+
-                            xDirection*
-                            strength*
-                            8+
-                            "px,"+
-                            yDirection*
-                            strength*
-                            8+
-                            "px) scale("+
-                            (
-                                1+
-                                strength*.12
-                            )+
-                            ")";
+                    const strength =
+                        (180-distance)/180;
 
-                    }else{
+                    const x =
+                        centerX < event.clientX
+                            ? -1
+                            : 1;
 
-                        star.style.transform = "";
+                    const y =
+                        centerY < event.clientY
+                            ? -1
+                            : 1;
 
-                    }
+                    star.style.transform =
+                        `translate(
+                            ${x*strength*8}px,
+                            ${y*strength*8}px
+                        )
+                        scale(
+                            ${1+strength*.12}
+                        )`;
+
+                }else{
+
+                    star.style.transform = "";
 
                 }
-            );
 
-        }
-    );
+            }
+        );
+
+    }
+);
 
 
-    /* =====================================================
-       ENTER UNIVERSE
-    ===================================================== */
+/* =========================================================
+   ENTER UNIVERSE
+========================================================= */
 
-    exploreButton.addEventListener(
-        "click",
-        function(){
+exploreButton.addEventListener(
+    "click",
+    function(){
 
-            startMusic();
+        clickSound();
 
-            introScreen.classList.remove(
-                "active"
-            );
+        introScreen.classList.remove(
+            "active"
+        );
 
-            setTimeout(function(){
+        setTimeout(
+            function(){
 
                 universe.classList.add(
                     "active"
                 );
 
+                openSound();
+
                 createShootingStar();
 
-            },700);
-
-        }
-    );
-
-
-    /* =====================================================
-       CONSTELLATION SVG
-    ===================================================== */
-
-    function getConstellationSVG(){
-
-        let svg =
-            document.getElementById(
-                "constellation-svg"
-            );
-
-        if(svg){
-            return svg;
-        }
-
-        svg =
-            document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "svg"
-            );
-
-        svg.id =
-            "constellation-svg";
-
-        svg.style.position =
-            "fixed";
-
-        svg.style.left = "0";
-        svg.style.top = "0";
-
-        svg.style.width = "100vw";
-        svg.style.height = "100vh";
-
-        svg.style.pointerEvents =
-            "none";
-
-        svg.style.zIndex = "5";
-
-        svg.style.overflow =
-            "visible";
-
-        document.body.appendChild(
-            svg
+            },
+            700
         );
 
-        return svg;
+    }
+);
 
+
+/* =========================================================
+   CONSTELLATION SVG
+========================================================= */
+
+function getConstellationSVG(){
+
+    let svg =
+        document.getElementById(
+            "constellation-svg"
+        );
+
+    if(svg){
+        return svg;
     }
 
+    svg =
+        document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "svg"
+        );
 
-    /* =====================================================
-       DRAW CONSTELLATION
-    ===================================================== */
+    svg.id =
+        "constellation-svg";
 
-    function drawConstellation(){
+    document.body.appendChild(
+        svg
+    );
 
-        const svg =
-            getConstellationSVG();
+    return svg;
+}
 
-        while(svg.firstChild){
 
-            svg.removeChild(
-                svg.firstChild
+function drawConstellation(){
+
+    const svg =
+        getConstellationSVG();
+
+    while(svg.firstChild){
+        svg.removeChild(
+            svg.firstChild
+        );
+    }
+
+    if(
+        discoveredStars.length < 2
+    ){
+        return;
+    }
+
+    for(
+        let i=0;
+        i<discoveredStars.length-1;
+        i++
+    ){
+
+        const first =
+            memoryStars[
+                discoveredStars[i]
+            ];
+
+        const second =
+            memoryStars[
+                discoveredStars[i+1]
+            ];
+
+        const r1 =
+            first.getBoundingClientRect();
+
+        const r2 =
+            second.getBoundingClientRect();
+
+        const x1 =
+            r1.left+r1.width/2;
+
+        const y1 =
+            r1.top+r1.height/2;
+
+        const x2 =
+            r2.left+r2.width/2;
+
+        const y2 =
+            r2.top+r2.height/2;
+
+        const line =
+            document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "line"
             );
 
-        }
+        line.setAttribute(
+            "x1",
+            x1
+        );
 
-        if(
-            discoveredStars.length < 2
-        ){
+        line.setAttribute(
+            "y1",
+            y1
+        );
+
+        line.setAttribute(
+            "x2",
+            x2
+        );
+
+        line.setAttribute(
+            "y2",
+            y2
+        );
+
+        line.setAttribute(
+            "stroke",
+            "rgba(255,255,255,.65)"
+        );
+
+        line.setAttribute(
+            "stroke-width",
+            "1.2"
+        );
+
+        line.setAttribute(
+            "stroke-linecap",
+            "round"
+        );
+
+        const length =
+            Math.sqrt(
+                Math.pow(x2-x1,2)+
+                Math.pow(y2-y1,2)
+            );
+
+        line.style.strokeDasharray =
+            length;
+
+        line.style.strokeDashoffset =
+            length;
+
+        line.style.filter =
+            "drop-shadow(0 0 6px rgba(255,255,255,.8))";
+
+        svg.appendChild(
+            line
+        );
+
+        requestAnimationFrame(
+            function(){
+
+                line.style.transition =
+                    "stroke-dashoffset 1.2s ease";
+
+                line.style.strokeDashoffset =
+                    "0";
+
+            }
+        );
+
+    }
+}
+
+
+/* =========================================================
+   OPEN MEMORY
+========================================================= */
+
+memoryStars.forEach(
+    function(star){
+
+        star.addEventListener(
+            "click",
+            function(){
+
+                clickSound();
+
+                const index =
+                    Number(
+                        star.dataset.memory
+                    );
+
+                if(!memories[index]){
+                    return;
+                }
+
+                currentMemory =
+                    index;
+
+                const memory =
+                    memories[index];
+
+                memoryTitle.textContent =
+                    memory.title;
+
+                memoryIcon.textContent =
+                    memory.icon;
+
+                memoryText.textContent =
+                    memory.text;
+
+                memoryNumber.textContent =
+                    "MEMORY " +
+                    String(index+1)
+                        .padStart(2,"0");
+
+                memoryModal.classList.add(
+                    "show"
+                );
+
+                openSound();
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   DISCOVER MEMORY
+========================================================= */
+
+memoryDone.addEventListener(
+    "click",
+    function(){
+
+        if(currentMemory === null){
             return;
         }
 
-        for(
-            let i=0;
-            i<discoveredStars.length-1;
-            i++
+        const star =
+            memoryStars[
+                currentMemory
+            ];
+
+        if(
+            !star.classList.contains(
+                "discovered"
+            )
         ){
 
-            const firstStar =
-                memoryStars[
-                    discoveredStars[i]
-                ];
-
-            const secondStar =
-                memoryStars[
-                    discoveredStars[i+1]
-                ];
-
-            const firstRect =
-                firstStar.getBoundingClientRect();
-
-            const secondRect =
-                secondStar.getBoundingClientRect();
-
-            const x1 =
-                firstRect.left+
-                firstRect.width/2;
-
-            const y1 =
-                firstRect.top+
-                firstRect.height/2;
-
-            const x2 =
-                secondRect.left+
-                secondRect.width/2;
-
-            const y2 =
-                secondRect.top+
-                secondRect.height/2;
-
-            const line =
-                document.createElementNS(
-                    "http://www.w3.org/2000/svg",
-                    "line"
-                );
-
-            line.setAttribute(
-                "x1",
-                x1
+            star.classList.add(
+                "discovered"
             );
 
-            line.setAttribute(
-                "y1",
-                y1
+            discoveredStars.push(
+                currentMemory
             );
 
-            line.setAttribute(
-                "x2",
-                x2
+            discovered++;
+
+            discoverySound();
+
+            updateProgress();
+
+            setTimeout(
+                drawConstellation,
+                300
             );
-
-            line.setAttribute(
-                "y2",
-                y2
-            );
-
-            line.setAttribute(
-                "stroke",
-                "rgba(255,255,255,.65)"
-            );
-
-            line.setAttribute(
-                "stroke-width",
-                "1.2"
-            );
-
-            line.setAttribute(
-                "stroke-linecap",
-                "round"
-            );
-
-            const length =
-                Math.sqrt(
-                    Math.pow(
-                        x2-x1,
-                        2
-                    )+
-                    Math.pow(
-                        y2-y1,
-                        2
-                    )
-                );
-
-            line.style.strokeDasharray =
-                length;
-
-            line.style.strokeDashoffset =
-                length;
-
-            line.style.filter =
-                "drop-shadow(0 0 6px rgba(255,255,255,.8))";
-
-            svg.appendChild(
-                line
-            );
-
-            requestAnimationFrame(
-                function(){
-
-                    line.style.transition =
-                        "stroke-dashoffset 1.2s ease";
-
-                    line.style.strokeDashoffset =
-                        "0";
-
-                }
-            );
-
         }
+
+        closeMemoryModal();
 
     }
+);
 
 
-    /* =====================================================
-       OPEN MEMORY
-    ===================================================== */
+/* =========================================================
+   PROGRESS
+========================================================= */
 
-    memoryStars.forEach(
-        function(star){
+function updateProgress(){
 
-            star.addEventListener(
-                "click",
-                function(){
+    progressText.textContent =
+        discovered +
+        " / 6 discovered";
 
-                    startMusic();
+    progressFill.style.width =
+        (discovered/6*100) +
+        "%";
 
-                    const index =
-                        Number(
-                            star.dataset.memory
-                        );
+    if(discovered === 6){
 
-                    if(!memories[index]){
-                        return;
-                    }
+        setTimeout(
+            function(){
 
-                    currentMemory =
-                        index;
+                universeComplete.classList.add(
+                    "show"
+                );
 
-                    const memory =
-                        memories[index];
+                completionSound();
 
-                    memoryTitle.textContent =
-                        memory.title;
+            },
+            1400
+        );
 
-                    memoryIcon.textContent =
-                        memory.icon;
+    }
+}
 
-                    memoryText.textContent =
-                        memory.text;
 
-                    memoryNumber.textContent =
-                        "MEMORY "+
-                        String(index+1)
-                            .padStart(2,"0");
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
 
-                    memoryModal.classList.add(
-                        "show"
-                    );
+function closeMemoryModal(){
 
-                }
-            );
-
-        }
+    memoryModal.classList.remove(
+        "show"
     );
 
+    currentMemory =
+        null;
+}
 
-    /* =====================================================
-       DISCOVER MEMORY
-    ===================================================== */
 
-    memoryDone.addEventListener(
-        "click",
-        function(){
+closeMemory.addEventListener(
+    "click",
+    function(){
 
-            if(
-                currentMemory === null
-            ){
-                return;
-            }
+        clickSound();
 
-            const selectedStar =
-                memoryStars[
-                    currentMemory
-                ];
+        closeMemoryModal();
 
-            if(
-                !selectedStar.classList
-                    .contains("discovered")
-            ){
+    }
+);
 
-                selectedStar.classList.add(
-                    "discovered"
-                );
 
-                discoveredStars.push(
-                    currentMemory
-                );
+/* =========================================================
+   CLICK BACKDROP
+========================================================= */
 
-                discovered++;
+memoryModal.addEventListener(
+    "click",
+    function(event){
 
-                updateProgress();
+        if(
+            event.target.classList.contains(
+                "modal-backdrop"
+            )
+        ){
 
-                setTimeout(
-                    drawConstellation,
-                    300
-                );
-
-            }
+            clickSound();
 
             closeMemoryModal();
 
         }
-    );
-
-
-    /* =====================================================
-       UPDATE PROGRESS
-    ===================================================== */
-
-    function updateProgress(){
-
-        progressText.textContent =
-            discovered+
-            " / 6 discovered";
-
-        progressFill.style.width =
-            (
-                discovered/
-                memoryStars.length*
-                100
-            )+
-            "%";
-
-        if(
-            discovered ===
-            memoryStars.length
-        ){
-
-            setTimeout(
-                function(){
-
-                    universeComplete
-                        .classList.add(
-                            "show"
-                        );
-
-                },
-                1400
-            );
-
-        }
 
     }
+);
 
 
-    /* =====================================================
-       CLOSE MODAL
-    ===================================================== */
+/* =========================================================
+   ESC
+========================================================= */
 
-    function closeMemoryModal(){
+document.addEventListener(
+    "keydown",
+    function(event){
 
-        memoryModal.classList.remove(
-            "show"
-        );
-
-        currentMemory = null;
-
-    }
-
-
-    closeMemory.addEventListener(
-        "click",
-        closeMemoryModal
-    );
-
-
-    /* =====================================================
-       CLICK OUTSIDE
-    ===================================================== */
-
-    memoryModal.addEventListener(
-        "click",
-        function(event){
+        if(event.key === "Escape"){
 
             if(
-                event.target.classList
-                    .contains("modal-backdrop")
+                memoryModal.classList.contains(
+                    "show"
+                )
             ){
 
                 closeMemoryModal();
@@ -2390,93 +2893,68 @@ document.addEventListener("DOMContentLoaded",function(){
             }
 
         }
-    );
+
+    }
+);
 
 
-    /* =====================================================
-       ESCAPE
-    ===================================================== */
+/* =========================================================
+   RESIZE
+========================================================= */
 
-    document.addEventListener(
-        "keydown",
-        function(event){
+window.addEventListener(
+    "resize",
+    function(){
 
-            if(event.key === "Escape"){
+        if(
+            discoveredStars.length >= 2
+        ){
 
-                if(
-                    memoryModal.classList
-                        .contains("show")
-                ){
-
-                    closeMemoryModal();
-
-                }
-
-            }
+            drawConstellation();
 
         }
-    );
+
+    }
+);
 
 
-    /* =====================================================
-       RESIZE
-    ===================================================== */
+/* =========================================================
+   CONTINUE
+========================================================= */
 
-    window.addEventListener(
-        "resize",
-        function(){
+continueButton.addEventListener(
+    "click",
+    function(){
 
-            if(
-                discoveredStars.length >= 2
-            ){
+        clickSound();
 
-                drawConstellation();
+        transitionSound();
 
-            }
+        transition.classList.remove(
+            "fade-out"
+        );
 
-        }
-    );
+        universeComplete.classList.remove(
+            "show"
+        );
 
+        setTimeout(
+            function(){
 
-    /* =====================================================
-       CONTINUE
-    ===================================================== */
+                /*
+                 * Change this filename if
+                 * your next page has another name.
+                 */
 
-    continueButton.addEventListener(
-        "click",
-        function(){
+                window.location.href =
+                    "page4.html";
 
-            if(transition){
+            },
+            1100
+        );
 
-                transition.classList.remove(
-                    "fade-out"
-                );
-
-            }
-
-            universeComplete.classList.remove(
-                "show"
-            );
-
-            setTimeout(
-                function(){
-
-                    /*
-                     * Change this filename if your
-                     * next page has another name.
-                     */
-
-                    window.location.href =
-                        "page4.html";
-
-                },
-                900
-            );
-
-        }
-    );
-
-});
+    }
+);
 
 </script>
 
