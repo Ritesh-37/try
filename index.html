@@ -2,35 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0,
-               maximum-scale=1.0, user-scalable=no">
-
-<meta name="theme-color" content="#1b0d09">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#090605">
 <title>Our Little Adventure ❤️</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
 /* =========================================================
-   OUR LITTLE ADVENTURE
-   Premium romantic adventure-map
-   Standalone HTML — no libraries required
-   ========================================================= */
+   ROOT
+========================================================= */
 
 :root{
-    --dark:#120806;
-    --dark2:#25120d;
-    --brown:#4a2b1b;
-    --brown2:#6f4927;
-    --gold:#d8ad62;
-    --gold2:#f4d79a;
-    --paper:#d6b878;
-    --paper-light:#ecd59a;
-    --burgundy:#431c20;
-    --cream:#f7e8c5;
+    --black:#080504;
+    --black2:#120907;
+
+    --burgundy:#42151b;
+    --burgundy2:#641e28;
+
+    --gold:#c99b52;
+    --gold-light:#f0d69a;
+    --gold-soft:#d9bb7b;
+
+    --paper:#d7b77a;
+    --paper-light:#ead29a;
+    --paper-dark:#a57a43;
+
+    --ink:#3b2417;
+    --ink-soft:#63442b;
+
+    --white:#f8edd0;
 }
 
 *{
     box-sizing:border-box;
+    margin:0;
+    padding:0;
     -webkit-tap-highlight-color:transparent;
 }
 
@@ -38,16 +45,19 @@ html,
 body{
     width:100%;
     height:100%;
-    margin:0;
     overflow:hidden;
-    background:#100705;
-    color:var(--cream);
-    font-family:Georgia,"Times New Roman",serif;
 }
 
-button{
-    font:inherit;
+body{
+    background:#080504;
+    color:var(--white);
+    font-family:"Cormorant Garamond",Georgia,serif;
 }
+
+
+/* =========================================================
+   GLOBAL ATMOSPHERE
+========================================================= */
 
 #app{
     position:fixed;
@@ -55,196 +65,336 @@ button{
     overflow:hidden;
     background:
         radial-gradient(
-            circle at 50% 45%,
-            rgba(114,65,35,.18),
+            ellipse at center,
+            rgba(112,54,29,.25),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 15% 80%,
+            rgba(105,32,35,.12),
             transparent 35%
         ),
-        linear-gradient(
-            135deg,
-            #130806,
-            #2b1710 48%,
-            #100605
-        );
-}
-
-/* =========================================================
-   ATMOSPHERE
-   ========================================================= */
-
-.noise{
-    position:absolute;
-    inset:0;
-    z-index:100;
-    pointer-events:none;
-    opacity:.07;
-
-    background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+        #080504;
 }
 
 .vignette{
     position:absolute;
     inset:0;
-    z-index:90;
+    z-index:100;
     pointer-events:none;
 
     background:
         radial-gradient(
             ellipse at center,
-            transparent 45%,
-            rgba(0,0,0,.72) 100%
+            transparent 38%,
+            rgba(0,0,0,.42) 72%,
+            rgba(0,0,0,.9) 100%
         );
 }
 
+.grain{
+    position:absolute;
+    inset:-50%;
+    z-index:101;
+    pointer-events:none;
+
+    opacity:.055;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+    animation:grainMove .4s steps(2) infinite;
+}
+
+@keyframes grainMove{
+    0%{transform:translate(0,0)}
+    25%{transform:translate(3%,-2%)}
+    50%{transform:translate(-2%,3%)}
+    75%{transform:translate(2%,2%)}
+    100%{transform:translate(-3%,-1%)}
+}
+
+
+/* =========================================================
+   FLOATING DUST
+========================================================= */
+
+#dust{
+    position:absolute;
+    inset:0;
+    z-index:90;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.dust{
+    position:absolute;
+    width:2px;
+    height:2px;
+    border-radius:50%;
+    background:#e8c77e;
+    opacity:0;
+
+    animation:
+        dustFloat linear infinite;
+}
+
+@keyframes dustFloat{
+
+    0%{
+        transform:translate3d(0,20vh,0) scale(.4);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.45;
+    }
+
+    80%{
+        opacity:.15;
+    }
+
+    100%{
+        transform:translate3d(80px,-120vh,0) scale(1);
+        opacity:0;
+    }
+}
+
+
 /* =========================================================
    INTRO
-   ========================================================= */
+========================================================= */
 
 #intro{
     position:absolute;
     inset:0;
-    z-index:50;
+    z-index:20;
 
-    display:grid;
-    place-items:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
 
     transition:
         opacity 1.2s ease,
         transform 1.2s ease;
 }
 
-.intro-card{
-    width:min(800px,90vw);
-    text-align:center;
-    padding:40px 25px;
+.intro-container{
+    width:min(850px,92vw);
+    padding:30px;
 }
 
-.compass-big{
-    font-size:76px;
-    color:var(--gold);
+.logo{
+    width:175px;
+    height:175px;
+
+    margin:0 auto 18px;
+
+    position:relative;
 
     filter:
-        drop-shadow(
-            0 0 20px rgba(216,173,98,.25)
+        drop-shadow(0 0 22px rgba(215,171,88,.18))
+        drop-shadow(0 18px 30px rgba(0,0,0,.5));
+}
+
+.logo svg{
+    width:100%;
+    height:100%;
+}
+
+.logo-center{
+    position:absolute;
+
+    width:70px;
+    height:70px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border:1px solid rgba(235,204,139,.7);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(83,28,32,.9),
+            rgba(31,12,10,.95)
         );
 
-    animation:
-        compassIntro 8s linear infinite;
+    box-shadow:
+        inset 0 0 25px rgba(255,211,135,.08),
+        0 0 30px rgba(213,169,88,.12);
 }
 
-@keyframes compassIntro{
-    from{
-        transform:rotate(0deg);
-    }
-
-    to{
-        transform:rotate(360deg);
-    }
+.logo-center span{
+    font-family:Cinzel,serif;
+    font-size:17px;
+    color:#f0d294;
+    letter-spacing:.08em;
 }
 
-.kicker{
-    margin-top:20px;
-
-    color:#d5b477;
-
-    font-size:11px;
-    letter-spacing:.38em;
+.eyebrow{
+    font-family:Cinzel,serif;
+    font-size:10px;
+    letter-spacing:.48em;
+    color:#b99358;
     text-transform:uppercase;
 }
 
-.intro-card h1{
-    margin:15px 0 12px;
+.intro-title{
+    margin:16px 0 12px;
+
+    font-family:Cinzel,serif;
+    font-weight:500;
 
     font-size:
-        clamp(
-            38px,
-            7vw,
-            82px
-        );
+        clamp(38px,7vw,78px);
 
-    font-weight:normal;
-    letter-spacing:.06em;
+    letter-spacing:.08em;
+
+    color:#f0d6a0;
 
     text-shadow:
-        0 5px 30px #000;
+        0 4px 30px rgba(0,0,0,.8);
 }
 
-.subtitle{
-    max-width:620px;
+.intro-subtitle{
+    max-width:650px;
+
     margin:auto;
 
-    color:#dfc58f;
+    font-size:21px;
+    line-height:1.6;
 
-    font-size:
-        clamp(
-            15px,
-            2vw,
-            21px
-        );
+    color:#cdb47e;
 
-    line-height:1.7;
     font-style:italic;
 }
 
-.start-btn{
+.begin-button{
     margin-top:35px;
 
-    padding:14px 31px;
+    padding:15px 34px;
 
-    border:
-        1px solid
-        #a87c3d;
-
-    border-radius:3px;
-
-    color:#f7e7c3;
+    border:1px solid rgba(210,167,86,.75);
 
     background:
         linear-gradient(
-            #602c2d,
-            #321519
+            180deg,
+            #65232c,
+            #351318
         );
 
-    letter-spacing:.16em;
+    color:#f2d69a;
+
+    font-family:Cinzel,serif;
+    font-size:10px;
+
+    letter-spacing:.2em;
     text-transform:uppercase;
 
     cursor:pointer;
 
     box-shadow:
-        0 0 30px rgba(0,0,0,.5),
-        inset 0 0 15px rgba(255,215,130,.08);
+        0 18px 40px rgba(0,0,0,.5),
+        inset 0 1px rgba(255,235,185,.13);
 
-    transition:.3s;
+    transition:.35s;
 }
 
-.start-btn:hover{
-    transform:translateY(-2px);
+.begin-button:hover{
+    transform:translateY(-3px);
 
     box-shadow:
-        0 0 40px rgba(216,173,98,.18),
-        inset 0 0 15px rgba(255,215,130,.1);
+        0 22px 50px rgba(0,0,0,.65),
+        0 0 30px rgba(214,171,91,.13);
 }
 
-/* =========================================================
-   MAP STAGE
-   ========================================================= */
 
-#mapStage{
+/* =========================================================
+   MAIN STAGE
+========================================================= */
+
+#stage{
     position:absolute;
     inset:0;
 
     opacity:0;
 
     transition:opacity 1.5s ease;
-
-    overflow:hidden;
 }
+
+
+/* =========================================================
+   TOP HUD
+========================================================= */
+
+.hud{
+    position:absolute;
+
+    z-index:70;
+
+    top:18px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+    align-items:center;
+    gap:13px;
+
+    padding:10px 18px;
+
+    border:1px solid rgba(208,165,86,.4);
+
+    background:rgba(12,7,5,.8);
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.4);
+
+    color:#dcb976;
+
+    font-family:Cinzel,serif;
+    font-size:9px;
+
+    letter-spacing:.18em;
+
+    white-space:nowrap;
+}
+
+.hud-dot{
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#dfbb71;
+
+    box-shadow:
+        0 0 12px rgba(228,188,108,.9);
+}
+
+
+/* =========================================================
+   MAP
+========================================================= */
 
 #map{
     position:absolute;
 
-    width:1800px;
-    height:1050px;
+    width:2200px;
+    height:1350px;
 
     left:50%;
     top:50%;
@@ -255,50 +405,53 @@ button{
     overflow:hidden;
 
     background:
+
         radial-gradient(
-            circle at 20% 30%,
-            rgba(255,239,177,.25),
-            transparent 25%
+            ellipse at 50% 45%,
+            rgba(255,238,180,.27),
+            transparent 38%
         ),
 
         radial-gradient(
-            circle at 80% 65%,
-            rgba(86,43,25,.12),
-            transparent 30%
+            ellipse at 20% 75%,
+            rgba(83,45,22,.16),
+            transparent 32%
         ),
 
         repeating-linear-gradient(
-            7deg,
-            rgba(72,43,18,.025) 0 2px,
-            transparent 2px 8px
+            5deg,
+            rgba(74,42,18,.025) 0px,
+            rgba(74,42,18,.025) 2px,
+            transparent 2px,
+            transparent 10px
         ),
 
         linear-gradient(
-            120deg,
-            #ddc283,
-            #b99659 55%,
-            #caaa6c
+            115deg,
+            #dfc588,
+            #c6a365 45%,
+            #d9bc7d
         );
 
     box-shadow:
-        0 0 90px #000,
-        inset 0 0 80px rgba(70,37,15,.55);
+        0 0 120px rgba(0,0,0,.95),
+        inset 0 0 140px rgba(62,31,13,.45);
 
     transition:
-        transform 1s ease;
+        transform 1.1s cubic-bezier(.2,.8,.2,1);
 }
-
-/* parchment border */
 
 #map::before{
     content:"";
 
     position:absolute;
-    inset:18px;
+    inset:24px;
 
-    border:
-        2px solid
-        rgba(71,39,20,.35);
+    border:2px solid rgba(72,40,19,.35);
+
+    box-shadow:
+        inset 0 0 0 7px rgba(72,40,19,.045),
+        inset 0 0 0 10px rgba(255,235,177,.07);
 
     pointer-events:none;
 }
@@ -307,630 +460,900 @@ button{
     content:"";
 
     position:absolute;
-    inset:30px;
+    inset:40px;
 
-    border:
-        1px dashed
-        rgba(71,39,20,.22);
+    border:1px dashed rgba(72,40,19,.23);
 
     pointer-events:none;
 }
 
-/* =========================================================
-   WATER
-   ========================================================= */
-
-.water{
-    position:absolute;
-
-    border-radius:50%;
-
-    background:
-        rgba(48,91,87,.15);
-}
-
-.water1{
-    width:550px;
-    height:230px;
-
-    left:-80px;
-    top:650px;
-
-    transform:rotate(-12deg);
-}
-
-.water2{
-    width:400px;
-    height:190px;
-
-    right:-80px;
-    top:90px;
-
-    transform:rotate(16deg);
-}
-
-.water3{
-    width:330px;
-    height:150px;
-
-    left:690px;
-    top:410px;
-}
 
 /* =========================================================
-   MAP TITLE
-   ========================================================= */
+   MAP HEADER
+========================================================= */
 
-.map-title{
+.map-header{
     position:absolute;
 
-    left:70px;
-    top:48px;
+    top:55px;
+    left:90px;
 
-    z-index:5;
+    z-index:10;
 
-    color:#4a2b1b;
+    color:#4b2d1b;
 
-    text-align:center;
-
-    transform:rotate(-3deg);
+    transform:rotate(-1.7deg);
 }
 
-.map-title b{
-    display:block;
+.map-header-small{
+    font-family:Cinzel,serif;
+    font-size:9px;
 
-    font-size:31px;
-    font-weight:normal;
-
-    letter-spacing:.12em;
+    letter-spacing:.38em;
 }
 
-.map-title small{
+.map-header-title{
+    margin-top:5px;
+
+    font-family:Cinzel,serif;
+    font-size:34px;
+
+    font-weight:600;
+
+    letter-spacing:.1em;
+}
+
+.map-header-sub{
+    margin-top:4px;
+
+    font-size:16px;
     font-style:italic;
-    font-size:14px;
 }
+
 
 /* =========================================================
    COMPASS
-   ========================================================= */
+========================================================= */
 
 .compass{
     position:absolute;
 
     right:70px;
-    top:45px;
+    top:50px;
 
-    width:90px;
-    height:90px;
+    width:120px;
+    height:120px;
 
-    z-index:5;
-
-    display:grid;
-    place-items:center;
-
-    border:
-        2px solid
-        #6a4625;
+    border:1px solid rgba(71,41,20,.65);
 
     border-radius:50%;
 
-    color:#55351e;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#53321f;
 
     background:
-        rgba(225,198,135,.35);
+        radial-gradient(
+            circle,
+            rgba(239,214,163,.4),
+            rgba(205,169,105,.12)
+        );
 
     box-shadow:
-        inset 0 0 20px
-        rgba(50,20,10,.18);
+        inset 0 0 25px rgba(63,33,14,.13),
+        0 8px 25px rgba(58,30,12,.14);
+}
+
+.compass::before{
+    content:"N";
+
+    position:absolute;
+
+    top:9px;
+
+    font-family:Cinzel,serif;
+    font-size:11px;
+    font-weight:700;
+}
+
+.compass::after{
+    content:"S";
+
+    position:absolute;
+
+    bottom:9px;
+
+    font-family:Cinzel,serif;
+    font-size:8px;
+
+    opacity:.5;
 }
 
 .compass-needle{
-    font-size:38px;
+    font-size:43px;
 
     transition:
-        transform 1s
-        cubic-bezier(.2,.8,.2,1);
+        transform 1s cubic-bezier(.2,.8,.2,1);
+
+    filter:
+        drop-shadow(0 2px 3px rgba(0,0,0,.25));
 }
 
+
 /* =========================================================
-   PROGRESS
-   ========================================================= */
+   DECORATIVE MAP ELEMENTS
+========================================================= */
 
-.progress{
-    position:fixed;
+.map-decor{
+    position:absolute;
 
-    top:15px;
-    left:50%;
+    z-index:4;
 
-    transform:
-        translateX(-50%);
+    color:#65431f;
 
-    z-index:60;
+    opacity:.42;
 
-    padding:
-        8px 16px;
+    pointer-events:none;
 
-    border:
-        1px solid
-        rgba(215,173,99,.4);
-
-    border-radius:20px;
-
-    background:
-        rgba(20,10,7,.72);
-
-    backdrop-filter:blur(8px);
-
-    color:#e5ca91;
-
-    font-size:12px;
-
-    letter-spacing:.13em;
+    font-size:32px;
 }
 
-/* =========================================================
-   PATH
-   ========================================================= */
+.decor1{left:210px;top:290px}
+.decor2{left:540px;top:175px}
+.decor3{left:930px;top:250px}
+.decor4{left:1450px;top:180px}
+.decor5{left:1790px;top:450px}
+.decor6{left:1570px;top:980px}
+.decor7{left:930px;top:990px}
+.decor8{left:330px;top:900px}
 
-.path{
+
+/* =========================================================
+   ROUTE
+========================================================= */
+
+.route{
+    position:absolute;
+
+    inset:0;
+
+    z-index:5;
+
+    pointer-events:none;
+}
+
+.route-base{
     fill:none;
 
-    stroke:#765025;
+    stroke:#63401e;
+
+    stroke-width:8;
+
+    stroke-linecap:round;
+
+    stroke-dasharray:4 17;
+
+    opacity:.45;
+}
+
+.route-glow{
+    fill:none;
+
+    stroke:#efca74;
 
     stroke-width:7;
 
     stroke-linecap:round;
 
-    stroke-dasharray:
-        12 12;
+    stroke-dasharray:2300;
 
-    opacity:.55;
-}
+    stroke-dashoffset:2300;
 
-.path-glow{
-    fill:none;
-
-    stroke:#f1cb75;
-
-    stroke-width:9;
-
-    stroke-linecap:round;
-
-    stroke-dasharray:1500;
-
-    stroke-dashoffset:1500;
-
-    filter:
-        url(#goldGlow);
+    filter:url(#routeGlow);
 
     transition:
-        stroke-dashoffset 1.6s ease;
+        stroke-dashoffset 1.7s ease;
 }
+
 
 /* =========================================================
    LANDMARKS
-   ========================================================= */
+========================================================= */
 
 .landmark{
     position:absolute;
 
-    width:96px;
-    height:96px;
+    width:112px;
+    height:112px;
 
-    z-index:12;
+    z-index:20;
 
     cursor:pointer;
 
-    user-select:none;
-
-    transition:.3s;
+    transition:
+        transform .35s ease,
+        opacity .35s ease,
+        filter .35s ease;
 }
 
-.pin{
+.landmark:hover{
+    transform:translateY(-5px) scale(1.03);
+}
+
+.landmark.locked{
+    opacity:.25;
+
+    filter:
+        grayscale(1)
+        brightness(.65);
+
+    cursor:not-allowed;
+}
+
+.landmark.available .seal{
+    animation:
+        landmarkPulse 1.8s ease-in-out infinite;
+}
+
+.landmark.completed .seal{
+    box-shadow:
+        0 0 35px rgba(238,201,116,.55),
+        0 10px 25px rgba(45,22,10,.38),
+        inset 0 0 0 3px rgba(255,240,190,.25);
+}
+
+@keyframes landmarkPulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.09);
+        box-shadow:
+            0 0 35px rgba(238,201,116,.6),
+            0 9px 20px rgba(45,22,10,.4);
+    }
+}
+
+.seal{
     position:absolute;
 
-    inset:5px;
-
-    display:grid;
-    place-items:center;
-
-    border:
-        3px solid
-        #54341e;
+    inset:6px;
 
     border-radius:50%;
 
-    font-size:35px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
     background:
         radial-gradient(
-            circle,
-            #f7dfaa,
-            #9b713c
+            circle at 32% 27%,
+            #f4dfae,
+            #bd9250 80%
         );
 
+    border:3px solid #56351e;
+
     box-shadow:
-        0 7px 15px
-        rgba(43,21,10,.45),
+        0 10px 20px rgba(45,22,10,.42),
+        inset 0 0 0 3px rgba(255,239,190,.24);
+}
 
-        inset 0 0 10px
-        rgba(255,255,255,.25);
+.seal::after{
+    content:"";
 
-    transition:.3s;
+    position:absolute;
+
+    inset:-8px;
+
+    border-radius:50%;
+
+    border:1px dashed rgba(71,41,20,.42);
+}
+
+.landmark-icon{
+    font-size:38px;
+
+    color:#5b321d;
+
+    filter:sepia(.2);
 }
 
 .landmark-number{
     position:absolute;
 
-    top:-4px;
-    right:-2px;
+    right:-1px;
+    top:-1px;
 
-    width:23px;
-    height:23px;
+    width:25px;
+    height:25px;
 
-    display:grid;
-    place-items:center;
-
-    border:
-        1px solid
-        #c39a53;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     border-radius:50%;
 
-    color:#e9c97f;
+    background:#42191d;
 
-    background:#38191a;
+    border:1px solid #c29651;
 
-    font-size:11px;
+    color:#e9c67e;
+
+    font-family:Cinzel,serif;
+    font-size:10px;
 }
 
 .landmark-label{
     position:absolute;
 
-    top:103px;
+    top:119px;
+
     left:50%;
 
-    transform:
-        translateX(-50%);
+    transform:translateX(-50%);
 
     white-space:nowrap;
 
-    color:#4b2a1d;
+    text-align:center;
 
-    font-size:13px;
-    font-weight:bold;
+    color:#49301f;
+
+    font-family:Cinzel,serif;
+    font-size:10px;
+
+    font-weight:600;
+
+    letter-spacing:.04em;
 
     text-shadow:
-        0 1px rgba(255,240,190,.5);
-
-    text-align:center;
+        0 1px rgba(255,240,190,.55);
 }
 
-.landmark.locked{
-    opacity:.35;
-
-    filter:grayscale(.85);
-
-    cursor:not-allowed;
-}
-
-.landmark.available .pin{
-    animation:
-        landmarkPulse 1.8s infinite;
-}
-
-@keyframes landmarkPulse{
-    50%{
-        transform:scale(1.08);
-
-        box-shadow:
-            0 0 32px
-            rgba(245,210,125,.6),
-            inset 0 0 10px
-            rgba(255,255,255,.25);
-    }
-}
-
-.landmark.done .pin{
-    box-shadow:
-        0 0 28px
-        rgba(244,211,132,.75),
-        inset 0 0 10px
-        rgba(255,255,255,.25);
-}
-
-/* =========================================================
-   DECORATIONS
-   ========================================================= */
-
-.decor{
-    position:absolute;
-
-    z-index:4;
-
-    opacity:.52;
-
-    font-size:28px;
-}
-
-.d1{
-    left:180px;
-    top:260px;
-}
-
-.d2{
-    left:480px;
-    top:180px;
-}
-
-.d3{
-    left:870px;
-    top:175px;
-}
-
-.d4{
-    left:1270px;
-    top:240px;
-}
-
-.d5{
-    left:1470px;
-    top:570px;
-}
-
-.d6{
-    left:1180px;
-    top:790px;
-}
-
-.d7{
-    left:700px;
-    top:790px;
-}
-
-.d8{
-    left:290px;
-    top:770px;
-}
 
 /* =========================================================
    FOG
-   ========================================================= */
+========================================================= */
 
 #fog{
     position:absolute;
 
     inset:0;
 
-    z-index:10;
+    z-index:30;
 
     pointer-events:none;
-
-    background:
-        radial-gradient(
-            circle at 20% 30%,
-            transparent 0 15%,
-            rgba(60,38,23,.28) 27%,
-            rgba(35,22,15,.75) 48%
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(45,25,15,.7),
-            transparent 25%,
-            transparent 70%,
-            rgba(45,25,15,.7)
-        );
 
     opacity:.72;
 
     transition:
         opacity 1.5s ease;
+
+    background:
+
+        radial-gradient(
+            ellipse at 10% 50%,
+            rgba(48,29,16,.75),
+            transparent 23%
+        ),
+
+        radial-gradient(
+            ellipse at 78% 72%,
+            rgba(48,29,16,.7),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(48,29,16,.5),
+            transparent 25%,
+            transparent 73%,
+            rgba(48,29,16,.5)
+        );
 }
+
+
+/* =========================================================
+   BOTTOM HINT
+========================================================= */
+
+.hint{
+    position:fixed;
+
+    bottom:16px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:70;
+
+    color:#b99864;
+
+    font-family:Cinzel,serif;
+    font-size:9px;
+
+    letter-spacing:.15em;
+
+    opacity:.7;
+
+    white-space:nowrap;
+}
+
 
 /* =========================================================
    MEMORY OVERLAY
-   ========================================================= */
+========================================================= */
 
 #memoryOverlay{
     position:fixed;
 
     inset:0;
 
-    z-index:80;
+    z-index:150;
 
     display:none;
 
-    place-items:center;
+    justify-content:center;
+    align-items:center;
 
-    padding:20px;
+    padding:18px;
 
     background:
-        rgba(11,6,5,.78);
+        rgba(5,3,2,.84);
 
     backdrop-filter:
-        blur(8px);
+        blur(15px);
 }
 
-.scroll{
+
+/* =========================================================
+   MEMORY CARD
+========================================================= */
+
+.memory-card{
     position:relative;
 
-    width:min(680px,94vw);
+    width:min(860px,95vw);
 
-    max-height:88vh;
+    max-height:94vh;
 
     overflow:auto;
 
-    padding:40px 34px;
-
-    color:#3d2418;
+    color:var(--ink);
 
     background:
+
+        radial-gradient(
+            ellipse at center,
+            rgba(255,240,190,.35),
+            transparent 55%
+        ),
+
+        repeating-linear-gradient(
+            4deg,
+            rgba(72,40,18,.025) 0 2px,
+            transparent 2px 9px
+        ),
+
         linear-gradient(
-            105deg,
-            #d0b070,
-            #f0d69a 50%,
-            #c29e60
+            135deg,
+            #c49b5b,
+            #eed49b 50%,
+            #b98c4d
         );
 
     border:
-        10px solid
-        #70451f;
-
-    border-radius:5px;
+        1px solid #704521;
 
     box-shadow:
-        0 25px 80px #000;
+
+        0 40px 110px rgba(0,0,0,.85),
+
+        0 0 0 7px rgba(66,37,17,.55),
+
+        inset 0 0 80px rgba(73,38,15,.18);
 
     animation:
-        unroll .75s
-        cubic-bezier(.2,.8,.2,1);
+        cardOpen .7s cubic-bezier(.2,.8,.2,1);
 }
 
-@keyframes unroll{
-    from{
-        transform:
-            scaleY(.05)
-            rotate(-2deg);
+@keyframes cardOpen{
 
+    from{
         opacity:0;
+        transform:
+            translateY(35px)
+            scale(.94)
+            rotate(-.5deg);
     }
 
     to{
-        transform:
-            scaleY(1)
-            rotate(0);
-
         opacity:1;
+        transform:
+            translateY(0)
+            scale(1)
+            rotate(0);
     }
 }
 
-.scroll::before,
-.scroll::after{
+.memory-card::before{
     content:"";
 
     position:absolute;
 
-    left:-18px;
-    right:-18px;
+    inset:13px;
 
-    height:28px;
+    border:
+        1px solid rgba(76,43,20,.35);
 
-    border-radius:50%;
-
-    background:#70451f;
-
-    box-shadow:
-        0 3px 5px #32180d;
+    pointer-events:none;
 }
 
-.scroll::before{
-    top:-14px;
+.memory-close{
+    position:absolute;
+
+    right:18px;
+    top:13px;
+
+    z-index:10;
+
+    width:34px;
+    height:34px;
+
+    border:0;
+
+    background:transparent;
+
+    color:#633d21;
+
+    font-size:25px;
+
+    cursor:pointer;
 }
 
-.scroll::after{
-    bottom:-14px;
-}
 
-.memory-date{
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.memory-header{
+    padding:
+        30px 35px 15px;
+
     text-align:center;
+}
 
-    color:#77502a;
+.memory-chapter{
+    font-family:Cinzel,serif;
 
-    font-size:12px;
+    font-size:9px;
 
-    letter-spacing:.18em;
+    letter-spacing:.38em;
+
+    color:#76502a;
 }
 
 .memory-title{
-    margin:5px 0;
+    margin-top:8px;
 
-    text-align:center;
+    font-family:Cinzel,serif;
 
-    font-size:29px;
+    font-size:
+        clamp(26px,5vw,42px);
 
-    font-weight:normal;
+    font-weight:600;
+
+    letter-spacing:.06em;
+
+    color:#342015;
 }
 
-.memory-icon{
-    margin:16px 0;
-
-    text-align:center;
-
-    font-size:62px;
-}
-
-.memory-body{
-    text-align:center;
+.memory-date{
+    margin-top:4px;
 
     font-size:17px;
 
-    line-height:1.75;
+    color:#77502c;
+
+    font-style:italic;
 }
 
-.memory-body em{
-    font-size:19px;
+.memory-rule{
+    width:120px;
+    height:1px;
+
+    margin:15px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #785029,
+            transparent
+        );
 }
 
-.memory-photo{
-    display:none;
 
-    width:min(390px,80vw);
+/* =========================================================
+   PHOTO AREA
+========================================================= */
 
-    max-height:320px;
+.photo-frame{
+    position:relative;
+
+    width:min(700px,87vw);
+
+    height:min(440px,54vw);
+
+    min-height:250px;
+
+    margin:
+        0 auto 25px;
+
+    padding:12px;
+
+    background:#f2dfb3;
+
+    box-shadow:
+        0 17px 35px rgba(57,28,13,.35);
+
+    transform:rotate(-.45deg);
+}
+
+.photo-frame::before{
+    content:"";
+
+    position:absolute;
+
+    inset:6px;
+
+    border:
+        1px solid rgba(74,42,20,.22);
+
+    pointer-events:none;
+
+    z-index:3;
+}
+
+.photo-frame::after{
+    content:"";
+
+    position:absolute;
+
+    width:75px;
+    height:23px;
+
+    top:-10px;
+    left:50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-2deg);
+
+    background:
+        rgba(228,207,157,.75);
+
+    box-shadow:
+        0 2px 5px rgba(0,0,0,.12);
+
+    z-index:5;
+}
+
+.photo-frame img{
+    width:100%;
+    height:100%;
 
     object-fit:cover;
 
-    margin:18px auto;
-
-    border:
-        10px solid
-        #f2dfb1;
-
-    box-shadow:
-        0 8px 20px
-        rgba(35,17,8,.35);
-
-    transform:rotate(-1deg);
+    display:none;
 }
 
-.memory-photo.show{
-    display:block;
+.photo-placeholder{
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(82,48,24,.07),
+            rgba(255,244,201,.25)
+        ),
+
+        repeating-linear-gradient(
+            45deg,
+            rgba(84,49,24,.025) 0 1px,
+            transparent 1px 7px
+        );
+
+    color:#78552f;
 }
 
-.close-memory{
-    display:block;
+.photo-inner{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.photo-icon{
+    font-size:52px;
+
+    opacity:.5;
+
+    margin-bottom:10px;
+}
+
+.photo-main{
+    font-family:Cinzel,serif;
+
+    font-size:11px;
+
+    letter-spacing:.23em;
+
+    font-weight:600;
+}
+
+.photo-sub{
+    margin-top:5px;
+
+    font-size:14px;
+
+    font-style:italic;
+
+    opacity:.8;
+}
+
+
+/* =========================================================
+   MEMORY TEXT
+========================================================= */
+
+.memory-content{
+    padding:
+        0 45px 22px;
+
+    text-align:center;
+
+    font-size:19px;
+
+    line-height:1.65;
+}
+
+.memory-quote{
+    margin-bottom:8px;
+
+    color:#5c3324;
+
+    font-size:24px;
+
+    font-style:italic;
+}
+
+.memory-description{
+    max-width:700px;
+
+    margin:0 auto;
+}
+
+
+/* =========================================================
+   DETAIL BOXES
+========================================================= */
+
+.memory-details{
+    max-width:700px;
 
     margin:
-        25px auto 0;
+        22px auto 0;
 
-    padding:
-        11px 25px;
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
+}
+
+.detail-box{
+    padding:12px 8px;
 
     border:
-        1px solid
-        #765025;
+        1px solid rgba(87,48,21,.25);
 
-    color:#f5ddb0;
+    background:
+        rgba(255,235,181,.18);
+}
 
-    background:#4a2023;
+.detail-label{
+    display:block;
+
+    margin-bottom:4px;
+
+    color:#79512b;
+
+    font-family:Cinzel,serif;
+
+    font-size:8px;
+
+    letter-spacing:.15em;
+}
+
+.detail-value{
+    font-size:15px;
+}
+
+
+/* =========================================================
+   CARD BUTTON
+========================================================= */
+
+.memory-footer{
+    padding:
+        10px 30px 30px;
+
+    text-align:center;
+}
+
+.next-button{
+    padding:
+        13px 27px;
+
+    border:
+        1px solid #6e4324;
+
+    background:
+        linear-gradient(
+            #571f24,
+            #361418
+        );
+
+    color:#f3d99c;
 
     cursor:pointer;
 
-    letter-spacing:.1em;
+    font-family:Cinzel,serif;
+
+    font-size:10px;
+
+    font-weight:600;
+
+    letter-spacing:.17em;
+
+    box-shadow:
+        0 9px 20px rgba(50,20,10,.25);
+
+    transition:.3s;
 }
+
+.next-button:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 13px 28px rgba(50,20,10,.4);
+}
+
 
 /* =========================================================
    TOAST
-   ========================================================= */
+========================================================= */
 
 #toast{
     position:fixed;
 
     left:50%;
-    bottom:35px;
+    bottom:36px;
 
-    z-index:120;
+    z-index:300;
 
     transform:
         translate(-50%,20px);
@@ -941,78 +1364,85 @@ button{
         11px 18px;
 
     border:
-        1px solid
-        #9f793d;
-
-    border-radius:3px;
-
-    color:#efd39b;
+        1px solid #9d773e;
 
     background:
-        rgba(25,12,9,.94);
+        rgba(25,11,8,.95);
 
-    font-size:13px;
+    color:#e9cc8c;
 
-    transition:.3s;
+    font-family:Cinzel,serif;
+
+    font-size:11px;
+
+    letter-spacing:.04em;
+
+    white-space:nowrap;
+
+    transition:.35s;
 }
 
-#toast.show{
-    opacity:1;
-
-    transform:
-        translate(-50%,0);
-}
 
 /* =========================================================
    ENDING
-   ========================================================= */
+========================================================= */
 
 #ending{
     position:fixed;
 
     inset:0;
 
-    z-index:110;
+    z-index:250;
 
     display:none;
 
-    place-items:center;
-
-    padding:25px;
+    align-items:center;
+    justify-content:center;
 
     text-align:center;
 
-    background:#0c0705;
+    padding:30px;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #1c0e0b,
+            #080504 72%
+        );
 }
 
 .ending-inner{
-    max-width:800px;
+    max-width:900px;
+}
+
+.ending-logo{
+    width:90px;
+
+    margin:
+        0 auto 30px;
+
+    opacity:.85;
 }
 
 .ending-line{
-    margin:8px 0;
-
-    color:#ead09b;
-
-    font-size:
-        clamp(
-            20px,
-            3.2vw,
-            36px
-        );
-
-    line-height:1.65;
-
     opacity:0;
 
     transform:
-        translateY(15px);
+        translateY(18px);
 
     transition:
-        1.5s ease;
+        opacity 1.5s ease,
+        transform 1.5s ease;
+
+    color:#ead19d;
+
+    font-size:
+        clamp(22px,4vw,39px);
+
+    line-height:1.55;
 }
 
-.ending-line.show{
+.ending-line.visible{
     opacity:1;
 
     transform:
@@ -1020,167 +1450,298 @@ button{
 }
 
 .ending-small{
-    margin-top:28px;
-
-    color:#a88650;
-
-    font-size:13px;
-
-    letter-spacing:.3em;
-
-    text-transform:uppercase;
+    margin-top:35px;
 
     opacity:0;
 
-    transition:1.5s;
+    transition:opacity 1.5s ease;
+
+    color:#a9854d;
+
+    font-family:Cinzel,serif;
+
+    font-size:10px;
+
+    letter-spacing:.34em;
 }
 
-.ending-small.show{
+.ending-small.visible{
     opacity:1;
 }
 
-.continue{
-    margin-top:45px;
+.keep-going{
+    margin-top:38px;
 
     padding:
-        14px 27px;
-
-    border:
-        1px solid
-        #97703d;
-
-    color:#e9c989;
+        13px 28px;
 
     background:transparent;
+
+    border:
+        1px solid #97703d;
+
+    color:#e8c985;
 
     cursor:pointer;
 
     opacity:0;
 
-    transition:1s;
+    transition:
+        opacity 1s ease,
+        transform .3s;
 
-    letter-spacing:.16em;
-
-    text-transform:uppercase;
-}
-
-.continue.show{
-    opacity:1;
-}
-
-.map-hint{
-    position:fixed;
-
-    left:50%;
-    bottom:12px;
-
-    z-index:60;
-
-    transform:
-        translateX(-50%);
-
-    color:#caa86a;
+    font-family:Cinzel,serif;
 
     font-size:10px;
 
-    letter-spacing:.08em;
-
-    opacity:.65;
-
-    white-space:nowrap;
+    letter-spacing:.2em;
 }
+
+.keep-going.visible{
+    opacity:1;
+}
+
+.keep-going:hover{
+    transform:translateY(-2px);
+}
+
 
 /* =========================================================
    MOBILE
-   ========================================================= */
+========================================================= */
 
 @media(max-width:700px){
 
-    #map{
-        width:1200px;
-        height:1800px;
+    .intro-container{
+        padding:20px;
     }
 
-    .map-title{
-        left:50px;
-        top:45px;
+    .logo{
+        width:135px;
+        height:135px;
+    }
+
+    .intro-title{
+        font-size:36px;
+    }
+
+    .intro-subtitle{
+        font-size:18px;
+    }
+
+    #map{
+        width:1250px;
+        height:1900px;
+    }
+
+    .map-header{
+        left:55px;
+        top:70px;
+    }
+
+    .map-header-title{
+        font-size:23px;
+    }
+
+    .map-header-sub{
+        font-size:13px;
     }
 
     .compass{
-        right:45px;
-        top:45px;
+        width:85px;
+        height:85px;
+
+        right:40px;
+        top:65px;
+    }
+
+    .compass-needle{
+        font-size:30px;
     }
 
     .landmark{
-        width:80px;
-        height:80px;
+        width:86px;
+        height:86px;
     }
 
-    .pin{
+    .landmark-icon{
         font-size:28px;
     }
 
     .landmark-label{
-        top:85px;
-        font-size:11px;
+        top:90px;
+        font-size:8px;
     }
 
-    .progress{
-        top:10px;
-        font-size:10px;
+    .memory-card{
+        max-height:95vh;
     }
 
-    .scroll{
-        padding:30px 20px;
+    .memory-header{
+        padding:
+            25px 20px 12px;
     }
 
-    .map-hint{
-        bottom:8px;
-        font-size:9px;
+    .memory-content{
+        padding:
+            0 22px 18px;
+
+        font-size:17px;
+    }
+
+    .memory-quote{
+        font-size:21px;
+    }
+
+    .photo-frame{
+        width:84vw;
+        height:58vw;
+
+        min-height:210px;
+    }
+
+    .memory-details{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .hint{
+        font-size:7px;
     }
 }
 </style>
 </head>
 
+
 <body>
 
 <div id="app">
 
-<div class="noise"></div>
+<div id="dust"></div>
+
+<div class="grain"></div>
+
 <div class="vignette"></div>
 
 
-<!-- =======================================================
+<!-- =====================================================
      INTRO
-     ======================================================= -->
+===================================================== -->
 
 <section id="intro">
 
-    <div class="intro-card">
+    <div class="intro-container">
 
-        <div class="compass-big">
-            🧭
+        <div class="logo">
+
+            <svg viewBox="0 0 180 180">
+
+                <circle
+                    cx="90"
+                    cy="90"
+                    r="74"
+                    fill="none"
+                    stroke="#cba15c"
+                    stroke-width="1"
+                />
+
+                <circle
+                    cx="90"
+                    cy="90"
+                    r="64"
+                    fill="none"
+                    stroke="#704827"
+                    stroke-width="1"
+                    stroke-dasharray="2 7"
+                />
+
+                <circle
+                    cx="90"
+                    cy="90"
+                    r="52"
+                    fill="none"
+                    stroke="#9a713d"
+                    stroke-width=".7"
+                />
+
+                <path
+                    d="M90 15V34
+                       M90 146V165
+                       M15 90H34
+                       M146 90H165"
+                    stroke="#cba15c"
+                />
+
+                <path
+                    d="
+                    M90 31
+                    L107 90
+                    L90 149
+                    L73 90
+                    Z"
+                    fill="none"
+                    stroke="#d9b46c"
+                    stroke-width="1.5"
+                />
+
+                <path
+                    d="
+                    M90 43
+                    L97 90
+                    L90 137
+                    L83 90
+                    Z"
+                    fill="#5c2027"
+                />
+
+                <path
+                    d="
+                    M40 40L53 53
+                    M140 40L127 53
+                    M40 140L53 127
+                    M140 140L127 127"
+                    stroke="#76502b"
+                />
+
+                <text
+                    x="90"
+                    y="24"
+                    text-anchor="middle"
+                    fill="#674522"
+                    font-size="8"
+                    font-family="serif"
+                >N</text>
+
+            </svg>
+
+            <div class="logo-center">
+                <span>R ♥ T</span>
+            </div>
+
         </div>
 
-        <div class="kicker">
-            A secret map of us
+
+        <div class="eyebrow">
+            A SECRET MAP OF US
         </div>
 
-        <h1>
+
+        <h1 class="intro-title">
             Our Little Adventure
         </h1>
 
-        <p class="subtitle">
+
+        <div class="intro-subtitle">
             “A map of the places, moments and little things
             that somehow became us.”
-        </p>
+        </div>
+
 
         <button
-            class="start-btn"
-            id="startBtn">
-
-            Begin the journey
-
+            class="begin-button"
+            id="beginButton"
+        >
+            Begin the Journey
         </button>
 
     </div>
@@ -1188,96 +1749,97 @@ button{
 </section>
 
 
-<!-- =======================================================
-     MAP
-     ======================================================= -->
 
-<div id="mapStage">
+<!-- =====================================================
+     MAIN STAGE
+===================================================== -->
 
-    <div class="progress">
+<section id="stage">
 
-        TREASURE FOUND:
-        <span id="count">0</span>
+    <div class="hud">
+
+        <span class="hud-dot"></span>
+
+        TREASURE FOUND
+
+        <strong id="counter">0</strong>
+
         / 17
+
+        <span class="hud-dot"></span>
 
     </div>
 
 
     <div id="map">
 
-        <div class="water water1"></div>
-        <div class="water water2"></div>
-        <div class="water water3"></div>
 
+        <!-- MAP TITLE -->
 
-        <div class="map-title">
+        <div class="map-header">
 
-            <b>
+            <div class="map-header-small">
+                THE SECRET CHRONICLE
+            </div>
+
+            <div class="map-header-title">
                 OUR LITTLE ADVENTURE
-            </b>
+            </div>
 
-            <small>
-                where every road led back to you
-            </small>
-
-        </div>
-
-
-        <div class="compass">
-
-            <div
-                class="compass-needle"
-                id="needle">
-
-                ✦
-
+            <div class="map-header-sub">
+                every road kept leading back to you
             </div>
 
         </div>
 
 
-        <!-- decorative elements -->
+        <!-- COMPASS -->
 
-        <span class="decor d1">🌴</span>
-        <span class="decor d2">🏔️</span>
-        <span class="decor d3">⚓</span>
-        <span class="decor d4">🌊</span>
-        <span class="decor d5">🌲</span>
-        <span class="decor d6">🪶</span>
-        <span class="decor d7">🗿</span>
-        <span class="decor d8">🌿</span>
+        <div class="compass">
+
+            <div
+                class="compass-needle"
+                id="compassNeedle"
+            >
+                ✦
+            </div>
+
+        </div>
 
 
-        <!-- =================================================
-             PATH
-             ================================================= -->
+        <!-- DECOR -->
+
+        <div class="map-decor decor1">♒</div>
+        <div class="map-decor decor2">◇</div>
+        <div class="map-decor decor3">⚓</div>
+        <div class="map-decor decor4">♧</div>
+        <div class="map-decor decor5">✦</div>
+        <div class="map-decor decor6">❧</div>
+        <div class="map-decor decor7">◇</div>
+        <div class="map-decor decor8">❧</div>
+
+
+        <!-- ROUTE -->
 
         <svg
-            width="1800"
-            height="1050"
-            viewBox="0 0 1800 1050"
-            style="
-                position:absolute;
-                inset:0;
-                z-index:3;
-                pointer-events:none;
-            ">
+            class="route"
+            viewBox="0 0 2200 1350"
+            preserveAspectRatio="none"
+        >
 
             <defs>
 
-                <filter id="goldGlow">
+                <filter id="routeGlow">
 
                     <feGaussianBlur
                         stdDeviation="3"
-                        result="blur"/>
+                        result="blur"
+                    />
 
                     <feMerge>
 
-                        <feMergeNode
-                            in="blur"/>
-
-                        <feMergeNode
-                            in="SourceGraphic"/>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
 
                     </feMerge>
 
@@ -1287,466 +1849,259 @@ button{
 
 
             <path
-                class="path"
+                class="route-base"
                 d="
-                M170 460
-                C280 250,410 300,515 470
-                S690 720,790 480
-                S1000 210,1110 420
-                S1330 700,1460 520
-                S1620 400,1670 700
-                "/>
+                M150 560
+                C290 260 430 300 570 510
+                S750 820 880 530
+                S1080 250 1210 450
+                S1440 790 1590 520
+                S1830 410 1990 730
+                "
+            />
 
 
             <path
-                id="glowPath"
-                class="path-glow"
+                id="routeGlow"
+                class="route-glow"
                 d="
-                M170 460
-                C280 250,410 300,515 470
-                S690 720,790 480
-                S1000 210,1110 420
-                S1330 700,1460 520
-                S1620 400,1670 700
-                "/>
+                M150 560
+                C290 260 430 300 570 510
+                S750 820 880 530
+                S1080 250 1210 450
+                S1440 790 1590 520
+                S1830 410 1990 730
+                "
+            />
 
         </svg>
 
 
-        <!-- =================================================
-             LANDMARKS
-             ================================================= -->
+        <!-- LANDMARKS -->
 
+        <div id="landmarks"></div>
 
-        <div
-            class="landmark locked"
-            data-index="1"
-            style="left:120px;top:400px">
 
-            <div class="pin">📸</div>
-
-            <div class="landmark-number">
-                1
-            </div>
-
-            <div class="landmark-label">
-                12.03.26 · Instagram
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="2"
-            style="left:260px;top:245px">
-
-            <div class="pin">📷</div>
-
-            <div class="landmark-number">
-                2
-            </div>
-
-            <div class="landmark-label">
-                19.03.26 · First Picture
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="3"
-            style="left:450px;top:410px">
-
-            <div class="pin">🎵</div>
-
-            <div class="landmark-number">
-                3
-            </div>
-
-            <div class="landmark-label">
-                02.04.26 · First Song
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="4"
-            style="left:650px;top:665px">
-
-            <div class="pin">❤️</div>
-
-            <div class="landmark-number">
-                4
-            </div>
-
-            <div class="landmark-label">
-                12.04.26 · Confession
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="5"
-            style="left:760px;top:420px">
-
-            <div class="pin">🌿</div>
-
-            <div class="landmark-number">
-                5
-            </div>
-
-            <div class="landmark-label">
-                Mehndi Memory
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="6"
-            style="left:960px;top:230px">
-
-            <div class="pin">🥛</div>
-
-            <div class="landmark-number">
-                6
-            </div>
-
-            <div class="landmark-label">
-                Milk Memory
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="7"
-            style="left:1060px;top:385px">
-
-            <div class="pin">🥤</div>
-
-            <div class="landmark-number">
-                7
-            </div>
-
-            <div class="landmark-label">
-                Soft Drink
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="8"
-            style="left:1190px;top:650px">
-
-            <div class="pin">💪</div>
-
-            <div class="landmark-number">
-                8
-            </div>
-
-            <div class="landmark-label">
-                Six-Pack
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="9"
-            style="left:1370px;top:480px">
-
-            <div class="pin">🎂</div>
-
-            <div class="landmark-number">
-                9
-            </div>
-
-            <div class="landmark-label">
-                Birthday
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="10"
-            style="left:1510px;top:590px">
-
-            <div class="pin">🚂</div>
-
-            <div class="landmark-number">
-                10
-            </div>
-
-            <div class="landmark-label">
-                13.07.26 · Patna
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="11"
-            style="left:1300px;top:780px">
-
-            <div class="pin">🎁</div>
-
-            <div class="landmark-number">
-                11
-            </div>
-
-            <div class="landmark-label">
-                05.08.26 · Dhanbad
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="12"
-            style="left:1040px;top:780px">
-
-            <div class="pin">⛰️</div>
-
-            <div class="landmark-number">
-                12
-            </div>
-
-            <div class="landmark-label">
-                Topchanchi
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="13"
-            style="left:780px;top:800px">
-
-            <div class="pin">🎬</div>
-
-            <div class="landmark-number">
-                13
-            </div>
-
-            <div class="landmark-label">
-                Awarapan 2
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="14"
-            style="left:520px;top:780px">
-
-            <div class="pin">🛕</div>
-
-            <div class="landmark-number">
-                14
-            </div>
-
-            <div class="landmark-label">
-                Temple
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="15"
-            style="left:330px;top:650px">
-
-            <div class="pin">🎓</div>
-
-            <div class="landmark-number">
-                15
-            </div>
-
-            <div class="landmark-label">
-                IIT ISM
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="16"
-            style="left:210px;top:770px">
-
-            <div class="pin">💼</div>
-
-            <div class="landmark-number">
-                16
-            </div>
-
-            <div class="landmark-label">
-                Prayagraj
-            </div>
-
-        </div>
-
-
-        <div
-            class="landmark locked"
-            data-index="17"
-            style="left:1540px;top:720px">
-
-            <div class="pin">♨️</div>
-
-            <div class="landmark-number">
-                17
-            </div>
-
-            <div class="landmark-label">
-                Sambodhi · Final
-            </div>
-
-        </div>
-
+        <!-- FOG -->
 
         <div id="fog"></div>
 
     </div>
 
 
-    <div class="map-hint">
-        Click the glowing landmark · follow the story in order
+    <div class="hint">
+        FOLLOW THE GOLDEN PATH · UNLOCK EVERY CHAPTER IN ORDER
     </div>
 
-</div>
+</section>
 
 
-<!-- =======================================================
-     MEMORY SCROLL
-     ======================================================= -->
+
+<!-- =====================================================
+     MEMORY OVERLAY
+===================================================== -->
 
 <div id="memoryOverlay">
 
-    <article class="scroll">
-
-        <div
-            class="memory-date"
-            id="memoryDate">
-        </div>
-
-        <h2
-            class="memory-title"
-            id="memoryTitle">
-        </h2>
-
-        <div
-            class="memory-icon"
-            id="memoryIcon">
-        </div>
-
-        <img
-            id="memoryPhoto"
-            class="memory-photo"
-            alt="Memory photograph">
-
-        <div
-            class="memory-body"
-            id="memoryBody">
-        </div>
+    <article class="memory-card">
 
         <button
-            class="close-memory"
-            id="closeMemory">
-
-            UNLOCK THE NEXT CHAPTER →
-
+            class="memory-close"
+            id="memoryClose"
+        >
+            ×
         </button>
+
+
+        <header class="memory-header">
+
+            <div
+                class="memory-chapter"
+                id="memoryChapter"
+            ></div>
+
+            <div
+                class="memory-title"
+                id="memoryTitle"
+            ></div>
+
+            <div
+                class="memory-date"
+                id="memoryDate"
+            ></div>
+
+            <div class="memory-rule"></div>
+
+        </header>
+
+
+        <!-- PHOTO -->
+
+        <div class="photo-frame">
+
+            <div
+                class="photo-placeholder"
+                id="photoPlaceholder"
+            >
+
+                <div class="photo-inner">
+
+                    <div class="photo-icon">
+                        ◈
+                    </div>
+
+                    <div class="photo-main">
+                        YOUR MEMORY PHOTO
+                    </div>
+
+                    <div class="photo-sub">
+                        replace this frame with your JPG
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <img
+                id="memoryPhoto"
+                alt="Relationship memory"
+            />
+
+        </div>
+
+
+        <!-- TEXT -->
+
+        <div class="memory-content">
+
+            <div
+                class="memory-quote"
+                id="memoryQuote"
+            ></div>
+
+            <div
+                class="memory-description"
+                id="memoryDescription"
+            ></div>
+
+
+            <div
+                class="memory-details"
+                id="memoryDetails"
+            ></div>
+
+        </div>
+
+
+        <footer class="memory-footer">
+
+            <button
+                class="next-button"
+                id="nextButton"
+            >
+                UNLOCK THE NEXT CHAPTER →
+            </button>
+
+        </footer>
 
     </article>
 
 </div>
 
 
-<div id="toast"></div>
 
-
-<!-- =======================================================
-     FINAL ENDING
-     ======================================================= -->
+<!-- =====================================================
+     ENDING
+===================================================== -->
 
 <section id="ending">
 
     <div class="ending-inner">
 
+        <div class="ending-logo">
+
+            <svg viewBox="0 0 100 100">
+
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="42"
+                    fill="none"
+                    stroke="#cba15c"
+                />
+
+                <path
+                    d="
+                    M50 18
+                    L59 50
+                    L50 82
+                    L41 50
+                    Z"
+                    fill="none"
+                    stroke="#e0bd78"
+                />
+
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="5"
+                    fill="#6a2026"
+                />
+
+            </svg>
+
+        </div>
+
+
         <div
             class="ending-line"
-            id="e1">
-
+            id="end1"
+        >
             17 little moments.
-
         </div>
 
 
         <div
             class="ending-line"
-            id="e2">
-
+            id="end2"
+        >
             17 places on our little map.
-
         </div>
 
 
         <div
             class="ending-line"
-            id="e3">
-
+            id="end3"
+        >
             And somehow… every road kept leading back to you.
-
         </div>
 
 
         <div
             class="ending-line"
-            id="e4">
-
+            id="end4"
+        >
             I thought I was making a map of our memories…
             <br><br>
-            but I think I was actually mapping the way
-            you became a part of my life.
-
+            but I think I was actually mapping
+            the way you became a part of my life.
         </div>
 
 
         <div
             class="ending-small"
-            id="e5">
-
+            id="end5"
+        >
             THE MAP DOESN'T END HERE.
-
         </div>
 
 
         <button
-            class="continue"
-            id="continueBtn">
-
+            class="keep-going"
+            id="keepGoing"
+        >
             KEEP GOING →
-
         </button>
 
     </div>
@@ -1754,510 +2109,645 @@ button{
 </section>
 
 
+
+<div id="toast"></div>
+
 </div>
+
 
 
 <script>
 
 /* =========================================================
    MEMORY DATA
-   ========================================================= */
+========================================================= */
 
 const memories = [
 
-    {
-        date:"12.03.26",
-        title:"Where It All Began",
-        icon:"📸",
-
-        body:
-        `One tiny “hi” at 11 PM…
-        and somehow, that little moment became
-        the beginning of everything.`,
-
-        photo:""
-    },
-
-
-    {
-        date:"19.03.26",
-        title:"The First Picture",
-        icon:"📷",
-
-        body:
-        `The first picture you sent me.
-        A tiny photograph, but a memory that somehow
-        became permanently saved in my head.`,
-
-        photo:""
-    },
-
-
-    {
-        date:"02.04.26",
-        title:"The First Song",
-        icon:"🎵",
-
-        body:
-        `The first time I heard you sing.
-        It wasn't just a video anymore —
-        it was the first time your voice became
-        part of my memories.`,
-
-        photo:""
-    },
-
-
-    {
-        date:"12.04.26",
-        title:"The Confession",
-        icon:"❤️",
-
-        body:
-        `The day everything finally had a name.
-        Somewhere between all the conversations
-        and all the feelings… we became us.`,
-
-        photo:""
-    },
-
-
-    {
-        date:"",
-        title:"Mehndi Memory",
-        icon:"🌿",
-
-        body:
-        `A little pattern on your hand.
-        Another tiny detail that somehow became
-        a part of our story.`,
-
-        photo:""
-    },
-
-
-    {
-        date:"",
-        title:"Milk Memory",
-        icon:"🥛",
-
-        body:
-        `Some memories are sweet.
-        Some are simply impossible to forget.
-
-        This one definitely belongs in the
-        second category. 😏`,
-
-        photo:""
-    },
-
-
-    {
-        date:"",
-        title:"The Soft Drink Chapter",
-        icon:"🥤",
-
-        body:
-        `A bottle, some bubbles,
-        and one more ridiculous little memory
-        that somehow deserves its own place
-        on the map.`,
-
-        photo:""
-    },
-
-
-    {
-        date:"",
-        title:"The Six-Pack Chapter",
-        icon:"💪",
-
-        body:
-        `Someone was VERY proud of those abs.
-
-        And yes…
-        this memory absolutely earned a landmark. 😏`,
-
-        photo:""
-    },
-
-
-    {
-        date:"",
-        title:"Birthday",
-        icon:"🎂",
-
-        body:
-        `Another little chapter worth keeping.
-
-        Some days become memories because of
-        what happened.
-
-        Some become memories because of
-        who was there.`,
-
-        photo:""
-    },
-
-
-    {
-        date:"13.07.26",
-        title:"PATNA — The Big Chapter",
-        icon:"🚂",
-
-        body:
-        `A train.
-        A station.
-        Flowers.
-        And finally seeing you.
-
-        Then Sabyata Dwar,
-        Science City,
-        City Mall,
-        Hanuman Mandir,
-        and that long Marine Drive ride.
-
-        Patna became more than a place
-        because you were there.`,
-
-        photo:""
-    },
-
-
-    {
-        date:"05.08.26",
-        title:"The Return",
-        icon:"🎁",
-
-        body:
-        `After all those moments,
-        another little chapter found its way
-        onto the map —
-
-        the return to Dhanbad,
-        carrying memories instead of
-        just luggage.`,
-
-        photo:""
-    },
-
-
-    {
-        date:"",
-        title:"Topchanchi",
-        icon:"⛰️",
-
-        body:
-        `A little mountain-and-lake chapter.
-
-        The kind of place that feels quieter
-        when you are standing beside the person
-        you want beside you.`,
-
-        photo:""
-    },
-
-
-    {
-        date:"",
-        title:"Awarapan 2",
-        icon:"🎬",
-
-        body:
-        `First show.
-        Dark cinema.
-        A screen glowing in front of us.
-
-        Another ordinary-looking day
-        that quietly became ours.`,
-
-        photo:""
-    },
-
-
-    {
-        date:"",
-        title:"A Temple Memory",
-        icon:"🛕",
-
-        body:
-        `Some places make you slow down.
-
-        Some moments make you feel grateful.
-
-        This one belongs here for both reasons.`,
-
-        photo:""
-    },
-
-
-    {
-        date:"",
-        title:"IIT ISM",
-        icon:"🎓",
-
-        body:
-        `A little piece of my world.
-
-        A place connected to my journey,
-        my dreams,
-
-        and now —
-        to our story too.`,
-
-        photo:""
-    },
-
-
-    {
-        date:"",
-        title:"Prayagraj",
-        icon:"💼",
-
-        body:
-        `New places.
-        New chapters.
-        New possibilities.
-
-        Even when life changes the scenery,
-        I hope the person beside me
-        remains the same.`,
-
-        photo:""
-    },
-
-
-    {
-        date:"",
-        title:"Sambodhi — The Hidden Island",
-        icon:"♨️",
-
-        body:
-        `The final destination
-        on this little map.
-
-        But maybe the point
-        was never the destination.
-
-        Maybe the treasure was
-        every tiny road that brought us here.`,
-
-        photo:""
-    }
+{
+    date:"12.03.26",
+    title:"Where It All Began",
+    icon:"◉",
+    photo:"12.03.26.jpg",
+
+    quote:"One tiny “hi” at 11 PM…",
+
+    description:
+    "The first little mark on our map. Nothing about that moment looked extraordinary from the outside. But somewhere inside that late-night conversation, the first road of our story quietly appeared. One message became another, another became a habit, and somehow a stranger slowly became someone I couldn't imagine not knowing.",
+
+    details:[
+        ["TIME","11:00 PM"],
+        ["PLACE","Instagram"],
+        ["CHAPTER","The Beginning"]
+    ]
+},
+
+{
+    date:"19.03.26",
+    title:"The First Picture",
+    icon:"◈",
+    photo:"19.03.26.jpg",
+
+    quote:"The first photograph became the first little keepsake.",
+
+    description:
+    "The first picture you sent me. A simple image, but somehow it stayed in my head much longer than an ordinary picture should have. It was one of those tiny moments where I realised I was starting to pay attention to every little detail about you.",
+
+    details:[
+        ["MEMORY","First Picture"],
+        ["FEELING","Butterflies"],
+        ["STATUS","Never Forgotten"]
+    ]
+},
+
+{
+    date:"02.04.26",
+    title:"The First Song",
+    icon:"♪",
+    photo:"02.04.26.jpg",
+
+    quote:"Then your voice became part of the story.",
+
+    description:
+    "The first time I heard you sing. It wasn't just another video anymore. It was the moment your voice became attached to a memory — something unmistakably yours. Some voices are heard. Some somehow stay with you.",
+
+    details:[
+        ["MEMORY","First Song"],
+        ["SOUND","Your Voice"],
+        ["CHAPTER","Getting Closer"]
+    ]
+},
+
+{
+    date:"12.04.26",
+    title:"When We Became Us",
+    icon:"♥",
+    photo:"12.04.26.jpg",
+
+    quote:"Somewhere between feelings and courage… there was us.",
+
+    description:
+    "The confession. The point where all those conversations, jokes, glances and feelings finally became something we could call ours. One of the most important pins on this entire map — because this is where the journey stopped being just a journey between two people and became our story.",
+
+    details:[
+        ["DATE","12 April"],
+        ["CHAPTER","Confession"],
+        ["STATUS","US"]
+    ]
+},
+
+{
+    date:"",
+    title:"The Mehndi Chapter",
+    icon:"❧",
+    photo:"mehndi.jpg",
+
+    quote:"A tiny pattern. A surprisingly permanent memory.",
+
+    description:
+    "Our story isn't made only from huge milestones. It is made from tiny details that somehow refuse to disappear. The mehndi memory gets its own place on this map because sometimes the smallest details become the things you remember most clearly.",
+
+    details:[
+        ["DETAIL","Mehndi"],
+        ["MOOD","Playful"],
+        ["CHAPTER","Little Things"]
+    ]
+},
+
+{
+    date:"",
+    title:"The Milk Memory",
+    icon:"◇",
+    photo:"milk.jpg",
+
+    quote:"Some memories are sweet. Some are impossible to forget. 😏",
+
+    description:
+    "This one gets its own little treasure seal because it is exactly the kind of ridiculous, personal memory that makes a relationship feel like a world belonging only to two people. It might look ordinary to everyone else. To us, it isn't.",
+
+    details:[
+        ["MEMORY","Milk"],
+        ["MOOD","Cheeky"],
+        ["SECRET","Only We Know"]
+    ]
+},
+
+{
+    date:"",
+    title:"The Soft Drink Chapter",
+    icon:"○",
+    photo:"soft-drink.jpg",
+
+    quote:"Pssshhh… another tiny chapter unlocked.",
+
+    description:
+    "A bottle, some bubbles, and another completely ordinary-looking moment that somehow earned a permanent place in our story. The best adventures are often built from things nobody else would notice.",
+
+    details:[
+        ["OBJECT","Soft Drink"],
+        ["MOOD","Funny"],
+        ["CHAPTER","Little Things"]
+    ]
+},
+
+{
+    date:"",
+    title:"The Six-Pack Chapter",
+    icon:"✦",
+    photo:"six-pack.jpg",
+
+    quote:"Someone was VERY proud of those abs. 😏",
+
+    description:
+    "There are memories that deserve romance, memories that deserve nostalgia, and then there are memories that deserve a mischievous grin. This one definitely belongs to the third category.",
+
+    details:[
+        ["MEMORY","Six-Pack"],
+        ["MOOD","Teasing"],
+        ["STATUS","Guilty"]
+    ]
+},
+
+{
+    date:"",
+    title:"Birthday",
+    icon:"✧",
+    photo:"birthday.jpg",
+
+    quote:"Another day that became part of our little universe.",
+
+    description:
+    "A birthday chapter on our map — because dates become meaningful when they carry a person, a feeling, a message or a moment that you want to remember long after the day itself has passed.",
+
+    details:[
+        ["CHAPTER","Birthday"],
+        ["MOOD","Celebration"],
+        ["TREASURE","A Memory"]
+    ]
+},
+
+{
+    date:"13.07.26",
+    title:"Patna — The Big Chapter",
+    icon:"◆",
+    photo:"13.07.26.jpg",
+
+    quote:"A railway station, flowers, and finally seeing you.",
+
+    description:
+    "This wasn't just another pin. This was a whole region on the map. Patna gave us Sabyata Dwar, Science City, City Mall, Hanuman Mandir and that long Marine Drive ride. I remember the flowers, the excitement, the places, the roads — but most importantly, I remember finally having you there beside me.",
+
+    details:[
+        ["PLACE","Patna"],
+        ["DAY","13 July"],
+        ["CHAPTER","Our Day Together"]
+    ]
+},
+
+{
+    date:"05.08.26",
+    title:"The Return",
+    icon:"◇",
+    photo:"05.08.26.jpg",
+
+    quote:"After the journey, another little chapter brought us home.",
+
+    description:
+    "The return to Dhanbad. Another point on the map, another collection of little moments, and another reminder that places become special because of what — and who — we associate with them.",
+
+    details:[
+        ["PLACE","Dhanbad"],
+        ["DATE","05 August"],
+        ["CHAPTER","Return"]
+    ]
+},
+
+{
+    date:"",
+    title:"Topchanchi",
+    icon:"△",
+    photo:"topchanchi.jpg",
+
+    quote:"Quiet roads. Open skies. Another memory.",
+
+    description:
+    "A landscape chapter on our map. The kind of memory where the surroundings become part of the story — the lake, the hills, the road and the feeling of having another place that belongs to our collection.",
+
+    details:[
+        ["PLACE","Topchanchi"],
+        ["SETTING","Hills & Lake"],
+        ["MOOD","Peaceful"]
+    ]
+},
+
+{
+    date:"",
+    title:"Awarapan 2",
+    icon:"▣",
+    photo:"awarapan-2.jpg",
+
+    quote:"Lights down. Screen on. Another first.",
+
+    description:
+    "A cinema memory. The kind of date that can look completely normal on a calendar, yet becomes something you remember because of who was sitting beside you when the lights went down.",
+
+    details:[
+        ["PLACE","Cinema"],
+        ["MOVIE","Awarapan 2"],
+        ["CHAPTER","A Shared Day"]
+    ]
+},
+
+{
+    date:"",
+    title:"The Temple Chapter",
+    icon:"✦",
+    photo:"temple.jpg",
+
+    quote:"Some places make you slow down.",
+
+    description:
+    "A quieter landmark on the map. A temple, a pause, a little stillness. Not every chapter needs to be loud. Some memories become precious simply because they made us stop for a moment.",
+
+    details:[
+        ["PLACE","Temple"],
+        ["MOOD","Calm"],
+        ["CHAPTER","Quiet Memory"]
+    ]
+},
+
+{
+    date:"",
+    title:"IIT ISM — A Piece of My World",
+    icon:"◇",
+    photo:"iit-ism.jpg",
+
+    quote:"A place from my journey that became part of ours.",
+
+    description:
+    "This landmark is a little different. It isn't only about a place we visited. It is connected to my dreams, my work and the road I am walking in life. Now it has a place on our map too — because when someone becomes important, pieces of their world slowly become yours as well.",
+
+    details:[
+        ["PLACE","IIT ISM"],
+        ["MEANING","My World"],
+        ["CHAPTER","My Journey"]
+    ]
+},
+
+{
+    date:"",
+    title:"Prayagraj",
+    icon:"◆",
+    photo:"prayagraj.jpg",
+
+    quote:"New places. New chapters. Same little map.",
+
+    description:
+    "Prayagraj represents movement — new surroundings, new possibilities and the way life keeps opening new roads. Whatever the scenery becomes, I hope the important part of the journey remains familiar.",
+
+    details:[
+        ["PLACE","Prayagraj"],
+        ["THEME","New Chapter"],
+        ["HOPE","Keep Going"]
+    ]
+},
+
+{
+    date:"",
+    title:"Sambodhi — The Hidden Island",
+    icon:"✥",
+    photo:"sambodhi.jpg",
+
+    quote:"The final destination… but not the end.",
+
+    description:
+    "The last treasure on this map. Sambodhi is where the golden path finally arrives. But by now the map has already told us the real story: the treasure was never one place. It was every little road, every laugh, every photograph, every conversation and every moment that brought us here.",
+
+    details:[
+        ["DESTINATION","Sambodhi"],
+        ["STATUS","17 / 17"],
+        ["TREASURE","US"]
+    ]
+}
 
 ];
 
 
 /* =========================================================
-   STATE
-   ========================================================= */
+   LANDMARK POSITIONS
+========================================================= */
+
+const positions = [
+
+    [100,475],
+    [295,260],
+    [495,425],
+    [680,690],
+    [810,425],
+    [1010,230],
+    [1120,395],
+    [1245,690],
+    [1420,475],
+    [1585,585],
+    [1375,825],
+    [1110,825],
+    [820,850],
+    [550,805],
+    [345,675],
+    [225,815],
+    [1650,715]
+
+];
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const intro =
+    document.getElementById("intro");
+
+const stage =
+    document.getElementById("stage");
+
+const map =
+    document.getElementById("map");
+
+const landmarksContainer =
+    document.getElementById("landmarks");
+
+const overlay =
+    document.getElementById("memoryOverlay");
+
+const fog =
+    document.getElementById("fog");
+
+const counter =
+    document.getElementById("counter");
+
+const routeGlow =
+    document.getElementById("routeGlow");
+
+const compassNeedle =
+    document.getElementById("compassNeedle");
+
+const ending =
+    document.getElementById("ending");
 
 let unlocked = 0;
+
+let currentMemory = -1;
+
+let audioContext = null;
+let masterGain = null;
+let fxGain = null;
+let musicGain = null;
+let musicInterval = null;
+
+
+/* =========================================================
+   CREATE LANDMARKS
+========================================================= */
+
+memories.forEach((memory,index)=>{
+
+    const landmark =
+        document.createElement("div");
+
+    landmark.className =
+        "landmark locked";
+
+    landmark.dataset.index =
+        index;
+
+    landmark.style.left =
+        positions[index][0] + "px";
+
+    landmark.style.top =
+        positions[index][1] + "px";
+
+
+    landmark.innerHTML = `
+
+        <div class="seal">
+
+            <span class="landmark-icon">
+                ${memory.icon}
+            </span>
+
+        </div>
+
+        <div class="landmark-number">
+            ${index+1}
+        </div>
+
+        <div class="landmark-label">
+            ${memory.date ? memory.date + " · " : ""}
+            ${memory.title}
+        </div>
+
+    `;
+
+
+    landmark.addEventListener(
+        "click",
+        ()=>{
+            openMemory(index);
+        }
+    );
+
+
+    landmarksContainer.appendChild(
+        landmark
+    );
+
+});
+
+
+/* =========================================================
+   DUST
+========================================================= */
+
+const dustContainer =
+    document.getElementById("dust");
+
+for(let i=0;i<55;i++){
+
+    const dust =
+        document.createElement("span");
+
+    dust.className =
+        "dust";
+
+    dust.style.left =
+        Math.random()*100 + "%";
+
+    dust.style.top =
+        70 + Math.random()*35 + "%";
+
+    dust.style.animationDelay =
+        (-Math.random()*10) + "s";
+
+    dust.style.animationDuration =
+        (6 + Math.random()*8) + "s";
+
+    dustContainer.appendChild(dust);
+}
 
 
 /* =========================================================
    AUDIO ENGINE
-   ========================================================= */
-
-let audioCtx = null;
-let masterGain = null;
-let musicGain = null;
-let effectGain = null;
-let musicTimer = null;
-
+========================================================= */
 
 function initAudio(){
 
-    if(audioCtx){
+    if(audioContext)
         return;
-    }
 
-    audioCtx =
+    audioContext =
         new (
             window.AudioContext ||
             window.webkitAudioContext
         )();
 
-
     masterGain =
-        audioCtx.createGain();
+        audioContext.createGain();
 
-    masterGain.gain.value = .55;
+    masterGain.gain.value =
+        .45;
 
     masterGain.connect(
-        audioCtx.destination
+        audioContext.destination
+    );
+
+
+    fxGain =
+        audioContext.createGain();
+
+    fxGain.gain.value =
+        .7;
+
+    fxGain.connect(
+        masterGain
     );
 
 
     musicGain =
-        audioCtx.createGain();
+        audioContext.createGain();
 
-    musicGain.gain.value = .075;
+    musicGain.gain.value =
+        .045;
 
     musicGain.connect(
         masterGain
     );
 
 
-    effectGain =
-        audioCtx.createGain();
-
-    effectGain.gain.value = .65;
-
-    effectGain.connect(
-        masterGain
-    );
-
-
-    startAmbientMusic();
+    startMusic();
 }
 
 
-/* =========================================================
-   PROCEDURAL SOUND
-   ========================================================= */
-
-function tone(
+function sound(
     frequency,
-    duration=.18,
-    type="sine",
-    volume=.08,
-    delay=0
+    duration=.15,
+    volume=.06,
+    delay=0,
+    type="sine"
 ){
 
-    if(!audioCtx){
+    if(!audioContext)
         return;
-    }
 
     const oscillator =
-        audioCtx.createOscillator();
+        audioContext.createOscillator();
 
     const gain =
-        audioCtx.createGain();
+        audioContext.createGain();
+
+    const time =
+        audioContext.currentTime +
+        delay;
 
 
-    oscillator.type = type;
+    oscillator.type =
+        type;
 
     oscillator.frequency.value =
         frequency;
 
 
-    const startTime =
-        audioCtx.currentTime +
-        delay;
-
-
     gain.gain.setValueAtTime(
         0,
-        startTime
+        time
     );
-
 
     gain.gain.linearRampToValueAtTime(
         volume,
-        startTime + .02
+        time+.02
     );
-
 
     gain.gain.exponentialRampToValueAtTime(
         .001,
-        startTime + duration
+        time+duration
     );
 
 
     oscillator.connect(gain);
+    gain.connect(fxGain);
 
-    gain.connect(effectGain);
 
-
-    oscillator.start(startTime);
-
+    oscillator.start(time);
     oscillator.stop(
-        startTime +
-        duration +
-        .04
+        time+duration+.03
     );
 }
 
 
-/* =========================================================
-   SOUND EFFECTS
-   ========================================================= */
-
 function clickSound(){
 
-    tone(
-        150,
+    sound(
+        190,
         .08,
-        "triangle",
-        .06
+        .05,
+        0,
+        "triangle"
     );
 
-    tone(
-        220,
-        .08,
-        "triangle",
+    sound(
+        280,
+        .12,
+        .035,
         .04,
-        .03
+        "triangle"
     );
 }
 
 
 function unlockSound(){
 
-    tone(
+    sound(
         330,
-        .14,
-        "triangle",
-        .10
+        .15,
+        .075
     );
 
-    tone(
+    sound(
         495,
         .22,
-        "sine",
-        .08,
+        .06,
         .07
     );
 
-    tone(
+    sound(
         660,
-        .4,
-        "sine",
-        .06,
-        .14
+        .42,
+        .05,
+        .15
     );
 }
 
 
-function errorSound(){
-
-    tone(
-        100,
-        .12,
-        "sawtooth",
-        .05
-    );
-
-    tone(
-        75,
-        .16,
-        "sine",
-        .04,
-        .08
-    );
-}
-
-
-/* =========================================================
-   AMBIENT PIANO-LIKE MUSIC
-   ========================================================= */
-
-function startAmbientMusic(){
-
-    if(!audioCtx){
-        return;
-    }
+function startMusic(){
 
     const notes = [
 
@@ -2273,163 +2763,101 @@ function startAmbientMusic(){
 
     ];
 
-    let index = 0;
+    let noteIndex = 0;
 
 
-    musicTimer =
+    musicInterval =
         setInterval(()=>{
 
-            if(document.hidden){
+            if(
+                !audioContext ||
+                document.hidden
+            )
                 return;
-            }
-
-
-            const frequency =
-                notes[
-                    index %
-                    notes.length
-                ];
-
-            index++;
 
 
             const oscillator =
-                audioCtx.createOscillator();
+                audioContext.createOscillator();
 
             const gain =
-                audioCtx.createGain();
+                audioContext.createGain();
+
+
+            const time =
+                audioContext.currentTime;
 
 
             oscillator.type =
                 "sine";
 
             oscillator.frequency.value =
-                frequency;
+                notes[
+                    noteIndex %
+                    notes.length
+                ];
 
 
             gain.gain.setValueAtTime(
                 0,
-                audioCtx.currentTime
+                time
             );
-
 
             gain.gain.linearRampToValueAtTime(
-                .45,
-                audioCtx.currentTime + .35
+                .35,
+                time+.25
             );
-
 
             gain.gain.exponentialRampToValueAtTime(
                 .001,
-                audioCtx.currentTime + 2.2
+                time+2
             );
 
 
             oscillator.connect(gain);
-
             gain.connect(musicGain);
 
 
-            oscillator.start();
+            oscillator.start(time);
 
             oscillator.stop(
-                audioCtx.currentTime + 2.3
+                time+2.1
             );
 
-        },1300);
+
+            noteIndex++;
+
+        },1450);
+
 }
 
 
 /* =========================================================
-   DOM
-   ========================================================= */
+   START JOURNEY
+========================================================= */
 
-const startBtn =
-    document.getElementById("startBtn");
-
-const intro =
-    document.getElementById("intro");
-
-const mapStage =
-    document.getElementById("mapStage");
-
-const map =
-    document.getElementById("map");
-
-const fog =
-    document.getElementById("fog");
-
-const count =
-    document.getElementById("count");
-
-const needle =
-    document.getElementById("needle");
-
-const glowPath =
-    document.getElementById("glowPath");
-
-const memoryOverlay =
-    document.getElementById("memoryOverlay");
-
-const memoryDate =
-    document.getElementById("memoryDate");
-
-const memoryTitle =
-    document.getElementById("memoryTitle");
-
-const memoryIcon =
-    document.getElementById("memoryIcon");
-
-const memoryBody =
-    document.getElementById("memoryBody");
-
-const memoryPhoto =
-    document.getElementById("memoryPhoto");
-
-const closeMemory =
-    document.getElementById("closeMemory");
-
-const toast =
-    document.getElementById("toast");
-
-const ending =
-    document.getElementById("ending");
-
-const continueBtn =
-    document.getElementById("continueBtn");
-
-const landmarks =
-    [
-        ...document.querySelectorAll(
-            ".landmark"
-        )
-    ];
-
-
-/* =========================================================
-   START
-   ========================================================= */
-
-startBtn.addEventListener(
+document
+.getElementById("beginButton")
+.addEventListener(
     "click",
     ()=>{
 
         initAudio();
 
         if(
-            audioCtx &&
-            audioCtx.state === "suspended"
+            audioContext.state ===
+            "suspended"
         ){
-            audioCtx.resume();
+            audioContext.resume();
         }
 
         clickSound();
 
 
-        intro.style.opacity = "0";
+        intro.style.opacity =
+            "0";
 
         intro.style.transform =
-            "scale(1.04)";
+            "scale(1.035)";
 
 
         setTimeout(()=>{
@@ -2437,31 +2865,30 @@ startBtn.addEventListener(
             intro.style.display =
                 "none";
 
-            mapStage.style.opacity =
+            stage.style.opacity =
                 "1";
-
 
             unlockNext();
 
-        },850);
+        },900);
 
     }
 );
 
 
 /* =========================================================
-   UNLOCK NEXT LANDMARK
-   ========================================================= */
+   UNLOCK NEXT
+========================================================= */
 
 function unlockNext(){
 
-    if(unlocked >= 17){
+    if(unlocked >= 17)
         return;
-    }
 
 
     const landmark =
-        landmarks[unlocked];
+        landmarksContainer
+        .children[unlocked];
 
 
     landmark.classList.remove(
@@ -2473,44 +2900,29 @@ function unlockNext(){
     );
 
 
-    count.textContent =
+    counter.textContent =
         unlocked;
 
-
-    /*
-       Gradually reveal the map.
-    */
 
     fog.style.opacity =
         Math.max(
             .72 -
-            unlocked * .038,
-            .05
+            unlocked*.041,
+            .035
         );
 
 
-    /*
-       Gradually illuminate
-       the journey path.
-    */
-
-    glowPath.style.strokeDashoffset =
-        1500 -
+    routeGlow.style.strokeDashoffset =
+        2300 -
         (
             unlocked /
             17
-        ) * 1500;
+        ) *
+        2300;
 
 
-    /*
-       Rotate compass.
-    */
-
-    const angle =
-        (unlocked * 31) % 360;
-
-    needle.style.transform =
-        `rotate(${angle}deg)`;
+    compassNeedle.style.transform =
+        `rotate(${unlocked*32}deg)`;
 
 
     setTimeout(
@@ -2521,20 +2933,17 @@ function unlockNext(){
 
 
 /* =========================================================
-   CAMERA-LIKE MAP MOVEMENT
-   ========================================================= */
+   FOCUS MAP
+========================================================= */
 
-function focusLandmark(landmark){
+function focusLandmark(
+    landmark
+){
 
-    /*
-       On phones we keep the map stable
-       because aggressive movement can make
-       touch interaction uncomfortable.
-    */
-
-    if(window.innerWidth < 700){
+    if(
+        window.innerWidth < 700
+    )
         return;
-    }
 
 
     const rect =
@@ -2542,95 +2951,67 @@ function focusLandmark(landmark){
 
 
     const targetX =
-        window.innerWidth / 2 -
+        window.innerWidth/2 -
         (
             rect.left +
-            rect.width / 2
+            rect.width/2
         );
 
 
     const targetY =
-        window.innerHeight / 2 -
+        window.innerHeight/2 -
         (
             rect.top +
-            rect.height / 2
+            rect.height/2
         );
 
 
     map.style.transform =
         `
         translate(
-            calc(-50% + ${targetX * .35}px),
-            calc(-50% + ${targetY * .35}px)
+            calc(-50% + ${targetX*.24}px),
+            calc(-50% + ${targetY*.24}px)
         )
         `;
 }
 
 
 /* =========================================================
-   TOAST
-   ========================================================= */
-
-function showToast(message){
-
-    toast.textContent =
-        message;
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        showToast.timer
-    );
-
-
-    showToast.timer =
-        setTimeout(()=>{
-
-            toast.classList.remove(
-                "show"
-            );
-
-        },1800);
-}
-
-
-/* =========================================================
    OPEN MEMORY
-   ========================================================= */
+========================================================= */
 
 function openMemory(index){
 
-    /*
-       Prevent skipping.
-    */
-
     if(index !== unlocked){
 
-        errorSound();
+        if(audioContext){
 
-
-        if(index > unlocked){
-
-            showToast(
-                "Not yet, explorer. ❤️ Follow the story in order."
-            );
-
-        }else{
-
-            showToast(
-                "You've already discovered this chapter."
+            sound(
+                100,
+                .12,
+                .035,
+                0,
+                "sawtooth"
             );
 
         }
+
+
+        showToast(
+            index > unlocked
+            ?
+            "Not yet, explorer. Follow our story in order. ❤️"
+            :
+            "You've already found this chapter."
+        );
 
         return;
     }
 
 
-    clickSound();
+    currentMemory =
+        index;
+
 
     unlockSound();
 
@@ -2639,156 +3020,188 @@ function openMemory(index){
         memories[index];
 
 
-    memoryDate.textContent =
+    document
+    .getElementById("memoryChapter")
+    .textContent =
+        `
+        CHAPTER
+        ${String(index+1).padStart(2,"0")}
+        · TREASURE
+        ${String(index+1).padStart(2,"0")}
+        `;
+
+
+    document
+    .getElementById("memoryTitle")
+    .textContent =
+        memory.title;
+
+
+    document
+    .getElementById("memoryDate")
+    .textContent =
         memory.date ||
         "A LITTLE CHAPTER";
 
 
-    memoryTitle.textContent =
-        memory.title;
+    document
+    .getElementById("memoryQuote")
+    .textContent =
+        memory.quote;
 
 
-    memoryIcon.textContent =
-        memory.icon;
+    document
+    .getElementById("memoryDescription")
+    .textContent =
+        memory.description;
 
 
-    memoryBody.innerHTML =
-        memory.body
-            .replace(
-                /\n/g,
-                "<br>"
-            );
+    /* PHOTO */
 
+    const photo =
+        document.getElementById(
+            "memoryPhoto"
+        );
 
-    /*
-       OPTIONAL PHOTO SUPPORT
-
-       Example:
-
-       photo:"images/12-03-26.jpg"
-
-       Keep photo:"" if you don't want
-       a photograph for that memory.
-    */
-
-    if(memory.photo){
-
-        memoryPhoto.src =
-            memory.photo;
-
-        memoryPhoto.classList.add(
-            "show"
+    const placeholder =
+        document.getElementById(
+            "photoPlaceholder"
         );
 
 
-        memoryPhoto.onerror =
-            ()=>{
+    photo.style.display =
+        "none";
 
-                memoryPhoto.classList.remove(
-                    "show"
+    placeholder.style.display =
+        "flex";
+
+
+    photo.onload = ()=>{
+
+        photo.style.display =
+            "block";
+
+        placeholder.style.display =
+            "none";
+
+    };
+
+
+    photo.onerror = ()=>{
+
+        photo.style.display =
+            "none";
+
+        placeholder.style.display =
+            "flex";
+
+    };
+
+
+    photo.src =
+        memory.photo;
+
+
+    /* DETAILS */
+
+    const details =
+        document.getElementById(
+            "memoryDetails"
+        );
+
+
+    details.innerHTML = "";
+
+
+    memory.details.forEach(
+        item=>{
+
+            const box =
+                document.createElement(
+                    "div"
                 );
 
-            };
-
-    }else{
-
-        memoryPhoto.classList.remove(
-            "show"
-        );
-
-        memoryPhoto.removeAttribute(
-            "src"
-        );
-    }
+            box.className =
+                "detail-box";
 
 
-    if(index === 16){
+            box.innerHTML = `
 
-        closeMemory.textContent =
-            "FIND THE TREASURE →";
+                <span class="detail-label">
+                    ${item[0]}
+                </span>
 
-    }else{
+                <span class="detail-value">
+                    ${item[1]}
+                </span>
 
-        closeMemory.textContent =
-            "UNLOCK THE NEXT CHAPTER →";
-    }
+            `;
 
 
-    memoryOverlay.style.display =
-        "grid";
+            details.appendChild(
+                box
+            );
+
+        }
+    );
+
+
+    document
+    .getElementById("nextButton")
+    .textContent =
+        index === 16
+        ?
+        "REVEAL THE TREASURE →"
+        :
+        "UNLOCK THE NEXT CHAPTER →";
+
+
+    overlay.style.display =
+        "flex";
 }
 
 
 /* =========================================================
-   LANDMARK CLICK
-   ========================================================= */
+   NEXT BUTTON
+========================================================= */
 
-landmarks.forEach(
-    landmark => {
-
-        landmark.addEventListener(
-            "click",
-            ()=>{
-
-                const index =
-                    Number(
-                        landmark.dataset.index
-                    ) - 1;
-
-
-                openMemory(index);
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   CLOSE MEMORY
-   ========================================================= */
-
-closeMemory.addEventListener(
+document
+.getElementById("nextButton")
+.addEventListener(
     "click",
     ()=>{
 
-        memoryOverlay.style.display =
+        overlay.style.display =
             "none";
 
 
-        /*
-           Mark current landmark complete.
-        */
-
-        landmarks[unlocked]
-            .classList
-            .remove("available");
+        const current =
+            landmarksContainer
+            .children[unlocked];
 
 
-        landmarks[unlocked]
-            .classList
-            .add("done");
+        current.classList.remove(
+            "available"
+        );
+
+        current.classList.add(
+            "completed"
+        );
 
 
         unlocked++;
 
 
-        count.textContent =
+        counter.textContent =
             unlocked;
 
-
-        /*
-           More chapters?
-        */
 
         if(unlocked < 17){
 
             unlockNext();
 
-
             showToast(
-                "A new piece of the map has been revealed ✨"
+                "A new piece of the map has appeared ✨"
             );
 
         }else{
@@ -2802,72 +3215,98 @@ closeMemory.addEventListener(
 
 
 /* =========================================================
-   FINISH JOURNEY
-   ========================================================= */
+   CLOSE MEMORY
+========================================================= */
 
-function finishJourney(){
+document
+.getElementById("memoryClose")
+.addEventListener(
+    "click",
+    ()=>{
+        overlay.style.display =
+            "none";
+    }
+);
 
-    /*
-       Everything is now complete.
-    */
 
-    landmarks.forEach(
-        landmark => {
+/* =========================================================
+   TOAST
+========================================================= */
 
-            landmark.classList.add(
-                "done"
-            );
+function showToast(message){
 
-        }
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.style.opacity =
+        "1";
+
+    toast.style.transform =
+        "translate(-50%,0)";
+
+
+    clearTimeout(
+        window.toastTimer
     );
 
 
-    /*
-       Remove remaining fog.
-    */
+    window.toastTimer =
+        setTimeout(()=>{
+
+            toast.style.opacity =
+                "0";
+
+            toast.style.transform =
+                "translate(-50%,20px)";
+
+        },1900);
+}
+
+
+/* =========================================================
+   FINISH JOURNEY
+========================================================= */
+
+function finishJourney(){
 
     fog.style.opacity =
         "0";
 
 
-    /*
-       Fully illuminate route.
-    */
-
-    glowPath.style.strokeDashoffset =
+    routeGlow.style.strokeDashoffset =
         "0";
 
 
-    /*
-       Compass final spin.
-    */
-
-    needle.style.transform =
-        "rotate(360deg)";
-
-
-    /*
-       Fade music down.
-    */
-
-    if(audioCtx){
-
-        musicGain.gain
-            .cancelScheduledValues(
-                audioCtx.currentTime
+    landmarksContainer
+    .querySelectorAll(".landmark")
+    .forEach(
+        landmark=>{
+            landmark.classList.add(
+                "completed"
             );
+        }
+    );
 
 
-        musicGain.gain
-            .linearRampToValueAtTime(
-                .015,
-                audioCtx.currentTime + 3
-            );
+    if(audioContext){
+
+        musicGain.gain.cancelScheduledValues(
+            audioContext.currentTime
+        );
 
 
-        /*
-           Final little musical flourish.
-        */
+        musicGain.gain.linearRampToValueAtTime(
+            .012,
+            audioContext.currentTime + 3
+        );
+
 
         [
             261.63,
@@ -2876,14 +3315,13 @@ function finishJourney(){
             523.25,
             659.25
         ].forEach(
-            (note,index)=>{
+            (frequency,index)=>{
 
-                tone(
-                    note,
+                sound(
+                    frequency,
                     2,
-                    "sine",
-                    .05,
-                    index * .18
+                    .045,
+                    index*.18
                 );
 
             }
@@ -2892,95 +3330,91 @@ function finishJourney(){
     }
 
 
-    setTimeout(
-        showEnding,
-        2800
-    );
-}
+    setTimeout(()=>{
+
+        stage.style.opacity =
+            "0";
 
 
-/* =========================================================
-   ENDING
-   ========================================================= */
-
-function showEnding(){
-
-    mapStage.style.opacity =
-        "0";
+        ending.style.display =
+            "flex";
 
 
-    ending.style.display =
-        "grid";
+        const lines = [
+            "end1",
+            "end2",
+            "end3",
+            "end4",
+            "end5"
+        ];
 
 
-    const lines = [
+        lines.forEach(
+            (id,index)=>{
 
-        "e1",
-        "e2",
-        "e3",
-        "e4",
-        "e5"
+                setTimeout(
+                    ()=>{
 
-    ];
-
-
-    lines.forEach(
-        (id,index)=>{
-
-            setTimeout(
-                ()=>{
-                    document
+                        document
                         .getElementById(id)
-                        .classList
-                        .add("show");
-                },
+                        .classList.add(
+                            "visible"
+                        );
 
-                index * 1800
-            );
+                    },
 
-        }
-    );
+                    index * 1700
+                );
+
+            }
+        );
 
 
-    setTimeout(
-        ()=>{
-            continueBtn.classList.add(
-                "show"
-            );
-        },
+        setTimeout(
+            ()=>{
+                document
+                .getElementById(
+                    "keepGoing"
+                )
+                .classList.add(
+                    "visible"
+                );
+            },
+            9000
+        );
 
-        lines.length * 1800 + 500
-    );
+
+    },2600);
 }
 
 
 /* =========================================================
-   PAGE 6 TRANSITION
-   ========================================================= */
+   NEXT PAGE
+========================================================= */
 
-continueBtn.addEventListener(
+document
+.getElementById("keepGoing")
+.addEventListener(
     "click",
     ()=>{
 
         /*
-           WHEN PAGE 6 IS READY:
+         =====================================================
+         WHEN PAGE 6 IS READY:
 
-           Replace this:
+         Replace this:
 
-              showToast("Next chapter ready ❤️");
+             showToast(...)
 
-           with:
+         with:
 
-              window.location.href =
-                  "page6.html";
+             window.location.href = "page6.html";
 
-           If your Page 6 has another filename,
-           change it accordingly.
+         =====================================================
         */
 
-
         showToast(
-            "Next chapter ready ❤️"
+            "The next chapter is waiting. ❤️"
         );
 
     }
@@ -2989,18 +3423,17 @@ continueBtn.addEventListener(
 
 /* =========================================================
    ESCAPE KEY
-   ========================================================= */
+========================================================= */
 
 document.addEventListener(
     "keydown",
-    event => {
+    event=>{
 
         if(
-            event.key === "Escape" &&
-            memoryOverlay.style.display === "grid"
+            event.key === "Escape"
         ){
 
-            memoryOverlay.style.display =
+            overlay.style.display =
                 "none";
 
         }
