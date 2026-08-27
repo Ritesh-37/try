@@ -1,36 +1,15 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Our Little Universe ❤️</title>
 
-
-<!-- =========================================================
-     FONTS
-========================================================= -->
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
->
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Poppins:wght@400;500;600&display=swap"
-    rel="stylesheet"
->
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -51,13 +30,8 @@ body {
 }
 
 body {
-
     overflow: hidden;
-
-    font-family:
-        "Poppins",
-        sans-serif;
-
+    font-family: "Poppins", sans-serif;
     color: white;
 
     background:
@@ -67,7 +41,6 @@ body {
             #0b0926 42%,
             #03030d 100%
         );
-
 }
 
 
@@ -76,9 +49,7 @@ body {
 ========================================================= */
 
 #pageTransition {
-
     position: fixed;
-
     inset: 0;
 
     background: #02020b;
@@ -91,13 +62,10 @@ body {
 
     transition:
         opacity 1.5s ease;
-
 }
 
 #pageTransition.fade-out {
-
     opacity: 0;
-
 }
 
 
@@ -106,7 +74,6 @@ body {
 ========================================================= */
 
 .nebula {
-
     position: fixed;
 
     border-radius: 50%;
@@ -120,13 +87,10 @@ body {
     z-index: 0;
 
     animation:
-        nebulaFloat
-        18s ease-in-out infinite alternate;
-
+        nebulaFloat 18s ease-in-out infinite alternate;
 }
 
 .nebula-one {
-
     width: 550px;
     height: 550px;
 
@@ -134,11 +98,9 @@ body {
     top: -180px;
 
     background: #743e9e;
-
 }
 
 .nebula-two {
-
     width: 500px;
     height: 500px;
 
@@ -148,11 +110,9 @@ body {
     background: #a73d70;
 
     animation-delay: 4s;
-
 }
 
 .nebula-three {
-
     width: 400px;
     height: 400px;
 
@@ -162,36 +122,27 @@ body {
     background: #3859a0;
 
     animation-delay: 8s;
-
 }
-
 
 @keyframes nebulaFloat {
 
     0% {
-
         transform:
-            translate(0,0)
+            translate(0, 0)
             scale(.9);
-
     }
 
     50% {
-
         transform:
-            translate(45px,-30px)
+            translate(45px, -30px)
             scale(1.08);
-
     }
 
     100% {
-
         transform:
-            translate(-30px,45px)
+            translate(-30px, 45px)
             scale(.96);
-
     }
-
 }
 
 
@@ -200,48 +151,35 @@ body {
 ========================================================= */
 
 .stars {
-
     position: fixed;
-
     inset: 0;
 
     pointer-events: none;
 
     z-index: 1;
-
 }
 
 .background-star {
-
     position: absolute;
 
-    color:
-        rgba(255,255,255,.8);
+    color: rgba(255,255,255,.8);
 
     font-size: 5px;
 
     animation:
-        twinkle
-        3s ease-in-out infinite;
-
+        twinkle 3s ease-in-out infinite;
 }
-
 
 @keyframes twinkle {
 
     0%,
     100% {
-
         opacity: .15;
-
     }
 
     50% {
-
         opacity: .9;
-
     }
-
 }
 
 
@@ -250,7 +188,6 @@ body {
 ========================================================= */
 
 .shooting-star {
-
     position: fixed;
 
     width: 2px;
@@ -264,23 +201,17 @@ body {
         0 0 8px white,
         0 0 18px rgba(255,255,255,.8);
 
-    transform:
-        rotate(-35deg);
+    transform: rotate(-35deg);
 
     z-index: 3;
 
     pointer-events: none;
 
     animation:
-        shootingStar
-        1.4s
-        linear
-        forwards;
-
+        shootingStar 1.4s linear forwards;
 }
 
 .shooting-star::after {
-
     content: "";
 
     position: absolute;
@@ -297,38 +228,29 @@ body {
             rgba(255,255,255,.8),
             transparent
         );
-
 }
-
 
 @keyframes shootingStar {
 
     0% {
-
         opacity: 0;
 
         transform:
             translate(0,0)
             rotate(-35deg);
-
     }
 
     10% {
-
         opacity: 1;
-
     }
 
     100% {
-
         opacity: 0;
 
         transform:
             translate(-350px,350px)
             rotate(-35deg);
-
     }
-
 }
 
 
@@ -349,14 +271,13 @@ body {
 
     text-align: center;
 
-    padding: 30px;
+    padding: 25px;
 
     opacity: 0;
 
     visibility: hidden;
 
-    transform:
-        scale(1.05);
+    transform: scale(1.05);
 
     transition:
         opacity 1.2s ease,
@@ -364,7 +285,6 @@ body {
         visibility 1.2s ease;
 
     z-index: 20;
-
 }
 
 .intro-screen.active {
@@ -373,16 +293,12 @@ body {
 
     visibility: visible;
 
-    transform:
-        scale(1);
-
+    transform: scale(1);
 }
 
 .intro-content {
 
-    width:
-        min(90%,700px);
-
+    width: min(90%, 700px);
 }
 
 .tiny-star {
@@ -394,31 +310,20 @@ body {
     animation:
         starPulse
         3s ease-in-out infinite;
-
 }
-
 
 @keyframes starPulse {
 
     0%,
     100% {
-
-        transform:
-            scale(.8);
-
+        transform: scale(.8);
         opacity: .55;
-
     }
 
     50% {
-
-        transform:
-            scale(1.2);
-
+        transform: scale(1.2);
         opacity: 1;
-
     }
-
 }
 
 .eyebrow {
@@ -430,7 +335,6 @@ body {
     opacity: .6;
 
     margin-bottom: 22px;
-
 }
 
 .intro-content h1 {
@@ -446,8 +350,7 @@ body {
 
     line-height: .95;
 
-    margin-bottom: 35px;
-
+    margin-bottom: 30px;
 }
 
 .intro-content h1 span {
@@ -455,7 +358,6 @@ body {
     font-family:
         "Great Vibes",
         cursive;
-
 }
 
 .intro-text {
@@ -465,12 +367,11 @@ body {
         serif;
 
     font-size:
-        clamp(22px,4vw,30px);
+        clamp(21px,4vw,30px);
 
     opacity: .85;
 
-    margin-bottom: 5px;
-
+    margin-bottom: 4px;
 }
 
 
@@ -480,14 +381,13 @@ body {
 
 .main-button {
 
-    margin-top: 35px;
+    margin-top: 30px;
 
     padding:
         14px 27px;
 
     border:
-        1px solid
-        rgba(255,255,255,.35);
+        1px solid rgba(255,255,255,.35);
 
     border-radius: 999px;
 
@@ -510,13 +410,11 @@ body {
     cursor: pointer;
 
     box-shadow:
-        0 15px 40px
-        rgba(0,0,0,.35);
+        0 15px 40px rgba(0,0,0,.35);
 
     transition:
         transform .25s ease,
         box-shadow .25s ease;
-
 }
 
 .main-button:hover {
@@ -525,16 +423,13 @@ body {
         translateY(-4px);
 
     box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.45);
-
+        0 20px 50px rgba(0,0,0,.45);
 }
 
 .main-button:active {
 
     transform:
         scale(.96);
-
 }
 
 
@@ -556,7 +451,6 @@ body {
         opacity 1.3s ease;
 
     z-index: 10;
-
 }
 
 .universe.active {
@@ -564,7 +458,6 @@ body {
     opacity: 1;
 
     visibility: visible;
-
 }
 
 
@@ -588,7 +481,6 @@ body {
     text-align: center;
 
     z-index: 20;
-
 }
 
 .universe-heading h2 {
@@ -598,12 +490,11 @@ body {
         cursive;
 
     font-size:
-        clamp(45px,7vw,70px);
+        clamp(42px,7vw,68px);
 
     font-weight: 400;
 
-    margin-bottom: 4px;
-
+    margin-bottom: 2px;
 }
 
 .universe-heading > p:not(.eyebrow) {
@@ -612,10 +503,10 @@ body {
         "Cormorant Garamond",
         serif;
 
-    font-size: 20px;
+    font-size:
+        clamp(16px,2vw,21px);
 
     opacity: .65;
-
 }
 
 
@@ -625,29 +516,26 @@ body {
 
 .progress {
 
-    width:
-        min(280px,80%);
+    width: min(250px,75%);
 
     margin:
-        14px auto;
-
+        15px auto;
 }
 
 .progress span {
 
-    font-size: 9px;
+    font-size: 8px;
 
     letter-spacing: 2px;
 
-    opacity: .55;
-
+    opacity: .5;
 }
 
 .progress-bar {
 
     height: 3px;
 
-    margin-top: 8px;
+    margin-top: 7px;
 
     border-radius: 10px;
 
@@ -655,7 +543,6 @@ body {
         rgba(255,255,255,.1);
 
     overflow: hidden;
-
 }
 
 .progress-fill {
@@ -668,18 +555,15 @@ body {
         rgba(255,255,255,.9);
 
     box-shadow:
-        0 0 12px
-        rgba(255,255,255,.7);
+        0 0 12px rgba(255,255,255,.7);
 
     transition:
-        width .8s
-        cubic-bezier(.22,1,.36,1);
-
+        width .8s cubic-bezier(.22,1,.36,1);
 }
 
 
 /* =========================================================
-   CONSTELLATION
+   CONSTELLATION SVG
 ========================================================= */
 
 #constellation-svg {
@@ -696,7 +580,6 @@ body {
     z-index: 5;
 
     overflow: visible;
-
 }
 
 
@@ -708,8 +591,8 @@ body {
 
     position: absolute;
 
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
 
     display: flex;
 
@@ -718,8 +601,7 @@ body {
 
     border: none;
 
-    background:
-        transparent;
+    background: transparent;
 
     color: white;
 
@@ -728,16 +610,14 @@ body {
     z-index: 15;
 
     transition:
-        transform .4s
-        cubic-bezier(.22,1,.36,1);
-
+        transform .45s cubic-bezier(.22,1,.36,1),
+        opacity .5s ease;
 }
 
 .memory-star:hover {
 
     transform:
-        scale(1.2);
-
+        scale(1.22);
 }
 
 .star-symbol {
@@ -750,205 +630,149 @@ body {
 
     text-shadow:
         0 0 15px white,
-        0 0 35px
-        rgba(180,190,255,.9);
+        0 0 35px rgba(180,190,255,.9);
 
     animation:
         starBreathe
         3s ease-in-out infinite;
+}
 
+@keyframes starBreathe {
+
+    0%,
+    100% {
+        transform: scale(.8);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 .star-glow {
 
     position: absolute;
 
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
 
     border-radius: 50%;
 
     background:
         rgba(255,255,255,.08);
 
-    filter:
-        blur(12px);
+    filter: blur(12px);
 
     animation:
         glowBreathe
         3s ease-in-out infinite;
+}
 
+@keyframes glowBreathe {
+
+    0%,
+    100% {
+        transform: scale(.7);
+        opacity: .3;
+    }
+
+    50% {
+        transform: scale(1.4);
+        opacity: .9;
+    }
 }
 
 .star-label {
 
     position: absolute;
 
-    top: 70px;
+    top: 64px;
 
-    width: 150px;
+    width: 120px;
 
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    font-size: 9px;
+    font-size: 8px;
 
     letter-spacing: 1px;
 
-    opacity: .6;
-
-    white-space: nowrap;
+    opacity: .55;
 
     transition:
         opacity .3s ease;
-
 }
 
 .memory-star:hover .star-label {
 
     opacity: 1;
-
-}
-
-
-@keyframes starBreathe {
-
-    0%,
-    100% {
-
-        transform:
-            scale(.8);
-
-    }
-
-    50% {
-
-        transform:
-            scale(1.1);
-
-    }
-
-}
-
-
-@keyframes glowBreathe {
-
-    0%,
-    100% {
-
-        transform:
-            scale(.7);
-
-        opacity: .3;
-
-    }
-
-    50% {
-
-        transform:
-            scale(1.4);
-
-        opacity: .9;
-
-    }
-
 }
 
 
 /* =========================================================
-   10 STAR POSITIONS
+   HEART POSITIONS
 ========================================================= */
 
-/* 12.03 */
+/*
+   These positions create a heart-shaped path.
+
+   Sequence:
+
+             01       02
+          10             03
+        09                 04
+        08                 05
+          07             06
+             \           /
+              \_________/
+
+*/
 
 .star-one {
-
-    left: 8%;
-    top: 32%;
-
+    left: 34%;
+    top: 25%;
 }
-
-/* 02.04 */
 
 .star-two {
-
-    left: 27%;
-    top: 24%;
-
+    left: 54%;
+    top: 25%;
 }
-
-/* 14.04 */
 
 .star-three {
-
-    left: 48%;
-    top: 31%;
-
+    left: 68%;
+    top: 34%;
 }
-
-/* 29.04 */
 
 .star-four {
-
-    right: 10%;
-    top: 27%;
-
+    left: 74%;
+    top: 48%;
 }
-
-/* 08.06 */
 
 .star-five {
-
-    right: 24%;
-    top: 50%;
-
+    left: 66%;
+    top: 62%;
 }
-
-/* 30.06 */
 
 .star-six {
-
-    right: 7%;
-    top: 59%;
-
+    left: 55%;
+    top: 73%;
 }
-
-/* 13.07 */
 
 .star-seven {
-
-    left: 12%;
-    bottom: 20%;
-
+    left: 45%;
+    top: 81%;
 }
-
-/* 05.08 */
 
 .star-eight {
-
-    left: 34%;
-    bottom: 15%;
-
+    left: 35%;
+    top: 73%;
 }
-
-/* 14.08 */
 
 .star-nine {
-
-    left: 55%;
-    bottom: 19%;
-
+    left: 24%;
+    top: 62%;
 }
 
-/* 25.08 */
-
 .star-ten {
-
-    right: 9%;
-    bottom: 19%;
-
+    left: 16%;
+    top: 48%;
 }
 
 
@@ -958,8 +782,7 @@ body {
 
 .memory-star.discovered {
 
-    opacity: .5;
-
+    opacity: .8;
 }
 
 .memory-star.discovered .star-symbol {
@@ -969,15 +792,14 @@ body {
 
     text-shadow:
         0 0 10px #ffd9e7,
-        0 0 25px #ff9fc4;
-
+        0 0 25px #ff9fc4,
+        0 0 45px rgba(255,150,200,.6);
 }
 
 .memory-star.discovered .star-glow {
 
     background:
         rgba(255,170,205,.2);
-
 }
 
 .memory-star.discovered::after {
@@ -986,13 +808,12 @@ body {
 
     position: absolute;
 
-    top: 3px;
-    right: 0;
+    top: 0;
+    right: -2px;
 
-    font-size: 11px;
+    font-size: 10px;
 
     opacity: .8;
-
 }
 
 
@@ -1020,9 +841,8 @@ body {
     z-index: 100;
 
     transition:
-        opacity .5s ease,
-        visibility .5s ease;
-
+        opacity .45s ease,
+        visibility .45s ease;
 }
 
 .memory-modal.show {
@@ -1030,7 +850,6 @@ body {
     opacity: 1;
 
     visibility: visible;
-
 }
 
 .modal-backdrop {
@@ -1040,27 +859,30 @@ body {
     inset: 0;
 
     background:
-        rgba(0,0,10,.80);
+        rgba(0,0,10,.78);
 
     backdrop-filter:
-        blur(15px);
-
+        blur(14px);
 }
+
+
+/* =========================================================
+   MEMORY CARD
+========================================================= */
 
 .memory-card {
 
     position: relative;
 
     width:
-        min(92%,600px);
+        min(92vw, 680px);
 
     max-height:
-        88vh;
-
-    overflow: hidden;
+        94vh;
 
     padding:
-        28px 30px;
+        clamp(22px,4vh,35px)
+        clamp(20px,4vw,38px);
 
     border-radius: 25px;
 
@@ -1074,21 +896,25 @@ body {
         );
 
     border:
-        1px solid
-        rgba(255,255,255,.15);
+        1px solid rgba(255,255,255,.15);
 
     box-shadow:
-        0 30px 90px
-        rgba(0,0,0,.65);
+        0 30px 90px rgba(0,0,0,.65);
 
     transform:
         translateY(30px)
         scale(.92);
 
     transition:
-        transform .6s
-        cubic-bezier(.22,1,.36,1);
+        transform .6s cubic-bezier(.22,1,.36,1);
 
+    /*
+       Critical:
+       no scrolling.
+    */
+
+    overflow:
+        hidden;
 }
 
 .memory-modal.show .memory-card {
@@ -1096,43 +922,45 @@ body {
     transform:
         translateY(0)
         scale(1);
-
 }
+
+
+/* =========================================================
+   CLOSE
+========================================================= */
 
 .close-button {
 
     position: absolute;
 
-    right: 17px;
-    top: 10px;
+    right: 15px;
+    top: 9px;
 
     border: none;
 
-    background:
-        transparent;
+    background: transparent;
 
     color: white;
 
-    font-size: 28px;
+    font-size: 27px;
 
     opacity: .5;
 
     cursor: pointer;
 
+    z-index: 5;
 }
 
-.close-button:hover {
 
-    opacity: 1;
-
-}
+/* =========================================================
+   MEMORY CONTENT
+========================================================= */
 
 .memory-icon {
 
-    font-size: 32px;
+    font-size: 28px;
 
-    margin-bottom: 5px;
-
+    margin-bottom: 4px;
 }
 
 .memory-number {
@@ -1143,8 +971,7 @@ body {
 
     opacity: .5;
 
-    margin-bottom: 7px;
-
+    margin-bottom: 4px;
 }
 
 .memory-card h2 {
@@ -1154,24 +981,24 @@ body {
         cursive;
 
     font-size:
-        clamp(43px,7vw,58px);
+        clamp(40px,7vw,58px);
 
     font-weight: 400;
 
+    line-height: 1;
 }
 
 .memory-line {
 
-    width: 60px;
+    width: 55px;
 
     height: 1px;
 
     margin:
-        10px auto 15px;
+        10px auto;
 
     background:
         rgba(255,255,255,.4);
-
 }
 
 .memory-text {
@@ -1181,61 +1008,123 @@ body {
         serif;
 
     font-size:
-        clamp(20px,3vw,25px);
+        clamp(17px,2.2vw,23px);
 
-    line-height: 1.3;
+    line-height:
+        1.22;
 
     opacity: .9;
 
-    margin-bottom: 18px;
+    max-width: 610px;
 
+    margin:
+        0 auto 14px;
 }
 
 
 /* =========================================================
-   PHOTO AREA
+   DYNAMIC PHOTO
 ========================================================= */
 
 .memory-photo {
 
-    height: 125px;
+    width:
+        fit-content;
 
-    border-radius: 15px;
+    max-width:
+        100%;
+
+    max-height:
+        31vh;
+
+    margin:
+        0 auto 14px;
+
+    border-radius:
+        14px;
+
+    overflow:
+        hidden;
 
     border:
-        1px dashed
-        rgba(255,255,255,.25);
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    flex-direction: column;
+        1px solid rgba(255,255,255,.18);
 
     background:
         rgba(255,255,255,.035);
 
-    margin-bottom: 17px;
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.4);
 
+    transition:
+        transform .4s ease;
 }
 
-.memory-photo span {
+.memory-photo:hover {
 
-    font-size: 32px;
-
-    margin-bottom: 5px;
-
+    transform:
+        scale(1.015);
 }
 
-.memory-photo small {
+.memory-photo img {
+
+    display: block;
+
+    width:
+        auto;
+
+    height:
+        auto;
+
+    max-width:
+        100%;
+
+    max-height:
+        31vh;
+
+    object-fit:
+        contain;
+}
+
+
+/*
+   Placeholder if no image exists.
+*/
+
+.photo-placeholder {
+
+    width:
+        min(100%,400px);
+
+    height:
+        120px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    flex-direction:
+        column;
+
+    gap: 5px;
+
+    opacity: .5;
+}
+
+.photo-placeholder span {
+
+    font-size: 30px;
+}
+
+.photo-placeholder small {
 
     font-size: 7px;
 
     letter-spacing: 2px;
-
-    opacity: .5;
-
 }
 
 
@@ -1246,13 +1135,13 @@ body {
 .memory-done {
 
     padding:
-        11px 22px;
+        10px 20px;
 
-    border-radius: 999px;
+    border-radius:
+        999px;
 
     border:
-        1px solid
-        rgba(255,255,255,.25);
+        1px solid rgba(255,255,255,.25);
 
     background:
         rgba(255,255,255,.96);
@@ -1260,24 +1149,26 @@ body {
     color:
         #17113d;
 
-    font-size: 8px;
+    font-size:
+        8px;
 
-    letter-spacing: 1px;
+    letter-spacing:
+        1px;
 
-    font-weight: 600;
+    font-weight:
+        600;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     transition:
         transform .25s ease;
-
 }
 
 .memory-done:hover {
 
     transform:
         translateY(-3px);
-
 }
 
 
@@ -1291,55 +1182,114 @@ body {
 
     inset: 0;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
-    justify-content: center;
+    align-items:
+        center;
 
-    flex-direction: column;
+    justify-content:
+        center;
 
-    text-align: center;
+    flex-direction:
+        column;
 
-    padding: 25px;
+    text-align:
+        center;
+
+    padding:
+        25px;
 
     background:
-        rgba(2,2,11,.93);
+        rgba(2,2,11,.91);
 
     backdrop-filter:
-        blur(18px);
+        blur(15px);
 
-    opacity: 0;
+    opacity:
+        0;
 
-    visibility: hidden;
+    visibility:
+        hidden;
 
     transition:
         opacity 1.2s ease,
         visibility 1.2s ease;
 
-    z-index: 50;
-
+    z-index:
+        50;
 }
 
 .universe-complete.show {
 
-    opacity: 1;
+    opacity:
+        1;
 
-    visibility: visible;
-
+    visibility:
+        visible;
 }
 
-.complete-stars {
+.complete-heart {
 
-    font-size: 28px;
+    width:
+        150px;
 
-    letter-spacing: 12px;
+    height:
+        150px;
 
-    margin-bottom: 20px;
+    position:
+        relative;
+
+    margin-bottom:
+        20px;
+}
+
+.complete-heart::before {
+
+    content:
+        "♥";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        115px;
+
+    color:
+        rgba(255,180,210,.12);
+
+    text-shadow:
+        0 0 30px rgba(255,150,200,.5);
 
     animation:
-        completionStars
+        heartPulse
         2s ease-in-out infinite;
+}
 
+@keyframes heartPulse {
+
+    0%,
+    100% {
+        transform:
+            scale(.92);
+    }
+
+    50% {
+        transform:
+            scale(1.08);
+    }
 }
 
 .universe-complete h2 {
@@ -1349,12 +1299,13 @@ body {
         cursive;
 
     font-size:
-        clamp(50px,8vw,80px);
+        clamp(48px,8vw,78px);
 
-    font-weight: 400;
+    font-weight:
+        400;
 
-    margin-bottom: 15px;
-
+    margin-bottom:
+        10px;
 }
 
 .universe-complete p {
@@ -1364,34 +1315,35 @@ body {
         serif;
 
     font-size:
-        clamp(22px,4vw,28px);
+        clamp(20px,3vw,28px);
 
-    opacity: .8;
+    opacity:
+        .82;
 
-    max-width: 650px;
+    max-width:
+        650px;
 
-    line-height: 1.35;
+    line-height:
+        1.25;
 
+    margin-bottom:
+        4px;
 }
 
+.surprise-text {
 
-@keyframes completionStars {
+    margin-top:
+        12px;
 
-    0%,
-    100% {
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
-        transform:
-            scale(.9);
+    font-size:
+        clamp(19px,3vw,25px);
 
-    }
-
-    50% {
-
-        transform:
-            scale(1.15);
-
-    }
-
+    opacity:
+        .75;
 }
 
 
@@ -1401,31 +1353,41 @@ body {
 
 .music-button {
 
-    position: fixed;
+    position:
+        fixed;
 
-    right: 20px;
-    bottom: 20px;
+    right:
+        20px;
 
-    width: 44px;
-    height: 44px;
+    bottom:
+        20px;
 
-    border-radius: 50%;
+    width:
+        44px;
+
+    height:
+        44px;
+
+    border-radius:
+        50%;
 
     border:
-        1px solid
-        rgba(255,255,255,.25);
+        1px solid rgba(255,255,255,.25);
 
     background:
         rgba(255,255,255,.08);
 
-    color: white;
+    color:
+        white;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    z-index: 200;
+    z-index:
+        200;
 
-    font-size: 18px;
-
+    font-size:
+        18px;
 }
 
 
@@ -1433,311 +1395,234 @@ body {
    MOBILE
 ========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width:700px) {
 
     .universe-heading {
 
-        top: 4%;
-
+        top:
+            4%;
     }
 
     .universe-heading h2 {
 
-        font-size: 45px;
-
+        font-size:
+            44px;
     }
 
     .universe-heading > p:not(.eyebrow) {
 
-        font-size: 16px;
-
+        font-size:
+            16px;
     }
 
+    /*
+       Heart becomes slightly smaller
+       and tighter on phones.
+    */
 
-    .memory-star {
-
-        width: 70px;
-        height: 70px;
-
+    .star-one {
+        left: 27%;
+        top: 27%;
     }
 
-    .star-symbol {
-
-        font-size: 23px;
-
+    .star-two {
+        left: 53%;
+        top: 27%;
     }
 
-    .star-glow {
+    .star-three {
+        left: 70%;
+        top: 37%;
+    }
 
-        width: 55px;
-        height: 55px;
+    .star-four {
+        left: 74%;
+        top: 49%;
+    }
 
+    .star-five {
+        left: 66%;
+        top: 62%;
+    }
+
+    .star-six {
+        left: 55%;
+        top: 72%;
+    }
+
+    .star-seven {
+        left: 45%;
+        top: 78%;
+    }
+
+    .star-eight {
+        left: 34%;
+        top: 72%;
+    }
+
+    .star-nine {
+        left: 23%;
+        top: 62%;
+    }
+
+    .star-ten {
+        left: 15%;
+        top: 49%;
     }
 
     .star-label {
 
-        top: 58px;
+        width:
+            100px;
 
-        font-size: 7px;
-
-        width: 100px;
-
+        font-size:
+            7px;
     }
-
-
-    .star-one {
-
-        left: 3%;
-        top: 30%;
-
-    }
-
-    .star-two {
-
-        left: 27%;
-        top: 23%;
-
-    }
-
-    .star-three {
-
-        left: 47%;
-        top: 29%;
-
-    }
-
-    .star-four {
-
-        right: 2%;
-        top: 27%;
-
-    }
-
-    .star-five {
-
-        right: 20%;
-        top: 47%;
-
-    }
-
-    .star-six {
-
-        right: 1%;
-        top: 57%;
-
-    }
-
-    .star-seven {
-
-        left: 4%;
-        bottom: 17%;
-
-    }
-
-    .star-eight {
-
-        left: 29%;
-        bottom: 13%;
-
-    }
-
-    .star-nine {
-
-        left: 52%;
-        bottom: 17%;
-
-    }
-
-    .star-ten {
-
-        right: 2%;
-        bottom: 18%;
-
-    }
-
 
     .memory-card {
 
-        width: 94%;
+        width:
+            94vw;
 
         padding:
-            25px 18px;
-
+            20px 16px;
     }
 
     .memory-text {
 
-        font-size: 20px;
+        font-size:
+            17px;
 
+        line-height:
+            1.17;
+
+        margin-bottom:
+            9px;
     }
 
     .memory-photo {
 
-        height: 95px;
+        max-height:
+            27vh;
 
+        margin-bottom:
+            9px;
     }
 
-}
+    .memory-photo img {
 
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
-
-@media (max-width: 390px) {
-
-    .universe-heading h2 {
-
-        font-size: 39px;
-
-    }
-
-    .universe-heading > p:not(.eyebrow) {
-
-        font-size: 14px;
-
-    }
-
-    .progress {
-
-        margin-top: 9px;
-
-    }
-
-    .memory-card {
-
-        padding:
-            20px 15px;
-
+        max-height:
+            27vh;
     }
 
     .memory-card h2 {
 
-        font-size: 40px;
-
+        font-size:
+            43px;
     }
 
-    .memory-text {
+    .memory-icon {
 
-        font-size: 18px;
-
-        line-height: 1.25;
-
+        font-size:
+            24px;
     }
 
-    .memory-photo {
+    .memory-done {
 
-        height: 75px;
-
+        padding:
+            9px 17px;
     }
 
 }
 
 
 /* =========================================================
-   LANDSCAPE PHONE
+   VERY SMALL HEIGHT SCREENS
 ========================================================= */
 
-@media
-    (max-height: 600px)
-    and (orientation: landscape) {
+@media (max-height:650px) {
 
     .universe-heading {
 
-        top: 2%;
-
+        top:
+            2%;
     }
 
     .universe-heading h2 {
 
-        font-size: 38px;
-
-    }
-
-    .universe-heading > p:not(.eyebrow) {
-
-        display: none;
-
+        font-size:
+            40px;
     }
 
     .progress {
 
         margin:
-            5px auto;
-
+            8px auto;
     }
 
     .memory-card {
 
-        max-height: 94vh;
-
         padding:
-            15px 25px;
-
-    }
-
-    .memory-icon {
-
-        font-size: 24px;
-
+            15px 16px;
     }
 
     .memory-card h2 {
 
-        font-size: 38px;
-
+        font-size:
+            38px;
     }
 
     .memory-text {
 
-        font-size: 18px;
+        font-size:
+            16px;
 
-        margin-bottom: 8px;
-
+        line-height:
+            1.12;
     }
 
     .memory-photo {
 
-        display: none;
+        max-height:
+            23vh;
+    }
 
+    .memory-photo img {
+
+        max-height:
+            23vh;
     }
 
 }
 
 </style>
-
 </head>
 
 
 <body>
 
 
-<!-- =========================================================
-     TRANSITION
-========================================================= -->
+<!-- =====================================================
+     PAGE TRANSITION
+===================================================== -->
 
 <div id="pageTransition"></div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      BACKGROUND
-========================================================= -->
+===================================================== -->
 
 <div class="nebula nebula-one"></div>
-
 <div class="nebula nebula-two"></div>
-
 <div class="nebula nebula-three"></div>
 
-<div
-    class="stars"
-    id="stars">
-</div>
+<div class="stars" id="stars"></div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      INTRO
-========================================================= -->
+===================================================== -->
 
 <section
     class="intro-screen active"
@@ -1754,34 +1639,24 @@ body {
         </p>
 
         <h1>
-
             Our Little
             <br>
-
-            <span>
-                Universe
-            </span>
-
+            <span>Universe</span>
         </h1>
 
         <p class="intro-text">
-
-            Somewhere between all these stars...
-
+            Ten little moments...
         </p>
 
         <p class="intro-text">
-
-            there are little pieces of us.
-            ❤️
-
+            that slowly became our story. ❤️
         </p>
 
         <button
             id="exploreButton"
             class="main-button">
 
-            EXPLORE OUR STORY ✨
+            FIND OUR MEMORIES ✨
 
         </button>
 
@@ -1790,43 +1665,36 @@ body {
 </section>
 
 
-<!-- =========================================================
+<!-- =====================================================
      UNIVERSE
-========================================================= -->
+===================================================== -->
 
 <main
     class="universe"
     id="universe">
 
 
+    <!-- HEADING -->
+
     <div class="universe-heading">
 
         <p class="eyebrow">
-
-            OUR LITTLE ADVENTURE
-
+            TISHA'S LITTLE UNIVERSE
         </p>
 
         <h2>
-
             Find our memories...
-
         </h2>
 
         <p>
-
-            Ten little moments.
-            One beautiful story.
-
+            Ten moments.
+            One story.
         </p>
-
 
         <div class="progress">
 
             <span id="progressText">
-
                 0 / 10 discovered
-
             </span>
 
             <div class="progress-bar">
@@ -1843,9 +1711,12 @@ body {
     </div>
 
 
-    <!-- =====================================================
-         STAR 1
-    ====================================================== -->
+    <!-- =================================================
+         TEN HEART STARS
+    ================================================= -->
+
+
+    <!-- 01 -->
 
     <button
         class="memory-star star-one"
@@ -1865,11 +1736,31 @@ body {
     </button>
 
 
-    <!-- STAR 2 -->
+    <!-- 02 -->
 
     <button
         class="memory-star star-two"
         data-memory="1"
+        aria-label="19 March 2026">
+
+        <span class="star-glow"></span>
+
+        <span class="star-symbol">
+            ✦
+        </span>
+
+        <span class="star-label">
+            19.03.26
+        </span>
+
+    </button>
+
+
+    <!-- 03 -->
+
+    <button
+        class="memory-star star-three"
+        data-memory="2"
         aria-label="2 April 2026">
 
         <span class="star-glow"></span>
@@ -1885,11 +1776,11 @@ body {
     </button>
 
 
-    <!-- STAR 3 -->
+    <!-- 04 -->
 
     <button
-        class="memory-star star-three"
-        data-memory="2"
+        class="memory-star star-four"
+        data-memory="3"
         aria-label="14 April 2026">
 
         <span class="star-glow"></span>
@@ -1905,11 +1796,11 @@ body {
     </button>
 
 
-    <!-- STAR 4 -->
+    <!-- 05 -->
 
     <button
-        class="memory-star star-four"
-        data-memory="3"
+        class="memory-star star-five"
+        data-memory="4"
         aria-label="29 April 2026">
 
         <span class="star-glow"></span>
@@ -1925,11 +1816,11 @@ body {
     </button>
 
 
-    <!-- STAR 5 -->
+    <!-- 06 -->
 
     <button
-        class="memory-star star-five"
-        data-memory="4"
+        class="memory-star star-six"
+        data-memory="5"
         aria-label="8 June 2026">
 
         <span class="star-glow"></span>
@@ -1945,11 +1836,11 @@ body {
     </button>
 
 
-    <!-- STAR 6 -->
+    <!-- 07 -->
 
     <button
-        class="memory-star star-six"
-        data-memory="5"
+        class="memory-star star-seven"
+        data-memory="6"
         aria-label="30 June 2026">
 
         <span class="star-glow"></span>
@@ -1965,11 +1856,11 @@ body {
     </button>
 
 
-    <!-- STAR 7 -->
+    <!-- 08 -->
 
     <button
-        class="memory-star star-seven"
-        data-memory="6"
+        class="memory-star star-eight"
+        data-memory="7"
         aria-label="13 July 2026">
 
         <span class="star-glow"></span>
@@ -1985,11 +1876,11 @@ body {
     </button>
 
 
-    <!-- STAR 8 -->
+    <!-- 09 -->
 
     <button
-        class="memory-star star-eight"
-        data-memory="7"
+        class="memory-star star-nine"
+        data-memory="8"
         aria-label="5 August 2026">
 
         <span class="star-glow"></span>
@@ -2005,27 +1896,7 @@ body {
     </button>
 
 
-    <!-- STAR 9 -->
-
-    <button
-        class="memory-star star-nine"
-        data-memory="8"
-        aria-label="14 August 2026">
-
-        <span class="star-glow"></span>
-
-        <span class="star-symbol">
-            ✦
-        </span>
-
-        <span class="star-label">
-            14.08.26
-        </span>
-
-    </button>
-
-
-    <!-- STAR 10 -->
+    <!-- 10 -->
 
     <button
         class="memory-star star-ten"
@@ -2045,45 +1916,35 @@ body {
     </button>
 
 
-    <!-- =====================================================
+    <!-- =================================================
          COMPLETION
-    ====================================================== -->
+    ================================================= -->
 
     <div
         id="universeComplete"
         class="universe-complete">
 
-        <div class="complete-stars">
-
-            ✦ ✧ ✦ ✧ ✦
-
-        </div>
+        <div class="complete-heart"></div>
 
         <h2>
-
-            You found us all. ❤️
-
+            You found them all. ❤️
         </h2>
 
         <p>
+            Ten little moments.
+            <br>
+            One beautiful story.
+        </p>
 
-            Ten little moments...
-            ten pieces of our story.
-
-            <br><br>
-
-            But our story doesn't end here.
-
-            There's a little surprise waiting
-            for you beyond the stars...
-
+        <p class="surprise-text">
+            But there's something waiting for you...
         </p>
 
         <button
             id="continueButton"
             class="main-button">
 
-            THERE'S SOMETHING FOR YOU → 
+            THERE'S SOMETHING WAITING FOR YOU →
 
         </button>
 
@@ -2092,15 +1953,18 @@ body {
 </main>
 
 
-<!-- =========================================================
+<!-- =====================================================
      MEMORY MODAL
-========================================================= -->
+===================================================== -->
 
 <div
     id="memoryModal"
     class="memory-modal">
 
-    <div class="modal-backdrop"></div>
+    <div
+        class="modal-backdrop">
+    </div>
+
 
     <div class="memory-card">
 
@@ -2133,9 +1997,10 @@ body {
         </p>
 
 
-        <h2 id="memoryTitle">
+        <h2
+            id="memoryTitle">
 
-            Our Beginning
+            The Beginning
 
         </h2>
 
@@ -2146,19 +2011,14 @@ body {
         <p
             id="memoryText"
             class="memory-text">
-
         </p>
 
 
-        <div class="memory-photo">
+        <!-- PHOTO -->
 
-            <span>
-                📷
-            </span>
-
-            <small>
-                YOUR PHOTO WILL GO HERE
-            </small>
+        <div
+            id="memoryPhoto"
+            class="memory-photo">
 
         </div>
 
@@ -2171,15 +2031,14 @@ body {
 
         </button>
 
-
     </div>
 
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      MUSIC BUTTON
-========================================================= -->
+===================================================== -->
 
 <button
     id="musicButton"
@@ -2191,20 +2050,20 @@ body {
 </button>
 
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
 <script>
+
+/* =========================================================
+   DOM READY
+========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     function () {
 
 
-        /* =====================================================
+        /* =================================================
            ELEMENTS
-        ===================================================== */
+        ================================================= */
 
         const transition =
             document.getElementById(
@@ -2266,6 +2125,11 @@ document.addEventListener(
                 "memoryIcon"
             );
 
+        const memoryPhoto =
+            document.getElementById(
+                "memoryPhoto"
+            );
+
         const progressText =
             document.getElementById(
                 "progressText"
@@ -2292,157 +2156,187 @@ document.addEventListener(
             );
 
 
-        /* =====================================================
-           MEMORY DATA
-        ===================================================== */
+        /* =================================================
+           MEMORIES
+        ================================================= */
 
         const memories = [
 
             {
+                date: "12.03.26",
 
                 title:
-                    "The First Hi",
+                    "The Beginning",
 
                 icon:
-                    "💫",
+                    "✦",
 
                 text:
-                    "12.03.26 — 11 PM. The night we first said hi to each other. Just one tiny message, just two people talking for the first time... but somehow that little \"Hi\" became the beginning of everything that followed. Neither of us knew where it would take us. We just started talking... and then the journey began. ❤️"
+                    '12.03.26 — the day we first said "Hi" to each other at 11 PM. It started with just one tiny message, but somehow that little "Hi" became the beginning of this entire journey. ❤️',
 
+                image:
+                    "images/memory-01.jpg"
             },
 
 
             {
+                date: "19.03.26",
 
                 title:
-                    "A Voice I'll Never Forget",
+                    "That First Picture",
 
                 icon:
-                    "🎶",
+                    "✦",
 
                 text:
-                    "02.04.26 — The first time I heard you sing. It wasn't even some grand performance... it was a video. But hearing your voice like that felt so soothing and peaceful. Serene. There was something about listening to you that made everything around me feel a little quieter for a moment."
+                    "19.03.26 — the first picture you sent me. You were looking absolutely gorgeous in that black outfit, and honestly... I remember being completely distracted by you. That picture definitely left an impression on me. ❤️",
 
+                image:
+                    "images/memory-02.jpg"
             },
 
 
             {
+                date: "02.04.26",
 
                 title:
-                    "Finally... You Said It",
+                    "Your Voice",
 
                 icon:
-                    "❤️",
+                    "✦",
 
                 text:
-                    "14.04.26 — After all those times of me calling you \"love\", the moment finally came. You confessed that you were madly in love with me. And honestly... hearing you finally say it made all those little moments before it feel completely worth it. That was the day we stopped pretending there was nothing between us."
+                    "02.04.26 — the first time I heard you sing. It was through a video, but somehow your voice felt so soothing and peaceful. It was one of those moments where I just wanted to keep listening. So serene. ❤️",
 
+                image:
+                    "images/memory-03.jpg"
             },
 
 
             {
+                date: "14.04.26",
+
+                title:
+                    "The Confession",
+
+                icon:
+                    "✦",
+
+                text:
+                    '14.04.26 — after I kept calling you "love", you finally confessed it. You told me that you were madly in love with me. And honestly, hearing you finally say it made that moment incredibly special. ❤️',
+
+                image:
+                    "images/memory-04.jpg"
+            },
+
+
+            {
+                date: "29.04.26",
 
                 title:
                     "My Name On Your Hand",
 
                 icon:
-                    "🌿",
+                    "✦",
 
                 text:
-                    "29.04.26 — You wrote my name on your hand with mehndi. And what made it so special wasn't just seeing my name there. It was knowing that you did it without being afraid of someone seeing it. Your family could have noticed it... but you still did it. That little piece of mehndi meant so much more to me than you probably realised."
+                    "29.04.26 — you wrote my name on your hand with mehndi without being afraid of anyone seeing it. Your family could have noticed it, but you still did it. That little gesture meant so much to me because it showed how fearlessly you cared about us. ❤️",
 
+                image:
+                    "images/memory-05.jpg"
             },
 
 
             {
+                date: "08.06.26",
 
                 title:
-                    "You Were Worried About Me",
+                    "You Took Care Of Me",
 
                 icon:
-                    "🥤",
+                    "✦",
 
                 text:
-                    "08.06.26 — I told you that my tongue wasn't fine and that I hadn't eaten anything. You didn't just say \"take care\" and move on. You actually worried about me and ordered snacks for me because you wanted me to eat something. It was such a small thing... but that's exactly the kind of small thing that makes someone feel loved."
+                    "08.06.26 — I told you that my tongue wasn't feeling right and that I hadn't eaten anything. You got worried and ordered snacks for me just because you wanted me to eat something. It was such a small thing, but that little act of care made me feel incredibly loved. ❤️",
 
+                image:
+                    "images/memory-06.jpg"
             },
 
 
             {
+                date: "30.06.26",
 
                 title:
                     "My First Birthday With You",
 
                 icon:
-                    "🎂",
+                    "✦",
 
                 text:
-                    "30.06.26 — My birthday. My first birthday with you. And you made it so incredibly special. I got your handmade portrait of me, letters, cards, cake, chocolates... and most importantly, so much of your love poured into everything you did. Your efforts were impossible to miss. All my boys and even my family went crazy about your presents. Man... my girl is the best. ❤️"
+                    "30.06.26 — my first birthday with you. You made it so incredibly special. I received your handmade portrait of me, letters, cards, cake, chocolates and, most importantly, so much of your love. Your effort was visible in every little detail. Even my boys and my family went crazy over your present. Man... my girl is the best. ❤️",
 
+                image:
+                    "images/memory-07.jpg"
             },
 
 
             {
+                date: "13.07.26",
 
                 title:
                     "Three Days In Patna",
 
                 icon:
-                    "🌆",
+                    "✦",
 
                 text:
-                    "13.07.26 — I came to your city and spent three days with you. Honestly, it felt like our own little honeymoon. We slept, we laughed, we ate, we roamed around, we talked, we were cozy... and we were simply in love. You made ordinary moments feel special. I enjoyed Patna because of you. The city became beautiful because you were there with me."
+                    "13.07.26 — I came to your city and spent three beautiful days with you. It honestly felt like our own little honeymoon. You slept so peacefully, and we went places, roamed around, slept, laughed, ate and simply enjoyed being together. I loved Patna because you were there. ❤️",
 
+                image:
+                    "images/memory-08.jpg"
             },
 
 
             {
+                date: "05.08.26",
 
                 title:
-                    "You're Back",
+                    "You Came Back",
 
                 icon:
-                    "✨",
+                    "✦",
 
                 text:
-                    "05.08.26 — After so many days apart, you came back to Dhanbad. We finally met again and started remembering all those days in Patna. We got cozy at Parklane, kissed, hugged and simply enjoyed having each other around again. After missing you for so long, that day felt incredibly comforting."
+                    "05.08.26 — after so many days, you came back to Dhanbad. We finally met again and remembered all those beautiful days in Patna. We got cozy at Parklane, kissed, hugged and spent such a lovely day together. Seeing you again after that wait felt incredibly special. ❤️",
 
+                image:
+                    "images/memory-09.jpg"
             },
 
 
             {
+                date: "25.08.26",
 
                 title:
-                    "Our First Movie Date",
+                    "The Call From Prayagraj",
 
                 icon:
-                    "🎬",
+                    "✦",
 
                 text:
-                    "14.08.26 — Our first movie date. Awarapan 2. And you booked the tickets without even telling me beforehand. We went first day, first show and had such a lovely movie date. Then we ate God knows what kind of chat... and somehow, since then, your appetite has disappeared. 😂 But honestly, I loved every ridiculous little part of that day with you."
+                    "25.08.26 — I got my allocation for Prayagraj. We had a small rift around that time, but then I saw that mail saying I had been called to Prayagraj. And somehow, after me, you were the very first person to know. No matter what happens, you're someone I naturally want to share the important moments of my life with. ❤️",
 
-            },
-
-
-            {
-
-                title:
-                    "Prayagraj",
-
-                icon:
-                    "🎓",
-
-                text:
-                    "25.08.26 — I got my allocation for Prayagraj. We had a small rift around that time, but then I saw that mail telling me I had been called to Prayagraj. And the first person I told after myself... was you. Because no matter what little argument we might have, when something important happens in my life, you're one of the first people I want beside me."
-
+                image:
+                    "images/memory-10.jpg"
             }
 
         ];
 
 
-        /* =====================================================
+        /* =================================================
            STATE
-        ===================================================== */
+        ================================================= */
 
         let discovered = 0;
 
@@ -2451,9 +2345,9 @@ document.addEventListener(
         const discoveredStars = [];
 
 
-        /* =====================================================
-           INITIAL FADE
-        ===================================================== */
+        /* =================================================
+           INITIAL PAGE FADE
+        ================================================= */
 
         if (transition) {
 
@@ -2471,9 +2365,9 @@ document.addEventListener(
         }
 
 
-        /* =====================================================
+        /* =================================================
            BACKGROUND STARS
-        ===================================================== */
+        ================================================= */
 
         function createBackgroundStars() {
 
@@ -2483,7 +2377,7 @@ document.addEventListener(
 
             for (
                 let i = 0;
-                i < 120;
+                i < 110;
                 i++
             ) {
 
@@ -2496,7 +2390,7 @@ document.addEventListener(
                     "background-star";
 
                 star.textContent =
-                    Math.random() > .82
+                    Math.random() > .84
                         ? "✦"
                         : "•";
 
@@ -2520,17 +2414,15 @@ document.addEventListener(
                 starContainer.appendChild(
                     star
                 );
-
             }
-
         }
 
         createBackgroundStars();
 
 
-        /* =====================================================
+        /* =================================================
            SHOOTING STARS
-        ===================================================== */
+        ================================================= */
 
         function createShootingStar() {
 
@@ -2539,9 +2431,7 @@ document.addEventListener(
                     "active"
                 )
             ) {
-
                 return;
-
             }
 
             const shootingStar =
@@ -2574,19 +2464,18 @@ document.addEventListener(
                 },
                 1600
             );
-
         }
 
 
         setInterval(
             createShootingStar,
-            4500
+            5000
         );
 
 
-        /* =====================================================
+        /* =================================================
            ENTER UNIVERSE
-        ===================================================== */
+        ================================================= */
 
         exploreButton.addEventListener(
             "click",
@@ -2613,9 +2502,9 @@ document.addEventListener(
         );
 
 
-        /* =====================================================
+        /* =================================================
            CONSTELLATION SVG
-        ===================================================== */
+        ================================================= */
 
         function getConstellationSVG() {
 
@@ -2625,9 +2514,7 @@ document.addEventListener(
                 );
 
             if (svg) {
-
                 return svg;
-
             }
 
             svg =
@@ -2644,38 +2531,37 @@ document.addEventListener(
             );
 
             return svg;
-
         }
 
 
-        /* =====================================================
+        /* =================================================
            DRAW CONSTELLATION
-        ===================================================== */
+        ================================================= */
 
         function drawConstellation() {
 
             const svg =
                 getConstellationSVG();
 
-            while (
-                svg.firstChild
-            ) {
+            while (svg.firstChild) {
 
                 svg.removeChild(
                     svg.firstChild
                 );
-
             }
 
 
             if (
                 discoveredStars.length < 2
             ) {
-
                 return;
-
             }
 
+
+            /*
+             * Connect the discovered stars
+             * in discovery order.
+             */
 
             for (
                 let i = 0;
@@ -2694,13 +2580,11 @@ document.addEventListener(
                         discoveredStars[i + 1]
                     ];
 
-
                 const firstRect =
                     firstStar.getBoundingClientRect();
 
                 const secondRect =
                     secondStar.getBoundingClientRect();
-
 
                 const x1 =
                     firstRect.left +
@@ -2710,7 +2594,6 @@ document.addEventListener(
                     firstRect.top +
                     firstRect.height / 2;
 
-
                 const x2 =
                     secondRect.left +
                     secondRect.width / 2;
@@ -2719,13 +2602,11 @@ document.addEventListener(
                     secondRect.top +
                     secondRect.height / 2;
 
-
                 const line =
                     document.createElementNS(
                         "http://www.w3.org/2000/svg",
                         "line"
                     );
-
 
                 line.setAttribute(
                     "x1",
@@ -2747,7 +2628,6 @@ document.addEventListener(
                     y2
                 );
 
-
                 line.setAttribute(
                     "stroke",
                     "rgba(255,255,255,.65)"
@@ -2763,19 +2643,17 @@ document.addEventListener(
                     "round"
                 );
 
-
                 const length =
                     Math.sqrt(
                         Math.pow(
-                            x2-x1,
+                            x2 - x1,
                             2
                         ) +
                         Math.pow(
-                            y2-y1,
+                            y2 - y1,
                             2
                         )
                     );
-
 
                 line.style.strokeDasharray =
                     length;
@@ -2786,32 +2664,156 @@ document.addEventListener(
                 line.style.filter =
                     "drop-shadow(0 0 6px rgba(255,255,255,.8))";
 
-
                 svg.appendChild(
                     line
                 );
-
 
                 requestAnimationFrame(
                     function () {
 
                         line.style.transition =
-                            "stroke-dashoffset 1.2s ease";
+                            "stroke-dashoffset 1.1s ease";
 
                         line.style.strokeDashoffset =
                             "0";
 
                     }
                 );
-
             }
 
+
+            /*
+             * When all ten are discovered,
+             * add a soft closing connection
+             * from star 10 back toward star 1.
+             */
+
+            if (
+                discoveredStars.length ===
+                memories.length
+            ) {
+
+                setTimeout(
+                    function () {
+
+                        drawFinalHeart();
+
+                    },
+                    1200
+                );
+            }
         }
 
 
-        /* =====================================================
+        /* =================================================
+           FINAL HEART EMPHASIS
+        ================================================= */
+
+        function drawFinalHeart() {
+
+            const svg =
+                getConstellationSVG();
+
+            const firstStar =
+                memoryStars[0];
+
+            const lastStar =
+                memoryStars[9];
+
+            const firstRect =
+                firstStar.getBoundingClientRect();
+
+            const lastRect =
+                lastStar.getBoundingClientRect();
+
+            const x1 =
+                lastRect.left +
+                lastRect.width / 2;
+
+            const y1 =
+                lastRect.top +
+                lastRect.height / 2;
+
+            const x2 =
+                firstRect.left +
+                firstRect.width / 2;
+
+            const y2 =
+                firstRect.top +
+                firstRect.height / 2;
+
+            /*
+             * Small closing line.
+             */
+
+            const line =
+                document.createElementNS(
+                    "http://www.w3.org/2000/svg",
+                    "line"
+                );
+
+            line.setAttribute(
+                "x1",
+                x1
+            );
+
+            line.setAttribute(
+                "y1",
+                y1
+            );
+
+            line.setAttribute(
+                "x2",
+                x2
+            );
+
+            line.setAttribute(
+                "y2",
+                y2
+            );
+
+            line.setAttribute(
+                "stroke",
+                "rgba(255,190,215,.35)"
+            );
+
+            line.setAttribute(
+                "stroke-width",
+                "1"
+            );
+
+            line.setAttribute(
+                "stroke-dasharray",
+                "4 7"
+            );
+
+            line.style.filter =
+                "drop-shadow(0 0 7px rgba(255,150,200,.6))";
+
+            line.style.opacity =
+                "0";
+
+            svg.appendChild(
+                line
+            );
+
+            requestAnimationFrame(
+                function () {
+
+                    line.style.transition =
+                        "opacity 1.5s ease";
+
+                    line.style.opacity =
+                        "1";
+
+                }
+            );
+        }
+
+
+        /* =================================================
            OPEN MEMORY
-        ===================================================== */
+        ================================================= */
 
         memoryStars.forEach(
             function (star) {
@@ -2825,19 +2827,14 @@ document.addEventListener(
                                 star.dataset.memory
                             );
 
-
                         if (
                             !memories[index]
                         ) {
-
                             return;
-
                         }
-
 
                         currentMemory =
                             index;
-
 
                         const memory =
                             memories[index];
@@ -2856,13 +2853,69 @@ document.addEventListener(
 
 
                         memoryNumber.textContent =
-                            "MEMORY " +
+                            memory.date +
+                            "  •  MEMORY " +
                             String(
                                 index + 1
                             ).padStart(
                                 2,
                                 "0"
                             );
+
+
+                        /*
+                         * IMAGE HANDLING
+                         *
+                         * The frame automatically
+                         * adapts to the image.
+                         */
+
+                        memoryPhoto.innerHTML =
+                            "";
+
+                        if (
+                            memory.image
+                        ) {
+
+                            const img =
+                                document.createElement(
+                                    "img"
+                                );
+
+                            img.src =
+                                memory.image;
+
+                            img.alt =
+                                memory.title;
+
+                            img.onload =
+                                function () {
+
+                                    memoryPhoto.style.width =
+                                        "fit-content";
+
+                                };
+
+                            img.onerror =
+                                function () {
+
+                                    memoryPhoto.innerHTML =
+                                        `
+                                        <div class="photo-placeholder">
+                                            <span>📷</span>
+                                            <small>
+                                                ADD YOUR PHOTO HERE
+                                            </small>
+                                        </div>
+                                        `;
+
+                                };
+
+                            memoryPhoto.appendChild(
+                                img
+                            );
+
+                        }
 
 
                         memoryModal.classList.add(
@@ -2876,9 +2929,9 @@ document.addEventListener(
         );
 
 
-        /* =====================================================
+        /* =================================================
            DISCOVER MEMORY
-        ===================================================== */
+        ================================================= */
 
         memoryDone.addEventListener(
             "click",
@@ -2887,11 +2940,8 @@ document.addEventListener(
                 if (
                     currentMemory === null
                 ) {
-
                     return;
-
                 }
-
 
                 const selectedStar =
                     memoryStars[
@@ -2909,14 +2959,16 @@ document.addEventListener(
                         "discovered"
                     );
 
+                    /*
+                     * Keep chronological
+                     * constellation order.
+                     */
 
                     discoveredStars.push(
                         currentMemory
                     );
 
-
                     discovered++;
-
 
                     updateProgress();
 
@@ -2927,9 +2979,8 @@ document.addEventListener(
                             drawConstellation();
 
                         },
-                        300
+                        250
                     );
-
                 }
 
 
@@ -2939,9 +2990,9 @@ document.addEventListener(
         );
 
 
-        /* =====================================================
+        /* =================================================
            PROGRESS
-        ===================================================== */
+        ================================================= */
 
         function updateProgress() {
 
@@ -2949,40 +3000,47 @@ document.addEventListener(
                 discovered +
                 " / 10 discovered";
 
-
             progressFill.style.width =
                 (
                     discovered /
-                    memoryStars.length *
+                    memories.length *
                     100
                 ) +
                 "%";
 
 
+            /*
+             * All memories discovered.
+             */
+
             if (
                 discovered ===
-                memoryStars.length
+                memories.length
             ) {
 
                 setTimeout(
                     function () {
 
-                        universeComplete.classList.add(
-                            "show"
-                        );
+                        if (
+                            universeComplete
+                        ) {
+
+                            universeComplete.classList.add(
+                                "show"
+                            );
+
+                        }
 
                     },
-                    1500
+                    2500
                 );
-
             }
-
         }
 
 
-        /* =====================================================
+        /* =================================================
            CLOSE MODAL
-        ===================================================== */
+        ================================================= */
 
         function closeMemoryModal() {
 
@@ -2992,7 +3050,6 @@ document.addEventListener(
 
             currentMemory =
                 null;
-
         }
 
 
@@ -3002,9 +3059,9 @@ document.addEventListener(
         );
 
 
-        /* =====================================================
+        /* =================================================
            CLICK BACKDROP
-        ===================================================== */
+        ================================================= */
 
         memoryModal.addEventListener(
             "click",
@@ -3019,21 +3076,21 @@ document.addEventListener(
                     closeMemoryModal();
 
                 }
-
             }
         );
 
 
-        /* =====================================================
+        /* =================================================
            ESCAPE
-        ===================================================== */
+        ================================================= */
 
         document.addEventListener(
             "keydown",
             function (event) {
 
                 if (
-                    event.key === "Escape"
+                    event.key ===
+                    "Escape"
                 ) {
 
                     if (
@@ -3045,16 +3102,14 @@ document.addEventListener(
                         closeMemoryModal();
 
                     }
-
                 }
-
             }
         );
 
 
-        /* =====================================================
-           KEEP CONSTELLATION ALIGNED
-        ===================================================== */
+        /* =================================================
+           RESIZE
+        ================================================= */
 
         window.addEventListener(
             "resize",
@@ -3067,32 +3122,28 @@ document.addEventListener(
                     drawConstellation();
 
                 }
-
             }
         );
 
 
-        /* =====================================================
-           FINAL TRANSITION → VIDEO.HTML
-        ===================================================== */
+        /* =================================================
+           CONTINUE TO VIDEO
+        ================================================= */
 
         continueButton.addEventListener(
             "click",
             function () {
-
-
-                universeComplete.classList.remove(
-                    "show"
-                );
-
 
                 if (transition) {
 
                     transition.classList.remove(
                         "fade-out"
                     );
-
                 }
+
+                universeComplete.classList.remove(
+                    "show"
+                );
 
 
                 setTimeout(
@@ -3102,12 +3153,138 @@ document.addEventListener(
                             "video.html";
 
                     },
-                    900
+                    1000
                 );
 
             }
         );
 
+
+        /* =================================================
+           MUSIC
+           Simple ambient Web Audio.
+        ================================================= */
+
+        const musicButton =
+            document.getElementById(
+                "musicButton"
+            );
+
+        let audioContext = null;
+
+        let musicStarted = false;
+
+        let masterGain = null;
+
+        let oscillatorA = null;
+
+        let oscillatorB = null;
+
+
+        function startMusic() {
+
+            if (
+                musicStarted
+            ) {
+                return;
+            }
+
+            musicStarted =
+                true;
+
+            audioContext =
+                new (
+                    window.AudioContext ||
+                    window.webkitAudioContext
+                )();
+
+            masterGain =
+                audioContext.createGain();
+
+            masterGain.gain.value =
+                0.035;
+
+            masterGain.connect(
+                audioContext.destination
+            );
+
+
+            oscillatorA =
+                audioContext.createOscillator();
+
+            oscillatorB =
+                audioContext.createOscillator();
+
+
+            oscillatorA.type =
+                "sine";
+
+            oscillatorB.type =
+                "triangle";
+
+
+            oscillatorA.frequency.value =
+                261.63;
+
+            oscillatorB.frequency.value =
+                392.00;
+
+
+            oscillatorA.connect(
+                masterGain
+            );
+
+            oscillatorB.connect(
+                masterGain
+            );
+
+
+            oscillatorA.start();
+
+            oscillatorB.start();
+
+
+            musicButton.textContent =
+                "♫";
+
+        }
+
+
+        musicButton.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    !musicStarted
+                ) {
+
+                    startMusic();
+
+                    return;
+                }
+
+
+                if (
+                    audioContext.state ===
+                    "running"
+                ) {
+
+                    audioContext.suspend();
+
+                    musicButton.textContent =
+                        "♪";
+
+                } else {
+
+                    audioContext.resume();
+
+                    musicButton.textContent =
+                        "♫";
+
+                }
+
+            }
+        );
 
     }
 
@@ -3115,8 +3292,5 @@ document.addEventListener(
 
 </script>
 
-
 </body>
-
 </html>
-```
