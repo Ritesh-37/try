@@ -2,1380 +2,1184 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+               maximum-scale=1.0, user-scalable=no">
 
-<title>Our Little Universe ❤️</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#1b0d09">
+<title>Our Little Adventure ❤️</title>
 
 <style>
-
 /* =========================================================
-   RESET
-========================================================= */
+   OUR LITTLE ADVENTURE
+   Premium romantic adventure-map
+   Standalone HTML — no libraries required
+   ========================================================= */
+
+:root{
+    --dark:#120806;
+    --dark2:#25120d;
+    --brown:#4a2b1b;
+    --brown2:#6f4927;
+    --gold:#d8ad62;
+    --gold2:#f4d79a;
+    --paper:#d6b878;
+    --paper-light:#ecd59a;
+    --burgundy:#431c20;
+    --cream:#f7e8c5;
+}
 
 *{
-    margin:0;
-    padding:0;
     box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
 html,
 body{
     width:100%;
     height:100%;
+    margin:0;
+    overflow:hidden;
+    background:#100705;
+    color:var(--cream);
+    font-family:Georgia,"Times New Roman",serif;
 }
 
-body{
-    overflow:hidden;
-    font-family:"Poppins",sans-serif;
-    color:white;
+button{
+    font:inherit;
+}
 
+#app{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
     background:
         radial-gradient(
             circle at 50% 45%,
-            #191441 0%,
-            #0b0926 42%,
-            #03030d 100%
+            rgba(114,65,35,.18),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #130806,
+            #2b1710 48%,
+            #100605
         );
 }
 
-
 /* =========================================================
-   PAGE TRANSITION
-========================================================= */
+   ATMOSPHERE
+   ========================================================= */
 
-#pageTransition{
-    position:fixed;
-    inset:0;
-
-    background:#02020b;
-
-    z-index:9999;
-    pointer-events:none;
-
-    opacity:1;
-
-    transition:
-        opacity 1.5s ease;
-}
-
-#pageTransition.fade-out{
-    opacity:0;
-}
-
-
-/* =========================================================
-   NEBULA
-========================================================= */
-
-.nebula{
-    position:fixed;
-
-    border-radius:50%;
-
-    filter:blur(100px);
-
-    pointer-events:none;
-
-    opacity:.14;
-
-    z-index:0;
-
-    animation:
-        nebulaFloat 18s ease-in-out infinite alternate;
-}
-
-.nebula-one{
-    width:550px;
-    height:550px;
-
-    left:-180px;
-    top:-180px;
-
-    background:#743e9e;
-}
-
-.nebula-two{
-    width:500px;
-    height:500px;
-
-    right:-180px;
-    bottom:-200px;
-
-    background:#a73d70;
-
-    animation-delay:4s;
-}
-
-.nebula-three{
-    width:400px;
-    height:400px;
-
-    left:40%;
-    top:35%;
-
-    background:#3859a0;
-
-    animation-delay:8s;
-}
-
-@keyframes nebulaFloat{
-
-    0%{
-        transform:
-            translate(0,0)
-            scale(.9);
-    }
-
-    50%{
-        transform:
-            translate(45px,-30px)
-            scale(1.08);
-    }
-
-    100%{
-        transform:
-            translate(-30px,45px)
-            scale(.96);
-    }
-}
-
-
-/* =========================================================
-   STARS
-========================================================= */
-
-.stars{
-    position:fixed;
-    inset:0;
-
-    pointer-events:none;
-
-    z-index:1;
-}
-
-.background-star{
+.noise{
     position:absolute;
-
-    color:rgba(255,255,255,.8);
-
-    font-size:5px;
-
-    animation:
-        twinkle 3s ease-in-out infinite;
-}
-
-@keyframes twinkle{
-
-    0%,100%{
-        opacity:.15;
-    }
-
-    50%{
-        opacity:.9;
-    }
-}
-
-
-/* =========================================================
-   SHOOTING STARS
-========================================================= */
-
-.shooting-star{
-    position:fixed;
-
-    width:2px;
-    height:2px;
-
-    background:white;
-
-    border-radius:50%;
-
-    box-shadow:
-        0 0 8px white,
-        0 0 18px rgba(255,255,255,.8);
-
-    transform:rotate(-35deg);
-
-    z-index:3;
-
+    inset:0;
+    z-index:100;
     pointer-events:none;
+    opacity:.07;
 
-    animation:
-        shootingStar 1.4s linear forwards;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
 }
 
-.shooting-star::after{
-
-    content:"";
-
+.vignette{
     position:absolute;
-
-    width:100px;
-    height:1px;
-
-    right:0;
-    top:0;
+    inset:0;
+    z-index:90;
+    pointer-events:none;
 
     background:
-        linear-gradient(
-            to left,
-            rgba(255,255,255,.8),
-            transparent
+        radial-gradient(
+            ellipse at center,
+            transparent 45%,
+            rgba(0,0,0,.72) 100%
         );
 }
-
-@keyframes shootingStar{
-
-    0%{
-        opacity:0;
-
-        transform:
-            translate(0,0)
-            rotate(-35deg);
-    }
-
-    10%{
-        opacity:1;
-    }
-
-    100%{
-        opacity:0;
-
-        transform:
-            translate(-350px,350px)
-            rotate(-35deg);
-    }
-}
-
 
 /* =========================================================
    INTRO
-========================================================= */
+   ========================================================= */
 
-.intro-screen{
-    position:fixed;
+#intro{
+    position:absolute;
     inset:0;
+    z-index:50;
 
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    padding:30px;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transform:scale(1.05);
+    display:grid;
+    place-items:center;
 
     transition:
         opacity 1.2s ease,
-        transform 1.2s ease,
-        visibility 1.2s ease;
-
-    z-index:20;
+        transform 1.2s ease;
 }
 
-.intro-screen.active{
-    opacity:1;
-    visibility:visible;
-
-    transform:scale(1);
+.intro-card{
+    width:min(800px,90vw);
+    text-align:center;
+    padding:40px 25px;
 }
 
-.intro-content{
-    width:min(90%,700px);
-}
+.compass-big{
+    font-size:76px;
+    color:var(--gold);
 
-.tiny-star{
-    font-size:45px;
-
-    margin-bottom:15px;
+    filter:
+        drop-shadow(
+            0 0 20px rgba(216,173,98,.25)
+        );
 
     animation:
-        starPulse 3s ease-in-out infinite;
+        compassIntro 8s linear infinite;
 }
 
-@keyframes starPulse{
-
-    0%,100%{
-        transform:scale(.8);
-        opacity:.55;
+@keyframes compassIntro{
+    from{
+        transform:rotate(0deg);
     }
 
-    50%{
-        transform:scale(1.2);
-        opacity:1;
+    to{
+        transform:rotate(360deg);
     }
 }
 
-.eyebrow{
-    font-size:10px;
+.kicker{
+    margin-top:20px;
 
-    letter-spacing:4px;
+    color:#d5b477;
 
-    opacity:.6;
-
-    margin-bottom:22px;
+    font-size:11px;
+    letter-spacing:.38em;
+    text-transform:uppercase;
 }
 
-.intro-content h1{
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
+.intro-card h1{
+    margin:15px 0 12px;
 
     font-size:
-        clamp(55px,10vw,100px);
+        clamp(
+            38px,
+            7vw,
+            82px
+        );
 
-    font-weight:400;
+    font-weight:normal;
+    letter-spacing:.06em;
 
-    line-height:.95;
-
-    margin-bottom:35px;
+    text-shadow:
+        0 5px 30px #000;
 }
 
-.intro-content h1 span{
+.subtitle{
+    max-width:620px;
+    margin:auto;
 
-    font-family:
-        "Great Vibes",
-        cursive;
-}
-
-.intro-text{
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
+    color:#dfc58f;
 
     font-size:
-        clamp(22px,4vw,30px);
+        clamp(
+            15px,
+            2vw,
+            21px
+        );
 
-    opacity:.85;
-
-    margin-bottom:5px;
+    line-height:1.7;
+    font-style:italic;
 }
 
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.main-button{
-
+.start-btn{
     margin-top:35px;
 
-    padding:14px 27px;
+    padding:14px 31px;
 
     border:
-        1px solid rgba(255,255,255,.35);
+        1px solid
+        #a87c3d;
 
-    border-radius:999px;
+    border-radius:3px;
+
+    color:#f7e7c3;
 
     background:
-        rgba(255,255,255,.96);
+        linear-gradient(
+            #602c2d,
+            #321519
+        );
 
-    color:#17113d;
-
-    font-family:"Poppins",sans-serif;
-
-    font-size:10px;
-
-    font-weight:600;
-
-    letter-spacing:1.5px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
 
     cursor:pointer;
 
     box-shadow:
-        0 15px 40px rgba(0,0,0,.35);
+        0 0 30px rgba(0,0,0,.5),
+        inset 0 0 15px rgba(255,215,130,.08);
 
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
+    transition:.3s;
 }
 
-.main-button:hover{
-
-    transform:
-        translateY(-4px);
+.start-btn:hover{
+    transform:translateY(-2px);
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,.45);
+        0 0 40px rgba(216,173,98,.18),
+        inset 0 0 15px rgba(255,215,130,.1);
 }
-
-.main-button:active{
-
-    transform:
-        scale(.94);
-}
-
 
 /* =========================================================
-   UNIVERSE
-========================================================= */
+   MAP STAGE
+   ========================================================= */
 
-.universe{
-
-    position:fixed;
-
+#mapStage{
+    position:absolute;
     inset:0;
 
     opacity:0;
 
-    visibility:hidden;
+    transition:opacity 1.5s ease;
 
-    transition:
-        opacity 1.3s ease;
-
-    z-index:10;
+    overflow:hidden;
 }
 
-.universe.active{
-
-    opacity:1;
-
-    visibility:visible;
-}
-
-
-/* =========================================================
-   HEADING
-========================================================= */
-
-.universe-heading{
-
+#map{
     position:absolute;
 
-    top:6%;
+    width:1800px;
+    height:1050px;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(255,239,177,.25),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 80% 65%,
+            rgba(86,43,25,.12),
+            transparent 30%
+        ),
+
+        repeating-linear-gradient(
+            7deg,
+            rgba(72,43,18,.025) 0 2px,
+            transparent 2px 8px
+        ),
+
+        linear-gradient(
+            120deg,
+            #ddc283,
+            #b99659 55%,
+            #caaa6c
+        );
+
+    box-shadow:
+        0 0 90px #000,
+        inset 0 0 80px rgba(70,37,15,.55);
+
+    transition:
+        transform 1s ease;
+}
+
+/* parchment border */
+
+#map::before{
+    content:"";
+
+    position:absolute;
+    inset:18px;
+
+    border:
+        2px solid
+        rgba(71,39,20,.35);
+
+    pointer-events:none;
+}
+
+#map::after{
+    content:"";
+
+    position:absolute;
+    inset:30px;
+
+    border:
+        1px dashed
+        rgba(71,39,20,.22);
+
+    pointer-events:none;
+}
+
+/* =========================================================
+   WATER
+   ========================================================= */
+
+.water{
+    position:absolute;
+
+    border-radius:50%;
+
+    background:
+        rgba(48,91,87,.15);
+}
+
+.water1{
+    width:550px;
+    height:230px;
+
+    left:-80px;
+    top:650px;
+
+    transform:rotate(-12deg);
+}
+
+.water2{
+    width:400px;
+    height:190px;
+
+    right:-80px;
+    top:90px;
+
+    transform:rotate(16deg);
+}
+
+.water3{
+    width:330px;
+    height:150px;
+
+    left:690px;
+    top:410px;
+}
+
+/* =========================================================
+   MAP TITLE
+   ========================================================= */
+
+.map-title{
+    position:absolute;
+
+    left:70px;
+    top:48px;
+
+    z-index:5;
+
+    color:#4a2b1b;
+
+    text-align:center;
+
+    transform:rotate(-3deg);
+}
+
+.map-title b{
+    display:block;
+
+    font-size:31px;
+    font-weight:normal;
+
+    letter-spacing:.12em;
+}
+
+.map-title small{
+    font-style:italic;
+    font-size:14px;
+}
+
+/* =========================================================
+   COMPASS
+   ========================================================= */
+
+.compass{
+    position:absolute;
+
+    right:70px;
+    top:45px;
+
+    width:90px;
+    height:90px;
+
+    z-index:5;
+
+    display:grid;
+    place-items:center;
+
+    border:
+        2px solid
+        #6a4625;
+
+    border-radius:50%;
+
+    color:#55351e;
+
+    background:
+        rgba(225,198,135,.35);
+
+    box-shadow:
+        inset 0 0 20px
+        rgba(50,20,10,.18);
+}
+
+.compass-needle{
+    font-size:38px;
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.progress{
+    position:fixed;
+
+    top:15px;
     left:50%;
 
     transform:
         translateX(-50%);
 
-    width:90%;
+    z-index:60;
 
-    text-align:center;
+    padding:
+        8px 16px;
 
-    z-index:20;
-}
+    border:
+        1px solid
+        rgba(215,173,99,.4);
 
-.universe-heading h2{
-
-    font-family:
-        "Great Vibes",
-        cursive;
-
-    font-size:
-        clamp(45px,7vw,70px);
-
-    font-weight:400;
-
-    margin-bottom:4px;
-}
-
-.universe-heading > p:not(.eyebrow){
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:20px;
-
-    opacity:.65;
-}
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-.progress{
-
-    width:min(260px,80%);
-
-    margin:18px auto;
-}
-
-.progress span{
-
-    font-size:9px;
-
-    letter-spacing:2px;
-
-    opacity:.55;
-}
-
-.progress-bar{
-
-    height:3px;
-
-    margin-top:8px;
-
-    border-radius:10px;
+    border-radius:20px;
 
     background:
-        rgba(255,255,255,.1);
+        rgba(20,10,7,.72);
 
-    overflow:hidden;
-}
+    backdrop-filter:blur(8px);
 
-.progress-fill{
-
-    width:0%;
-
-    height:100%;
-
-    background:
-        rgba(255,255,255,.9);
-
-    box-shadow:
-        0 0 12px rgba(255,255,255,.7);
-
-    transition:
-        width .8s cubic-bezier(.22,1,.36,1);
-}
-
-
-/* =========================================================
-   CONSTELLATION
-========================================================= */
-
-#constellation-svg{
-
-    position:fixed;
-
-    left:0;
-    top:0;
-
-    width:100vw;
-    height:100vh;
-
-    pointer-events:none;
-
-    z-index:5;
-
-    overflow:visible;
-}
-
-
-/* =========================================================
-   MEMORY STARS
-========================================================= */
-
-.memory-star{
-
-    position:absolute;
-
-    width:100px;
-    height:100px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border:none;
-
-    background:transparent;
-
-    color:white;
-
-    cursor:pointer;
-
-    z-index:15;
-
-    transition:
-        transform .4s cubic-bezier(.22,1,.36,1);
-}
-
-.memory-star:hover{
-
-    transform:
-        scale(1.2);
-}
-
-.star-symbol{
-
-    position:relative;
-
-    font-size:28px;
-
-    z-index:3;
-
-    text-shadow:
-        0 0 15px white,
-        0 0 35px rgba(180,190,255,.9);
-
-    animation:
-        starBreathe 3s ease-in-out infinite;
-}
-
-@keyframes starBreathe{
-
-    0%,100%{
-        transform:scale(.8);
-    }
-
-    50%{
-        transform:scale(1.1);
-    }
-}
-
-.star-glow{
-
-    position:absolute;
-
-    width:70px;
-    height:70px;
-
-    border-radius:50%;
-
-    background:
-        rgba(255,255,255,.08);
-
-    filter:blur(12px);
-
-    animation:
-        glowBreathe 3s ease-in-out infinite;
-}
-
-@keyframes glowBreathe{
-
-    0%,100%{
-        transform:scale(.7);
-        opacity:.3;
-    }
-
-    50%{
-        transform:scale(1.4);
-        opacity:.9;
-    }
-}
-
-.star-label{
-
-    position:absolute;
-
-    top:76px;
-
-    width:140px;
-
-    font-size:9px;
-
-    letter-spacing:1px;
-
-    opacity:.55;
-
-    transition:
-        opacity .3s ease;
-}
-
-.memory-star:hover .star-label{
-    opacity:1;
-}
-
-
-/* =========================================================
-   STAR POSITIONS
-========================================================= */
-
-.star-one{
-    left:14%;
-    top:34%;
-}
-
-.star-two{
-    left:38%;
-    top:28%;
-}
-
-.star-three{
-    right:17%;
-    top:37%;
-}
-
-.star-four{
-    left:25%;
-    bottom:22%;
-}
-
-.star-five{
-    right:34%;
-    bottom:18%;
-}
-
-.star-six{
-    right:10%;
-    bottom:25%;
-}
-
-
-/* =========================================================
-   DISCOVERED
-========================================================= */
-
-.memory-star.discovered{
-
-    opacity:.45;
-}
-
-.memory-star.discovered .star-symbol{
-
-    color:#ffd9e7;
-
-    text-shadow:
-        0 0 10px #ffd9e7,
-        0 0 25px #ff9fc4;
-}
-
-.memory-star.discovered .star-glow{
-
-    background:
-        rgba(255,170,205,.2);
-}
-
-.memory-star.discovered::after{
-
-    content:"✓";
-
-    position:absolute;
-
-    top:5px;
-    right:3px;
+    color:#e5ca91;
 
     font-size:12px;
 
-    opacity:.8;
+    letter-spacing:.13em;
 }
 
+/* =========================================================
+   PATH
+   ========================================================= */
+
+.path{
+    fill:none;
+
+    stroke:#765025;
+
+    stroke-width:7;
+
+    stroke-linecap:round;
+
+    stroke-dasharray:
+        12 12;
+
+    opacity:.55;
+}
+
+.path-glow{
+    fill:none;
+
+    stroke:#f1cb75;
+
+    stroke-width:9;
+
+    stroke-linecap:round;
+
+    stroke-dasharray:1500;
+
+    stroke-dashoffset:1500;
+
+    filter:
+        url(#goldGlow);
+
+    transition:
+        stroke-dashoffset 1.6s ease;
+}
 
 /* =========================================================
-   MEMORY MODAL
-========================================================= */
+   LANDMARKS
+   ========================================================= */
 
-.memory-modal{
+.landmark{
+    position:absolute;
 
+    width:96px;
+    height:96px;
+
+    z-index:12;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    transition:.3s;
+}
+
+.pin{
+    position:absolute;
+
+    inset:5px;
+
+    display:grid;
+    place-items:center;
+
+    border:
+        3px solid
+        #54341e;
+
+    border-radius:50%;
+
+    font-size:35px;
+
+    background:
+        radial-gradient(
+            circle,
+            #f7dfaa,
+            #9b713c
+        );
+
+    box-shadow:
+        0 7px 15px
+        rgba(43,21,10,.45),
+
+        inset 0 0 10px
+        rgba(255,255,255,.25);
+
+    transition:.3s;
+}
+
+.landmark-number{
+    position:absolute;
+
+    top:-4px;
+    right:-2px;
+
+    width:23px;
+    height:23px;
+
+    display:grid;
+    place-items:center;
+
+    border:
+        1px solid
+        #c39a53;
+
+    border-radius:50%;
+
+    color:#e9c97f;
+
+    background:#38191a;
+
+    font-size:11px;
+}
+
+.landmark-label{
+    position:absolute;
+
+    top:103px;
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    white-space:nowrap;
+
+    color:#4b2a1d;
+
+    font-size:13px;
+    font-weight:bold;
+
+    text-shadow:
+        0 1px rgba(255,240,190,.5);
+
+    text-align:center;
+}
+
+.landmark.locked{
+    opacity:.35;
+
+    filter:grayscale(.85);
+
+    cursor:not-allowed;
+}
+
+.landmark.available .pin{
+    animation:
+        landmarkPulse 1.8s infinite;
+}
+
+@keyframes landmarkPulse{
+    50%{
+        transform:scale(1.08);
+
+        box-shadow:
+            0 0 32px
+            rgba(245,210,125,.6),
+            inset 0 0 10px
+            rgba(255,255,255,.25);
+    }
+}
+
+.landmark.done .pin{
+    box-shadow:
+        0 0 28px
+        rgba(244,211,132,.75),
+        inset 0 0 10px
+        rgba(255,255,255,.25);
+}
+
+/* =========================================================
+   DECORATIONS
+   ========================================================= */
+
+.decor{
+    position:absolute;
+
+    z-index:4;
+
+    opacity:.52;
+
+    font-size:28px;
+}
+
+.d1{
+    left:180px;
+    top:260px;
+}
+
+.d2{
+    left:480px;
+    top:180px;
+}
+
+.d3{
+    left:870px;
+    top:175px;
+}
+
+.d4{
+    left:1270px;
+    top:240px;
+}
+
+.d5{
+    left:1470px;
+    top:570px;
+}
+
+.d6{
+    left:1180px;
+    top:790px;
+}
+
+.d7{
+    left:700px;
+    top:790px;
+}
+
+.d8{
+    left:290px;
+    top:770px;
+}
+
+/* =========================================================
+   FOG
+   ========================================================= */
+
+#fog{
+    position:absolute;
+
+    inset:0;
+
+    z-index:10;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            transparent 0 15%,
+            rgba(60,38,23,.28) 27%,
+            rgba(35,22,15,.75) 48%
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(45,25,15,.7),
+            transparent 25%,
+            transparent 70%,
+            rgba(45,25,15,.7)
+        );
+
+    opacity:.72;
+
+    transition:
+        opacity 1.5s ease;
+}
+
+/* =========================================================
+   MEMORY OVERLAY
+   ========================================================= */
+
+#memoryOverlay{
     position:fixed;
 
     inset:0;
 
-    display:flex;
+    z-index:80;
 
-    align-items:center;
-    justify-content:center;
+    display:none;
+
+    place-items:center;
 
     padding:20px;
 
-    opacity:0;
-
-    visibility:hidden;
-
-    z-index:100;
-
-    transition:
-        opacity .5s ease,
-        visibility .5s ease;
-}
-
-.memory-modal.show{
-
-    opacity:1;
-
-    visibility:visible;
-}
-
-.modal-backdrop{
-
-    position:absolute;
-
-    inset:0;
-
     background:
-        rgba(0,0,10,.76);
+        rgba(11,6,5,.78);
 
     backdrop-filter:
-        blur(12px);
+        blur(8px);
 }
 
-.memory-card{
-
+.scroll{
     position:relative;
 
-    width:min(92%,540px);
+    width:min(680px,94vw);
 
-    max-height:90vh;
+    max-height:88vh;
 
-    overflow-y:auto;
+    overflow:auto;
 
-    padding:35px 28px;
+    padding:40px 34px;
 
-    border-radius:25px;
-
-    text-align:center;
+    color:#3d2418;
 
     background:
         linear-gradient(
-            145deg,
-            rgba(30,25,70,.98),
-            rgba(12,10,35,.98)
+            105deg,
+            #d0b070,
+            #f0d69a 50%,
+            #c29e60
         );
 
     border:
-        1px solid rgba(255,255,255,.15);
+        10px solid
+        #70451f;
+
+    border-radius:5px;
 
     box-shadow:
-        0 30px 90px rgba(0,0,0,.65);
+        0 25px 80px #000;
 
-    transform:
-        translateY(30px)
-        scale(.92)
-        rotateX(5deg);
-
-    transition:
-        transform .6s cubic-bezier(.22,1,.36,1);
+    animation:
+        unroll .75s
+        cubic-bezier(.2,.8,.2,1);
 }
 
-.memory-modal.show .memory-card{
+@keyframes unroll{
+    from{
+        transform:
+            scaleY(.05)
+            rotate(-2deg);
 
-    transform:
-        translateY(0)
-        scale(1)
-        rotateX(0);
+        opacity:0;
+    }
+
+    to{
+        transform:
+            scaleY(1)
+            rotate(0);
+
+        opacity:1;
+    }
 }
 
-.close-button{
+.scroll::before,
+.scroll::after{
+    content:"";
 
     position:absolute;
 
-    right:17px;
-    top:12px;
+    left:-18px;
+    right:-18px;
 
-    border:none;
+    height:28px;
 
-    background:transparent;
+    border-radius:50%;
 
-    color:white;
+    background:#70451f;
 
-    font-size:28px;
+    box-shadow:
+        0 3px 5px #32180d;
+}
 
-    opacity:.5;
+.scroll::before{
+    top:-14px;
+}
 
-    cursor:pointer;
+.scroll::after{
+    bottom:-14px;
+}
+
+.memory-date{
+    text-align:center;
+
+    color:#77502a;
+
+    font-size:12px;
+
+    letter-spacing:.18em;
+}
+
+.memory-title{
+    margin:5px 0;
+
+    text-align:center;
+
+    font-size:29px;
+
+    font-weight:normal;
 }
 
 .memory-icon{
+    margin:16px 0;
 
-    font-size:36px;
+    text-align:center;
 
-    margin-bottom:10px;
+    font-size:62px;
 }
 
-.memory-number{
+.memory-body{
+    text-align:center;
 
-    font-size:9px;
+    font-size:17px;
 
-    letter-spacing:3px;
-
-    opacity:.5;
-
-    margin-bottom:10px;
+    line-height:1.75;
 }
 
-.memory-card h2{
-
-    font-family:
-        "Great Vibes",
-        cursive;
-
-    font-size:55px;
-
-    font-weight:400;
+.memory-body em{
+    font-size:19px;
 }
-
-.memory-line{
-
-    width:60px;
-
-    height:1px;
-
-    margin:15px auto;
-
-    background:
-        rgba(255,255,255,.4);
-}
-
-.memory-text{
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:25px;
-
-    line-height:1.35;
-
-    opacity:.9;
-
-    margin-bottom:20px;
-}
-
-
-/* =========================================================
-   PHOTO PLACEHOLDER
-========================================================= */
 
 .memory-photo{
+    display:none;
 
-    height:180px;
+    width:min(390px,80vw);
 
-    border-radius:15px;
+    max-height:320px;
 
-    border:
-        1px dashed rgba(255,255,255,.25);
+    object-fit:cover;
 
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    flex-direction:column;
-
-    background:
-        rgba(255,255,255,.035);
-
-    margin-bottom:20px;
-
-    transition:
-        transform .4s ease,
-        border-color .4s ease;
-}
-
-.memory-photo:hover{
-
-    transform:scale(1.02);
-
-    border-color:
-        rgba(255,255,255,.5);
-}
-
-.memory-photo span{
-
-    font-size:42px;
-
-    margin-bottom:7px;
-}
-
-.memory-photo small{
-
-    font-size:8px;
-
-    letter-spacing:2px;
-
-    opacity:.5;
-}
-
-.memory-done{
-
-    padding:12px 22px;
-
-    border-radius:999px;
+    margin:18px auto;
 
     border:
-        1px solid rgba(255,255,255,.25);
+        10px solid
+        #f2dfb1;
 
-    background:
-        rgba(255,255,255,.96);
+    box-shadow:
+        0 8px 20px
+        rgba(35,17,8,.35);
 
-    color:#17113d;
+    transform:rotate(-1deg);
+}
 
-    font-size:9px;
+.memory-photo.show{
+    display:block;
+}
 
-    letter-spacing:1px;
+.close-memory{
+    display:block;
 
-    font-weight:600;
+    margin:
+        25px auto 0;
+
+    padding:
+        11px 25px;
+
+    border:
+        1px solid
+        #765025;
+
+    color:#f5ddb0;
+
+    background:#4a2023;
 
     cursor:pointer;
 
-    transition:
-        transform .25s ease;
+    letter-spacing:.1em;
 }
-
-.memory-done:hover{
-
-    transform:
-        translateY(-3px);
-}
-
 
 /* =========================================================
-   FINAL SCREEN
-========================================================= */
+   TOAST
+   ========================================================= */
 
-.universe-complete{
+#toast{
+    position:fixed;
 
+    left:50%;
+    bottom:35px;
+
+    z-index:120;
+
+    transform:
+        translate(-50%,20px);
+
+    opacity:0;
+
+    padding:
+        11px 18px;
+
+    border:
+        1px solid
+        #9f793d;
+
+    border-radius:3px;
+
+    color:#efd39b;
+
+    background:
+        rgba(25,12,9,.94);
+
+    font-size:13px;
+
+    transition:.3s;
+}
+
+#toast.show{
+    opacity:1;
+
+    transform:
+        translate(-50%,0);
+}
+
+/* =========================================================
+   ENDING
+   ========================================================= */
+
+#ending{
     position:fixed;
 
     inset:0;
 
-    display:flex;
+    z-index:110;
 
-    align-items:center;
-    justify-content:center;
+    display:none;
 
-    flex-direction:column;
-
-    text-align:center;
+    place-items:center;
 
     padding:25px;
 
-    background:
-        rgba(2,2,11,.9);
+    text-align:center;
 
-    backdrop-filter:
-        blur(15px);
+    background:#0c0705;
+}
+
+.ending-inner{
+    max-width:800px;
+}
+
+.ending-line{
+    margin:8px 0;
+
+    color:#ead09b;
+
+    font-size:
+        clamp(
+            20px,
+            3.2vw,
+            36px
+        );
+
+    line-height:1.65;
 
     opacity:0;
 
-    visibility:hidden;
+    transform:
+        translateY(15px);
 
     transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
-
-    z-index:50;
+        1.5s ease;
 }
 
-.universe-complete.show{
-
+.ending-line.show{
     opacity:1;
 
-    visibility:visible;
+    transform:
+        translateY(0);
 }
 
-.complete-stars{
+.ending-small{
+    margin-top:28px;
 
-    font-size:28px;
+    color:#a88650;
 
-    letter-spacing:12px;
+    font-size:13px;
 
-    margin-bottom:20px;
+    letter-spacing:.3em;
 
-    animation:
-        completionStars 2s ease-in-out infinite;
+    text-transform:uppercase;
+
+    opacity:0;
+
+    transition:1.5s;
 }
 
-@keyframes completionStars{
-
-    0%,100%{
-        transform:scale(.9);
-    }
-
-    50%{
-        transform:scale(1.15);
-    }
+.ending-small.show{
+    opacity:1;
 }
 
-.universe-complete h2{
+.continue{
+    margin-top:45px;
 
-    font-family:
-        "Great Vibes",
-        cursive;
-
-    font-size:
-        clamp(50px,8vw,80px);
-
-    font-weight:400;
-
-    margin-bottom:15px;
-}
-
-.universe-complete p{
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:25px;
-
-    opacity:.8;
-}
-
-
-/* =========================================================
-   MUSIC BUTTON
-========================================================= */
-
-.music-button{
-
-    position:fixed;
-
-    right:20px;
-    bottom:20px;
-
-    width:44px;
-    height:44px;
-
-    border-radius:50%;
+    padding:
+        14px 27px;
 
     border:
-        1px solid rgba(255,255,255,.25);
+        1px solid
+        #97703d;
 
-    background:
-        rgba(255,255,255,.08);
+    color:#e9c989;
 
-    color:white;
+    background:transparent;
 
     cursor:pointer;
 
-    z-index:200;
-
-    font-size:18px;
-
-    backdrop-filter:blur(10px);
-
-    transition:
-        transform .25s ease,
-        background .25s ease;
-}
-
-.music-button:hover{
-
-    transform:scale(1.1);
-
-    background:
-        rgba(255,255,255,.16);
-}
-
-.music-button.playing{
-
-    animation:
-        musicPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes musicPulse{
-
-    0%,100%{
-        box-shadow:
-            0 0 0 rgba(255,255,255,0);
-    }
-
-    50%{
-        box-shadow:
-            0 0 25px rgba(255,190,225,.35);
-    }
-}
-
-
-/* =========================================================
-   AUDIO START MESSAGE
-========================================================= */
-
-.audio-hint{
-
-    position:fixed;
-
-    bottom:78px;
-    right:20px;
-
-    font-size:8px;
-
-    letter-spacing:1.5px;
-
-    color:rgba(255,255,255,.6);
-
     opacity:0;
 
-    pointer-events:none;
+    transition:1s;
 
-    transition:opacity .8s ease;
+    letter-spacing:.16em;
 
-    z-index:190;
+    text-transform:uppercase;
 }
 
-.audio-hint.show{
+.continue.show{
     opacity:1;
 }
 
-
-/* =========================================================
-   CLICK RIPPLE
-========================================================= */
-
-.click-ripple{
-
+.map-hint{
     position:fixed;
 
-    width:20px;
-    height:20px;
+    left:50%;
+    bottom:12px;
 
-    border-radius:50%;
-
-    border:
-        1px solid rgba(255,255,255,.7);
-
-    pointer-events:none;
-
-    z-index:9998;
+    z-index:60;
 
     transform:
-        translate(-50%,-50%)
-        scale(.3);
+        translateX(-50%);
 
-    animation:
-        ripple .65s ease-out forwards;
+    color:#caa86a;
+
+    font-size:10px;
+
+    letter-spacing:.08em;
+
+    opacity:.65;
+
+    white-space:nowrap;
 }
-
-@keyframes ripple{
-
-    0%{
-        opacity:.9;
-        transform:
-            translate(-50%,-50%)
-            scale(.3);
-    }
-
-    100%{
-        opacity:0;
-        transform:
-            translate(-50%,-50%)
-            scale(5);
-    }
-}
-
 
 /* =========================================================
    MOBILE
-========================================================= */
+   ========================================================= */
 
 @media(max-width:700px){
 
-    .universe-heading{
-        top:5%;
+    #map{
+        width:1200px;
+        height:1800px;
     }
 
-    .universe-heading h2{
-        font-size:48px;
+    .map-title{
+        left:50px;
+        top:45px;
     }
 
-    .universe-heading > p:not(.eyebrow){
-        font-size:17px;
+    .compass{
+        right:45px;
+        top:45px;
     }
 
-    .star-one{
-        left:5%;
-        top:33%;
+    .landmark{
+        width:80px;
+        height:80px;
     }
 
-    .star-two{
-        left:37%;
-        top:25%;
+    .pin{
+        font-size:28px;
     }
 
-    .star-three{
-        right:5%;
-        top:35%;
+    .landmark-label{
+        top:85px;
+        font-size:11px;
     }
 
-    .star-four{
-        left:12%;
-        bottom:21%;
+    .progress{
+        top:10px;
+        font-size:10px;
     }
 
-    .star-five{
-        right:34%;
-        bottom:15%;
-    }
-
-    .star-six{
-        right:4%;
-        bottom:25%;
-    }
-
-    .star-label{
-        font-size:8px;
-        width:110px;
-    }
-
-    .memory-card{
+    .scroll{
         padding:30px 20px;
     }
 
-    .memory-card h2{
-        font-size:48px;
-    }
-
-    .memory-text{
-        font-size:22px;
+    .map-hint{
+        bottom:8px;
+        font-size:9px;
     }
 }
-
 </style>
 </head>
 
-
 <body>
 
+<div id="app">
 
-<!-- =====================================================
-     PAGE TRANSITION
-===================================================== -->
-
-<div id="pageTransition"></div>
+<div class="noise"></div>
+<div class="vignette"></div>
 
 
-<!-- =====================================================
-     BACKGROUND
-===================================================== -->
-
-<div class="nebula nebula-one"></div>
-<div class="nebula nebula-two"></div>
-<div class="nebula nebula-three"></div>
-
-<div class="stars" id="stars"></div>
-
-
-<!-- =====================================================
+<!-- =======================================================
      INTRO
-===================================================== -->
+     ======================================================= -->
 
-<section class="intro-screen active" id="introScreen">
+<section id="intro">
 
-    <div class="intro-content">
+    <div class="intro-card">
 
-        <div class="tiny-star">✦</div>
+        <div class="compass-big">
+            🧭
+        </div>
 
-        <p class="eyebrow">
-            CHAPTER THREE
-        </p>
+        <div class="kicker">
+            A secret map of us
+        </div>
 
         <h1>
-            Our Little
-            <br>
-            <span>Universe</span>
+            Our Little Adventure
         </h1>
 
-        <p class="intro-text">
-            Somewhere between all these stars...
-        </p>
-
-        <p class="intro-text">
-            there are little pieces of us. ❤️
+        <p class="subtitle">
+            “A map of the places, moments and little things
+            that somehow became us.”
         </p>
 
         <button
-            id="exploreButton"
-            class="main-button">
+            class="start-btn"
+            id="startBtn">
 
-            EXPLORE THE STARS ✨
+            Begin the journey
 
         </button>
 
@@ -1384,278 +1188,571 @@ body{
 </section>
 
 
-<!-- =====================================================
-     UNIVERSE
-===================================================== -->
+<!-- =======================================================
+     MAP
+     ======================================================= -->
 
-<main class="universe" id="universe">
+<div id="mapStage">
 
+    <div class="progress">
 
-    <div class="universe-heading">
-
-        <p class="eyebrow">
-            TISHA'S LITTLE UNIVERSE
-        </p>
-
-        <h2>
-            Find the memories...
-        </h2>
-
-        <p>
-            There are little pieces of our story
-            hidden among the stars.
-        </p>
-
-        <div class="progress">
-
-            <span id="progressText">
-                0 / 6 discovered
-            </span>
-
-            <div class="progress-bar">
-
-                <div
-                    id="progressFill"
-                    class="progress-fill">
-                </div>
-
-            </div>
-
-        </div>
+        TREASURE FOUND:
+        <span id="count">0</span>
+        / 17
 
     </div>
 
 
-    <!-- STAR 1 -->
+    <div id="map">
 
-    <button
-        class="memory-star star-one"
-        data-memory="0"
-        aria-label="Our Beginning">
+        <div class="water water1"></div>
+        <div class="water water2"></div>
+        <div class="water water3"></div>
 
-        <span class="star-glow"></span>
-        <span class="star-symbol">✦</span>
 
-        <span class="star-label">
-            Our Beginning
-        </span>
+        <div class="map-title">
 
-    </button>
-
-
-    <!-- STAR 2 -->
-
-    <button
-        class="memory-star star-two"
-        data-memory="1"
-        aria-label="12.03.26">
-
-        <span class="star-glow"></span>
-        <span class="star-symbol">✦</span>
-
-        <span class="star-label">
-            12.03.26
-        </span>
-
-    </button>
-
-
-    <!-- STAR 3 -->
-
-    <button
-        class="memory-star star-three"
-        data-memory="2"
-        aria-label="That First Day">
-
-        <span class="star-glow"></span>
-        <span class="star-symbol">✦</span>
-
-        <span class="star-label">
-            That First Day
-        </span>
-
-    </button>
-
-
-    <!-- STAR 4 -->
-
-    <button
-        class="memory-star star-four"
-        data-memory="3"
-        aria-label="A Little Confession">
-
-        <span class="star-glow"></span>
-        <span class="star-symbol">✦</span>
-
-        <span class="star-label">
-            A Little Confession
-        </span>
-
-    </button>
-
-
-    <!-- STAR 5 -->
-
-    <button
-        class="memory-star star-five"
-        data-memory="4"
-        aria-label="Something I Love">
-
-        <span class="star-glow"></span>
-        <span class="star-symbol">✦</span>
-
-        <span class="star-label">
-            Something I Love
-        </span>
-
-    </button>
-
-
-    <!-- STAR 6 -->
-
-    <button
-        class="memory-star star-six"
-        data-memory="5"
-        aria-label="A Secret">
-
-        <span class="star-glow"></span>
-        <span class="star-symbol">✦</span>
-
-        <span class="star-label">
-            A Secret
-        </span>
-
-    </button>
-
-
-    <!-- COMPLETION -->
-
-    <div
-        id="universeComplete"
-        class="universe-complete">
-
-        <div class="complete-stars">
-            ✦ ✧ ✦
-        </div>
-
-        <h2>
-            You found them all. ❤️
-        </h2>
-
-        <p>
-            But I think there are still
-            more memories to make.
-        </p>
-
-        <button
-            id="continueButton"
-            class="main-button">
-
-            CONTINUE MY ADVENTURE →
-
-        </button>
-
-    </div>
-
-</main>
-
-
-<!-- =====================================================
-     MEMORY MODAL
-===================================================== -->
-
-<div
-    id="memoryModal"
-    class="memory-modal">
-
-    <div class="modal-backdrop"></div>
-
-    <div class="memory-card">
-
-        <button
-            id="closeMemory"
-            class="close-button"
-            aria-label="Close">
-
-            ×
-
-        </button>
-
-
-        <div
-            class="memory-icon"
-            id="memoryIcon">
-
-            ✦
-
-        </div>
-
-
-        <p
-            class="memory-number"
-            id="memoryNumber">
-
-            MEMORY 01
-
-        </p>
-
-
-        <h2 id="memoryTitle">
-            Our Beginning
-        </h2>
-
-
-        <div class="memory-line"></div>
-
-
-        <p
-            id="memoryText"
-            class="memory-text">
-        </p>
-
-
-        <div class="memory-photo">
-
-            <span>📷</span>
+            <b>
+                OUR LITTLE ADVENTURE
+            </b>
 
             <small>
-                YOUR PHOTO WILL GO HERE
+                where every road led back to you
             </small>
 
         </div>
 
 
-        <button
-            id="memoryDone"
-            class="memory-done">
+        <div class="compass">
 
-            I FOUND THIS ONE ❤️
+            <div
+                class="compass-needle"
+                id="needle">
 
-        </button>
+                ✦
 
+            </div>
+
+        </div>
+
+
+        <!-- decorative elements -->
+
+        <span class="decor d1">🌴</span>
+        <span class="decor d2">🏔️</span>
+        <span class="decor d3">⚓</span>
+        <span class="decor d4">🌊</span>
+        <span class="decor d5">🌲</span>
+        <span class="decor d6">🪶</span>
+        <span class="decor d7">🗿</span>
+        <span class="decor d8">🌿</span>
+
+
+        <!-- =================================================
+             PATH
+             ================================================= -->
+
+        <svg
+            width="1800"
+            height="1050"
+            viewBox="0 0 1800 1050"
+            style="
+                position:absolute;
+                inset:0;
+                z-index:3;
+                pointer-events:none;
+            ">
+
+            <defs>
+
+                <filter id="goldGlow">
+
+                    <feGaussianBlur
+                        stdDeviation="3"
+                        result="blur"/>
+
+                    <feMerge>
+
+                        <feMergeNode
+                            in="blur"/>
+
+                        <feMergeNode
+                            in="SourceGraphic"/>
+
+                    </feMerge>
+
+                </filter>
+
+            </defs>
+
+
+            <path
+                class="path"
+                d="
+                M170 460
+                C280 250,410 300,515 470
+                S690 720,790 480
+                S1000 210,1110 420
+                S1330 700,1460 520
+                S1620 400,1670 700
+                "/>
+
+
+            <path
+                id="glowPath"
+                class="path-glow"
+                d="
+                M170 460
+                C280 250,410 300,515 470
+                S690 720,790 480
+                S1000 210,1110 420
+                S1330 700,1460 520
+                S1620 400,1670 700
+                "/>
+
+        </svg>
+
+
+        <!-- =================================================
+             LANDMARKS
+             ================================================= -->
+
+
+        <div
+            class="landmark locked"
+            data-index="1"
+            style="left:120px;top:400px">
+
+            <div class="pin">📸</div>
+
+            <div class="landmark-number">
+                1
+            </div>
+
+            <div class="landmark-label">
+                12.03.26 · Instagram
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="2"
+            style="left:260px;top:245px">
+
+            <div class="pin">📷</div>
+
+            <div class="landmark-number">
+                2
+            </div>
+
+            <div class="landmark-label">
+                19.03.26 · First Picture
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="3"
+            style="left:450px;top:410px">
+
+            <div class="pin">🎵</div>
+
+            <div class="landmark-number">
+                3
+            </div>
+
+            <div class="landmark-label">
+                02.04.26 · First Song
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="4"
+            style="left:650px;top:665px">
+
+            <div class="pin">❤️</div>
+
+            <div class="landmark-number">
+                4
+            </div>
+
+            <div class="landmark-label">
+                12.04.26 · Confession
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="5"
+            style="left:760px;top:420px">
+
+            <div class="pin">🌿</div>
+
+            <div class="landmark-number">
+                5
+            </div>
+
+            <div class="landmark-label">
+                Mehndi Memory
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="6"
+            style="left:960px;top:230px">
+
+            <div class="pin">🥛</div>
+
+            <div class="landmark-number">
+                6
+            </div>
+
+            <div class="landmark-label">
+                Milk Memory
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="7"
+            style="left:1060px;top:385px">
+
+            <div class="pin">🥤</div>
+
+            <div class="landmark-number">
+                7
+            </div>
+
+            <div class="landmark-label">
+                Soft Drink
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="8"
+            style="left:1190px;top:650px">
+
+            <div class="pin">💪</div>
+
+            <div class="landmark-number">
+                8
+            </div>
+
+            <div class="landmark-label">
+                Six-Pack
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="9"
+            style="left:1370px;top:480px">
+
+            <div class="pin">🎂</div>
+
+            <div class="landmark-number">
+                9
+            </div>
+
+            <div class="landmark-label">
+                Birthday
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="10"
+            style="left:1510px;top:590px">
+
+            <div class="pin">🚂</div>
+
+            <div class="landmark-number">
+                10
+            </div>
+
+            <div class="landmark-label">
+                13.07.26 · Patna
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="11"
+            style="left:1300px;top:780px">
+
+            <div class="pin">🎁</div>
+
+            <div class="landmark-number">
+                11
+            </div>
+
+            <div class="landmark-label">
+                05.08.26 · Dhanbad
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="12"
+            style="left:1040px;top:780px">
+
+            <div class="pin">⛰️</div>
+
+            <div class="landmark-number">
+                12
+            </div>
+
+            <div class="landmark-label">
+                Topchanchi
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="13"
+            style="left:780px;top:800px">
+
+            <div class="pin">🎬</div>
+
+            <div class="landmark-number">
+                13
+            </div>
+
+            <div class="landmark-label">
+                Awarapan 2
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="14"
+            style="left:520px;top:780px">
+
+            <div class="pin">🛕</div>
+
+            <div class="landmark-number">
+                14
+            </div>
+
+            <div class="landmark-label">
+                Temple
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="15"
+            style="left:330px;top:650px">
+
+            <div class="pin">🎓</div>
+
+            <div class="landmark-number">
+                15
+            </div>
+
+            <div class="landmark-label">
+                IIT ISM
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="16"
+            style="left:210px;top:770px">
+
+            <div class="pin">💼</div>
+
+            <div class="landmark-number">
+                16
+            </div>
+
+            <div class="landmark-label">
+                Prayagraj
+            </div>
+
+        </div>
+
+
+        <div
+            class="landmark locked"
+            data-index="17"
+            style="left:1540px;top:720px">
+
+            <div class="pin">♨️</div>
+
+            <div class="landmark-number">
+                17
+            </div>
+
+            <div class="landmark-label">
+                Sambodhi · Final
+            </div>
+
+        </div>
+
+
+        <div id="fog"></div>
+
+    </div>
+
+
+    <div class="map-hint">
+        Click the glowing landmark · follow the story in order
     </div>
 
 </div>
 
 
-<!-- =====================================================
-     MUSIC
-===================================================== -->
+<!-- =======================================================
+     MEMORY SCROLL
+     ======================================================= -->
 
-<button
-    id="musicButton"
-    class="music-button"
-    aria-label="Music">
+<div id="memoryOverlay">
 
-    ♫
+    <article class="scroll">
 
-</button>
+        <div
+            class="memory-date"
+            id="memoryDate">
+        </div>
 
-<div
-    id="audioHint"
-    class="audio-hint">
+        <h2
+            class="memory-title"
+            id="memoryTitle">
+        </h2>
 
-    MUSIC IS PLAYING ♫
+        <div
+            class="memory-icon"
+            id="memoryIcon">
+        </div>
+
+        <img
+            id="memoryPhoto"
+            class="memory-photo"
+            alt="Memory photograph">
+
+        <div
+            class="memory-body"
+            id="memoryBody">
+        </div>
+
+        <button
+            class="close-memory"
+            id="closeMemory">
+
+            UNLOCK THE NEXT CHAPTER →
+
+        </button>
+
+    </article>
+
+</div>
+
+
+<div id="toast"></div>
+
+
+<!-- =======================================================
+     FINAL ENDING
+     ======================================================= -->
+
+<section id="ending">
+
+    <div class="ending-inner">
+
+        <div
+            class="ending-line"
+            id="e1">
+
+            17 little moments.
+
+        </div>
+
+
+        <div
+            class="ending-line"
+            id="e2">
+
+            17 places on our little map.
+
+        </div>
+
+
+        <div
+            class="ending-line"
+            id="e3">
+
+            And somehow… every road kept leading back to you.
+
+        </div>
+
+
+        <div
+            class="ending-line"
+            id="e4">
+
+            I thought I was making a map of our memories…
+            <br><br>
+            but I think I was actually mapping the way
+            you became a part of my life.
+
+        </div>
+
+
+        <div
+            class="ending-small"
+            id="e5">
+
+            THE MAP DOESN'T END HERE.
+
+        </div>
+
+
+        <button
+            class="continue"
+            id="continueBtn">
+
+            KEEP GOING →
+
+        </button>
+
+    </div>
+
+</section>
+
 
 </div>
 
@@ -1663,178 +1760,364 @@ body{
 <script>
 
 /* =========================================================
-   ELEMENTS
-========================================================= */
-
-const transition =
-    document.getElementById("pageTransition");
-
-const introScreen =
-    document.getElementById("introScreen");
-
-const universe =
-    document.getElementById("universe");
-
-const exploreButton =
-    document.getElementById("exploreButton");
-
-const memoryStars =
-    document.querySelectorAll(".memory-star");
-
-const memoryModal =
-    document.getElementById("memoryModal");
-
-const closeMemory =
-    document.getElementById("closeMemory");
-
-const memoryDone =
-    document.getElementById("memoryDone");
-
-const memoryTitle =
-    document.getElementById("memoryTitle");
-
-const memoryText =
-    document.getElementById("memoryText");
-
-const memoryNumber =
-    document.getElementById("memoryNumber");
-
-const memoryIcon =
-    document.getElementById("memoryIcon");
-
-const progressText =
-    document.getElementById("progressText");
-
-const progressFill =
-    document.getElementById("progressFill");
-
-const universeComplete =
-    document.getElementById("universeComplete");
-
-const continueButton =
-    document.getElementById("continueButton");
-
-const starContainer =
-    document.getElementById("stars");
-
-const musicButton =
-    document.getElementById("musicButton");
-
-const audioHint =
-    document.getElementById("audioHint");
-
-
-/* =========================================================
-   MEMORY CONTENT
-========================================================= */
+   MEMORY DATA
+   ========================================================= */
 
 const memories = [
 
     {
-        title:"Our Beginning",
-        icon:"💫",
-        text:
-        'It all started with something so simple. I sent you a follow request... and one day, you accepted it. Then came one tiny word that started something much bigger than either of us knew... "Hi." ❤️'
+        date:"12.03.26",
+        title:"Where It All Began",
+        icon:"📸",
+
+        body:
+        `One tiny “hi” at 11 PM…
+        and somehow, that little moment became
+        the beginning of everything.`,
+
+        photo:""
     },
 
-    {
-        title:"12.03.26",
-        icon:"📅",
-        text:
-        "12.03.26 — the day we started talking. Just a date on a calendar, but one that became the beginning of so many conversations, little moments and memories."
-    },
 
     {
-        title:"That First Day",
-        icon:"🥹",
-        text:
-        "One of my favorite little memories... you falling asleep on my lap when we were together for the first day. Maybe it was a small moment, but it made me feel incredibly lucky."
+        date:"19.03.26",
+        title:"The First Picture",
+        icon:"📷",
+
+        body:
+        `The first picture you sent me.
+        A tiny photograph, but a memory that somehow
+        became permanently saved in my head.`,
+
+        photo:""
     },
 
-    {
-        title:"A Little Confession",
-        icon:"😂",
-        text:
-        'The first time I heard your voice, I told you that you sounded very young. Looking back... I have absolutely no idea why I thought saying that was a good idea. 😂'
-    },
 
     {
-        title:"Something I Love",
-        icon:"✨",
-        text:
-        "I love how charismatic you are. How interactive you are. How full of life you are. You have this energy that makes being around you feel different... and I absolutely love that about you."
+        date:"02.04.26",
+        title:"The First Song",
+        icon:"🎵",
+
+        body:
+        `The first time I heard you sing.
+        It wasn't just a video anymore —
+        it was the first time your voice became
+        part of my memories.`,
+
+        photo:""
     },
 
+
     {
-        title:"A Secret",
+        date:"12.04.26",
+        title:"The Confession",
         icon:"❤️",
-        text:
-        "Here's something I hope you never forget: I'm genuinely blessed to have you as someone so close to me. Around you, I feel comfortable. I feel loved. And you have a very special place in my life."
+
+        body:
+        `The day everything finally had a name.
+        Somewhere between all the conversations
+        and all the feelings… we became us.`,
+
+        photo:""
+    },
+
+
+    {
+        date:"",
+        title:"Mehndi Memory",
+        icon:"🌿",
+
+        body:
+        `A little pattern on your hand.
+        Another tiny detail that somehow became
+        a part of our story.`,
+
+        photo:""
+    },
+
+
+    {
+        date:"",
+        title:"Milk Memory",
+        icon:"🥛",
+
+        body:
+        `Some memories are sweet.
+        Some are simply impossible to forget.
+
+        This one definitely belongs in the
+        second category. 😏`,
+
+        photo:""
+    },
+
+
+    {
+        date:"",
+        title:"The Soft Drink Chapter",
+        icon:"🥤",
+
+        body:
+        `A bottle, some bubbles,
+        and one more ridiculous little memory
+        that somehow deserves its own place
+        on the map.`,
+
+        photo:""
+    },
+
+
+    {
+        date:"",
+        title:"The Six-Pack Chapter",
+        icon:"💪",
+
+        body:
+        `Someone was VERY proud of those abs.
+
+        And yes…
+        this memory absolutely earned a landmark. 😏`,
+
+        photo:""
+    },
+
+
+    {
+        date:"",
+        title:"Birthday",
+        icon:"🎂",
+
+        body:
+        `Another little chapter worth keeping.
+
+        Some days become memories because of
+        what happened.
+
+        Some become memories because of
+        who was there.`,
+
+        photo:""
+    },
+
+
+    {
+        date:"13.07.26",
+        title:"PATNA — The Big Chapter",
+        icon:"🚂",
+
+        body:
+        `A train.
+        A station.
+        Flowers.
+        And finally seeing you.
+
+        Then Sabyata Dwar,
+        Science City,
+        City Mall,
+        Hanuman Mandir,
+        and that long Marine Drive ride.
+
+        Patna became more than a place
+        because you were there.`,
+
+        photo:""
+    },
+
+
+    {
+        date:"05.08.26",
+        title:"The Return",
+        icon:"🎁",
+
+        body:
+        `After all those moments,
+        another little chapter found its way
+        onto the map —
+
+        the return to Dhanbad,
+        carrying memories instead of
+        just luggage.`,
+
+        photo:""
+    },
+
+
+    {
+        date:"",
+        title:"Topchanchi",
+        icon:"⛰️",
+
+        body:
+        `A little mountain-and-lake chapter.
+
+        The kind of place that feels quieter
+        when you are standing beside the person
+        you want beside you.`,
+
+        photo:""
+    },
+
+
+    {
+        date:"",
+        title:"Awarapan 2",
+        icon:"🎬",
+
+        body:
+        `First show.
+        Dark cinema.
+        A screen glowing in front of us.
+
+        Another ordinary-looking day
+        that quietly became ours.`,
+
+        photo:""
+    },
+
+
+    {
+        date:"",
+        title:"A Temple Memory",
+        icon:"🛕",
+
+        body:
+        `Some places make you slow down.
+
+        Some moments make you feel grateful.
+
+        This one belongs here for both reasons.`,
+
+        photo:""
+    },
+
+
+    {
+        date:"",
+        title:"IIT ISM",
+        icon:"🎓",
+
+        body:
+        `A little piece of my world.
+
+        A place connected to my journey,
+        my dreams,
+
+        and now —
+        to our story too.`,
+
+        photo:""
+    },
+
+
+    {
+        date:"",
+        title:"Prayagraj",
+        icon:"💼",
+
+        body:
+        `New places.
+        New chapters.
+        New possibilities.
+
+        Even when life changes the scenery,
+        I hope the person beside me
+        remains the same.`,
+
+        photo:""
+    },
+
+
+    {
+        date:"",
+        title:"Sambodhi — The Hidden Island",
+        icon:"♨️",
+
+        body:
+        `The final destination
+        on this little map.
+
+        But maybe the point
+        was never the destination.
+
+        Maybe the treasure was
+        every tiny road that brought us here.`,
+
+        photo:""
     }
 
 ];
 
 
-let discovered = 0;
-let currentMemory = null;
-const discoveredStars = [];
+/* =========================================================
+   STATE
+   ========================================================= */
+
+let unlocked = 0;
 
 
 /* =========================================================
-   WEB AUDIO ENGINE
-   Cute dreamy background music — no external file needed
-========================================================= */
+   AUDIO ENGINE
+   ========================================================= */
 
-let audioContext = null;
+let audioCtx = null;
 let masterGain = null;
 let musicGain = null;
-let musicStarted = false;
-
+let effectGain = null;
 let musicTimer = null;
-let musicStep = 0;
 
-
-/* Initialize audio */
 
 function initAudio(){
 
-    if(audioContext){
+    if(audioCtx){
         return;
     }
 
-    const AudioCtx =
-        window.AudioContext ||
-        window.webkitAudioContext;
+    audioCtx =
+        new (
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
 
-    if(!AudioCtx){
-        return;
-    }
-
-    audioContext =
-        new AudioCtx();
 
     masterGain =
-        audioContext.createGain();
+        audioCtx.createGain();
+
+    masterGain.gain.value = .55;
+
+    masterGain.connect(
+        audioCtx.destination
+    );
+
 
     musicGain =
-        audioContext.createGain();
+        audioCtx.createGain();
 
-    masterGain.gain.value = .8;
+    musicGain.gain.value = .075;
 
-    musicGain.gain.value = .0001;
-
-    musicGain.connect(masterGain);
-    masterGain.connect(
-        audioContext.destination
+    musicGain.connect(
+        masterGain
     );
+
+
+    effectGain =
+        audioCtx.createGain();
+
+    effectGain.gain.value = .65;
+
+    effectGain.connect(
+        masterGain
+    );
+
+
+    startAmbientMusic();
 }
 
 
 /* =========================================================
-   SOFT SYNTH SOUND
-========================================================= */
+   PROCEDURAL SOUND
+   ========================================================= */
 
-function playTone(
+function tone(
     frequency,
     duration=.18,
     type="sine",
@@ -1842,1116 +2125,885 @@ function playTone(
     delay=0
 ){
 
-    if(!audioContext){
+    if(!audioCtx){
         return;
     }
 
     const oscillator =
-        audioContext.createOscillator();
+        audioCtx.createOscillator();
 
     const gain =
-        audioContext.createGain();
+        audioCtx.createGain();
+
 
     oscillator.type = type;
 
     oscillator.frequency.value =
         frequency;
 
-    oscillator.connect(gain);
-    gain.connect(masterGain);
 
-    const now =
-        audioContext.currentTime +
+    const startTime =
+        audioCtx.currentTime +
         delay;
 
+
     gain.gain.setValueAtTime(
-        .0001,
-        now
+        0,
+        startTime
     );
 
-    gain.gain.exponentialRampToValueAtTime(
+
+    gain.gain.linearRampToValueAtTime(
         volume,
-        now + .015
+        startTime + .02
     );
+
 
     gain.gain.exponentialRampToValueAtTime(
-        .0001,
-        now + duration
+        .001,
+        startTime + duration
     );
 
-    oscillator.start(now);
+
+    oscillator.connect(gain);
+
+    gain.connect(effectGain);
+
+
+    oscillator.start(startTime);
+
     oscillator.stop(
-        now + duration + .03
+        startTime +
+        duration +
+        .04
     );
 }
 
 
 /* =========================================================
-   PREMIUM UI SOUNDS
-========================================================= */
+   SOUND EFFECTS
+   ========================================================= */
 
 function clickSound(){
 
-    playTone(
-        660,
+    tone(
+        150,
         .08,
-        "sine",
-        .055
-    );
-
-    playTone(
-        990,
-        .12,
-        "sine",
-        .025,
-        .035
-    );
-}
-
-
-function openSound(){
-
-    playTone(
-        392,
-        .18,
-        "sine",
-        .055
-    );
-
-    playTone(
-        523.25,
-        .25,
-        "sine",
-        .06,
-        .08
-    );
-
-    playTone(
-        783.99,
-        .45,
-        "sine",
-        .045,
-        .18
-    );
-}
-
-
-function discoverySound(){
-
-    playTone(
-        523.25,
-        .14,
-        "sine",
+        "triangle",
         .06
     );
 
-    playTone(
-        659.25,
-        .16,
-        "sine",
-        .06,
-        .08
-    );
-
-    playTone(
-        783.99,
-        .3,
-        "sine",
-        .07,
-        .16
-    );
-
-    playTone(
-        1046.5,
-        .55,
-        "sine",
-        .035,
-        .28
+    tone(
+        220,
+        .08,
+        "triangle",
+        .04,
+        .03
     );
 }
 
 
-function completionSound(){
+function unlockSound(){
 
-    playTone(
-        523.25,
-        .18,
+    tone(
+        330,
+        .14,
+        "triangle",
+        .10
+    );
+
+    tone(
+        495,
+        .22,
         "sine",
+        .08,
+        .07
+    );
+
+    tone(
+        660,
+        .4,
+        "sine",
+        .06,
+        .14
+    );
+}
+
+
+function errorSound(){
+
+    tone(
+        100,
+        .12,
+        "sawtooth",
         .05
     );
 
-    playTone(
-        659.25,
-        .18,
+    tone(
+        75,
+        .16,
         "sine",
-        .055,
-        .12
-    );
-
-    playTone(
-        783.99,
-        .22,
-        "sine",
-        .06,
-        .24
-    );
-
-    playTone(
-        1046.5,
-        .7,
-        "sine",
-        .07,
-        .38
-    );
-}
-
-
-function transitionSound(){
-
-    playTone(
-        220,
-        .35,
-        "sine",
-        .035
-    );
-
-    playTone(
-        329.63,
-        .5,
-        "sine",
-        .045,
-        .18
-    );
-
-    playTone(
-        659.25,
-        .8,
-        "sine",
-        .035,
-        .35
+        .04,
+        .08
     );
 }
 
 
 /* =========================================================
-   DREAMY BACKGROUND MUSIC
-========================================================= */
+   AMBIENT PIANO-LIKE MUSIC
+   ========================================================= */
 
-const melody = [
+function startAmbientMusic(){
 
-    261.63,
-    329.63,
-    392.00,
-    523.25,
-
-    392.00,
-    329.63,
-    293.66,
-    392.00,
-
-    261.63,
-    329.63,
-    440.00,
-    523.25,
-
-    493.88,
-    392.00,
-    329.63,
-    261.63
-
-];
-
-
-function playMusicNote(){
-
-    if(!audioContext){
+    if(!audioCtx){
         return;
     }
 
-    if(!musicStarted){
-        return;
-    }
+    const notes = [
 
-    const frequency =
-        melody[musicStep % melody.length];
+        261.63,
+        329.63,
+        392.00,
+        329.63,
 
-    const oscillator =
-        audioContext.createOscillator();
+        293.66,
+        349.23,
+        440.00,
+        349.23
 
-    const gain =
-        audioContext.createGain();
+    ];
 
-    oscillator.type =
-        "sine";
+    let index = 0;
 
-    oscillator.frequency.value =
-        frequency;
-
-    oscillator.connect(gain);
-    gain.connect(musicGain);
-
-    const now =
-        audioContext.currentTime;
-
-    gain.gain.setValueAtTime(
-        .0001,
-        now
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        .045,
-        now + .08
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        .0001,
-        now + 1.5
-    );
-
-    oscillator.start(now);
-
-    oscillator.stop(
-        now + 1.55
-    );
-
-    musicStep++;
-}
-
-
-function startMusic(){
-
-    initAudio();
-
-    if(!audioContext){
-        return;
-    }
-
-    if(audioContext.state === "suspended"){
-        audioContext.resume();
-    }
-
-    if(musicStarted){
-        return;
-    }
-
-    musicStarted = true;
-
-    musicGain.gain.cancelScheduledValues(
-        audioContext.currentTime
-    );
-
-    musicGain.gain.setValueAtTime(
-        .0001,
-        audioContext.currentTime
-    );
-
-    musicGain.gain.exponentialRampToValueAtTime(
-        .075,
-        audioContext.currentTime + 3
-    );
 
     musicTimer =
-        setInterval(
-            playMusicNote,
-            900
-        );
+        setInterval(()=>{
 
-    playMusicNote();
-
-    musicButton.classList.add(
-        "playing"
-    );
-
-    audioHint.classList.add(
-        "show"
-    );
-
-    setTimeout(
-        ()=>{
-            audioHint.classList.remove(
-                "show"
-            );
-        },
-        2500
-    );
-}
-
-
-function toggleMusic(){
-
-    initAudio();
-
-    if(!audioContext){
-        return;
-    }
-
-    if(audioContext.state === "suspended"){
-        audioContext.resume();
-    }
-
-    if(!musicStarted){
-
-        startMusic();
-        return;
-
-    }
-
-    const current =
-        audioContext.currentTime;
-
-    const target =
-        musicGain.gain.value > .01
-            ? .0001
-            : .075;
-
-    musicGain.gain.cancelScheduledValues(
-        current
-    );
-
-    musicGain.gain.setTargetAtTime(
-        target,
-        current,
-        .25
-    );
-
-    if(target < .01){
-
-        musicButton.classList.remove(
-            "playing"
-        );
-
-        musicButton.textContent =
-            "🔇";
-
-    }else{
-
-        musicButton.classList.add(
-            "playing"
-        );
-
-        musicButton.textContent =
-            "♫";
-    }
-}
-
-
-/* =========================================================
-   FIRST INTERACTION
-========================================================= */
-
-let firstInteraction = true;
-
-function handleFirstInteraction(){
-
-    if(firstInteraction){
-
-        firstInteraction = false;
-
-        startMusic();
-
-    }
-
-}
-
-
-document.addEventListener(
-    "pointerdown",
-    handleFirstInteraction,
-    {
-        once:true
-    }
-);
-
-
-/* =========================================================
-   MUSIC BUTTON
-========================================================= */
-
-musicButton.addEventListener(
-    "click",
-    function(event){
-
-        event.stopPropagation();
-
-        toggleMusic();
-
-    }
-);
-
-
-/* =========================================================
-   RIPPLE EFFECT
-========================================================= */
-
-document.addEventListener(
-    "pointerdown",
-    function(event){
-
-        const ripple =
-            document.createElement("div");
-
-        ripple.className =
-            "click-ripple";
-
-        ripple.style.left =
-            event.clientX + "px";
-
-        ripple.style.top =
-            event.clientY + "px";
-
-        document.body.appendChild(
-            ripple
-        );
-
-        setTimeout(
-            ()=>{
-                ripple.remove();
-            },
-            700
-        );
-
-    }
-);
-
-
-/* =========================================================
-   PAGE FADE IN
-========================================================= */
-
-setTimeout(
-    function(){
-
-        transition.classList.add(
-            "fade-out"
-        );
-
-    },
-    300
-);
-
-
-/* =========================================================
-   CREATE BACKGROUND STARS
-========================================================= */
-
-function createBackgroundStars(){
-
-    for(let i=0;i<120;i++){
-
-        const star =
-            document.createElement("span");
-
-        star.className =
-            "background-star";
-
-        star.textContent =
-            Math.random() > .82
-                ? "✦"
-                : "•";
-
-        star.style.left =
-            Math.random()*100 + "%";
-
-        star.style.top =
-            Math.random()*100 + "%";
-
-        star.style.animationDelay =
-            Math.random()*4 + "s";
-
-        star.style.animationDuration =
-            2 + Math.random()*4 + "s";
-
-        starContainer.appendChild(
-            star
-        );
-    }
-}
-
-createBackgroundStars();
-
-
-/* =========================================================
-   SHOOTING STAR
-========================================================= */
-
-function createShootingStar(){
-
-    if(
-        !universe.classList.contains(
-            "active"
-        )
-    ){
-        return;
-    }
-
-    const star =
-        document.createElement("div");
-
-    star.className =
-        "shooting-star";
-
-    star.style.left =
-        65 + Math.random()*35 + "%";
-
-    star.style.top =
-        5 + Math.random()*35 + "%";
-
-    document.body.appendChild(
-        star
-    );
-
-    playTone(
-        1100,
-        .12,
-        "sine",
-        .018
-    );
-
-    setTimeout(
-        ()=>{
-            star.remove();
-        },
-        1600
-    );
-}
-
-setInterval(
-    createShootingStar,
-    5000
-);
-
-
-/* =========================================================
-   MOUSE REACTIVE STARS
-========================================================= */
-
-document.addEventListener(
-    "mousemove",
-    function(event){
-
-        memoryStars.forEach(
-            function(star){
-
-                const rect =
-                    star.getBoundingClientRect();
-
-                const centerX =
-                    rect.left +
-                    rect.width/2;
-
-                const centerY =
-                    rect.top +
-                    rect.height/2;
-
-                const distance =
-                    Math.sqrt(
-                        Math.pow(
-                            event.clientX-centerX,
-                            2
-                        )+
-                        Math.pow(
-                            event.clientY-centerY,
-                            2
-                        )
-                    );
-
-                if(distance < 180){
-
-                    const strength =
-                        (180-distance)/180;
-
-                    const x =
-                        centerX < event.clientX
-                            ? -1
-                            : 1;
-
-                    const y =
-                        centerY < event.clientY
-                            ? -1
-                            : 1;
-
-                    star.style.transform =
-                        `translate(
-                            ${x*strength*8}px,
-                            ${y*strength*8}px
-                        )
-                        scale(
-                            ${1+strength*.12}
-                        )`;
-
-                }else{
-
-                    star.style.transform = "";
-
-                }
-
+            if(document.hidden){
+                return;
             }
-        );
 
-    }
-);
+
+            const frequency =
+                notes[
+                    index %
+                    notes.length
+                ];
+
+            index++;
+
+
+            const oscillator =
+                audioCtx.createOscillator();
+
+            const gain =
+                audioCtx.createGain();
+
+
+            oscillator.type =
+                "sine";
+
+            oscillator.frequency.value =
+                frequency;
+
+
+            gain.gain.setValueAtTime(
+                0,
+                audioCtx.currentTime
+            );
+
+
+            gain.gain.linearRampToValueAtTime(
+                .45,
+                audioCtx.currentTime + .35
+            );
+
+
+            gain.gain.exponentialRampToValueAtTime(
+                .001,
+                audioCtx.currentTime + 2.2
+            );
+
+
+            oscillator.connect(gain);
+
+            gain.connect(musicGain);
+
+
+            oscillator.start();
+
+            oscillator.stop(
+                audioCtx.currentTime + 2.3
+            );
+
+        },1300);
+}
 
 
 /* =========================================================
-   ENTER UNIVERSE
-========================================================= */
+   DOM
+   ========================================================= */
 
-exploreButton.addEventListener(
+const startBtn =
+    document.getElementById("startBtn");
+
+const intro =
+    document.getElementById("intro");
+
+const mapStage =
+    document.getElementById("mapStage");
+
+const map =
+    document.getElementById("map");
+
+const fog =
+    document.getElementById("fog");
+
+const count =
+    document.getElementById("count");
+
+const needle =
+    document.getElementById("needle");
+
+const glowPath =
+    document.getElementById("glowPath");
+
+const memoryOverlay =
+    document.getElementById("memoryOverlay");
+
+const memoryDate =
+    document.getElementById("memoryDate");
+
+const memoryTitle =
+    document.getElementById("memoryTitle");
+
+const memoryIcon =
+    document.getElementById("memoryIcon");
+
+const memoryBody =
+    document.getElementById("memoryBody");
+
+const memoryPhoto =
+    document.getElementById("memoryPhoto");
+
+const closeMemory =
+    document.getElementById("closeMemory");
+
+const toast =
+    document.getElementById("toast");
+
+const ending =
+    document.getElementById("ending");
+
+const continueBtn =
+    document.getElementById("continueBtn");
+
+const landmarks =
+    [
+        ...document.querySelectorAll(
+            ".landmark"
+        )
+    ];
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+startBtn.addEventListener(
     "click",
-    function(){
+    ()=>{
+
+        initAudio();
+
+        if(
+            audioCtx &&
+            audioCtx.state === "suspended"
+        ){
+            audioCtx.resume();
+        }
 
         clickSound();
 
-        introScreen.classList.remove(
-            "active"
-        );
 
-        setTimeout(
-            function(){
+        intro.style.opacity = "0";
 
-                universe.classList.add(
-                    "active"
-                );
+        intro.style.transform =
+            "scale(1.04)";
 
-                openSound();
 
-                createShootingStar();
+        setTimeout(()=>{
 
-            },
-            700
-        );
+            intro.style.display =
+                "none";
+
+            mapStage.style.opacity =
+                "1";
+
+
+            unlockNext();
+
+        },850);
 
     }
 );
 
 
 /* =========================================================
-   CONSTELLATION SVG
-========================================================= */
+   UNLOCK NEXT LANDMARK
+   ========================================================= */
 
-function getConstellationSVG(){
+function unlockNext(){
 
-    let svg =
-        document.getElementById(
-            "constellation-svg"
-        );
-
-    if(svg){
-        return svg;
-    }
-
-    svg =
-        document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "svg"
-        );
-
-    svg.id =
-        "constellation-svg";
-
-    document.body.appendChild(
-        svg
-    );
-
-    return svg;
-}
-
-
-function drawConstellation(){
-
-    const svg =
-        getConstellationSVG();
-
-    while(svg.firstChild){
-        svg.removeChild(
-            svg.firstChild
-        );
-    }
-
-    if(
-        discoveredStars.length < 2
-    ){
+    if(unlocked >= 17){
         return;
     }
 
-    for(
-        let i=0;
-        i<discoveredStars.length-1;
-        i++
-    ){
 
-        const first =
-            memoryStars[
-                discoveredStars[i]
-            ];
+    const landmark =
+        landmarks[unlocked];
 
-        const second =
-            memoryStars[
-                discoveredStars[i+1]
-            ];
 
-        const r1 =
-            first.getBoundingClientRect();
+    landmark.classList.remove(
+        "locked"
+    );
 
-        const r2 =
-            second.getBoundingClientRect();
+    landmark.classList.add(
+        "available"
+    );
 
-        const x1 =
-            r1.left+r1.width/2;
 
-        const y1 =
-            r1.top+r1.height/2;
+    count.textContent =
+        unlocked;
 
-        const x2 =
-            r2.left+r2.width/2;
 
-        const y2 =
-            r2.top+r2.height/2;
+    /*
+       Gradually reveal the map.
+    */
 
-        const line =
-            document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "line"
-            );
-
-        line.setAttribute(
-            "x1",
-            x1
+    fog.style.opacity =
+        Math.max(
+            .72 -
+            unlocked * .038,
+            .05
         );
 
-        line.setAttribute(
-            "y1",
-            y1
-        );
 
-        line.setAttribute(
-            "x2",
-            x2
-        );
+    /*
+       Gradually illuminate
+       the journey path.
+    */
 
-        line.setAttribute(
-            "y2",
-            y2
-        );
+    glowPath.style.strokeDashoffset =
+        1500 -
+        (
+            unlocked /
+            17
+        ) * 1500;
 
-        line.setAttribute(
-            "stroke",
-            "rgba(255,255,255,.65)"
-        );
 
-        line.setAttribute(
-            "stroke-width",
-            "1.2"
-        );
+    /*
+       Rotate compass.
+    */
 
-        line.setAttribute(
-            "stroke-linecap",
-            "round"
-        );
+    const angle =
+        (unlocked * 31) % 360;
 
-        const length =
-            Math.sqrt(
-                Math.pow(x2-x1,2)+
-                Math.pow(y2-y1,2)
-            );
+    needle.style.transform =
+        `rotate(${angle}deg)`;
 
-        line.style.strokeDasharray =
-            length;
 
-        line.style.strokeDashoffset =
-            length;
+    setTimeout(
+        ()=>focusLandmark(landmark),
+        100
+    );
+}
 
-        line.style.filter =
-            "drop-shadow(0 0 6px rgba(255,255,255,.8))";
 
-        svg.appendChild(
-            line
-        );
+/* =========================================================
+   CAMERA-LIKE MAP MOVEMENT
+   ========================================================= */
 
-        requestAnimationFrame(
-            function(){
+function focusLandmark(landmark){
 
-                line.style.transition =
-                    "stroke-dashoffset 1.2s ease";
+    /*
+       On phones we keep the map stable
+       because aggressive movement can make
+       touch interaction uncomfortable.
+    */
 
-                line.style.strokeDashoffset =
-                    "0";
-
-            }
-        );
-
+    if(window.innerWidth < 700){
+        return;
     }
+
+
+    const rect =
+        landmark.getBoundingClientRect();
+
+
+    const targetX =
+        window.innerWidth / 2 -
+        (
+            rect.left +
+            rect.width / 2
+        );
+
+
+    const targetY =
+        window.innerHeight / 2 -
+        (
+            rect.top +
+            rect.height / 2
+        );
+
+
+    map.style.transform =
+        `
+        translate(
+            calc(-50% + ${targetX * .35}px),
+            calc(-50% + ${targetY * .35}px)
+        )
+        `;
+}
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+function showToast(message){
+
+    toast.textContent =
+        message;
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        showToast.timer
+    );
+
+
+    showToast.timer =
+        setTimeout(()=>{
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },1800);
 }
 
 
 /* =========================================================
    OPEN MEMORY
-========================================================= */
+   ========================================================= */
 
-memoryStars.forEach(
-    function(star){
+function openMemory(index){
 
-        star.addEventListener(
-            "click",
-            function(){
+    /*
+       Prevent skipping.
+    */
 
-                clickSound();
+    if(index !== unlocked){
 
-                const index =
-                    Number(
-                        star.dataset.memory
-                    );
-
-                if(!memories[index]){
-                    return;
-                }
-
-                currentMemory =
-                    index;
-
-                const memory =
-                    memories[index];
-
-                memoryTitle.textContent =
-                    memory.title;
-
-                memoryIcon.textContent =
-                    memory.icon;
-
-                memoryText.textContent =
-                    memory.text;
-
-                memoryNumber.textContent =
-                    "MEMORY " +
-                    String(index+1)
-                        .padStart(2,"0");
-
-                memoryModal.classList.add(
-                    "show"
-                );
-
-                openSound();
-
-            }
-        );
-
-    }
-);
+        errorSound();
 
 
-/* =========================================================
-   DISCOVER MEMORY
-========================================================= */
+        if(index > unlocked){
 
-memoryDone.addEventListener(
-    "click",
-    function(){
-
-        if(currentMemory === null){
-            return;
-        }
-
-        const star =
-            memoryStars[
-                currentMemory
-            ];
-
-        if(
-            !star.classList.contains(
-                "discovered"
-            )
-        ){
-
-            star.classList.add(
-                "discovered"
+            showToast(
+                "Not yet, explorer. ❤️ Follow the story in order."
             );
 
-            discoveredStars.push(
-                currentMemory
+        }else{
+
+            showToast(
+                "You've already discovered this chapter."
             );
 
-            discovered++;
+        }
 
-            discoverySound();
+        return;
+    }
 
-            updateProgress();
 
-            setTimeout(
-                drawConstellation,
-                300
+    clickSound();
+
+    unlockSound();
+
+
+    const memory =
+        memories[index];
+
+
+    memoryDate.textContent =
+        memory.date ||
+        "A LITTLE CHAPTER";
+
+
+    memoryTitle.textContent =
+        memory.title;
+
+
+    memoryIcon.textContent =
+        memory.icon;
+
+
+    memoryBody.innerHTML =
+        memory.body
+            .replace(
+                /\n/g,
+                "<br>"
             );
-        }
-
-        closeMemoryModal();
-
-    }
-);
 
 
-/* =========================================================
-   PROGRESS
-========================================================= */
+    /*
+       OPTIONAL PHOTO SUPPORT
 
-function updateProgress(){
+       Example:
 
-    progressText.textContent =
-        discovered +
-        " / 6 discovered";
+       photo:"images/12-03-26.jpg"
 
-    progressFill.style.width =
-        (discovered/6*100) +
-        "%";
+       Keep photo:"" if you don't want
+       a photograph for that memory.
+    */
 
-    if(discovered === 6){
+    if(memory.photo){
 
-        setTimeout(
-            function(){
+        memoryPhoto.src =
+            memory.photo;
 
-                universeComplete.classList.add(
-                    "show"
-                );
-
-                completionSound();
-
-            },
-            1400
-        );
-
-    }
-}
-
-
-/* =========================================================
-   CLOSE MODAL
-========================================================= */
-
-function closeMemoryModal(){
-
-    memoryModal.classList.remove(
-        "show"
-    );
-
-    currentMemory =
-        null;
-}
-
-
-closeMemory.addEventListener(
-    "click",
-    function(){
-
-        clickSound();
-
-        closeMemoryModal();
-
-    }
-);
-
-
-/* =========================================================
-   CLICK BACKDROP
-========================================================= */
-
-memoryModal.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            event.target.classList.contains(
-                "modal-backdrop"
-            )
-        ){
-
-            clickSound();
-
-            closeMemoryModal();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   ESC
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Escape"){
-
-            if(
-                memoryModal.classList.contains(
-                    "show"
-                )
-            ){
-
-                closeMemoryModal();
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   RESIZE
-========================================================= */
-
-window.addEventListener(
-    "resize",
-    function(){
-
-        if(
-            discoveredStars.length >= 2
-        ){
-
-            drawConstellation();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   CONTINUE
-========================================================= */
-
-continueButton.addEventListener(
-    "click",
-    function(){
-
-        clickSound();
-
-        transitionSound();
-
-        transition.classList.remove(
-            "fade-out"
-        );
-
-        universeComplete.classList.remove(
+        memoryPhoto.classList.add(
             "show"
         );
 
-        setTimeout(
-            function(){
 
-                /*
-                 * Change this filename if
-                 * your next page has another name.
-                 */
+        memoryPhoto.onerror =
+            ()=>{
 
-                window.location.href =
-                    "page4.html";
+                memoryPhoto.classList.remove(
+                    "show"
+                );
 
-            },
-            1100
+            };
+
+    }else{
+
+        memoryPhoto.classList.remove(
+            "show"
         );
+
+        memoryPhoto.removeAttribute(
+            "src"
+        );
+    }
+
+
+    if(index === 16){
+
+        closeMemory.textContent =
+            "FIND THE TREASURE →";
+
+    }else{
+
+        closeMemory.textContent =
+            "UNLOCK THE NEXT CHAPTER →";
+    }
+
+
+    memoryOverlay.style.display =
+        "grid";
+}
+
+
+/* =========================================================
+   LANDMARK CLICK
+   ========================================================= */
+
+landmarks.forEach(
+    landmark => {
+
+        landmark.addEventListener(
+            "click",
+            ()=>{
+
+                const index =
+                    Number(
+                        landmark.dataset.index
+                    ) - 1;
+
+
+                openMemory(index);
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CLOSE MEMORY
+   ========================================================= */
+
+closeMemory.addEventListener(
+    "click",
+    ()=>{
+
+        memoryOverlay.style.display =
+            "none";
+
+
+        /*
+           Mark current landmark complete.
+        */
+
+        landmarks[unlocked]
+            .classList
+            .remove("available");
+
+
+        landmarks[unlocked]
+            .classList
+            .add("done");
+
+
+        unlocked++;
+
+
+        count.textContent =
+            unlocked;
+
+
+        /*
+           More chapters?
+        */
+
+        if(unlocked < 17){
+
+            unlockNext();
+
+
+            showToast(
+                "A new piece of the map has been revealed ✨"
+            );
+
+        }else{
+
+            finishJourney();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   FINISH JOURNEY
+   ========================================================= */
+
+function finishJourney(){
+
+    /*
+       Everything is now complete.
+    */
+
+    landmarks.forEach(
+        landmark => {
+
+            landmark.classList.add(
+                "done"
+            );
+
+        }
+    );
+
+
+    /*
+       Remove remaining fog.
+    */
+
+    fog.style.opacity =
+        "0";
+
+
+    /*
+       Fully illuminate route.
+    */
+
+    glowPath.style.strokeDashoffset =
+        "0";
+
+
+    /*
+       Compass final spin.
+    */
+
+    needle.style.transform =
+        "rotate(360deg)";
+
+
+    /*
+       Fade music down.
+    */
+
+    if(audioCtx){
+
+        musicGain.gain
+            .cancelScheduledValues(
+                audioCtx.currentTime
+            );
+
+
+        musicGain.gain
+            .linearRampToValueAtTime(
+                .015,
+                audioCtx.currentTime + 3
+            );
+
+
+        /*
+           Final little musical flourish.
+        */
+
+        [
+            261.63,
+            329.63,
+            392,
+            523.25,
+            659.25
+        ].forEach(
+            (note,index)=>{
+
+                tone(
+                    note,
+                    2,
+                    "sine",
+                    .05,
+                    index * .18
+                );
+
+            }
+        );
+
+    }
+
+
+    setTimeout(
+        showEnding,
+        2800
+    );
+}
+
+
+/* =========================================================
+   ENDING
+   ========================================================= */
+
+function showEnding(){
+
+    mapStage.style.opacity =
+        "0";
+
+
+    ending.style.display =
+        "grid";
+
+
+    const lines = [
+
+        "e1",
+        "e2",
+        "e3",
+        "e4",
+        "e5"
+
+    ];
+
+
+    lines.forEach(
+        (id,index)=>{
+
+            setTimeout(
+                ()=>{
+                    document
+                        .getElementById(id)
+                        .classList
+                        .add("show");
+                },
+
+                index * 1800
+            );
+
+        }
+    );
+
+
+    setTimeout(
+        ()=>{
+            continueBtn.classList.add(
+                "show"
+            );
+        },
+
+        lines.length * 1800 + 500
+    );
+}
+
+
+/* =========================================================
+   PAGE 6 TRANSITION
+   ========================================================= */
+
+continueBtn.addEventListener(
+    "click",
+    ()=>{
+
+        /*
+           WHEN PAGE 6 IS READY:
+
+           Replace this:
+
+              showToast("Next chapter ready ❤️");
+
+           with:
+
+              window.location.href =
+                  "page6.html";
+
+           If your Page 6 has another filename,
+           change it accordingly.
+        */
+
+
+        showToast(
+            "Next chapter ready ❤️"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   ESCAPE KEY
+   ========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Escape" &&
+            memoryOverlay.style.display === "grid"
+        ){
+
+            memoryOverlay.style.display =
+                "none";
+
+        }
 
     }
 );
