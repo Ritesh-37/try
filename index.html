@@ -1,1213 +1,848 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width,
-               initial-scale=1.0,
-               maximum-scale=1.0,
-               user-scalable=no">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Tisha ❤️</title>
 
+<!-- PAGE 3 TYPOGRAPHY -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --ivory:#fffaf6;
+    --cream:#fdf3ed;
+    --blush:#f8ddd8;
+    --rose:#d99a9d;
+    --dusty:#c77d83;
+    --burgundy:#713d48;
+    --deep:#48252f;
+    --wine:#632f3c;
+    --text:#3d2730;
+    --muted:#80666c;
+    --white:rgba(255,255,255,.88);
+}
 
 /* =========================================================
    RESET
 ========================================================= */
 
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
 html,
 body{
     width:100%;
     min-height:100%;
-    overflow:hidden;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    background:#08070d;
-    color:white;
 }
 
 body{
+    overflow-x:hidden;
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(255,255,255,.95) 0%,
+            rgba(255,245,239,.78) 22%,
+            transparent 48%
+        ),
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(226,169,169,.35),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(126,59,72,.16),
+            transparent 48%
+        ),
+        linear-gradient(
+            135deg,
+            #fffaf6 0%,
+            #f9e9e3 40%,
+            #f5d8d5 72%,
+            #edd0d0 100%
+        );
+
+    color:var(--text);
+    font-family:'DM Sans',sans-serif;
     position:relative;
 }
 
-
 /* =========================================================
-   BACKGROUND
+   SOFT PAGE TEXTURE
 ========================================================= */
 
-.background{
+body::before{
+    content:"";
     position:fixed;
     inset:0;
-    z-index:-10;
+    pointer-events:none;
+    z-index:0;
 
     background:
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(116,70,120,.20),
-            transparent 35%
-        ),
-
         radial-gradient(
             circle at 20% 80%,
-            rgba(180,100,130,.12),
-            transparent 35%
+            rgba(112,54,68,.06),
+            transparent 28%
         ),
-
         radial-gradient(
             circle at 80% 70%,
-            rgba(100,80,150,.12),
-            transparent 35%
-        ),
-
-        linear-gradient(
-            145deg,
-            #07070b,
-            #110b14,
-            #08070d
+            rgba(196,121,130,.08),
+            transparent 30%
         );
+
+    animation:backgroundBreath 10s ease-in-out infinite alternate;
 }
 
-.background::before{
+body::after{
     content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
 
-    position:absolute;
-    inset:-20%;
+    opacity:.20;
 
-    background:
+    background-image:
         radial-gradient(
-            circle,
-            rgba(255,255,255,.045) 1px,
-            transparent 1.5px
+            rgba(113,61,72,.12) .6px,
+            transparent .6px
         );
 
-    background-size:45px 45px;
-
-    animation:
-        starsMove 35s linear infinite;
+    background-size:24px 24px;
 }
 
-@keyframes starsMove{
-
+@keyframes backgroundBreath{
     from{
-        transform:translate(0,0);
+        transform:scale(1);
+        opacity:.75;
     }
-
     to{
-        transform:translate(45px,45px);
+        transform:scale(1.08);
+        opacity:1;
     }
-
 }
-
 
 /* =========================================================
-   FLOATING PARTICLES
+   PARTICLES
 ========================================================= */
 
 #particles{
     position:fixed;
     inset:0;
-
+    overflow:hidden;
     pointer-events:none;
-
-    z-index:2;
+    z-index:1;
 }
 
 .particle{
     position:absolute;
-
-    opacity:.55;
-
-    animation:
-        floatParticle
-        linear
-        forwards;
-
-    filter:
-        drop-shadow(
-            0 0 8px
-            rgba(255,255,255,.3)
-        );
+    color:rgba(113,61,72,.25);
+    font-size:12px;
+    animation:floatParticle linear infinite;
 }
 
 @keyframes floatParticle{
-
     0%{
-        transform:
-            translateY(110vh)
-            rotate(0deg)
-            scale(.6);
-
+        transform:translateY(110vh) rotate(0deg);
         opacity:0;
     }
 
     10%{
-        opacity:.6;
+        opacity:.8;
     }
 
     90%{
-        opacity:.5;
+        opacity:.65;
     }
 
     100%{
-        transform:
-            translateY(-15vh)
-            rotate(360deg)
-            scale(1);
-
+        transform:translateY(-15vh) rotate(360deg);
         opacity:0;
     }
-
 }
 
-
 /* =========================================================
-   MAIN STAGE
+   MAIN
 ========================================================= */
 
-#stage{
-
-    position:fixed;
-    inset:0;
-
+#app{
+    position:relative;
+    z-index:5;
+    min-height:100vh;
     display:flex;
-
-    align-items:center;
     justify-content:center;
-
-    padding:22px;
-
-    z-index:10;
-
-    transition:
-        transform .8s
-        cubic-bezier(.68,-.55,.27,1.55),
-
-        opacity .6s ease,
-
-        filter .6s ease;
+    align-items:center;
+    padding:35px 18px;
 }
-
-#stage.spin{
-
-    transform:
-        rotate(360deg)
-        scale(.05);
-
-    opacity:0;
-
-    filter:blur(12px);
-}
-
-#stage.zoomOut{
-
-    transform:scale(.7);
-
-    opacity:0;
-
-    filter:blur(10px);
-}
-
-#stage.zoomIn{
-
-    animation:
-        zoomIn
-        .75s
-        cubic-bezier(.16,1,.3,1);
-}
-
-@keyframes zoomIn{
-
-    0%{
-
-        transform:scale(.65);
-
-        opacity:0;
-
-        filter:blur(12px);
-    }
-
-    100%{
-
-        transform:scale(1);
-
-        opacity:1;
-
-        filter:blur(0);
-    }
-
-}
-
 
 /* =========================================================
-   POPUP CARD
+   POPUP WRAPPER
+========================================================= */
+
+.popupWrap{
+    width:100%;
+    max-width:720px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition:.45s ease;
+}
+
+.popupWrap.hidden{
+    display:none;
+}
+
+/* =========================================================
+   PREMIUM PAGE-3 STYLE CARD
 ========================================================= */
 
 .popup{
-
     width:min(680px,94vw);
-
-    max-height:85vh;
-
-    overflow:auto;
-
-    padding:
-        34px
-        28px
-        30px;
+    padding:42px 38px 38px;
 
     position:relative;
+    overflow:hidden;
+
+    border-radius:30px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.09),
-            rgba(255,255,255,.025)
+            rgba(255,255,255,.82),
+            rgba(255,247,243,.68)
         );
 
-    border:
-        1px solid
-        rgba(255,255,255,.17);
-
-    border-radius:28px;
-
-    backdrop-filter:blur(20px);
-
-    -webkit-backdrop-filter:blur(20px);
+    border:1px solid rgba(113,61,72,.13);
 
     box-shadow:
+        0 30px 90px rgba(94,45,57,.18),
+        0 8px 30px rgba(94,45,57,.08),
+        inset 0 1px 0 rgba(255,255,255,.9);
 
-        0 30px 80px
-        rgba(0,0,0,.65),
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
 
-        inset 0 1px 0
-        rgba(255,255,255,.08);
-
-    text-align:center;
-
-    animation:
-        popupEnter
-        .7s
-        cubic-bezier(.16,1,.3,1);
+    animation:popupIn .65s cubic-bezier(.16,1,.3,1);
 }
 
 .popup::before{
-
     content:"";
-
     position:absolute;
 
-    inset:1px;
+    width:260px;
+    height:260px;
 
-    border-radius:27px;
+    top:-150px;
+    right:-100px;
 
-    pointer-events:none;
+    border-radius:50%;
 
     background:
         radial-gradient(
-            circle at 20% 10%,
-            rgba(255,255,255,.08),
-            transparent 30%
+            circle,
+            rgba(218,157,161,.25),
+            transparent 70%
         );
+
+    pointer-events:none;
 }
 
-@keyframes popupEnter{
+.popup::after{
+    content:"";
+    position:absolute;
 
-    from{
+    width:200px;
+    height:200px;
 
+    bottom:-120px;
+    left:-100px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(113,61,72,.10),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+@keyframes popupIn{
+    0%{
         opacity:0;
-
         transform:
-            translateY(35px)
-            scale(.92);
-
-        filter:blur(8px);
+            translateY(28px)
+            scale(.94);
+        filter:blur(5px);
     }
 
-    to{
-
+    100%{
         opacity:1;
-
         transform:
             translateY(0)
             scale(1);
-
         filter:blur(0);
     }
-
 }
 
-.popup .eyebrow{
+/* =========================================================
+   POPUP TYPOGRAPHY
+========================================================= */
 
-    position:relative;
-
-    font-family:
-        Arial,
-        sans-serif;
-
+.eyebrow{
+    font-family:'DM Sans',sans-serif;
     font-size:11px;
-
-    letter-spacing:4px;
-
+    font-weight:700;
+    letter-spacing:2.6px;
     text-transform:uppercase;
 
-    opacity:.55;
+    color:var(--burgundy);
 
-    margin-bottom:18px;
+    margin-bottom:17px;
+    opacity:.78;
 }
 
 .popup h1{
-
     position:relative;
+    z-index:2;
 
-    font-size:
-        clamp(
-            25px,
-            5vw,
-            42px
-        );
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(38px,7vw,58px);
+    font-weight:600;
+    line-height:.95;
 
-    line-height:1.2;
+    letter-spacing:-.8px;
 
-    font-weight:500;
+    color:var(--deep);
 
-    margin-bottom:18px;
+    margin-bottom:20px;
 }
 
 .popup p{
-
     position:relative;
+    z-index:2;
 
-    font-size:
-        clamp(
-            17px,
-            3.8vw,
-            22px
-        );
+    font-family:'DM Sans',sans-serif;
+    font-size:15px;
+    line-height:1.75;
 
-    line-height:1.7;
+    color:var(--muted);
 
-    color:
-        rgba(255,255,255,.9);
+    max-width:570px;
 }
 
-.popup .small{
-
-    font-size:14px;
-
-    opacity:.55;
-
-    margin-top:14px;
-
-    font-family:
-        Arial,
-        sans-serif;
+.popup p strong{
+    color:var(--wine);
+    font-weight:700;
 }
 
+/* =========================================================
+   ACTION AREA
+========================================================= */
+
+.actions{
+    position:relative;
+    z-index:5;
+
+    margin-top:30px;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
 
 /* =========================================================
    BUTTON
 ========================================================= */
 
 .action{
-
-    position:relative;
-
-    margin-top:28px;
-
     border:none;
-
     outline:none;
+    cursor:pointer;
 
-    padding:
-        14px
-        30px;
+    min-height:48px;
+    padding:0 23px;
 
     border-radius:999px;
 
-    color:white;
+    font-family:'DM Sans',sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1.3px;
+    text-transform:uppercase;
+
+    color:#fff;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.16),
-            rgba(255,255,255,.055)
+            var(--burgundy),
+            var(--wine)
         );
 
-    border:
-        1px solid
-        rgba(255,255,255,.2);
-
     box-shadow:
+        0 10px 25px rgba(113,61,72,.22);
 
-        0 12px 30px
-        rgba(0,0,0,.35),
-
-        inset 0 1px 0
-        rgba(255,255,255,.15);
-
-    font-family:
-        Georgia,
-        serif;
-
-    font-size:17px;
-
-    cursor:pointer;
-
-    transition:.25s ease;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
 }
 
 .action:hover{
-
-    transform:
-        translateY(-3px)
-        scale(1.03);
-
-    background:
-        rgba(255,255,255,.15);
-
+    transform:translateY(-3px);
     box-shadow:
-
-        0 15px 35px
-        rgba(0,0,0,.45),
-
-        0 0 25px
-        rgba(255,180,220,.12);
+        0 15px 30px rgba(113,61,72,.28);
+    filter:brightness(1.06);
 }
 
 .action:active{
-
-    transform:scale(.95);
+    transform:translateY(-1px) scale(.98);
 }
 
+.action.secondary{
+    color:var(--burgundy);
+
+    background:
+        rgba(255,255,255,.60);
+
+    border:1px solid rgba(113,61,72,.15);
+
+    box-shadow:none;
+}
 
 /* =========================================================
    VIDEO SCREEN
 ========================================================= */
 
-.videoWrap{
-
-    width:min(920px,96vw);
-
-    height:min(88vh,760px);
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
+.videoScreen{
+    width:min(900px,96vw);
 
     animation:
-        videoEnter
-        .8s
+        videoScreenIn
+        .65s
         cubic-bezier(.16,1,.3,1);
 }
 
-@keyframes videoEnter{
-
+@keyframes videoScreenIn{
     from{
-
         opacity:0;
-
-        transform:scale(.75);
-
-        filter:blur(15px);
+        transform:scale(.95);
     }
 
     to{
-
         opacity:1;
-
         transform:scale(1);
-
-        filter:blur(0);
     }
-
 }
 
-
-/* =========================================================
-   VIDEO TOP BAR
-========================================================= */
-
-.videoTop{
-
-    width:100%;
-
+.videoHeader{
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
-    margin-bottom:12px;
+    margin-bottom:13px;
+    padding:0 5px;
+}
 
-    font-family:
-        Arial,
-        sans-serif;
-
+.videoLabel{
+    font-family:'DM Sans',sans-serif;
     font-size:11px;
-
-    letter-spacing:3px;
-
+    font-weight:700;
+    letter-spacing:2px;
     text-transform:uppercase;
 
-    opacity:.65;
+    color:var(--burgundy);
 }
 
 .rec{
-
     display:flex;
-
     align-items:center;
-
     gap:7px;
+
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.5px;
+
+    color:var(--burgundy);
 }
 
 .recDot{
-
-    width:8px;
-
-    height:8px;
-
+    width:7px;
+    height:7px;
     border-radius:50%;
 
-    background:#ff4f73;
+    background:#a94855;
 
     box-shadow:
-        0 0 12px #ff4f73;
+        0 0 0 4px rgba(169,72,85,.08);
 
-    animation:
-        recordBlink
-        1s
-        infinite;
+    animation:recPulse 1.3s infinite;
 }
 
-@keyframes recordBlink{
-
+@keyframes recPulse{
     50%{
-        opacity:.2;
+        opacity:.35;
     }
-
 }
-
 
 /* =========================================================
    VIDEO FRAME
 ========================================================= */
 
 .videoFrame{
-
     position:relative;
 
-    width:100%;
+    padding:10px;
 
-    max-height:72vh;
-
-    padding:7px;
-
-    border-radius:24px;
+    border-radius:27px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.15),
-            rgba(255,255,255,.035)
+            rgba(255,255,255,.80),
+            rgba(255,239,235,.65)
         );
 
-    border:
-        1px solid
-        rgba(255,255,255,.17);
+    border:1px solid rgba(113,61,72,.14);
 
     box-shadow:
+        0 30px 80px rgba(94,45,57,.20),
+        inset 0 1px 0 rgba(255,255,255,.9);
 
-        0 30px 80px
-        rgba(0,0,0,.7),
-
-        0 0 60px
-        rgba(180,110,180,.08);
-}
-
-.videoFrame::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-1px;
-
-    border-radius:24px;
-
-    pointer-events:none;
-
-    background:
-        linear-gradient(
-            120deg,
-            transparent 30%,
-            rgba(255,255,255,.08),
-            transparent 70%
-        );
-
-    opacity:.5;
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 }
 
 video{
-
+    width:100%;
     display:block;
 
-    width:100%;
+    max-height:72vh;
 
-    max-height:70vh;
+    background:#24181c;
 
-    border-radius:18px;
-
-    background:#000;
+    border-radius:20px;
 
     object-fit:contain;
-}
 
+    box-shadow:
+        0 15px 40px rgba(50,25,30,.20);
+}
 
 /* =========================================================
    VIDEO CONTROLS
 ========================================================= */
 
 .videoControls{
-
-    width:100%;
-
     display:flex;
-
     justify-content:center;
 
-    align-items:center;
-
-    margin-top:15px;
-
-    gap:10px;
+    padding-top:17px;
 }
 
 .skipButton{
-
-    border:none;
-
-    outline:none;
-
-    padding:
-        12px
-        25px;
+    min-width:155px;
+    height:47px;
 
     border-radius:999px;
+    border:1px solid rgba(113,61,72,.15);
 
-    color:white;
+    background:rgba(255,255,255,.72);
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.13),
-            rgba(255,255,255,.035)
-        );
+    color:var(--burgundy);
 
-    border:
-        1px solid
-        rgba(255,255,255,.2);
-
-    box-shadow:
-
-        0 10px 25px
-        rgba(0,0,0,.35),
-
-        inset 0 1px 0
-        rgba(255,255,255,.12);
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size:10px;
-
-    font-weight:600;
-
-    letter-spacing:2px;
+    font-family:'DM Sans',sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.7px;
 
     cursor:pointer;
 
-    transition:
-        transform .25s ease,
-        background .25s ease,
-        box-shadow .25s ease,
-        opacity .25s ease;
+    box-shadow:
+        0 8px 25px rgba(94,45,57,.10);
+
+    transition:.25s ease;
 }
 
 .skipButton:hover{
-
     transform:translateY(-2px);
 
-    background:
-        rgba(255,255,255,.14);
+    background:#fff;
 
     box-shadow:
-
-        0 14px 30px
-        rgba(0,0,0,.45),
-
-        0 0 25px
-        rgba(255,180,220,.12);
+        0 12px 30px rgba(94,45,57,.17);
 }
 
-.skipButton:active{
+.skipButton.finish{
+    background:
+        linear-gradient(
+            135deg,
+            var(--burgundy),
+            var(--wine)
+        );
 
-    transform:scale(.94);
+    color:#fff;
+
+    border:none;
 }
-
-.skipButton:disabled{
-
-    opacity:.35;
-
-    cursor:default;
-
-    transform:none;
-}
-
-.videoHint{
-
-    margin-top:9px;
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size:10px;
-
-    letter-spacing:2px;
-
-    opacity:.35;
-}
-
 
 /* =========================================================
-   BIRTHDAY SCREEN
+   BIRTHDAY
 ========================================================= */
 
 #birthday{
-
     position:fixed;
-
     inset:0;
 
-    z-index:100;
+    z-index:50;
 
     display:none;
 
-    align-items:center;
-
     justify-content:center;
-
-    flex-direction:column;
-
-    text-align:center;
-
-    background:
-
-        radial-gradient(
-            circle at center,
-            rgba(150,70,110,.22),
-            transparent 45%
-        ),
-
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(255,100,160,.08),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(120,90,180,.08),
-            transparent 30%
-        ),
-
-        #07060b;
+    align-items:center;
 
     padding:25px;
 
     overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255,255,255,.95),
+            rgba(255,238,232,.75) 28%,
+            transparent 55%
+        ),
+        radial-gradient(
+            circle at 15% 85%,
+            rgba(113,61,72,.14),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #fffaf6,
+            #f6ddda,
+            #edcaca
+        );
+
+    animation:birthdayIn 1.2s ease;
 }
 
 #birthday.show{
-
     display:flex;
-
-    animation:
-        birthdayFade
-        1.5s
-        ease
-        forwards;
 }
 
-@keyframes birthdayFade{
-
+@keyframes birthdayIn{
     from{
-
         opacity:0;
-
-        filter:blur(12px);
     }
 
     to{
-
         opacity:1;
-
-        filter:blur(0);
     }
-
 }
-
-
-/* =========================================================
-   BIRTHDAY STARS
-========================================================= */
-
-.birthdayStars{
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-    overflow:hidden;
-}
-
-
-/* =========================================================
-   BIRTHDAY CONTENT
-========================================================= */
 
 .birthdayContent{
-
     position:relative;
+    z-index:10;
 
-    z-index:2;
+    width:min(800px,94vw);
 
-    max-width:900px;
+    text-align:center;
 
-    padding:20px;
+    padding:45px 25px;
 }
 
 .birthdaySmall{
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    letter-spacing:5px;
-
+    font-family:'DM Sans',sans-serif;
     font-size:11px;
+    font-weight:700;
+    letter-spacing:3px;
 
-    opacity:.5;
+    color:var(--burgundy);
 
-    margin-bottom:25px;
+    margin-bottom:18px;
 
-    animation:
-        smallReveal
-        1.2s
-        ease
-        both;
-}
-
-@keyframes smallReveal{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            translateY(15px);
-    }
-
-    to{
-
-        opacity:.5;
-
-        transform:
-            translateY(0);
-    }
-
+    animation:fadeUp .8s .25s both;
 }
 
 .birthdayContent h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(58px,13vw,125px);
+    line-height:.78;
 
-    font-size:
-        clamp(
-            40px,
-            10vw,
-            90px
-        );
+    font-weight:600;
+    letter-spacing:-2px;
 
-    line-height:1.05;
-
-    font-weight:400;
+    color:var(--deep);
 
     animation:
-        birthdayText
-        1.5s
-        cubic-bezier(.16,1,.3,1);
-}
-
-@keyframes birthdayText{
-
-    from{
-
-        transform:scale(.5);
-
-        opacity:0;
-    }
-
-    to{
-
-        transform:scale(1);
-
-        opacity:1;
-    }
-
-}
-
-.birthdayContent h1 span{
-
-    display:block;
-
-    margin-top:8px;
-
-    font-size:.55em;
-
-    letter-spacing:2px;
-}
-
-.birthdayMessage{
-
-    margin-top:28px;
-
-    font-size:
-        clamp(
-            16px,
-            4vw,
-            23px
-        );
-
-    line-height:1.7;
-
-    opacity:.8;
-
-    animation:
-        messageIn
-        2s
-        ease
-        forwards;
-}
-
-@keyframes messageIn{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            translateY(20px);
-    }
-
-    to{
-
-        opacity:.8;
-
-        transform:
-            translateY(0);
-    }
-
-}
-
-.loveFinal{
-
-    margin-top:25px;
-
-    font-size:22px;
-
-    animation:
-        loveAppear
-        2.5s
-        ease
+        birthdayTitle
+        1s
+        .4s
+        cubic-bezier(.16,1,.3,1)
         both;
 }
 
-@keyframes loveAppear{
+.birthdayContent h1 span{
+    display:block;
 
+    color:var(--burgundy);
+
+    font-size:.78em;
+
+    margin-top:14px;
+}
+
+@keyframes birthdayTitle{
     from{
-
         opacity:0;
-
-        transform:
-            scale(.8);
+        transform:translateY(35px) scale(.92);
+        filter:blur(8px);
     }
 
     to{
-
         opacity:1;
-
-        transform:
-            scale(1);
+        transform:none;
+        filter:blur(0);
     }
-
 }
 
+.birthdayMessage{
+    max-width:650px;
+
+    margin:30px auto 0;
+
+    font-family:'DM Sans',sans-serif;
+    font-size:15px;
+    line-height:1.85;
+
+    color:var(--muted);
+
+    animation:fadeUp .8s .75s both;
+}
+
+.loveFinal{
+    margin-top:28px;
+
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(28px,5vw,42px);
+    font-weight:600;
+
+    color:var(--burgundy);
+
+    animation:
+        fadeUp
+        .8s
+        1.1s
+        both;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
 
 /* =========================================================
-   CELEBRATION PARTICLES
+   CELEBRATION ELEMENTS
 ========================================================= */
 
-.celebrate{
+.celebration{
+    position:absolute;
+    inset:0;
 
+    pointer-events:none;
+}
+
+.celebrate{
     position:absolute;
 
-    font-size:25px;
+    font-size:clamp(20px,4vw,35px);
+
+    opacity:0;
+
+    animation:
+        celebrateFloat
+        5s
+        linear
+        infinite;
+}
+
+@keyframes celebrateFloat{
+    0%{
+        transform:
+            translateY(110vh)
+            rotate(0deg)
+            scale(.8);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.85;
+    }
+
+    85%{
+        opacity:.75;
+    }
+
+    100%{
+        transform:
+            translateY(-15vh)
+            rotate(360deg)
+            scale(1.15);
+        opacity:0;
+    }
+}
+
+/* =========================================================
+   TRANSITION
+========================================================= */
+
+#transition{
+    position:fixed;
+    inset:0;
+
+    z-index:100;
 
     pointer-events:none;
 
-    animation:
-        celebrateFly
-        4s
-        ease-out
-        forwards;
-}
+    opacity:0;
 
-@keyframes celebrateFly{
-
-    0%{
-
-        transform:
-            translate(0,0)
-            rotate(0deg)
-            scale(.5);
-
-        opacity:0;
-    }
-
-    10%{
-
-        opacity:1;
-    }
-
-    100%{
-
-        transform:
-
-            translate(
-                calc(
-                    (var(--x) - .5)
-                    * 100vw
-                ),
-
-                calc(
-                    (var(--y) - 1)
-                    * 100vh
-                )
-            )
-
-            rotate(720deg)
-
-            scale(1.2);
-
-        opacity:0;
-    }
-
-}
-
-
-/* =========================================================
-   EXTRA BIRTHDAY DECORATION
-========================================================= */
-
-.birthdayBalloon{
-
-    position:absolute;
-
-    font-size:
-        clamp(
-            28px,
-            5vw,
-            55px
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.95),
+            rgba(246,218,216,.8),
+            rgba(113,61,72,.15)
         );
 
-    animation:
-        balloonFloat
-        4s
-        ease-in-out
-        infinite;
+    transition:
+        opacity .45s ease;
 }
 
-@keyframes balloonFloat{
-
-    0%,
-    100%{
-
-        transform:
-            translateY(0)
-            rotate(-4deg);
-    }
-
-    50%{
-
-        transform:
-            translateY(-20px)
-            rotate(4deg);
-    }
-
+#transition.active{
+    opacity:1;
 }
-
-.cornerFlower{
-
-    position:absolute;
-
-    font-size:
-        clamp(
-            25px,
-            5vw,
-            50px
-        );
-
-    opacity:.75;
-
-    animation:
-        flowerPulse
-        3s
-        ease-in-out
-        infinite;
-}
-
-@keyframes flowerPulse{
-
-    50%{
-
-        transform:
-            scale(1.15)
-            rotate(8deg);
-
-        opacity:1;
-    }
-
-}
-
 
 /* =========================================================
    MOBILE
@@ -1215,236 +850,112 @@ video{
 
 @media(max-width:600px){
 
-    #stage{
-
-        padding:15px;
+    #app{
+        padding:20px 12px;
     }
 
     .popup{
-
-        padding:
-            28px
-            20px
-            25px;
-
-        border-radius:24px;
+        padding:32px 24px 28px;
+        border-radius:25px;
     }
 
     .popup h1{
-
-        font-size:27px;
+        font-size:42px;
     }
 
     .popup p{
-
-        font-size:17px;
-
-        line-height:1.65;
+        font-size:14px;
+        line-height:1.7;
     }
 
-    .videoWrap{
+    .actions{
+        margin-top:25px;
+    }
 
+    .action{
         width:100%;
-
-        height:auto;
     }
 
     .videoFrame{
-
-        padding:4px;
-
-        border-radius:18px;
-
-        max-height:72vh;
+        padding:7px;
+        border-radius:22px;
     }
 
     video{
-
-        border-radius:14px;
-
-        max-height:66vh;
-    }
-
-    .videoTop{
-
-        font-size:9px;
-
-        letter-spacing:2px;
-    }
-
-    .skipButton{
-
-        padding:
-            11px
-            22px;
-
-        font-size:9px;
+        border-radius:17px;
+        max-height:67vh;
     }
 
     .birthdayContent{
-
-        padding:10px;
+        padding:30px 10px;
     }
 
     .birthdayMessage{
-
-        font-size:16px;
-
-        line-height:1.6;
-    }
-
-    .loveFinal{
-
-        font-size:19px;
-    }
-
-}
-
-@media(max-width:380px){
-
-    .popup h1{
-
-        font-size:24px;
-    }
-
-    .popup p{
-
-        font-size:16px;
-    }
-
-    .birthdayMessage{
-
         font-size:14px;
+        line-height:1.75;
     }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
-
 <!-- =========================================================
-     BACKGROUND
+     FLOATING PARTICLES
 ========================================================= -->
-
-<div class="background"></div>
 
 <div id="particles"></div>
 
-
 <!-- =========================================================
-     MAIN STAGE
+     MAIN APP
 ========================================================= -->
 
-<div id="stage"></div>
+<div id="app">
 
+    <div id="popupWrap" class="popupWrap"></div>
+
+</div>
 
 <!-- =========================================================
-     BIRTHDAY ENDING
+     VIDEO SCREEN
 ========================================================= -->
 
-<div id="birthday">
+<div id="videoContainer" style="display:none;">
 
-    <div class="birthdayStars"></div>
+    <div class="videoScreen">
 
-    <!-- Floating balloons -->
+        <div class="videoHeader">
 
-    <div
-        class="birthdayBalloon"
-        style="left:5%;top:12%;animation-delay:.2s;">
-        🎈
-    </div>
+            <div id="videoLabel" class="videoLabel">
+                THE PATNA VERSION 💃🏻
+            </div>
 
-    <div
-        class="birthdayBalloon"
-        style="right:6%;top:16%;animation-delay:1s;">
-        🎈
-    </div>
-
-    <div
-        class="birthdayBalloon"
-        style="left:10%;bottom:10%;animation-delay:1.7s;">
-        🎈
-    </div>
-
-    <div
-        class="birthdayBalloon"
-        style="right:10%;bottom:12%;animation-delay:.7s;">
-        🎈
-    </div>
-
-
-    <!-- Flowers -->
-
-    <div
-        class="cornerFlower"
-        style="left:4%;bottom:30%;">
-        🌹
-    </div>
-
-    <div
-        class="cornerFlower"
-        style="right:4%;bottom:30%;">
-        🌸
-    </div>
-
-    <div
-        class="cornerFlower"
-        style="left:8%;top:38%;">
-        ✨
-    </div>
-
-    <div
-        class="cornerFlower"
-        style="right:8%;top:40%;">
-        ✨
-    </div>
-
-
-    <div class="birthdayContent">
-
-        <div class="birthdaySmall">
-            ONE LAST THING, BABY ✨
-        </div>
-
-
-        <h1>
-
-            HAPPY BIRTHDAY
-
-            <span>
-                TISHA ❤️
-            </span>
-
-        </h1>
-
-
-        <div class="birthdayMessage">
-
-            I hope you always stay this beautiful,
-            this crazy, this annoying,
-            this adorable and completely YOU. 🥹❤️
-
-            <br><br>
-
-            Thank you for giving me your time,
-            your smiles, your madness,
-            your love and all these little memories. 🫶🏻
-
-            <br><br>
-
-            May this 21st year bring you
-            everything your heart quietly wishes for. ✨
+            <div class="rec">
+                <span class="recDot"></span>
+                PLAYING
+            </div>
 
         </div>
 
+        <div class="videoFrame">
 
-        <div class="loveFinal">
+            <video
+                id="video"
+                playsinline
+                preload="metadata"
+                controls
+            ></video>
 
-            I love you so, so, so much. 😙❤️‍🔥
+        </div>
+
+        <div class="videoControls">
+
+            <button
+                id="skipButton"
+                class="skipButton"
+            >
+                SKIP →
+            </button>
 
         </div>
 
@@ -1452,21 +963,83 @@ video{
 
 </div>
 
+<!-- =========================================================
+     TRANSITION
+========================================================= -->
 
+<div id="transition"></div>
+
+<!-- =========================================================
+     BIRTHDAY ENDING
+========================================================= -->
+
+<div id="birthday">
+
+    <div class="celebration" id="celebration"></div>
+
+    <div class="birthdayContent">
+
+        <div class="birthdaySmall">
+            ONE LAST THING, BABY ✨
+        </div>
+
+        <h1>
+            HAPPY BIRTHDAY
+            <span>TISHA ❤️</span>
+        </h1>
+
+        <div class="birthdayMessage">
+
+            I hope you always stay this beautiful,
+            this crazy, this annoying, this adorable
+            and completely <strong>YOU.</strong> 🥹❤️
+
+            <br><br>
+
+            Thank you for giving me your time,
+            your smiles, your madness, your love
+            and all these little memories. 🫶🏻
+
+            <br><br>
+
+            May this 21st year bring you everything
+            your heart quietly wishes for. ✨
+
+        </div>
+
+        <div class="loveFinal">
+            I love you so, so, so much. 😙❤️‍🔥
+        </div>
+
+    </div>
+
+</div>
 
 <script>
 
 /* =========================================================
+   ELEMENTS
+========================================================= */
+
+const popupWrap = document.getElementById("popupWrap");
+const videoContainer = document.getElementById("videoContainer");
+const video = document.getElementById("video");
+const videoLabel = document.getElementById("videoLabel");
+const skipButton = document.getElementById("skipButton");
+const birthday = document.getElementById("birthday");
+const transition = document.getElementById("transition");
+const particles = document.getElementById("particles");
+const celebration = document.getElementById("celebration");
+
+
+/* =========================================================
    AUDIO ENGINE
-   NO BACKGROUND MUSIC
+   NO MUSIC — ONLY INTERACTION SOUNDS
 ========================================================= */
 
 let audioCtx = null;
-
 let masterGain = null;
-
 let sfxGain = null;
-
 
 function initAudio(){
 
@@ -1484,28 +1057,19 @@ function initAudio(){
     sfxGain =
         audioCtx.createGain();
 
-    masterGain.gain.value = .65;
-
+    masterGain.gain.value = .55;
     sfxGain.gain.value = .7;
 
     sfxGain.connect(masterGain);
-
-    masterGain.connect(
-        audioCtx.destination
-    );
+    masterGain.connect(audioCtx.destination);
 }
-
-
-/* =========================================================
-   BASIC TONE
-========================================================= */
 
 function tone(
     frequency,
     duration,
     type="sine",
     volume=.12,
-    slide=0
+    delay=0
 ){
 
     if(!audioCtx) return;
@@ -1520,54 +1084,36 @@ function tone(
 
     osc.frequency.setValueAtTime(
         frequency,
-        audioCtx.currentTime
+        audioCtx.currentTime + delay
     );
-
-    if(slide){
-
-        osc.frequency.exponentialRampToValueAtTime(
-
-            Math.max(
-                20,
-                frequency + slide
-            ),
-
-            audioCtx.currentTime +
-            duration
-        );
-    }
 
     gain.gain.setValueAtTime(
         0,
-        audioCtx.currentTime
+        audioCtx.currentTime + delay
     );
 
     gain.gain.linearRampToValueAtTime(
-
         volume,
-
-        audioCtx.currentTime +
-        .02
+        audioCtx.currentTime + delay + .01
     );
 
     gain.gain.exponentialRampToValueAtTime(
-
         .001,
-
-        audioCtx.currentTime +
-        duration
+        audioCtx.currentTime + delay + duration
     );
 
     osc.connect(gain);
-
     gain.connect(sfxGain);
 
-    osc.start();
+    osc.start(
+        audioCtx.currentTime + delay
+    );
 
     osc.stop(
         audioCtx.currentTime +
+        delay +
         duration +
-        .03
+        .05
     );
 }
 
@@ -1578,69 +1124,38 @@ function tone(
 
 function clickSound(){
 
-    tone(
-        950,
-        .06,
-        "square",
-        .07,
-        -300
-    );
+    initAudio();
+
+    tone(480,.06,"sine",.08);
+    tone(720,.08,"sine",.05,.035);
 }
 
 
 /* =========================================================
-   POPUP APPEAR
+   POPUP
 ========================================================= */
 
 function popupSound(){
 
-    tone(
-        480,
-        .16,
-        "sine",
-        .06,
-        280
-    );
+    initAudio();
 
-    setTimeout(()=>{
-
-        tone(
-            720,
-            .18,
-            "sine",
-            .035,
-            120
-        );
-
-    },50);
+    tone(420,.10,"sine",.08);
+    tone(620,.12,"sine",.06,.06);
+    tone(850,.16,"sine",.04,.12);
 }
 
 
 /* =========================================================
-   ROMANTIC SHIMMER
+   SHIMMER
 ========================================================= */
 
 function shimmer(){
 
-    tone(
-        620,
-        .28,
-        "sine",
-        .06,
-        160
-    );
+    initAudio();
 
-    setTimeout(()=>{
-
-        tone(
-            930,
-            .35,
-            "sine",
-            .035,
-            100
-        );
-
-    },100);
+    tone(600,.15,"sine",.045);
+    tone(760,.17,"sine",.04,.07);
+    tone(980,.20,"sine",.035,.14);
 }
 
 
@@ -1650,25 +1165,11 @@ function shimmer(){
 
 function funnyPop(){
 
-    tone(
-        240,
-        .09,
-        "square",
-        .06,
-        220
-    );
+    initAudio();
 
-    setTimeout(()=>{
-
-        tone(
-            520,
-            .12,
-            "sine",
-            .04,
-            -80
-        );
-
-    },60);
+    tone(220,.10,"square",.08);
+    tone(330,.12,"square",.06,.08);
+    tone(470,.16,"sine",.04,.15);
 }
 
 
@@ -1678,31 +1179,23 @@ function funnyPop(){
 
 function heartbeat(){
 
-    tone(
-        95,
-        .11,
-        "sine",
-        .08
-    );
+    initAudio();
 
-    setTimeout(()=>{
+    tone(90,.12,"sine",.16);
+    tone(80,.14,"sine",.13,.17);
 
-        tone(
-            80,
-            .14,
-            "sine",
-            .06
-        );
-
-    },150);
+    tone(90,.12,"sine",.14,.38);
+    tone(80,.14,"sine",.11,.55);
 }
 
 
 /* =========================================================
-   CINEMATIC WHOOSH
+   WHOOSH
 ========================================================= */
 
 function whoosh(){
+
+    initAudio();
 
     if(!audioCtx) return;
 
@@ -1715,16 +1208,13 @@ function whoosh(){
     osc.type="sine";
 
     osc.frequency.setValueAtTime(
-        100,
+        180,
         audioCtx.currentTime
     );
 
     osc.frequency.exponentialRampToValueAtTime(
-
-        900,
-
-        audioCtx.currentTime +
-        .65
+        1000,
+        audioCtx.currentTime + .35
     );
 
     gain.gain.setValueAtTime(
@@ -1733,30 +1223,21 @@ function whoosh(){
     );
 
     gain.gain.exponentialRampToValueAtTime(
-
-        .16,
-
-        audioCtx.currentTime +
-        .35
+        .13,
+        audioCtx.currentTime + .08
     );
 
     gain.gain.exponentialRampToValueAtTime(
-
         .001,
-
-        audioCtx.currentTime +
-        .7
+        audioCtx.currentTime + .4
     );
 
     osc.connect(gain);
-
     gain.connect(sfxGain);
 
     osc.start();
-
     osc.stop(
-        audioCtx.currentTime +
-        .75
+        audioCtx.currentTime + .45
     );
 }
 
@@ -1767,31 +1248,11 @@ function whoosh(){
 
 function videoOpenSound(){
 
-    clickSound();
+    initAudio();
 
-    setTimeout(()=>{
-
-        tone(
-            180,
-            .25,
-            "sine",
-            .05,
-            200
-        );
-
-    },70);
-
-    setTimeout(()=>{
-
-        tone(
-            500,
-            .22,
-            "sine",
-            .04,
-            300
-        );
-
-    },180);
+    tone(300,.10,"sine",.06);
+    tone(440,.13,"sine",.06,.06);
+    tone(650,.18,"sine",.045,.13);
 }
 
 
@@ -1801,19 +1262,10 @@ function videoOpenSound(){
 
 function videoEndSound(){
 
-    tone(
-        600,
-        .18,
-        "sine",
-        .04,
-        -200
-    );
+    initAudio();
 
-    setTimeout(()=>{
-
-        clickSound();
-
-    },100);
+    tone(520,.12,"sine",.06);
+    tone(680,.14,"sine",.05,.08);
 }
 
 
@@ -1823,37 +1275,12 @@ function videoEndSound(){
 
 function celebrationSound(){
 
-    tone(
-        400,
-        .25,
-        "sine",
-        .06,
-        500
-    );
+    initAudio();
 
-    setTimeout(()=>{
-
-        tone(
-            650,
-            .25,
-            "sine",
-            .06,
-            500
-        );
-
-    },120);
-
-    setTimeout(()=>{
-
-        tone(
-            900,
-            .35,
-            "sine",
-            .07,
-            600
-        );
-
-    },240);
+    tone(523,.18,"sine",.08);
+    tone(659,.20,"sine",.07,.12);
+    tone(784,.24,"sine",.06,.24);
+    tone(1046,.35,"sine",.045,.38);
 }
 
 
@@ -1861,14 +1288,7 @@ function celebrationSound(){
    PARTICLES
 ========================================================= */
 
-const particleContainer =
-    document.getElementById(
-        "particles"
-    );
-
-
 const particleSymbols = [
-
     "✦",
     "✧",
     "♡",
@@ -1877,17 +1297,14 @@ const particleSymbols = [
     "❀",
     "⋆",
     "·"
-
 ];
 
-
-function createParticle(){
+for(let i=0;i<35;i++){
 
     const p =
         document.createElement("div");
 
-    p.className =
-        "particle";
+    p.className="particle";
 
     p.textContent =
         particleSymbols[
@@ -1898,798 +1315,422 @@ function createParticle(){
         ];
 
     p.style.left =
-        Math.random()*100 +
-        "%";
-
-    p.style.fontSize =
-        (8 +
-        Math.random()*15) +
-        "px";
+        Math.random()*100 + "%";
 
     p.style.animationDuration =
-        (9 +
-        Math.random()*10) +
-        "s";
+        (8 + Math.random()*12) + "s";
 
     p.style.animationDelay =
-        (Math.random()*3) +
-        "s";
+        (-Math.random()*15) + "s";
 
-    particleContainer.appendChild(p);
+    p.style.fontSize =
+        (8 + Math.random()*10) + "px";
 
-    setTimeout(()=>{
-
-        p.remove();
-
-    },22000);
+    particles.appendChild(p);
 }
 
 
-setInterval(
-    createParticle,
-    650
-);
+/* =========================================================
+   POPUP DATA
+========================================================= */
+
+const parts = [
+
+    /* 0 */
+
+    {
+        type:"popup",
+
+        eyebrow:"PRIVATE SCREENING 📼",
+
+        title:"seen our album baby... 🥹❤️",
+
+        text:
+            "Now it's time for you to see something entertaining 📼😂",
+
+        button:"Okay... show me 👀",
+
+        sound:"popup"
+    },
+
+
+    /* 1 */
+
+    {
+        type:"popup",
+
+        eyebrow:"WARNING ⚠️😂",
+
+        title:"are you ready for it? 😏",
+
+        text:
+            "Because once this starts... there is absolutely no going back. 🤭",
+
+        button:"I'm ready 😌",
+
+        sound:"heartbeat",
+
+        transition:true
+    },
+
+
+    /* 2 */
+
+    {
+        type:"popup",
+
+        eyebrow:"EPISODE 01 • PATNA FILES 📂",
+
+        title:"You know what sweetheart... 😮‍💨❤️‍🔥",
+
+        text:
+            "You're so hot, so tempting and so desirable ❤️‍🔥😏",
+
+        button:"Continue",
+
+        sound:"shimmer"
+    },
+
+
+    /* 3 */
+
+    {
+        type:"popup",
+
+        eyebrow:"THE PATNA VERSION 💃🏻",
+
+        title:
+            "There's a version of you which I saw in Patna... 👀",
+
+        text:
+            `And that version got me like —
+
+            <br><br>
+
+            <strong>
+            "Agr tm bolti baith toh baithte,
+            uth to uthte... and agr bolti naach 💃🏻
+            toh phir janti ho kya hota..."
+            </strong>
+
+            😭😂❤️‍🔥`,
+
+        button:"DEKHLO 😏",
+
+        sound:"funny",
+
+        video:"dance.mp4",
+
+        label:"THE PATNA VERSION 💃🏻"
+    },
+
+
+    /* 4 */
+
+    {
+        type:"popup",
+
+        eyebrow:"EPISODE 02 • IMPORTANT MATTER 🍗",
+
+        title:"Dekho babyy... 😌",
+
+        text:
+            "Sawan toh khatam ho gaya hai... ab toh tm daba ke non veg khaa paogi 😋🍗😂",
+
+        button:"Continue",
+
+        sound:"funny"
+    },
+
+
+    /* 5 */
+
+    {
+        type:"popup",
+
+        eyebrow:"THE REAL QUESTION 🤔",
+
+        title:"Lekin agr merese koi puche... 👀",
+
+        text:
+            `Chicken khaoge ya mutton 🍗...
+
+            <br><br>
+
+            Janti ho kya choose krenge.... 😏`,
+
+        button:"DEKHLO... 😂",
+
+        sound:"popup",
+
+        video:"nonveg.mp4",
+
+        label:"THE CHOICE 🍗"
+    },
+
+
+    /* 6 */
+
+    {
+        type:"popup",
+
+        eyebrow:"EPISODE 03 • CLASSIFIED ❤️",
+
+        title:"Sweetheart... ek baat toh tmhe pata hi hai 🧕🏻❤️",
+
+        text:
+            "Hum Hindu hai aur tm 🧕🏻. Sbko yeh baat pata hai... 😌",
+
+        button:"Hmm... 👀",
+
+        sound:"shimmer"
+    },
+
+
+    /* 7 */
+
+    {
+        type:"popup",
+
+        eyebrow:"BUT HERE'S THE THING... ❤️",
+
+        title:"Lekin tm kisi bhi religion ki hoti... 🥹",
+
+        text:
+            `Apna toh terko hi choose krta... ❤️
+
+            <br><br>
+
+            Proof deduuu.... 😏`,
+
+        button:"DEKHLO... 🫶🏻",
+
+        sound:"shimmer",
+
+        video:"religion.mp4",
+
+        label:"NO MATTER WHAT ❤️"
+    },
+
+
+    /* 8 */
+
+    {
+        type:"popup",
+
+        eyebrow:"EPISODE 04 • DANGER ZONE 🚨",
+
+        title:"Babuu... tm jyada gussa krti nhi ho 😭",
+
+        text:
+            "Tmko hm kbhi aisa gussa mai dekhe nhi h... 😌",
+
+        button:"Continue",
+
+        sound:"popup"
+    },
+
+
+    /* 9 */
+
+    {
+        type:"popup",
+
+        eyebrow:"HYPOTHETICAL SITUATION 🚨😂",
+
+        title:"Agr achanak ek din dekhe... 👀",
+
+        text:
+            "Ki tm road mai kisiko gariya rahi... toh yeh toh zaroori hona hai... 😭😂",
+
+        button:"DEKHLO... 💀",
+
+        sound:"funny",
+
+        video:"abuse.mp4",
+
+        label:"THE ANGRY VERSION 🚨😂"
+    },
+
+
+    /* 10 */
+
+    {
+        type:"popup",
+
+        eyebrow:"EPISODE 05 • CASE FILE 📂",
+
+        title:"Yehi sab cheezon se log apni GF se darte hai... 😭",
+
+        text:
+            "Aur tm yehi sb ka fayda uthati hai... 😏😂",
+
+        button:"Continue",
+
+        sound:"funny"
+    },
+
+
+    /* 11 */
+
+    {
+        type:"popup",
+
+        eyebrow:"CASE FILE: TISHA 🕵🏻‍♂️",
+
+        title:"Tm puri Shatir, Syana, Chalaak, Chalbaaz sb ho... 😭😂",
+
+        text:
+            "Tmhara game hum pakad liye h bhai.... 🤨📂",
+
+        button:"DEKHLO 😏",
+
+        sound:"funny",
+
+        video:"chalbaaz.mp4",
+
+        label:"CASE FILE: CHALBAAZ 🕵🏻‍♂️"
+    },
+
+
+    /* 12 */
+
+    {
+        type:"popup",
+
+        eyebrow:"FINAL EPISODE • NO JOKES THIS TIME 🥹",
+
+        title:"Babyy... ❤️",
+
+        text:
+            "Joh bhi ho mujhe toh tm bhut pasand ho. I love you so so so much 😙❤️. You're a true blessing 🙂‍↕️✨. You're the best thing that happened to me. 🫶🏻",
+
+        button:"Next... ❤️",
+
+        sound:"shimmer",
+
+        video:"final.mp4",
+
+        label:"FOR MY FAVORITE GIRL ❤️",
+
+        final:true
+    }
+
+];
 
 
 /* =========================================================
    STATE
 ========================================================= */
 
-const stage =
-    document.getElementById(
-        "stage"
-    );
-
 let currentPart = 0;
-
-let videoElement = null;
-
 let movingForward = false;
 
 
-/*
-    PART ORDER
-
-    0  Intro
-    1  Ready
-
-    2  Dance popup 1
-    3  Dance popup 2
-    4  Dance video
-
-    5  Nonveg popup 1
-    6  Nonveg popup 2
-    7  Nonveg video
-
-    8  Religion popup 1
-    9  Religion popup 2
-    10 Religion video
-
-    11 Abuse popup 1
-    12 Abuse popup 2
-    13 Abuse video
-
-    14 Chalbaaz popup 1
-    15 Chalbaaz popup 2
-    16 Chalbaaz video
-
-    17 Final popup
-    18 Final video
-*/
-
-
 /* =========================================================
-   CONTENT
+   SHOW POPUP
 ========================================================= */
 
-const parts = [
+function showPopup(part){
 
-/* =========================================================
-   INTRO
-========================================================= */
+    videoContainer.style.display="none";
+    popupWrap.classList.remove("hidden");
 
-{
-    type:"popup",
+    popupWrap.innerHTML="";
 
-    eyebrow:
-        "PRIVATE SCREENING 📼",
-
-    title:
-        "seen our album baby... 🥹❤️",
-
-    text:
-        "Now it's time for you to see something entertaining 📼😂",
-
-    button:
-        "Okay... show me 👀",
-
-    sound:
-        "popup"
-},
-
-
-{
-    type:"popup",
-
-    eyebrow:
-        "WARNING ⚠️😂",
-
-    title:
-        "are you ready for it? 😏",
-
-    text:
-        "Because once this starts... there is absolutely no going back. 🤭",
-
-    button:
-        "I'm ready 😌",
-
-    sound:
-        "heartbeat",
-
-    transition:
-        true
-},
-
-
-/* =========================================================
-   DANCE
-========================================================= */
-
-{
-    type:"popup",
-
-    eyebrow:
-        "EPISODE 01 • PATNA FILES 📂",
-
-    title:
-        "You know what sweetheart... 😮‍💨❤️‍🔥",
-
-    text:
-        "You're so hot, so tempting and so desirable ❤️‍🔥😏",
-
-    button:
-        "Continue... 👀",
-
-    sound:
-        "shimmer"
-},
-
-
-{
-    type:"popup",
-
-    eyebrow:
-        "THE PATNA VERSION 💃🏻",
-
-    title:
-        "There's a version of you which I saw in Patna... 👀",
-
-    text:
-        `And that version got me like —<br><br>
-
-        "Agr tm bolti baith toh baithte,
-        uth to uthte...
-        and agr bolti naach 💃🏻
-        toh phir janti ho kya hota..." 😭😂❤️‍🔥`,
-
-    button:
-        "DEKHLO 😏",
-
-    sound:
-        "funny"
-},
-
-
-{
-    type:"video",
-
-    label:
-        "THE PATNA VERSION 💃🏻",
-
-    file:
-        "dance.mp4"
-},
-
-
-/* =========================================================
-   NON VEG
-========================================================= */
-
-{
-    type:"popup",
-
-    eyebrow:
-        "EPISODE 02 • IMPORTANT MATTER 🍗",
-
-    title:
-        "Dekho babyy... 😌",
-
-    text:
-        "Sawan toh khatam ho gaya hai... ab toh tm daba ke non veg khaa paogi 😋🍗😂",
-
-    button:
-        "Continue... 👀",
-
-    sound:
-        "funny"
-},
-
-
-{
-    type:"popup",
-
-    eyebrow:
-        "THE REAL QUESTION 🤔",
-
-    title:
-        "Lekin agr merese koi puche... 👀",
-
-    text:
-        `Chicken khaoge ya mutton 🍗...<br><br>
-        Janti ho kya choose krenge.... 😏`,
-
-    button:
-        "DEKHLO... 😂",
-
-    sound:
-        "popup"
-},
-
-
-{
-    type:"video",
-
-    label:
-        "THE CHOICE 🍗",
-
-    file:
-        "nonveg.mp4"
-},
-
-
-/* =========================================================
-   RELIGION
-========================================================= */
-
-{
-    type:"popup",
-
-    eyebrow:
-        "EPISODE 03 • CLASSIFIED ❤️",
-
-    title:
-        "Sweetheart... ek baat toh tmhe pata hi hai 🧕🏻❤️",
-
-    text:
-        "Hum Hindu hai aur tm 🧕🏻. Sbko yeh baat pata hai... 😌",
-
-    button:
-        "Hmm... 👀",
-
-    sound:
-        "shimmer"
-},
-
-
-{
-    type:"popup",
-
-    eyebrow:
-        "BUT HERE'S THE THING... ❤️",
-
-    title:
-        "Lekin tm kisi bhi religion ki hoti... 🥹",
-
-    text:
-        "Apna toh terko hi choose krta... ❤️<br><br>Proof deduuu.... 😏",
-
-    button:
-        "DEKHLO... 🫶🏻",
-
-    sound:
-        "shimmer"
-},
-
-
-{
-    type:"video",
-
-    label:
-        "NO MATTER WHAT ❤️",
-
-    file:
-        "religion.mp4"
-},
-
-
-/* =========================================================
-   ABUSE
-========================================================= */
-
-{
-    type:"popup",
-
-    eyebrow:
-        "EPISODE 04 • DANGER ZONE 🚨",
-
-    title:
-        "Babuu... tm jyada gussa krti nhi ho 😭",
-
-    text:
-        "Tmko hm kbhi aisa gussa mai dekhe nhi h... 😌",
-
-    button:
-        "Continue... 😂",
-
-    sound:
-        "popup"
-},
-
-
-{
-    type:"popup",
-
-    eyebrow:
-        "HYPOTHETICAL SITUATION 🚨😂",
-
-    title:
-        "Agr achanak ek din dekhe... 👀",
-
-    text:
-        "Ki tm road mai kisiko gariya rahi... toh yeh toh zaroori hona hai... 😭😂",
-
-    button:
-        "DEKHLO... 💀",
-
-    sound:
-        "funny"
-},
-
-
-{
-    type:"video",
-
-    label:
-        "THE ANGRY VERSION 🚨😂",
-
-    file:
-        "abuse.mp4"
-},
-
-
-/* =========================================================
-   CHALBAAZ
-========================================================= */
-
-{
-    type:"popup",
-
-    eyebrow:
-        "EPISODE 05 • CASE FILE 📂",
-
-    title:
-        "Yehi sab cheezon se log apni GF se darte hai... 😭",
-
-    text:
-        "Aur tm yehi sb ka fayda uthati hai... 😏😂",
-
-    button:
-        "Continue... 👀",
-
-    sound:
-        "funny"
-},
-
-
-{
-    type:"popup",
-
-    eyebrow:
-        "CASE FILE: TISHA 🕵🏻‍♂️",
-
-    title:
-        "Tm puri Shatir, Syana, Chalak, Chalbaaz sb ho... 😭😂",
-
-    text:
-        "Tmhara game hum pakad liye h bhai.... 🤨📂",
-
-    button:
-        "DEKHLO 😏",
-
-    sound:
-        "funny"
-},
-
-
-{
-    type:"video",
-
-    label:
-        "CASE FILE: CHALBAAZ 🕵🏻‍♂️",
-
-    file:
-        "chalbaaz.mp4"
-},
-
-
-/* =========================================================
-   FINAL EMOTIONAL VIDEO
-========================================================= */
-
-{
-    type:"popup",
-
-    eyebrow:
-        "FINAL EPISODE • NO JOKES THIS TIME 🥹",
-
-    title:
-        "Babyy... ❤️",
-
-    text:
-        `Joh bhi ho mujhe toh tm bhut pasand ho.
-        I love you so so so much 😙❤️.
-        You're a true blessing 🙂‍↕️✨.
-        You're the best thing that happened to me. 🫶🏻`,
-
-    button:
-        "Next... ❤️",
-
-    sound:
-        "shimmer"
-},
-
-
-{
-    type:"video",
-
-    label:
-        "FOR MY FAVORITE GIRL ❤️",
-
-    file:
-        "final.mp4",
-
-    final:
-        true
-}
-
-];
-
-
-/* =========================================================
-   RENDER POPUP
-========================================================= */
-
-function renderPopup(data){
-
-    stage.innerHTML="";
-
-    stage.className="";
-
-    movingForward=false;
-
-
-    const popup =
+    const card =
         document.createElement("div");
 
-    popup.className =
-        "popup";
+    card.className="popup";
 
-
-    popup.innerHTML = `
+    card.innerHTML=`
 
         <div class="eyebrow">
-            ${data.eyebrow || ""}
+            ${part.eyebrow}
         </div>
 
         <h1>
-            ${data.title}
+            ${part.title}
         </h1>
 
         <p>
-            ${data.text}
+            ${part.text}
         </p>
 
-        <button
-            class="action">
+        <div class="actions">
 
-            ${data.button}
+            <button
+                class="action"
+                id="mainAction"
+            >
+                ${part.button}
+            </button>
 
-        </button>
-
+        </div>
     `;
 
+    popupWrap.appendChild(card);
 
-    stage.appendChild(
-        popup
-    );
-
-
-    /* Sound */
-
-    if(data.sound==="heartbeat"){
-
-        heartbeat();
-
-    }
-
-    else if(data.sound==="funny"){
-
-        funnyPop();
-
-    }
-
-    else if(data.sound==="shimmer"){
-
-        shimmer();
-
-    }
-
-    else{
-
+    if(part.sound==="popup")
         popupSound();
 
-    }
+    if(part.sound==="shimmer")
+        shimmer();
 
+    if(part.sound==="funny")
+        funnyPop();
 
-    const button =
-        popup.querySelector(
-            ".action"
-        );
+    if(part.sound==="heartbeat")
+        heartbeat();
 
-
-    button.addEventListener(
-        "click",
-        ()=>{
-
-            initAudio();
-
-            if(
-                audioCtx &&
-                audioCtx.state==="suspended"
-            ){
-
-                audioCtx.resume();
-            }
-
-
-            if(movingForward)
-                return;
-
-
-            movingForward=true;
-
-            clickSound();
-
-
-            setTimeout(()=>{
-
+    document
+        .getElementById("mainAction")
+        .addEventListener(
+            "click",
+            ()=>{
+                clickSound();
                 nextPart();
-
-            },180);
-
-        }
-    );
-
+            }
+        );
 }
 
 
 /* =========================================================
-   RENDER VIDEO
+   SHOW VIDEO
 ========================================================= */
 
-function renderVideo(data){
+function showVideo(part){
 
-    stage.innerHTML="";
+    popupWrap.classList.add("hidden");
 
-    stage.className="";
+    videoContainer.style.display="block";
 
-    movingForward=false;
+    videoLabel.textContent =
+        part.label;
 
+    video.src =
+        part.video;
 
-    const wrap =
-        document.createElement("div");
+    video.currentTime=0;
 
-    wrap.className =
-        "videoWrap";
+    skipButton.textContent =
+        part.final
+            ? "FINISH ❤️"
+            : "SKIP →";
 
-
-    wrap.innerHTML = `
-
-        <div class="videoTop">
-
-            <div class="rec">
-
-                <span class="recDot"></span>
-
-                REC
-
-            </div>
-
-            <div>
-
-                ${data.label}
-
-            </div>
-
-        </div>
-
-
-        <div class="videoFrame">
-
-            <video
-                id="mainVideo"
-                playsinline
-                controls
-                preload="auto">
-
-                <source
-                    src="${data.file}"
-                    type="video/mp4">
-
-                Your browser does not
-                support video.
-
-            </video>
-
-        </div>
-
-
-        <div class="videoControls">
-
-            <button
-                class="skipButton"
-                id="skipButton">
-
-                ${data.final
-                    ? "FINISH ❤️"
-                    : "SKIP →"}
-
-            </button>
-
-        </div>
-
-
-        <div class="videoHint">
-
-            ${data.final
-                ? "WHEN YOU'RE READY ❤️"
-                : "YOU CAN SKIP ANYTIME →"}
-
-        </div>
-
-    `;
-
-
-    stage.appendChild(
-        wrap
+    skipButton.classList.toggle(
+        "finish",
+        !!part.final
     );
-
-
-    videoElement =
-        document.getElementById(
-            "mainVideo"
-        );
-
-
-    const skipButton =
-        document.getElementById(
-            "skipButton"
-        );
-
-
-    /* Video opening sound */
 
     videoOpenSound();
 
-
-    /* =====================================================
-       VIDEO FORWARD FUNCTION
-    ===================================================== */
-
-    function moveForward(){
-
-        if(movingForward)
-            return;
-
-
-        movingForward=true;
-
-
-        skipButton.disabled=true;
-
-
-        videoEndSound();
-
-
-        if(data.final){
-
-            skipButton.textContent =
-                "FINISH ❤️";
-
-
-            setTimeout(()=>{
-
-                showBirthday();
-
-            },700);
-
-
-            return;
-        }
-
-
-        setTimeout(()=>{
-
-            nextPart();
-
-        },450);
-
-    }
-
-
-    /* =====================================================
-       SKIP BUTTON
-    ===================================================== */
-
-    skipButton.addEventListener(
-        "click",
-        ()=>{
-
-            initAudio();
-
-
-            if(
-                audioCtx &&
-                audioCtx.state==="suspended"
-            ){
-
-                audioCtx.resume();
-            }
-
-
-            moveForward();
-
-        }
-    );
-
-
-    /* =====================================================
-       NATURAL VIDEO END
-    ===================================================== */
-
-    videoElement.addEventListener(
-        "ended",
-        moveForward,
-        {once:true}
-    );
-
-
-    /* =====================================================
-       AUTOPLAY
-    ===================================================== */
-
-    setTimeout(()=>{
-
-        if(!videoElement)
-            return;
-
-
-        videoElement
-            .play()
-            .catch(()=>{
-
-                /*
-                   Some browsers may block
-                   autoplay.
-
-                   In that case the native
-                   play button remains available.
-                */
-
-            });
-
-    },550);
-
+    video.play().catch(()=>{
+        /*
+            Browser may block autoplay.
+            Native controls remain available.
+        */
+    });
 }
 
 
@@ -2699,146 +1740,157 @@ function renderVideo(data){
 
 function nextPart(){
 
-    if(movingForward){
-
-        /*
-           Reset for the next screen.
-           This does NOT affect video
-           protection because renderVideo()
-           resets it again.
-        */
-    }
-
-
-    currentPart++;
-
-
-    if(
-        currentPart >=
-        parts.length
-    ){
-
-        showBirthday();
-
+    if(movingForward)
         return;
-    }
 
+    movingForward=true;
 
-    const data =
+    const part =
         parts[currentPart];
 
+    if(part.transition){
 
-    /* =====================================================
-       SPECIAL INTRO SPIN
-    ===================================================== */
-
-    if(data.transition){
-
-        stage.classList.add(
-            "spin"
-        );
+        transition.classList.add("active");
 
         whoosh();
 
-
         setTimeout(()=>{
 
-            stage.classList.remove(
-                "spin"
-            );
-
+            transition.classList.remove("active");
 
             currentPart++;
 
+            movingForward=false;
 
-            renderPart();
+            showPopup(parts[currentPart]);
 
-        },850);
-
+        },500);
 
         return;
     }
 
-
-    /* =====================================================
-       NORMAL CINEMATIC TRANSITION
-    ===================================================== */
-
-    stage.classList.add(
-        "zoomOut"
-    );
-
+    currentPart++;
 
     setTimeout(()=>{
 
-        renderPart();
+        movingForward=false;
 
-        stage.classList.add(
-            "zoomIn"
-        );
+        if(currentPart >= parts.length){
 
-    },350);
+            showBirthday();
 
+            return;
+        }
+
+        const next =
+            parts[currentPart];
+
+        if(next.video){
+
+            showVideo(next);
+
+        }else{
+
+            showPopup(next);
+
+        }
+
+    },120);
 }
 
 
 /* =========================================================
-   RENDER CURRENT PART
+   VIDEO FINISH / SKIP
 ========================================================= */
 
-function renderPart(){
+function moveForward(){
 
-    const data =
+    if(movingForward)
+        return;
+
+    movingForward=true;
+
+    videoEndSound();
+
+    video.pause();
+
+    const finishedPart =
         parts[currentPart];
 
+    if(finishedPart.final){
 
-    if(data.type==="video"){
+        setTimeout(()=>{
 
-        renderVideo(data);
+            movingForward=false;
 
+            showBirthday();
+
+        },650);
+
+        return;
     }
 
-    else{
+    setTimeout(()=>{
 
-        renderPopup(data);
+        currentPart++;
 
-    }
+        movingForward=false;
 
+        if(currentPart >= parts.length){
+
+            showBirthday();
+
+            return;
+        }
+
+        showPopup(parts[currentPart]);
+
+    },450);
 }
 
 
 /* =========================================================
-   BIRTHDAY ENDING
+   NATURAL VIDEO END
+========================================================= */
+
+video.addEventListener(
+    "ended",
+    ()=>{
+        moveForward();
+    }
+);
+
+
+/* =========================================================
+   SKIP BUTTON
+========================================================= */
+
+skipButton.addEventListener(
+    "click",
+    ()=>{
+        clickSound();
+        moveForward();
+    }
+);
+
+
+/* =========================================================
+   BIRTHDAY
 ========================================================= */
 
 function showBirthday(){
 
-    if(videoElement){
+    video.pause();
 
-        videoElement.pause();
+    videoContainer.style.display="none";
 
-    }
+    popupWrap.classList.add("hidden");
 
-
-    stage.style.display =
-        "none";
-
-
-    const birthday =
-        document.getElementById(
-            "birthday"
-        );
-
-
-    birthday.classList.add(
-        "show"
-    );
-
+    birthday.classList.add("show");
 
     celebrationSound();
 
-
-    startCelebration();
+    createCelebration();
 
 }
 
@@ -2847,187 +1899,47 @@ function showBirthday(){
    CELEBRATION PARTICLES
 ========================================================= */
 
-function startCelebration(){
+function createCelebration(){
 
-    const symbols = [
-
+    const symbols=[
         "❤️",
-        "💗",
-        "💖",
-        "✨",
-        "🎉",
-        "🎈",
+        "♡",
+        "✦",
+        "✧",
         "🌸",
-        "🌹",
+        "✨",
         "🥹",
-        "🫶🏻",
-        "💕",
-        "💫",
-        "🥳",
-        "⭐",
-        "💐",
+        "💗",
+        "🌹",
         "🎀"
-
     ];
 
+    for(let i=0;i<45;i++){
 
-    const container =
-        document.querySelector(
-            ".birthdayStars"
-        );
+        const el =
+            document.createElement("div");
 
+        el.className="celebrate";
 
-    /* Massive initial burst */
+        el.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
 
-    for(let i=0;i<100;i++){
+        el.style.left =
+            Math.random()*100 + "%";
 
-        setTimeout(()=>{
+        el.style.animationDuration =
+            (4 + Math.random()*5) + "s";
 
-            const item =
-                document.createElement(
-                    "div"
-                );
+        el.style.animationDelay =
+            (-Math.random()*7) + "s";
 
-
-            item.className =
-                "celebrate";
-
-
-            item.textContent =
-                symbols[
-                    Math.floor(
-                        Math.random() *
-                        symbols.length
-                    )
-                ];
-
-
-            item.style.left =
-                Math.random()*100 +
-                "%";
-
-
-            item.style.top =
-                (55 +
-                Math.random()*45) +
-                "%";
-
-
-            item.style.setProperty(
-                "--x",
-                Math.random()
-            );
-
-
-            item.style.setProperty(
-                "--y",
-                Math.random()
-            );
-
-
-            item.style.animationDuration =
-                (2.5 +
-                Math.random()*2.5) +
-                "s";
-
-
-            container.appendChild(
-                item
-            );
-
-
-            setTimeout(()=>{
-
-                item.remove();
-
-            },5500);
-
-
-        },i*55);
-
+        celebration.appendChild(el);
     }
-
-
-    /* =====================================================
-       CONTINUOUS CELEBRATION
-    ===================================================== */
-
-    setInterval(()=>{
-
-        if(
-            !document
-                .getElementById("birthday")
-                .classList
-                .contains("show")
-        ){
-
-            return;
-        }
-
-
-        for(let i=0;i<4;i++){
-
-            const item =
-                document.createElement(
-                    "div"
-                );
-
-
-            item.className =
-                "celebrate";
-
-
-            item.textContent =
-                symbols[
-                    Math.floor(
-                        Math.random() *
-                        symbols.length
-                    )
-                ];
-
-
-            item.style.left =
-                Math.random()*100 +
-                "%";
-
-
-            item.style.top =
-                "90%";
-
-
-            item.style.setProperty(
-                "--x",
-                Math.random()
-            );
-
-
-            item.style.setProperty(
-                "--y",
-                Math.random()
-            );
-
-
-            item.style.animationDuration =
-                (3 +
-                Math.random()*2) +
-                "s";
-
-
-            container.appendChild(
-                item
-            );
-
-
-            setTimeout(()=>{
-
-                item.remove();
-
-            },5500);
-
-        }
-
-    },700);
-
 }
 
 
@@ -3035,43 +1947,10 @@ function startCelebration(){
    START
 ========================================================= */
 
-window.addEventListener(
-    "load",
-    ()=>{
-
-        currentPart=0;
-
-        renderPart();
-
-    }
-);
-
-
-/* =========================================================
-   FIRST TOUCH UNLOCKS AUDIO
-========================================================= */
-
-document.addEventListener(
-    "pointerdown",
-    ()=>{
-
-        initAudio();
-
-
-        if(
-            audioCtx &&
-            audioCtx.state==="suspended"
-        ){
-
-            audioCtx.resume();
-
-        }
-
-    },
-    {once:true}
-);
+showPopup(parts[0]);
 
 </script>
 
 </body>
 </html>
+```
