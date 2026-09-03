@@ -1,828 +1,761 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>For Tisha ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Tisha — Private Screening</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-    crossorigin
->
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 /* =========================================================
-   RESET
+   ROOT
 ========================================================= */
+
+:root{
+    --cream:#fffaf8;
+    --cream2:#fff1f4;
+    --pink:#ffe1e7;
+    --rose:#d85a76;
+    --rose2:#b52d51;
+    --burgundy:#7d1834;
+    --deep:#571027;
+    --text:#633040;
+    --white:#ffffff;
+}
 
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
-html,
-body{
+html,body{
     width:100%;
-    min-height:100%;
+    height:100%;
 }
 
 body{
-
-    min-height:100vh;
-
     overflow:hidden;
-
-    font-family:
-        "DM Sans",
-        sans-serif;
-
-    color:#7d1834;
+    font-family:"DM Sans",sans-serif;
+    color:var(--text);
 
     background:
-        radial-gradient(
-            circle at 50% 20%,
-            #fffafa 0%,
-            #fff1f4 35%,
-            #ffe3e8 70%,
-            #ffd0d9 100%
-        );
+        radial-gradient(circle at 50% 5%, #ffffff 0%, #fff8f9 22%, transparent 48%),
+        radial-gradient(circle at 10% 70%, rgba(255,151,177,.25), transparent 38%),
+        radial-gradient(circle at 90% 30%, rgba(255,194,210,.30), transparent 38%),
+        linear-gradient(135deg,#fffafa 0%,#fff0f4 42%,#ffe1e7 72%,#ffd2dc 100%);
 }
-
 
 /* =========================================================
-   BACKGROUND GLOW
+   BACKGROUND WORLD
 ========================================================= */
 
-.background-glow{
-
+.bg{
     position:fixed;
-
-    width:700px;
-    height:700px;
-
-    left:50%;
-    top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    background:
-        rgba(255,90,130,.16);
-
-    filter:
-        blur(110px);
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    z-index:0;
-
-    animation:
-        backgroundPulse
-        8s ease-in-out
-        infinite alternate;
-}
-
-@keyframes backgroundPulse{
-
-    from{
-        transform:
-            translate(-50%,-50%)
-            scale(.92);
-
-        opacity:.65;
-    }
-
-    to{
-        transform:
-            translate(-50%,-50%)
-            scale(1.12);
-
-        opacity:1;
-    }
-}
-
-
-/* =========================================================
-   BACKGROUND DOT TEXTURE
-========================================================= */
-
-body::before{
-
-    content:"";
-
-    position:fixed;
-
     inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+}
+
+/* soft cinematic glow */
+
+.aurora{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.45;
+    animation:auroraFloat 12s ease-in-out infinite alternate;
+}
+
+.aurora.one{
+    width:520px;
+    height:520px;
+    background:rgba(255,111,150,.20);
+    left:-160px;
+    top:10%;
+}
+
+.aurora.two{
+    width:600px;
+    height:600px;
+    background:rgba(255,220,227,.75);
+    right:-180px;
+    bottom:-180px;
+    animation-delay:-4s;
+}
+
+.aurora.three{
+    width:350px;
+    height:350px;
+    background:rgba(214,93,125,.13);
+    left:40%;
+    top:30%;
+    animation-delay:-7s;
+}
+
+@keyframes auroraFloat{
+    from{transform:translate(0,0) scale(1);}
+    to{transform:translate(40px,-25px) scale(1.12);}
+}
+
+/* =========================================================
+   GRID / GRAIN
+========================================================= */
+
+.grid{
+    position:absolute;
+    inset:0;
+    opacity:.22;
 
     background-image:
-        radial-gradient(
-            rgba(180,40,70,.08) 1px,
-            transparent 1px
+        linear-gradient(rgba(125,24,52,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(125,24,52,.045) 1px,transparent 1px);
+
+    background-size:42px 42px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        transparent,
+        black 15%,
+        black 85%,
+        transparent
+    );
+}
+
+.grain{
+    position:absolute;
+    inset:-50%;
+    opacity:.08;
+
+    background-image:
+        repeating-radial-gradient(
+            circle at 0 0,
+            rgba(125,24,52,.5) 0,
+            rgba(125,24,52,.5) 1px,
+            transparent 1px,
+            transparent 4px
         );
 
-    background-size:
-        28px 28px;
-
-    pointer-events:none;
-
-    z-index:0;
+    animation:grainMove 1.2s steps(2) infinite;
 }
 
+@keyframes grainMove{
+    0%{transform:translate(0,0);}
+    25%{transform:translate(2%,1%);}
+    50%{transform:translate(-1%,2%);}
+    75%{transform:translate(1%,-2%);}
+    100%{transform:translate(0,0);}
+}
 
 /* =========================================================
-   SECONDARY LIGHT ORBS
+   SUN
 ========================================================= */
 
-.light-orbs{
-
-    position:fixed;
-
-    inset:0;
-
-    overflow:hidden;
-
-    pointer-events:none;
-
-    z-index:0;
-}
-
-.light-orbs span{
-
+.sun{
     position:absolute;
-
+    width:145px;
+    height:145px;
     border-radius:50%;
 
-    filter:blur(40px);
-
-    opacity:.3;
-
-    animation:
-        orbFloat
-        9s ease-in-out
-        infinite alternate;
-}
-
-.light-orbs span:nth-child(1){
-
-    width:220px;
-    height:220px;
-
-    left:-60px;
-    top:10%;
+    right:8%;
+    top:7%;
 
     background:
-        rgba(255,170,190,.35);
+        radial-gradient(circle,
+            rgba(255,255,255,.98) 0%,
+            rgba(255,240,193,.95) 23%,
+            rgba(255,207,120,.45) 52%,
+            transparent 72%);
+
+    box-shadow:
+        0 0 45px rgba(255,202,100,.38),
+        0 0 100px rgba(255,183,103,.22);
+
+    opacity:.75;
 }
 
-.light-orbs span:nth-child(2){
+.sun::before{
+    content:"";
+    position:absolute;
+    inset:-28px;
 
-    width:180px;
-    height:180px;
+    border:1px solid rgba(183,106,60,.13);
+    border-radius:50%;
 
-    right:-50px;
-    top:25%;
+    box-shadow:
+        0 0 0 15px rgba(183,106,60,.035),
+        0 0 0 30px rgba(183,106,60,.025);
 
-    background:
-        rgba(180,70,100,.18);
-
-    animation-delay:2s;
+    animation:sunSpin 20s linear infinite;
 }
 
-.light-orbs span:nth-child(3){
-
-    width:250px;
-    height:250px;
-
-    left:30%;
-    bottom:-130px;
-
-    background:
-        rgba(255,210,220,.5);
-
-    animation-delay:4s;
+@keyframes sunSpin{
+    to{transform:rotate(360deg);}
 }
-
-@keyframes orbFloat{
-
-    from{
-        transform:
-            translate(0,0)
-            scale(1);
-    }
-
-    to{
-        transform:
-            translate(25px,-25px)
-            scale(1.12);
-    }
-}
-
 
 /* =========================================================
-   FLOATING DECOR
+   ORBIT RINGS
 ========================================================= */
 
-.floating-decor{
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    z-index:1;
-}
-
-.floating-decor span{
-
+.orbit{
     position:absolute;
-
-    display:block;
-
-    color:#a92549;
-
-    opacity:.24;
-
-    animation:
-        floatDecor
-        6s ease-in-out
-        infinite;
+    border:1px solid rgba(125,24,52,.10);
+    border-radius:50%;
 }
 
-.floating-decor span:nth-child(1){
-
-    left:7%;
-    top:18%;
-
-    font-size:22px;
+.orbit.o1{
+    width:500px;
+    height:170px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) rotate(-18deg);
+    animation:orbit 18s linear infinite;
 }
 
-.floating-decor span:nth-child(2){
-
-    left:17%;
-    top:75%;
-
-    font-size:15px;
-
-    animation-delay:.7s;
+.orbit.o2{
+    width:720px;
+    height:250px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) rotate(22deg);
+    animation:orbitReverse 24s linear infinite;
 }
 
-.floating-decor span:nth-child(3){
-
-    left:31%;
-    top:10%;
-
-    font-size:12px;
-
-    animation-delay:1.2s;
+.orbit.o3{
+    width:900px;
+    height:330px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) rotate(-35deg);
+    opacity:.45;
 }
 
-.floating-decor span:nth-child(4){
-
-    left:53%;
-    top:83%;
-
-    font-size:20px;
-
-    animation-delay:2s;
+@keyframes orbit{
+    to{transform:translate(-50%,-50%) rotate(342deg);}
 }
 
-.floating-decor span:nth-child(5){
-
-    left:73%;
-    top:13%;
-
-    font-size:16px;
-
-    animation-delay:.4s;
+@keyframes orbitReverse{
+    to{transform:translate(-50%,-50%) rotate(-338deg);}
 }
 
-.floating-decor span:nth-child(6){
+/* =========================================================
+   CAMERA DECORATIONS
+========================================================= */
 
-    right:7%;
-    top:62%;
-
-    font-size:24px;
-
-    animation-delay:1.8s;
+.camera{
+    position:absolute;
+    width:92px;
+    height:62px;
+    border:2px solid rgba(125,24,52,.20);
+    border-radius:18px;
+    opacity:.35;
+    transform:rotate(-12deg);
 }
 
-.floating-decor span:nth-child(7){
+.camera::before{
+    content:"";
+    position:absolute;
+    width:28px;
+    height:13px;
+    left:12px;
+    top:-13px;
 
-    left:45%;
-    top:20%;
-
-    font-size:9px;
-
-    animation-delay:2.5s;
+    background:rgba(125,24,52,.12);
+    border:2px solid rgba(125,24,52,.18);
+    border-bottom:0;
+    border-radius:7px 7px 0 0;
 }
 
-.floating-decor span:nth-child(8){
-
-    right:20%;
-    bottom:12%;
-
-    font-size:14px;
-
-    animation-delay:3s;
+.camera::after{
+    content:"";
+    position:absolute;
+    width:29px;
+    height:29px;
+    border:2px solid rgba(125,24,52,.23);
+    border-radius:50%;
+    left:29px;
+    top:15px;
+    box-shadow:inset 0 0 0 7px rgba(125,24,52,.035);
 }
 
-@keyframes floatDecor{
-
-    0%,
-    100%{
-
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-        opacity:.18;
-    }
-
-    50%{
-
-        transform:
-            translateY(-18px)
-            rotate(8deg);
-
-        opacity:.42;
-    }
+.camera.c1{
+    left:5%;
+    top:17%;
+    animation:cameraFloat 7s ease-in-out infinite;
 }
 
+.camera.c2{
+    right:4%;
+    bottom:17%;
+    transform:rotate(14deg) scale(.75);
+    animation:cameraFloat 9s ease-in-out infinite reverse;
+}
+
+.camera.c3{
+    left:12%;
+    bottom:7%;
+    transform:rotate(-25deg) scale(.55);
+    opacity:.2;
+}
+
+@keyframes cameraFloat{
+    0%,100%{translate:0 0;}
+    50%{translate:0 -18px;}
+}
+
+/* camera flash */
+
+.cameraFlash{
+    position:absolute;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:white;
+    box-shadow:0 0 15px white;
+    opacity:.5;
+    animation:flash 4s ease-in-out infinite;
+}
+
+.cameraFlash.f1{left:7%;top:15%;}
+.cameraFlash.f2{right:7%;bottom:22%;animation-delay:2s;}
+
+@keyframes flash{
+    0%,85%,100%{opacity:.15;}
+    88%{opacity:1;}
+    92%{opacity:.1;}
+}
+
+/* =========================================================
+   WHITE CSS FLOWERS
+========================================================= */
+
+.flower{
+    position:absolute;
+    width:70px;
+    height:70px;
+    opacity:.48;
+    animation:flowerFloat 9s ease-in-out infinite;
+}
+
+.flower span{
+    position:absolute;
+    width:24px;
+    height:38px;
+
+    left:23px;
+    top:15px;
+
+    border-radius:50% 50% 45% 45%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.95),
+            rgba(255,237,242,.72)
+        );
+
+    box-shadow:
+        0 3px 12px rgba(125,24,52,.07);
+
+    transform-origin:50% 100%;
+}
+
+.flower span:nth-child(1){transform:rotate(0deg) translateY(-17px);}
+.flower span:nth-child(2){transform:rotate(60deg) translateY(-17px);}
+.flower span:nth-child(3){transform:rotate(120deg) translateY(-17px);}
+.flower span:nth-child(4){transform:rotate(180deg) translateY(-17px);}
+.flower span:nth-child(5){transform:rotate(240deg) translateY(-17px);}
+.flower span:nth-child(6){transform:rotate(300deg) translateY(-17px);}
+
+.flower i{
+    position:absolute;
+    width:13px;
+    height:13px;
+    border-radius:50%;
+    background:#e9b55c;
+    left:29px;
+    top:29px;
+    box-shadow:0 0 15px rgba(233,181,92,.4);
+}
+
+.flower.f1{left:1%;top:35%;transform:scale(.75);}
+.flower.f2{right:2%;top:52%;transform:scale(.95);animation-delay:-3s;}
+.flower.f3{left:17%;top:5%;transform:scale(.5);animation-delay:-5s;}
+.flower.f4{right:18%;bottom:3%;transform:scale(.65);animation-delay:-2s;}
+.flower.f5{left:40%;bottom:2%;transform:scale(.45);animation-delay:-7s;}
+
+@keyframes flowerFloat{
+    0%,100%{translate:0 0 rotate(0deg);}
+    50%{translate:8px -15px rotate(7deg);}
+}
 
 /* =========================================================
    PETALS
 ========================================================= */
 
-.petals{
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    overflow:hidden;
-
-    z-index:2;
-}
-
 .petal{
-
     position:absolute;
-
-    width:10px;
-    height:15px;
-
-    border-radius:
-        100% 0 100% 0;
+    width:12px;
+    height:20px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(180,45,75,.35),
-            rgba(235,145,160,.18)
+            rgba(255,255,255,.9),
+            rgba(239,174,190,.55)
         );
 
-    animation:
-        petalFall
-        linear
-        infinite;
+    border-radius:80% 20% 80% 20%;
+    opacity:.65;
+
+    animation:petalDrift linear infinite;
 }
 
-@keyframes petalFall{
+.p1{left:8%;top:-5%;animation-duration:12s;animation-delay:1s;}
+.p2{left:25%;top:-10%;animation-duration:16s;animation-delay:4s;}
+.p3{left:47%;top:-8%;animation-duration:14s;animation-delay:2s;}
+.p4{left:68%;top:-12%;animation-duration:18s;animation-delay:7s;}
+.p5{left:83%;top:-6%;animation-duration:13s;animation-delay:3s;}
+.p6{left:92%;top:-15%;animation-duration:20s;animation-delay:8s;}
+.p7{left:35%;top:-15%;animation-duration:17s;animation-delay:9s;}
 
+@keyframes petalDrift{
     0%{
-
-        transform:
-            translateY(-10vh)
-            translateX(0)
-            rotate(0deg);
-
+        transform:translate3d(0,-30px,0) rotate(0);
         opacity:0;
     }
-
-    10%{
-        opacity:.65;
+    10%{opacity:.7;}
+    50%{
+        transform:translate3d(70px,50vh,0) rotate(180deg);
     }
-
-    90%{
-        opacity:.4;
-    }
-
     100%{
-
-        transform:
-            translateY(110vh)
-            translateX(80px)
-            rotate(420deg);
-
+        transform:translate3d(-40px,110vh,0) rotate(360deg);
         opacity:0;
     }
 }
 
-
 /* =========================================================
-   APP
+   STARS
 ========================================================= */
 
-#app{
+.star{
+    position:absolute;
+    color:white;
+    text-shadow:
+        0 0 5px rgba(255,255,255,.9),
+        0 0 16px rgba(213,93,126,.35);
 
-    position:relative;
-
-    width:100%;
-    height:100vh;
-
-    z-index:10;
+    animation:twinkle 3s ease-in-out infinite;
 }
 
+.star::before{
+    content:"✦";
+}
+
+.s1{left:13%;top:11%;font-size:16px;}
+.s2{left:29%;top:21%;font-size:9px;animation-delay:-1s;}
+.s3{left:74%;top:19%;font-size:18px;animation-delay:-2s;}
+.s4{right:15%;top:38%;font-size:10px;animation-delay:-.5s;}
+.s5{left:8%;top:65%;font-size:13px;animation-delay:-1.7s;}
+.s6{left:27%;bottom:19%;font-size:17px;animation-delay:-2.5s;}
+.s7{right:29%;bottom:14%;font-size:9px;animation-delay:-.8s;}
+.s8{right:6%;bottom:7%;font-size:16px;animation-delay:-1.3s;}
+.s9{left:52%;top:9%;font-size:8px;animation-delay:-2.2s;}
+.s10{left:58%;bottom:7%;font-size:12px;animation-delay:-1.1s;}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:.25;
+        transform:scale(.7);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.25);
+    }
+}
 
 /* =========================================================
-   STORY SCREEN
+   FLOATING HEARTS / SPARKLES
 ========================================================= */
 
-.story-screen{
-
+.spark{
     position:absolute;
+    color:rgba(125,24,52,.25);
+    animation:sparkFloat 8s ease-in-out infinite;
+}
 
+.spark::before{
+    content:"✧";
+}
+
+.sp1{left:20%;top:43%;font-size:22px;}
+.sp2{right:20%;top:66%;font-size:15px;animation-delay:-3s;}
+.sp3{left:6%;bottom:32%;font-size:19px;animation-delay:-5s;}
+.sp4{right:8%;top:72%;font-size:24px;animation-delay:-2s;}
+.sp5{left:45%;top:15%;font-size:13px;animation-delay:-6s;}
+
+@keyframes sparkFloat{
+    0%,100%{transform:translateY(0) rotate(0);opacity:.25;}
+    50%{transform:translateY(-15px) rotate(15deg);opacity:.7;}
+}
+
+/* =========================================================
+   LIGHT STREAKS
+========================================================= */
+
+.streak{
+    position:absolute;
+    width:300px;
+    height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);
+    filter:blur(.4px);
+    opacity:.5;
+    transform:rotate(-25deg);
+    animation:streakMove 10s linear infinite;
+}
+
+.streak.a{left:-250px;top:35%;}
+.streak.b{right:-250px;top:70%;animation-delay:4s;}
+.streak.c{left:25%;top:-50px;animation-delay:7s;}
+
+@keyframes streakMove{
+    from{translate:0 0;}
+    to{translate:700px 300px;}
+}
+
+/* =========================================================
+   CORNER ORNAMENTS
+========================================================= */
+
+.corner{
+    position:absolute;
+    width:120px;
+    height:120px;
+    opacity:.18;
+}
+
+.corner::before,
+.corner::after{
+    content:"";
+    position:absolute;
+    border-color:var(--burgundy);
+}
+
+.corner::before{
+    inset:0;
+    border-top:1px solid;
+    border-left:1px solid;
+}
+
+.corner::after{
+    inset:12px;
+    border-top:1px solid;
+    border-left:1px solid;
+}
+
+.corner.tl{top:22px;left:22px;}
+.corner.tr{top:22px;right:22px;transform:rotate(90deg);}
+.corner.bl{bottom:22px;left:22px;transform:rotate(-90deg);}
+.corner.br{bottom:22px;right:22px;transform:rotate(180deg);}
+
+/* =========================================================
+   MAIN APP
+========================================================= */
+
+.app{
+    position:relative;
+    z-index:10;
+    width:100%;
+    height:100%;
+}
+
+/* =========================================================
+   STORY OVERLAY
+========================================================= */
+
+.storyOverlay{
+    position:absolute;
     inset:0;
 
     display:flex;
-
+    align-items:center;
     justify-content:center;
 
-    align-items:center;
+    padding:22px;
 
-    padding:
-        50px
-        20px
-        25px;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,.20),
+            rgba(255,221,229,.08) 45%,
+            rgba(112,22,49,.04) 100%
+        );
 
-    opacity:0;
+    backdrop-filter:blur(2px);
 
-    visibility:hidden;
-
-    transform:
-        scale(.96)
-        translateY(25px);
-
-    transition:
-        opacity .6s ease,
-        transform .6s ease,
-        visibility .6s;
+    z-index:100;
 }
 
-.story-screen.active{
-
-    opacity:1;
-
-    visibility:visible;
-
-    transform:
-        scale(1)
-        translateY(0);
-}
-
-
-/* =========================================================
-   POPUP CARD
-========================================================= */
-
-.popup-card{
-
+.storyCard{
     position:relative;
+    width:min(620px,94vw);
+    max-height:88vh;
 
-    width:
-        min(700px,94vw);
+    overflow:auto;
 
-    padding:
-        38px
-        38px
-        34px;
+    padding:38px 40px 32px;
 
-    overflow:hidden;
-
-    text-align:center;
+    border-radius:30px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.78),
-            rgba(255,242,246,.66)
+            rgba(255,255,255,.90),
+            rgba(255,246,248,.83)
         );
 
-    border:
-        1px solid
-        rgba(143,36,61,.14);
-
-    border-radius:30px;
+    border:1px solid rgba(255,255,255,.95);
 
     box-shadow:
-        0 35px 90px
-        rgba(100,15,40,.18),
+        0 30px 90px rgba(125,24,52,.18),
+        0 8px 30px rgba(125,24,52,.10),
+        inset 0 1px 0 white;
 
-        0 10px 30px
-        rgba(143,36,61,.08),
-
-        inset
-        0 1px 0
-        rgba(255,255,255,.95);
-
-    backdrop-filter:
-        blur(22px);
-
-    -webkit-backdrop-filter:
-        blur(22px);
-
-    animation:
-        popupEntrance
-        .65s
-        cubic-bezier(.16,1,.3,1);
+    animation:cardIn .65s cubic-bezier(.2,.9,.25,1) both;
 }
 
-.popup-card::before{
-
+.storyCard::before{
     content:"";
-
     position:absolute;
+    inset:7px;
 
-    width:260px;
-    height:260px;
-
-    right:-100px;
-    top:-150px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,130,155,.25),
-            transparent 70%
-        );
+    border:1px solid rgba(125,24,52,.10);
+    border-radius:24px;
 
     pointer-events:none;
 }
 
-.popup-card::after{
-
+.storyCard::after{
     content:"";
-
     position:absolute;
-
     width:220px;
     height:220px;
 
-    left:-120px;
-    bottom:-140px;
+    left:50%;
+    top:-120px;
 
-    border-radius:50%;
+    transform:translateX(-50%);
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(143,36,61,.10),
-            transparent 70%
-        );
+    background:rgba(255,157,180,.22);
+    filter:blur(70px);
 
     pointer-events:none;
 }
 
-@keyframes popupEntrance{
-
-    0%{
-
+@keyframes cardIn{
+    from{
         opacity:0;
-
-        transform:
-            translateY(35px)
-            scale(.92);
-
-        filter:
-            blur(8px);
+        transform:translateY(25px) scale(.94);
+        filter:blur(8px);
     }
-
-    100%{
-
+    to{
         opacity:1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-        filter:
-            blur(0);
+        transform:translateY(0) scale(1);
+        filter:blur(0);
     }
 }
 
-
-/* =========================================================
-   POPUP TOP ORNAMENT
-========================================================= */
-
-.popup-ornament{
-
+.storyInner{
     position:relative;
+    z-index:2;
+    text-align:center;
+}
 
-    z-index:3;
-
-    display:flex;
-
-    justify-content:center;
-
+.episode{
+    display:inline-flex;
     align-items:center;
+    gap:8px;
 
-    gap:10px;
+    padding:8px 14px;
+    border-radius:999px;
 
+    background:rgba(125,24,52,.055);
+    border:1px solid rgba(125,24,52,.10);
+
+    color:var(--burgundy);
+
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    margin-bottom:20px;
+}
+
+.episodeDot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--rose2);
+    box-shadow:0 0 10px rgba(181,45,81,.5);
+}
+
+.storyIcon{
+    font-size:34px;
+    margin-bottom:8px;
+
+    animation:iconPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes iconPulse{
+    50%{transform:translateY(-3px) scale(1.04);}
+}
+
+.storyEyebrow{
+    color:var(--rose2);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    margin-bottom:8px;
+}
+
+.storyTitle{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(38px,7vw,62px);
+    line-height:.94;
+    font-weight:600;
+    color:var(--burgundy);
     margin-bottom:18px;
 }
 
-.popup-ornament::before,
-.popup-ornament::after{
+.storyText{
+    max-width:500px;
+    margin:auto;
 
-    content:"";
-
-    width:45px;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(143,36,61,.3)
-        );
-}
-
-.popup-ornament::after{
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(143,36,61,.3),
-            transparent
-        );
-}
-
-.ornament-heart{
-
-    font-size:16px;
-
-    color:#a92549;
-
-    animation:
-        ornamentPulse
-        2.2s ease-in-out
-        infinite;
-}
-
-@keyframes ornamentPulse{
-
-    50%{
-        transform:
-            scale(1.18);
-
-        opacity:.65;
-    }
-}
-
-
-/* =========================================================
-   TYPOGRAPHY
-========================================================= */
-
-.eyebrow{
-
-    position:relative;
-
-    z-index:3;
-
-    font-family:
-        "DM Sans",
-        sans-serif;
-
-    font-size:10px;
-
-    font-weight:700;
-
-    letter-spacing:4px;
-
-    text-transform:uppercase;
-
-    color:#8f243d;
-
-    opacity:.66;
-
-    margin-bottom:13px;
-}
-
-.popup-card h1{
-
-    position:relative;
-
-    z-index:3;
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        clamp(45px,7vw,70px);
-
-    line-height:.91;
-
-    font-weight:600;
-
-    letter-spacing:-.8px;
-
-    color:#7d1834;
-}
-
-.popup-card h1 span{
-
-    color:#a92549;
-}
-
-.popup-text{
-
-    position:relative;
-
-    z-index:3;
-
-    max-width:580px;
-
-    margin:
-        20px auto
-        0;
-
-    font-size:14px;
-
-    line-height:1.85;
-
+    font-size:15px;
+    line-height:1.75;
     color:#633040;
 }
 
-.popup-text strong{
-
-    color:#7d1834;
-
-    font-weight:700;
+.storyText strong{
+    color:var(--burgundy);
 }
 
-
-/* =========================================================
-   POPUP BUTTON AREA
-========================================================= */
-
-.popup-actions{
-
-    position:relative;
-
-    z-index:5;
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:10px;
-
+.storyButton{
     margin-top:27px;
-}
 
+    min-width:170px;
 
-/* =========================================================
-   PREMIUM BUTTON
-========================================================= */
+    border:0;
+    border-radius:999px;
 
-.premium-button{
-
-    border:none;
-
-    min-height:50px;
-
-    padding:
-        15px
-        29px;
-
-    border-radius:50px;
+    padding:14px 25px;
 
     background:
         linear-gradient(
@@ -833,1078 +766,621 @@ body::before{
 
     color:white;
 
-    font-family:
-        "DM Sans",
-        sans-serif;
-
-    font-weight:700;
-
+    font-family:"DM Sans",sans-serif;
     font-size:11px;
-
-    letter-spacing:1.3px;
+    font-weight:700;
+    letter-spacing:1.5px;
 
     cursor:pointer;
 
     box-shadow:
-        0 12px 30px
-        rgba(143,36,61,.25);
+        0 12px 28px rgba(125,24,52,.25);
 
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease,
-        filter .3s ease;
+    transition:.25s ease;
 }
 
-.premium-button:hover{
-
-    transform:
-        translateY(-4px)
-        scale(1.03);
-
+.storyButton:hover{
+    transform:translateY(-3px);
     box-shadow:
-        0 18px 38px
-        rgba(143,36,61,.35);
-
-    filter:
-        brightness(1.05);
+        0 16px 35px rgba(125,24,52,.30);
 }
 
-.premium-button:active{
-
-    transform:
-        scale(.96);
+.storyButton:active{
+    transform:translateY(0) scale(.97);
 }
 
-
-/* =========================================================
-   LITTLE CORNERS
-========================================================= */
-
-.corner{
-
-    position:absolute;
-
-    width:25px;
-    height:25px;
-
-    border-color:
-        rgba(143,36,61,.18);
-
-    z-index:2;
+.progress{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    margin-top:26px;
 }
 
-.corner.tl{
-
-    left:17px;
-    top:17px;
-
-    border-left:1px solid;
-    border-top:1px solid;
-
-    border-radius:7px 0 0 0;
+.progress span{
+    width:24px;
+    height:3px;
+    border-radius:20px;
+    background:rgba(125,24,52,.12);
 }
 
-.corner.tr{
-
-    right:17px;
-    top:17px;
-
-    border-right:1px solid;
-    border-top:1px solid;
-
-    border-radius:0 7px 0 0;
+.progress span.active{
+    background:var(--rose2);
 }
-
-.corner.bl{
-
-    left:17px;
-    bottom:17px;
-
-    border-left:1px solid;
-    border-bottom:1px solid;
-
-    border-radius:0 0 0 7px;
-}
-
-.corner.br{
-
-    right:17px;
-    bottom:17px;
-
-    border-right:1px solid;
-    border-bottom:1px solid;
-
-    border-radius:0 0 7px 0;
-}
-
 
 /* =========================================================
    VIDEO SCREEN
 ========================================================= */
 
-.video-screen{
-
+.videoScreen{
     position:absolute;
-
     inset:0;
 
-    display:flex;
-
+    display:none;
+    align-items:center;
     justify-content:center;
 
-    align-items:center;
+    padding:20px;
 
-    padding:
-        45px
-        18px
-        22px;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transform:
-        scale(.97);
-
-    transition:
-        opacity .55s ease,
-        transform .55s ease,
-        visibility .55s;
+    z-index:90;
 }
 
-.video-screen.active{
-
-    opacity:1;
-
-    visibility:visible;
-
-    transform:
-        scale(1);
-}
-
-
-/* =========================================================
-   VIDEO WRAPPER
-========================================================= */
-
-.video-inner{
-
-    width:
-        min(950px,96vw);
-
-    animation:
-        videoEntrance
-        .65s
-        cubic-bezier(.16,1,.3,1);
-}
-
-@keyframes videoEntrance{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            translateY(25px)
-            scale(.96);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-            none;
-    }
-}
-
-
-/* =========================================================
-   VIDEO HEADER
-========================================================= */
-
-.video-header{
-
+.videoScreen.show{
     display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:
-        0
-        7px
-        12px;
+    animation:videoScreenIn .5s ease both;
 }
 
-.video-label{
-
-    font-size:10px;
-
-    font-weight:700;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
-
-    color:#8f243d;
-
-    opacity:.7;
+@keyframes videoScreenIn{
+    from{opacity:0;}
+    to{opacity:1;}
 }
 
-.playing{
+.videoShell{
+    width:min(980px,94vw);
+    max-height:94vh;
 
-    display:flex;
-
-    align-items:center;
-
-    gap:7px;
-
-    font-size:9px;
-
-    font-weight:700;
-
-    letter-spacing:2px;
-
-    color:#8f243d;
-}
-
-.rec-dot{
-
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:#b52d51;
-
-    box-shadow:
-        0 0 0 4px
-        rgba(181,45,81,.10);
-
-    animation:
-        recBlink
-        1.3s
-        infinite;
-}
-
-@keyframes recBlink{
-
-    50%{
-        opacity:.3;
-    }
-}
-
-
-/* =========================================================
-   VIDEO FRAME
-========================================================= */
-
-.video-frame{
-
-    position:relative;
-
-    padding:9px;
+    padding:15px;
 
     border-radius:28px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.75),
-            rgba(255,232,238,.72)
+            rgba(255,255,255,.94),
+            rgba(255,238,243,.91)
         );
 
-    border:
-        1px solid
-        rgba(143,36,61,.16);
+    border:1px solid rgba(255,255,255,.95);
 
     box-shadow:
-        0 35px 90px
-        rgba(90,10,30,.20),
-
-        inset
-        0 1px 0
-        rgba(255,255,255,.9);
+        0 30px 100px rgba(125,24,52,.20),
+        0 5px 25px rgba(125,24,52,.12);
 }
 
-.video-frame::before{
+.videoHeader{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    border-radius:28px;
-
-    pointer-events:none;
-
-    box-shadow:
-        inset
-        0 0 0 1px
-        rgba(255,255,255,.25);
+    padding:7px 8px 13px 12px;
 }
 
-video{
+.videoLabel{
+    color:var(--burgundy);
+    font-family:"Cormorant Garamond",serif;
+    font-size:24px;
+    font-weight:600;
+}
 
-    display:block;
+.rec{
+    display:flex;
+    align-items:center;
+    gap:6px;
 
-    width:100%;
+    font-size:9px;
+    letter-spacing:2px;
+    font-weight:700;
+    color:var(--rose2);
+}
 
-    max-height:72vh;
+.recDot{
+    width:7px;
+    height:7px;
+    background:#d22b4e;
+    border-radius:50%;
+    box-shadow:0 0 9px rgba(210,43,78,.6);
+    animation:recBlink 1.2s infinite;
+}
 
-    background:#250e17;
+@keyframes recBlink{
+    50%{opacity:.25;}
+}
+
+.videoFrame{
+    position:relative;
+    overflow:hidden;
 
     border-radius:20px;
 
-    object-fit:contain;
+    background:#16070d;
+
+    border:4px solid rgba(125,24,52,.08);
 
     box-shadow:
-        0 18px 45px
-        rgba(40,10,20,.22);
+        inset 0 0 0 1px rgba(255,255,255,.08),
+        0 10px 30px rgba(125,24,52,.12);
 }
 
+video{
+    display:block;
 
-/* =========================================================
-   VIDEO CONTROLS
-========================================================= */
+    width:100%;
+    max-height:72vh;
 
-.video-controls{
+    background:#12060b;
+}
 
+.videoBottom{
     display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-    justify-content:center;
+    gap:15px;
 
-    padding-top:14px;
+    padding:13px 6px 2px;
 }
 
-.skip-button{
+.videoHint{
+    font-size:10px;
+    color:#8e6370;
+    letter-spacing:.6px;
+}
 
-    min-width:155px;
+.skipButton{
+    border:1px solid rgba(125,24,52,.15);
+    background:white;
 
-    min-height:45px;
+    color:var(--burgundy);
 
-    padding:
-        12px
-        25px;
+    border-radius:999px;
 
-    border-radius:50px;
-
-    border:
-        1px solid
-        rgba(143,36,61,.15);
-
-    background:
-        rgba(255,255,255,.68);
-
-    color:#8f243d;
-
-    font-family:
-        "DM Sans",
-        sans-serif;
+    padding:11px 19px;
 
     font-size:10px;
-
     font-weight:700;
-
-    letter-spacing:1.7px;
+    letter-spacing:1.3px;
 
     cursor:pointer;
 
-    box-shadow:
-        0 8px 25px
-        rgba(90,10,30,.10);
-
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease,
-        background .3s ease;
+    transition:.2s ease;
 }
 
-.skip-button:hover{
-
-    transform:
-        translateY(-3px);
-
-    background:
-        rgba(255,255,255,.9);
-
-    box-shadow:
-        0 13px 30px
-        rgba(90,10,30,.16);
+.skipButton:hover{
+    background:#fff1f4;
+    transform:translateY(-2px);
 }
 
-.skip-button.finish{
+/* missing video message */
 
-    border:none;
-
-    color:white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #8f243d,
-            #b52d51
-        );
-}
-
-
-/* =========================================================
-   VIDEO SIDE DECOR
-========================================================= */
-
-.video-decor{
-
+.videoError{
     position:absolute;
-
-    pointer-events:none;
-
-    color:#a92549;
-
-    opacity:.2;
-
-    animation:
-        videoDecorFloat
-        4s
-        ease-in-out
-        infinite alternate;
-}
-
-.video-decor.one{
-
-    left:5%;
-
-    top:30%;
-
-    font-size:30px;
-}
-
-.video-decor.two{
-
-    right:6%;
-
-    bottom:30%;
-
-    font-size:24px;
-
-    animation-delay:1s;
-}
-
-@keyframes videoDecorFloat{
-
-    to{
-
-        transform:
-            translateY(-14px)
-            rotate(8deg);
-
-        opacity:.38;
-    }
-}
-
-
-/* =========================================================
-   TRANSITION
-========================================================= */
-
-#transition{
-
-    position:fixed;
-
     inset:0;
 
-    z-index:1000;
+    display:none;
+    align-items:center;
+    justify-content:center;
 
-    pointer-events:none;
+    padding:25px;
+    text-align:center;
 
-    opacity:0;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,255,255,.96),
-            rgba(255,223,229,.92),
-            rgba(143,36,61,.15)
-        );
-
-    transition:
-        opacity .45s ease;
+    background:rgba(25,5,12,.88);
+    color:white;
 }
 
-#transition.active{
-
-    opacity:1;
+.videoError.show{
+    display:flex;
 }
 
+.videoError div{
+    max-width:400px;
+}
+
+.videoError strong{
+    display:block;
+    font-family:"Cormorant Garamond",serif;
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.videoError p{
+    font-size:12px;
+    line-height:1.6;
+    opacity:.75;
+}
 
 /* =========================================================
    BIRTHDAY ENDING
 ========================================================= */
 
-#birthday{
-
-    position:fixed;
-
+.birthday{
+    position:absolute;
     inset:0;
 
-    z-index:2000;
-
-    display:flex;
-
+    display:none;
+    align-items:center;
     justify-content:center;
 
-    align-items:center;
+    padding:25px;
 
-    padding:20px;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    background:
-        radial-gradient(
-            circle at 50% 20%,
-            #fffafa 0%,
-            #fff0f3 35%,
-            #ffe0e6 70%,
-            #ffd0d9 100%
-        );
-
-    transition:
-        opacity 1s ease,
-        visibility 1s ease;
-}
-
-#birthday.show{
-
-    opacity:1;
-
-    visibility:visible;
-}
-
-.birthday-glow{
-
-    position:absolute;
-
-    width:650px;
-    height:650px;
-
-    left:50%;
-    top:45%;
-
-    transform:
-        translate(-50%,-50%);
-
-    border-radius:50%;
-
-    background:
-        rgba(255,80,120,.13);
-
-    filter:
-        blur(90px);
-
-    animation:
-        birthdayGlow
-        5s ease-in-out
-        infinite alternate;
-}
-
-@keyframes birthdayGlow{
-
-    from{
-        transform:
-            translate(-50%,-50%)
-            scale(.9);
-    }
-
-    to{
-        transform:
-            translate(-50%,-50%)
-            scale(1.15);
-    }
-}
-
-.birthday-content{
-
-    position:relative;
-
-    z-index:10;
-
-    width:
-        min(850px,94vw);
+    z-index:200;
 
     text-align:center;
 }
 
-.birthday-eyebrow{
+.birthday.show{
+    display:flex;
+    animation:birthdayIn 1.2s ease both;
+}
 
-    font-size:10px;
+@keyframes birthdayIn{
+    from{
+        opacity:0;
+        transform:scale(.96);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
 
-    letter-spacing:4px;
+.birthdayCard{
+    width:min(720px,94vw);
 
+    padding:50px 35px;
+
+    border-radius:34px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.90),
+            rgba(255,237,242,.82)
+        );
+
+    border:1px solid rgba(255,255,255,.95);
+
+    box-shadow:
+        0 30px 100px rgba(125,24,52,.18);
+
+    position:relative;
+    overflow:hidden;
+}
+
+.birthdayCard::before{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+
+    left:50%;
+    top:-240px;
+
+    transform:translateX(-50%);
+
+    background:rgba(255,126,157,.20);
+    filter:blur(60px);
+}
+
+.birthdayEyebrow{
+    position:relative;
+
+    color:var(--rose2);
+    font-size:11px;
     font-weight:700;
-
-    color:#8f243d;
-
-    opacity:.65;
-
-    margin-bottom:18px;
-
-    animation:
-        fadeUp
-        .8s
-        .2s
-        both;
+    letter-spacing:4px;
+    margin-bottom:12px;
 }
 
-.birthday-content h1{
+.birthdayTitle{
+    position:relative;
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(70px,14vw,130px);
+    line-height:.72;
 
-    font-size:
-        clamp(58px,13vw,125px);
+    color:var(--burgundy);
 
-    line-height:.75;
-
-    font-weight:600;
-
-    letter-spacing:-2px;
-
-    color:#7d1834;
-
-    animation:
-        birthdayTitle
-        1.1s
-        .35s
-        cubic-bezier(.16,1,.3,1)
-        both;
+    margin-bottom:25px;
 }
 
-.birthday-content h1 span{
+.birthdayText{
+    position:relative;
 
-    display:block;
-
-    margin-top:18px;
-
-    font-size:.78em;
-
-    color:#a92549;
-}
-
-.birthday-message{
-
-    max-width:650px;
-
-    margin:
-        30px auto
-        0;
-
-    font-size:14px;
-
-    line-height:1.9;
-
+    font-size:15px;
+    line-height:1.8;
     color:#633040;
 
-    animation:
-        fadeUp
-        .8s
-        .75s
-        both;
+    max-width:530px;
+    margin:auto;
 }
 
-.birthday-message strong{
+.birthdayName{
+    position:relative;
 
-    color:#7d1834;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(42px,8vw,70px);
+    color:var(--rose2);
+
+    margin-top:8px;
 }
 
-.birthday-love{
+.endLine{
+    position:relative;
 
-    margin-top:26px;
+    margin-top:27px;
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        clamp(29px,5vw,44px);
-
-    font-weight:600;
-
-    color:#8f243d;
-
-    animation:
-        fadeUp
-        .8s
-        1s
-        both;
+    font-size:9px;
+    letter-spacing:3px;
+    color:#9a6c78;
 }
 
-@keyframes birthdayTitle{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            translateY(40px)
-            scale(.9);
-
-        filter:
-            blur(8px);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-            none;
-
-        filter:
-            blur(0);
-    }
-}
-
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            translateY(20px);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-            none;
-    }
-}
-
-
-/* =========================================================
-   BIRTHDAY FLOATING ELEMENTS
-========================================================= */
-
-.birthday-particles{
-
+.celebrate{
     position:absolute;
-
     inset:0;
-
-    overflow:hidden;
-
     pointer-events:none;
 }
 
-.birthday-particle{
-
+.confetti{
     position:absolute;
+    width:7px;
+    height:15px;
+    border-radius:4px;
 
-    font-size:
-        clamp(15px,3vw,30px);
+    background:white;
 
-    color:#a92549;
-
-    opacity:0;
-
-    animation:
-        birthdayFloat
-        6s
-        linear
-        infinite;
+    animation:confettiFall 4s linear infinite;
 }
 
-@keyframes birthdayFloat{
+.confetti:nth-child(1){left:10%;top:-10%;animation-delay:0s;}
+.confetti:nth-child(2){left:22%;top:-20%;animation-delay:1s;}
+.confetti:nth-child(3){left:36%;top:-15%;animation-delay:2s;}
+.confetti:nth-child(4){left:52%;top:-20%;animation-delay:.5s;}
+.confetti:nth-child(5){left:67%;top:-15%;animation-delay:1.6s;}
+.confetti:nth-child(6){left:81%;top:-20%;animation-delay:2.5s;}
+.confetti:nth-child(7){left:92%;top:-10%;animation-delay:3s;}
 
-    0%{
-
-        transform:
-            translateY(110vh)
-            rotate(0deg)
-            scale(.8);
-
+@keyframes confettiFall{
+    from{
+        transform:translateY(0) rotate(0);
         opacity:0;
     }
-
-    15%{
-        opacity:.7;
-    }
-
-    85%{
-        opacity:.6;
-    }
-
-    100%{
-
-        transform:
-            translateY(-15vh)
-            rotate(360deg)
-            scale(1.1);
-
+    15%{opacity:1;}
+    to{
+        transform:translateY(110vh) rotate(600deg);
         opacity:0;
     }
 }
-
 
 /* =========================================================
-   MOBILE
+   RESPONSIVE
 ========================================================= */
 
 @media(max-width:600px){
 
-    .story-screen{
-
-        padding:
-            30px
-            12px
-            20px;
+    .sun{
+        width:100px;
+        height:100px;
+        right:3%;
+        top:4%;
     }
 
-    .popup-card{
+    .camera{
+        transform:scale(.65) rotate(-12deg);
+    }
 
-        padding:
-            32px
-            22px
-            28px;
+    .camera.c2{
+        transform:scale(.5) rotate(14deg);
+    }
 
+    .storyCard{
+        padding:30px 22px 25px;
         border-radius:25px;
     }
 
-    .popup-card h1{
-
-        font-size:
-            clamp(42px,12vw,58px);
+    .storyTitle{
+        font-size:clamp(36px,11vw,52px);
     }
 
-    .popup-text{
-
-        font-size:13px;
-
-        line-height:1.75;
+    .storyText{
+        font-size:14px;
+        line-height:1.65;
     }
 
-    .premium-button{
-
-        width:100%;
+    .videoShell{
+        padding:10px;
+        border-radius:20px;
     }
 
-    .popup-actions{
-
-        margin-top:24px;
+    .videoHeader{
+        padding-bottom:9px;
     }
 
-    .video-screen{
-
-        padding:
-            28px
-            9px
-            18px;
-    }
-
-    .video-header{
-
-        padding:
-            0
-            5px
-            9px;
-    }
-
-    .video-label{
-
-        font-size:8px;
-
-        letter-spacing:2px;
-    }
-
-    .playing{
-
-        font-size:8px;
-    }
-
-    .video-frame{
-
-        padding:6px;
-
-        border-radius:22px;
+    .videoLabel{
+        font-size:20px;
     }
 
     video{
-
-        border-radius:17px;
-
-        max-height:68vh;
+        max-height:67vh;
     }
 
-    .skip-button{
-
-        width:
-            min(220px,80vw);
+    .videoBottom{
+        padding-top:10px;
     }
 
-    .birthday-message{
+    .videoHint{
+        font-size:9px;
+    }
 
-        font-size:13px;
+    .skipButton{
+        padding:10px 15px;
+    }
 
-        line-height:1.75;
+    .birthdayCard{
+        padding:45px 20px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
     }
 }
 
 </style>
 </head>
 
-
 <body>
 
-
 <!-- =========================================================
-     BACKGROUND
+     CINEMATIC CSS BACKGROUND
 ========================================================= -->
 
-<div class="background-glow"></div>
+<div class="bg">
 
+    <div class="aurora one"></div>
+    <div class="aurora two"></div>
+    <div class="aurora three"></div>
 
-<div class="light-orbs">
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
+    <div class="grid"></div>
+    <div class="grain"></div>
 
+    <div class="sun"></div>
 
-<div class="floating-decor">
+    <div class="orbit o1"></div>
+    <div class="orbit o2"></div>
+    <div class="orbit o3"></div>
 
-    <span>♡</span>
-    <span>✦</span>
-    <span>✧</span>
-    <span>♥</span>
-    <span>❀</span>
-    <span>♡</span>
-    <span>·</span>
-    <span>✦</span>
+    <!-- CAMERAS -->
+    <div class="camera c1"></div>
+    <div class="camera c2"></div>
+    <div class="camera c3"></div>
 
-</div>
+    <div class="cameraFlash f1"></div>
+    <div class="cameraFlash f2"></div>
 
-
-<div class="petals" id="petals"></div>
-
-
-<!-- =========================================================
-     MAIN APP
-========================================================= -->
-
-<div id="app">
-
-    <div
-        id="storyScreen"
-        class="story-screen active"
-    >
-
-        <div
-            id="popupCard"
-            class="popup-card"
-        >
-
-            <div class="corner tl"></div>
-            <div class="corner tr"></div>
-            <div class="corner bl"></div>
-            <div class="corner br"></div>
-
-            <div class="popup-ornament">
-                <div class="ornament-heart">♥</div>
-            </div>
-
-            <div
-                id="eyebrow"
-                class="eyebrow"
-            ></div>
-
-            <h1 id="popupTitle"></h1>
-
-            <div
-                id="popupText"
-                class="popup-text"
-            ></div>
-
-            <div class="popup-actions">
-
-                <button
-                    id="popupButton"
-                    class="premium-button"
-                ></button>
-
-            </div>
-
-        </div>
-
+    <!-- FLOWERS -->
+    <div class="flower f1">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+        <i></i>
     </div>
 
+    <div class="flower f2">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+        <i></i>
+    </div>
 
-    <!-- =====================================================
-         VIDEO
-    ====================================================== -->
+    <div class="flower f3">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+        <i></i>
+    </div>
 
-    <div
-        id="videoScreen"
-        class="video-screen"
-    >
+    <div class="flower f4">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+        <i></i>
+    </div>
 
-        <div class="video-decor one">
-            ✦
-        </div>
+    <div class="flower f5">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+        <i></i>
+    </div>
 
-        <div class="video-decor two">
-            ♡
-        </div>
+    <!-- PETALS -->
+    <div class="petal p1"></div>
+    <div class="petal p2"></div>
+    <div class="petal p3"></div>
+    <div class="petal p4"></div>
+    <div class="petal p5"></div>
+    <div class="petal p6"></div>
+    <div class="petal p7"></div>
 
-        <div class="video-inner">
+    <!-- STARS -->
+    <div class="star s1"></div>
+    <div class="star s2"></div>
+    <div class="star s3"></div>
+    <div class="star s4"></div>
+    <div class="star s5"></div>
+    <div class="star s6"></div>
+    <div class="star s7"></div>
+    <div class="star s8"></div>
+    <div class="star s9"></div>
+    <div class="star s10"></div>
 
-            <div class="video-header">
+    <!-- SPARKLES -->
+    <div class="spark sp1"></div>
+    <div class="spark sp2"></div>
+    <div class="spark sp3"></div>
+    <div class="spark sp4"></div>
+    <div class="spark sp5"></div>
 
-                <div
-                    id="videoLabel"
-                    class="video-label"
-                >
-                </div>
+    <!-- LIGHT -->
+    <div class="streak a"></div>
+    <div class="streak b"></div>
+    <div class="streak c"></div>
 
-                <div class="playing">
+    <!-- CORNERS -->
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
 
-                    <span class="rec-dot"></span>
+</div>
 
-                    PLAYING
 
-                </div>
+<div class="app">
 
+<!-- =========================================================
+     POPUP SYSTEM
+========================================================= -->
+
+<div class="storyOverlay" id="storyOverlay">
+
+    <div class="storyCard">
+
+        <div class="storyInner">
+
+            <div class="storyIcon" id="storyIcon">📼</div>
+
+            <div class="episode">
+                <span class="episodeDot"></span>
+                <span id="episodeText">PRIVATE SCREENING</span>
             </div>
 
-
-            <div class="video-frame">
-
-                <video
-                    id="mainVideo"
-                    playsinline
-                    controls
-                    preload="metadata"
-                ></video>
-
+            <div class="storyEyebrow" id="storyEyebrow">
+                PRIVATE SCREENING 📼
             </div>
 
+            <h1 class="storyTitle" id="storyTitle">
+                seen our album baby... 🥹❤️
+            </h1>
 
-            <div class="video-controls">
-
-                <button
-                    id="skipButton"
-                    class="skip-button"
-                >
-                    SKIP →
-                </button>
-
+            <div class="storyText" id="storyText">
+                Now it's time for you to see something entertaining 📼😂
             </div>
+
+            <button class="storyButton" id="storyButton">
+                Okay... show me 👀
+            </button>
+
+            <div class="progress" id="progress"></div>
 
         </div>
 
@@ -1914,62 +1390,124 @@ video{
 
 
 <!-- =========================================================
-     TRANSITION
+     VIDEO SCREEN
 ========================================================= -->
 
-<div id="transition"></div>
+<div class="videoScreen" id="videoScreen">
+
+    <div class="videoShell">
+
+        <div class="videoHeader">
+
+            <div class="videoLabel" id="videoLabel">
+                THE PATNA VERSION 💃🏻
+            </div>
+
+            <div class="rec">
+                <span class="recDot"></span>
+                PLAYING
+            </div>
+
+        </div>
+
+        <div class="videoFrame">
+
+            <video
+                id="mainVideo"
+                playsinline
+                controls
+                preload="metadata">
+            </video>
+
+            <div class="videoError" id="videoError">
+
+                <div>
+                    <strong>Video missing 📼</strong>
+
+                    <p>
+                        Put the required MP4 file in the same folder
+                        as this HTML file.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="videoBottom">
+
+            <div class="videoHint">
+                Watch till the end... or skip if you dare 😏
+            </div>
+
+            <button class="skipButton" id="skipButton">
+                SKIP →
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 <!-- =========================================================
-     BIRTHDAY
+     BIRTHDAY ENDING
 ========================================================= -->
 
-<div id="birthday">
+<div class="birthday" id="birthday">
 
-    <div class="birthday-glow"></div>
+    <div class="birthdayCard">
 
-    <div
-        id="birthdayParticles"
-        class="birthday-particles"
-    ></div>
+        <div class="celebrate">
 
-    <div class="birthday-content">
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
 
-        <div class="birthday-eyebrow">
-            ONE LAST THING, BABY ✨
         </div>
 
-        <h1>
-            HAPPY BIRTHDAY
-            <span>TISHA ❤️</span>
-        </h1>
+        <div class="birthdayEyebrow">
+            THE END OF OUR LITTLE SCREENING ✨
+        </div>
 
-        <div class="birthday-message">
+        <div class="birthdayTitle">
+            HAPPY<br>
+            BIRTHDAY
+        </div>
 
-            I hope you always stay this beautiful,
-            this crazy, this annoying, this adorable
-            and completely <strong>YOU.</strong> 🥹❤️
+        <div class="birthdayName">
+            Tisha ❤️
+        </div>
+
+        <div class="birthdayText">
+
+            And after all the teasing, laughing,
+            embarrassing videos and everything in between...
 
             <br><br>
 
-            Thank you for giving me your time,
-            your smiles, your madness, your love
-            and all these little memories. 🫶🏻
+            I just want you to know that
+            <strong>you are incredibly special to me.</strong>
 
             <br><br>
 
-            May this year bring you everything
-            your heart quietly wishes for. ✨
+            Happy Birthday to my favourite girl.
+            🥹❤️✨
 
         </div>
 
-        <div class="birthday-love">
-
-            I love you so, so, so much. 😙❤️‍🔥
-
+        <div class="endLine">
+            MADE WITH LOVE • JUST FOR YOU • RITESH
         </div>
 
     </div>
+
+</div>
 
 </div>
 
@@ -1977,833 +1515,206 @@ video{
 <script>
 
 /* =========================================================
-   ELEMENTS
+   VIDEO DATA
 ========================================================= */
 
-const storyScreen =
-    document.getElementById("storyScreen");
+const stories = [
 
-const popupCard =
-    document.getElementById("popupCard");
-
-const eyebrow =
-    document.getElementById("eyebrow");
-
-const popupTitle =
-    document.getElementById("popupTitle");
-
-const popupText =
-    document.getElementById("popupText");
-
-const popupButton =
-    document.getElementById("popupButton");
-
-const videoScreen =
-    document.getElementById("videoScreen");
-
-const mainVideo =
-    document.getElementById("mainVideo");
-
-const videoLabel =
-    document.getElementById("videoLabel");
-
-const skipButton =
-    document.getElementById("skipButton");
-
-const transition =
-    document.getElementById("transition");
-
-const birthday =
-    document.getElementById("birthday");
-
-const petals =
-    document.getElementById("petals");
-
-const birthdayParticles =
-    document.getElementById("birthdayParticles");
-
-
-/* =========================================================
-   AUDIO
-   NO BACKGROUND MUSIC
-========================================================= */
-
-let audioCtx = null;
-let masterGain = null;
-let sfxGain = null;
-
-function initAudio(){
-
-    if(audioCtx) return;
-
-    audioCtx =
-        new (
-            window.AudioContext ||
-            window.webkitAudioContext
-        )();
-
-    masterGain =
-        audioCtx.createGain();
-
-    sfxGain =
-        audioCtx.createGain();
-
-    masterGain.gain.value = .55;
-
-    sfxGain.gain.value = .72;
-
-    sfxGain.connect(masterGain);
-
-    masterGain.connect(
-        audioCtx.destination
-    );
-}
-
-
-function tone(
-    frequency,
-    duration,
-    type="sine",
-    volume=.1,
-    delay=0
-){
-
-    if(!audioCtx) return;
-
-    const oscillator =
-        audioCtx.createOscillator();
-
-    const gain =
-        audioCtx.createGain();
-
-    oscillator.type = type;
-
-    oscillator.frequency.setValueAtTime(
-        frequency,
-        audioCtx.currentTime + delay
-    );
-
-    gain.gain.setValueAtTime(
-        .001,
-        audioCtx.currentTime + delay
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        volume,
-        audioCtx.currentTime +
-        delay +
-        .015
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        .001,
-        audioCtx.currentTime +
-        delay +
-        duration
-    );
-
-    oscillator.connect(gain);
-
-    gain.connect(sfxGain);
-
-    oscillator.start(
-        audioCtx.currentTime +
-        delay
-    );
-
-    oscillator.stop(
-        audioCtx.currentTime +
-        delay +
-        duration +
-        .05
-    );
-}
-
-
-/* =========================================================
-   SFX
-========================================================= */
-
-function clickSound(){
-
-    initAudio();
-
-    tone(
-        480,
-        .07,
-        "sine",
-        .08
-    );
-
-    tone(
-        720,
-        .09,
-        "sine",
-        .05,
-        .04
-    );
-}
-
-
-function popupSound(){
-
-    initAudio();
-
-    tone(
-        400,
-        .11,
-        "sine",
-        .07
-    );
-
-    tone(
-        580,
-        .13,
-        "sine",
-        .055,
-        .06
-    );
-
-    tone(
-        820,
-        .16,
-        "sine",
-        .035,
-        .13
-    );
-}
-
-
-function shimmerSound(){
-
-    initAudio();
-
-    tone(
-        600,
-        .15,
-        "sine",
-        .045
-    );
-
-    tone(
-        760,
-        .18,
-        "sine",
-        .04,
-        .07
-    );
-
-    tone(
-        980,
-        .22,
-        "sine",
-        .03,
-        .15
-    );
-}
-
-
-function funnySound(){
-
-    initAudio();
-
-    tone(
-        220,
-        .10,
-        "square",
-        .07
-    );
-
-    tone(
-        330,
-        .12,
-        "square",
-        .055,
-        .08
-    );
-
-    tone(
-        470,
-        .17,
-        "sine",
-        .035,
-        .15
-    );
-}
-
-
-function heartbeatSound(){
-
-    initAudio();
-
-    tone(
-        85,
-        .12,
-        "sine",
-        .15
-    );
-
-    tone(
-        75,
-        .14,
-        "sine",
-        .12,
-        .17
-    );
-
-    tone(
-        88,
-        .12,
-        "sine",
-        .13,
-        .40
-    );
-
-    tone(
-        76,
-        .14,
-        "sine",
-        .10,
-        .56
-    );
-}
-
-
-function whooshSound(){
-
-    initAudio();
-
-    const oscillator =
-        audioCtx.createOscillator();
-
-    const gain =
-        audioCtx.createGain();
-
-    oscillator.type="sine";
-
-    oscillator.frequency.setValueAtTime(
-        180,
-        audioCtx.currentTime
-    );
-
-    oscillator.frequency.exponentialRampToValueAtTime(
-        950,
-        audioCtx.currentTime + .34
-    );
-
-    gain.gain.setValueAtTime(
-        .001,
-        audioCtx.currentTime
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        .12,
-        audioCtx.currentTime + .08
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        .001,
-        audioCtx.currentTime + .4
-    );
-
-    oscillator.connect(gain);
-
-    gain.connect(sfxGain);
-
-    oscillator.start();
-
-    oscillator.stop(
-        audioCtx.currentTime + .45
-    );
-}
-
-
-function videoOpenSound(){
-
-    initAudio();
-
-    tone(
-        300,
-        .10,
-        "sine",
-        .055
-    );
-
-    tone(
-        440,
-        .13,
-        "sine",
-        .05,
-        .06
-    );
-
-    tone(
-        650,
-        .18,
-        "sine",
-        .04,
-        .13
-    );
-}
-
-
-function videoEndSound(){
-
-    initAudio();
-
-    tone(
-        520,
-        .12,
-        "sine",
-        .055
-    );
-
-    tone(
-        680,
-        .15,
-        "sine",
-        .045,
-        .08
-    );
-}
-
-
-function celebrationSound(){
-
-    initAudio();
-
-    tone(
-        523,
-        .18,
-        "sine",
-        .08
-    );
-
-    tone(
-        659,
-        .20,
-        "sine",
-        .07,
-        .12
-    );
-
-    tone(
-        784,
-        .24,
-        "sine",
-        .06,
-        .24
-    );
-
-    tone(
-        1046,
-        .35,
-        "sine",
-        .045,
-        .38
-    );
-}
-
-
-/* =========================================================
-   PETALS
-========================================================= */
-
-for(let i=0;i<20;i++){
-
-    const petal =
-        document.createElement("div");
-
-    petal.className="petal";
-
-    petal.style.left =
-        Math.random()*100 + "%";
-
-    petal.style.animationDuration =
-        (9 + Math.random()*9) + "s";
-
-    petal.style.animationDelay =
-        (-Math.random()*15) + "s";
-
-    petal.style.transform =
-        `scale(${.6 + Math.random()*.8})`;
-
-    petals.appendChild(petal);
-}
-
-
-/* =========================================================
-   STORY DATA
-========================================================= */
-
-const story = [
-
-    /* =====================================================
-       INTRO 1
-    ===================================================== */
-
+    /* 0 */
     {
         type:"popup",
-
-        eyebrow:
-            "PRIVATE SCREENING 📼",
-
-        title:
-            "seen our album baby... 🥹❤️",
-
-        text:
-            "Now it's time for you to see something entertaining 📼😂",
-
-        button:
-            "Okay... show me 👀",
-
-        sound:
-            "popup"
+        icon:"📼",
+        episode:"PRIVATE SCREENING",
+        eyebrow:"PRIVATE SCREENING 📼",
+        title:"seen our album baby... 🥹❤️",
+        text:"Now it's time for you to see something entertaining 📼😂",
+        button:"Okay... show me 👀"
     },
 
-
-    /* =====================================================
-       INTRO 2
-    ===================================================== */
-
+    /* 1 */
     {
         type:"popup",
-
-        eyebrow:
-            "WARNING ⚠️😂",
-
-        title:
-            "are you ready for it? 😏",
-
-        text:
-            "Because once this starts... there is absolutely no going back. 🤭",
-
-        button:
-            "I'm ready 😌",
-
-        sound:
-            "heartbeat",
-
-        transition:true
+        icon:"⚠️",
+        episode:"WARNING",
+        eyebrow:"WARNING ⚠️😂",
+        title:"are you ready for it? 😏",
+        text:"Because once this starts... there is absolutely no going back. 🤭",
+        button:"I'm ready 😌",
+        heartbeat:true
     },
 
-
-    /* =====================================================
-       DANCE 1
-    ===================================================== */
-
+    /* 2 */
     {
         type:"popup",
-
-        eyebrow:
-            "EPISODE 01 • PATNA FILES 📂",
-
-        title:
-            "You know what sweetheart... 😮‍💨❤️‍🔥",
-
-        text:
-            "You're so hot, so tempting and so desirable ❤️‍🔥😏",
-
-        button:
-            "Continue",
-
-        sound:
-            "shimmer"
+        icon:"❤️‍🔥",
+        episode:"EPISODE 01 • PATNA FILES 📂",
+        eyebrow:"EPISODE 01 • PATNA FILES 📂",
+        title:"You know what sweetheart... 😮‍💨❤️‍🔥",
+        text:"You're so hot, so tempting and so desirable ❤️‍🔥😏",
+        button:"Continue"
     },
 
-
-    /* =====================================================
-       DANCE 2
-    ===================================================== */
-
+    /* 3 */
     {
         type:"popup",
-
-        eyebrow:
-            "THE PATNA VERSION 💃🏻",
-
-        title:
-            "There's a version of you which I saw in Patna... 👀",
-
-        text:
-            `And that version got me like —
-
-            <br><br>
-
-            <strong>
-            "Agr tm bolti baith toh baithte,
-            uth to uthte... and agr bolti naach 💃🏻
-            toh phir janti ho kya hota..."
-            </strong>
-
-            😭😂❤️‍🔥`,
-
-        button:
-            "DEKHLO 😏",
-
-        sound:
-            "funny",
-
-        video:
-            "dance.mp4",
-
-        label:
-            "THE PATNA VERSION 💃🏻"
+        icon:"💃🏻",
+        episode:"THE PATNA VERSION",
+        eyebrow:"THE PATNA VERSION 💃🏻",
+        title:"There's a version of you which I saw in Patna... 👀",
+        text:`And that version got me like —
+        <br><br>
+        <strong>"Agr tm bolti baith toh baithte, uth to uthte... and agr bolti naach 💃🏻 toh phir janti ho kya hota..."</strong>
+        😭😂❤️‍🔥`,
+        button:"DEKHLO 😏"
     },
 
-
-    /* =====================================================
-       NON VEG 1
-    ===================================================== */
-
+    /* 4 VIDEO */
     {
-        type:"popup",
-
-        eyebrow:
-            "EPISODE 02 • IMPORTANT MATTER 🍗",
-
-        title:
-            "Dekho babyy... 😌",
-
-        text:
-            "Sawan toh khatam ho gaya hai... ab toh tm daba ke non veg khaa paogi 😋🍗😂",
-
-        button:
-            "Continue",
-
-        sound:
-            "funny"
+        type:"video",
+        file:"dance.mp4",
+        label:"THE PATNA VERSION 💃🏻"
     },
 
-
-    /* =====================================================
-       NON VEG 2
-    ===================================================== */
-
+    /* 5 */
     {
         type:"popup",
-
-        eyebrow:
-            "THE REAL QUESTION 🤔",
-
-        title:
-            "Lekin agr merese koi puche... 👀",
-
-        text:
-            `Chicken khaoge ya mutton 🍗...
-
-            <br><br>
-
-            Janti ho kya choose krenge.... 😏`,
-
-        button:
-            "DEKHLO... 😂",
-
-        sound:
-            "popup",
-
-        video:
-            "nonveg.mp4",
-
-        label:
-            "THE CHOICE 🍗"
+        icon:"🍗",
+        episode:"EPISODE 02 • IMPORTANT MATTER",
+        eyebrow:"EPISODE 02 • IMPORTANT MATTER 🍗",
+        title:"Dekho babyy... 😌",
+        text:"Sawan toh khatam ho gaya hai... ab toh tm daba ke non veg khaa paogi 😋🍗😂",
+        button:"Continue"
     },
 
-
-    /* =====================================================
-       RELIGION 1
-    ===================================================== */
-
+    /* 6 */
     {
         type:"popup",
-
-        eyebrow:
-            "EPISODE 03 • CLASSIFIED ❤️",
-
-        title:
-            "Sweetheart... ek baat toh tmhe pata hi hai 🧕🏻❤️",
-
-        text:
-            "Hum Hindu hai aur tm 🧕🏻. Sbko yeh baat pata hai... 😌",
-
-        button:
-            "Hmm... 👀",
-
-        sound:
-            "shimmer"
+        icon:"🤔",
+        episode:"THE REAL QUESTION",
+        eyebrow:"THE REAL QUESTION 🤔",
+        title:"Lekin agr merese koi puche... 👀",
+        text:`Chicken khaoge ya mutton 🍗...
+        <br><br>
+        Janti ho kya choose krenge.... 😏`,
+        button:"DEKHLO... 😂"
     },
 
-
-    /* =====================================================
-       RELIGION 2
-    ===================================================== */
-
+    /* 7 VIDEO */
     {
-        type:"popup",
-
-        eyebrow:
-            "BUT HERE'S THE THING... ❤️",
-
-        title:
-            "Lekin tm kisi bhi religion ki hoti... 🥹",
-
-        text:
-            `Apna toh terko hi choose krta... ❤️
-
-            <br><br>
-
-            Proof deduuu.... 😏`,
-
-        button:
-            "DEKHLO... 🫶🏻",
-
-        sound:
-            "shimmer",
-
-        video:
-            "religion.mp4",
-
-        label:
-            "NO MATTER WHAT ❤️"
+        type:"video",
+        file:"nonveg.mp4",
+        label:"THE CHOICE 🍗"
     },
 
-
-    /* =====================================================
-       ABUSE 1
-    ===================================================== */
-
+    /* 8 */
     {
         type:"popup",
-
-        eyebrow:
-            "EPISODE 04 • DANGER ZONE 🚨",
-
-        title:
-            "Babuu... tm jyada gussa krti nhi ho 😭",
-
-        text:
-            "Tmko hm kbhi aisa gussa mai dekhe nhi h... 😌",
-
-        button:
-            "Continue",
-
-        sound:
-            "popup"
+        icon:"🧕🏻❤️",
+        episode:"EPISODE 03 • CLASSIFIED",
+        eyebrow:"EPISODE 03 • CLASSIFIED ❤️",
+        title:"Sweetheart... ek baat toh tmhe pata hi hai 🧕🏻❤️",
+        text:"Hum Hindu hai aur tm 🧕🏻. Sbko yeh baat pata hai... 😌",
+        button:"Hmm... 👀"
     },
 
-
-    /* =====================================================
-       ABUSE 2
-    ===================================================== */
-
+    /* 9 */
     {
         type:"popup",
-
-        eyebrow:
-            "HYPOTHETICAL SITUATION 🚨😂",
-
-        title:
-            "Agr achanak ek din dekhe... 👀",
-
-        text:
-            "Ki tm road mai kisiko gariya rahi... toh yeh toh zaroori hona hai... 😭😂",
-
-        button:
-            "DEKHLO... 💀",
-
-        sound:
-            "funny",
-
-        video:
-            "abuse.mp4",
-
-        label:
-            "THE ANGRY VERSION 🚨😂"
+        icon:"❤️",
+        episode:"BUT HERE'S THE THING...",
+        eyebrow:"BUT HERE'S THE THING... ❤️",
+        title:"Lekin tm kisi bhi religion ki hoti... 🥹",
+        text:`Apna toh terko hi choose krta... ❤️
+        <br><br>
+        Proof deduuu.... 😏`,
+        button:"DEKHLO... 🫶🏻"
     },
 
-
-    /* =====================================================
-       CHALBAAZ 1
-    ===================================================== */
-
+    /* 10 VIDEO */
     {
-        type:"popup",
-
-        eyebrow:
-            "EPISODE 05 • CASE FILE 📂",
-
-        title:
-            "Yehi sab cheezon se log apni GF se darte hai... 😭",
-
-        text:
-            "Aur tm yehi sb ka fayda uthati hai... 😏😂",
-
-        button:
-            "Continue",
-
-        sound:
-            "funny"
+        type:"video",
+        file:"religion.mp4",
+        label:"NO MATTER WHAT ❤️"
     },
 
-
-    /* =====================================================
-       CHALBAAZ 2
-    ===================================================== */
-
+    /* 11 */
     {
         type:"popup",
-
-        eyebrow:
-            "CASE FILE: TISHA 🕵🏻‍♂️",
-
-        title:
-            "Tm puri Shatir, Syana, Chalaak, Chalbaaz sb ho... 😭😂",
-
-        text:
-            "Tmhara game hum pakad liye h bhai.... 🤨📂",
-
-        button:
-            "DEKHLO 😏",
-
-        sound:
-            "funny",
-
-        video:
-            "chalbaaz.mp4",
-
-        label:
-            "CASE FILE: CHALBAAZ 🕵🏻‍♂️"
+        icon:"🚨",
+        episode:"EPISODE 04 • DANGER ZONE",
+        eyebrow:"EPISODE 04 • DANGER ZONE 🚨",
+        title:"Babuu... tm jyada gussa krti nhi ho 😭",
+        text:"Tmko hm kbhi aisa gussa mai dekhe nhi h... 😌",
+        button:"Continue"
     },
 
-
-    /* =====================================================
-       FINAL
-    ===================================================== */
-
+    /* 12 */
     {
         type:"popup",
+        icon:"💀",
+        episode:"HYPOTHETICAL SITUATION",
+        eyebrow:"HYPOTHETICAL SITUATION 🚨😂",
+        title:"Agr achanak ek din dekhe... 👀",
+        text:"Ki tm road mai kisiko gariya rahi... toh yeh toh zaroori hona hai... 😭😂",
+        button:"DEKHLO... 💀"
+    },
 
-        eyebrow:
-            "FINAL EPISODE • NO JOKES THIS TIME 🥹",
+    /* 13 VIDEO */
+    {
+        type:"video",
+        file:"abuse.mp4",
+        label:"THE ANGRY VERSION 🚨😂"
+    },
 
-        title:
-            "Babyy... ❤️",
+    /* 14 */
+    {
+        type:"popup",
+        icon:"🕵🏻‍♂️",
+        episode:"EPISODE 05 • CASE FILE",
+        eyebrow:"EPISODE 05 • CASE FILE 📂",
+        title:"Yehi sab cheezon se log apni GF se darte hai... 😭",
+        text:"Aur tm yehi sb ka fayda uthati hai... 😏😂",
+        button:"Continue"
+    },
 
-        text:
-            "Joh bhi ho mujhe toh tm bhut pasand ho. I love you so so so much 😙❤️. You're a true blessing 🙂‍↕️✨. You're the best thing that happened to me. 🫶🏻",
+    /* 15 */
+    {
+        type:"popup",
+        icon:"📂",
+        episode:"CASE FILE: TISHA",
+        eyebrow:"CASE FILE: TISHA 🕵🏻‍♂️",
+        title:"Tm puri Shatir, Syana, Chalak, Chalbaaz sb ho... 😭😂",
+        text:"Tmhara game hum pakad liye h bhai.... 🤨📂",
+        button:"DEKHLO 😏"
+    },
 
-        button:
-            "Next... ❤️",
+    /* 16 VIDEO */
+    {
+        type:"video",
+        file:"chalbaaz.mp4",
+        label:"CASE FILE: CHALBAAZ 🕵🏻‍♂️"
+    },
 
-        sound:
-            "shimmer",
+    /* 17 FINAL POPUP */
+    {
+        type:"popup",
+        icon:"🥹❤️",
+        episode:"FINAL EPISODE • NO JOKES THIS TIME",
+        eyebrow:"FINAL EPISODE • NO JOKES THIS TIME 🥹",
+        title:"Babyy... ❤️",
+        text:`Joh bhi ho mujhe toh tm bhut pasand ho.
+        I love you so so so much 😙❤️.
+        You're a true blessing 🙂‍↕️✨.
+        You're the best thing that happened to me. 🫶🏻`,
+        button:"Next... ❤️",
+        final:true
+    },
 
-        video:
-            "final.mp4",
-
-        label:
-            "FOR MY FAVORITE GIRL ❤️",
-
+    /* 18 FINAL VIDEO */
+    {
+        type:"video",
+        file:"final.mp4",
+        label:"FOR MY FAVORITE GIRL ❤️",
         final:true
     }
 
@@ -2811,67 +1722,252 @@ const story = [
 
 
 /* =========================================================
-   STATE
+   ELEMENTS
 ========================================================= */
 
-let currentStory = 0;
+const overlay = document.getElementById("storyOverlay");
+const icon = document.getElementById("storyIcon");
+const episodeText = document.getElementById("episodeText");
+const eyebrow = document.getElementById("storyEyebrow");
+const title = document.getElementById("storyTitle");
+const text = document.getElementById("storyText");
+const button = document.getElementById("storyButton");
+const progress = document.getElementById("progress");
 
-let moving = false;
+const videoScreen = document.getElementById("videoScreen");
+const video = document.getElementById("mainVideo");
+const videoLabel = document.getElementById("videoLabel");
+const skipButton = document.getElementById("skipButton");
+const videoError = document.getElementById("videoError");
+
+const birthday = document.getElementById("birthday");
 
 
 /* =========================================================
-   PLAY SFX
+   AUDIO ENGINE
+   NO BACKGROUND MUSIC
 ========================================================= */
 
-function playSFX(sound){
+let audioCtx = null;
+let sfxGain = null;
 
-    if(sound==="popup")
-        popupSound();
+function initAudio(){
 
-    else if(sound==="shimmer")
-        shimmerSound();
+    if(!audioCtx){
 
-    else if(sound==="funny")
-        funnySound();
+        audioCtx = new (
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
 
-    else if(sound==="heartbeat")
-        heartbeatSound();
+        sfxGain = audioCtx.createGain();
+
+        sfxGain.gain.value = .16;
+
+        sfxGain.connect(audioCtx.destination);
+    }
+
+    if(audioCtx.state === "suspended"){
+        audioCtx.resume();
+    }
+}
+
+
+function tone(freq,duration=.08,type="sine",volume=.08){
+
+    if(!audioCtx) return;
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = type;
+    osc.frequency.value = freq;
+
+    gain.gain.setValueAtTime(0,audioCtx.currentTime);
+
+    gain.gain.linearRampToValueAtTime(
+        volume,
+        audioCtx.currentTime+.01
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .001,
+        audioCtx.currentTime+duration
+    );
+
+    osc.connect(gain);
+    gain.connect(sfxGain);
+
+    osc.start();
+    osc.stop(audioCtx.currentTime+duration+.02);
+}
+
+
+function clickSound(){
+
+    tone(650,.045,"sine",.07);
+
+    setTimeout(()=>{
+        tone(850,.055,"sine",.045);
+    },35);
+}
+
+
+function popupSound(){
+
+    tone(390,.08,"sine",.06);
+
+    setTimeout(()=>{
+        tone(520,.12,"sine",.045);
+    },55);
+}
+
+
+function shimmer(){
+
+    tone(700,.12,"sine",.045);
+
+    setTimeout(()=>{
+        tone(900,.13,"sine",.035);
+    },80);
+
+    setTimeout(()=>{
+        tone(1100,.16,"sine",.025);
+    },160);
+}
+
+
+function funnyPop(){
+
+    tone(180,.08,"triangle",.07);
+
+    setTimeout(()=>{
+        tone(110,.12,"triangle",.045);
+    },70);
+}
+
+
+function heartbeat(){
+
+    tone(90,.09,"sine",.08);
+
+    setTimeout(()=>{
+        tone(75,.10,"sine",.065);
+    },160);
+
+    setTimeout(()=>{
+        tone(90,.09,"sine",.08);
+    },470);
+
+    setTimeout(()=>{
+        tone(75,.10,"sine",.065);
+    },630);
+}
+
+
+function videoOpenSound(){
+
+    tone(220,.12,"sine",.05);
+
+    setTimeout(()=>{
+        tone(330,.14,"sine",.04);
+    },90);
+
+    setTimeout(()=>{
+        tone(490,.18,"sine",.025);
+    },190);
+}
+
+
+function videoEndSound(){
+
+    tone(500,.1,"sine",.05);
+
+    setTimeout(()=>{
+        tone(700,.13,"sine",.04);
+    },100);
+}
+
+
+function celebrationSound(){
+
+    [520,660,780,980].forEach((f,i)=>{
+        setTimeout(()=>{
+            tone(f,.16,"sine",.045);
+        },i*90);
+    });
 }
 
 
 /* =========================================================
-   SHOW POPUP
+   STATE
 ========================================================= */
 
-function showPopup(data){
-
-    storyScreen.classList.add("active");
-
-    videoScreen.classList.remove("active");
-
-    eyebrow.textContent =
-        data.eyebrow;
-
-    popupTitle.innerHTML =
-        data.title;
-
-    popupText.innerHTML =
-        data.text;
-
-    popupButton.textContent =
-        data.button;
-
-    playSFX(data.sound);
+let current = 0;
+let movingForward = false;
 
 
-    /* Restart popup animation */
+/* =========================================================
+   PROGRESS
+========================================================= */
 
-    popupCard.style.animation="none";
+function renderProgress(){
 
-    void popupCard.offsetWidth;
+    progress.innerHTML = "";
 
-    popupCard.style.animation=
-        "popupEntrance .65s cubic-bezier(.16,1,.3,1)";
+    const popupNumber = Math.min(
+        Math.floor(current / 1.5),
+        12
+    );
+
+    for(let i=0;i<6;i++){
+
+        const dot = document.createElement("span");
+
+        if(i <= popupNumber){
+            dot.classList.add("active");
+        }
+
+        progress.appendChild(dot);
+    }
+}
+
+
+/* =========================================================
+   SHOW STORY
+========================================================= */
+
+function showStory(){
+
+    const item = stories[current];
+
+    overlay.style.display = "flex";
+
+    icon.textContent = item.icon || "❤️";
+    episodeText.textContent = item.episode || "";
+    eyebrow.textContent = item.eyebrow || "";
+    title.innerHTML = item.title || "";
+    text.innerHTML = item.text || "";
+    button.textContent = item.button || "Continue";
+
+    renderProgress();
+
+    /* restart animation */
+
+    const card = document.querySelector(".storyCard");
+
+    card.style.animation = "none";
+
+    void card.offsetWidth;
+
+    card.style.animation =
+        "cardIn .65s cubic-bezier(.2,.9,.25,1) both";
+
+    popupSound();
+
+    if(item.heartbeat){
+        setTimeout(heartbeat,180);
+    }
 }
 
 
@@ -2879,153 +1975,80 @@ function showPopup(data){
    SHOW VIDEO
 ========================================================= */
 
-function showVideo(data){
+function showVideo(item){
 
-    storyScreen.classList.remove("active");
+    overlay.style.display = "none";
 
-    videoScreen.classList.add("active");
+    videoScreen.classList.add("show");
 
-    videoLabel.textContent =
-        data.label;
+    videoLabel.textContent = item.label;
 
-    mainVideo.pause();
+    skipButton.textContent =
+        item.final ? "FINISH ❤️" : "SKIP →";
 
-    mainVideo.removeAttribute("src");
+    videoError.classList.remove("show");
 
-    mainVideo.load();
+    video.pause();
 
-    mainVideo.src =
-        data.video;
+    video.src = item.file;
 
-    mainVideo.currentTime=0;
-
-    if(data.final){
-
-        skipButton.textContent =
-            "FINISH ❤️";
-
-        skipButton.classList.add("finish");
-
-    }else{
-
-        skipButton.textContent =
-            "SKIP →";
-
-        skipButton.classList.remove("finish");
-    }
+    video.load();
 
     videoOpenSound();
 
-    setTimeout(()=>{
+    /*
+       The video starts only after a user click
+       so mobile browsers are much more likely
+       to allow audio.
+    */
 
-        mainVideo.play().catch(()=>{
-
-            /*
-                If mobile browser blocks autoplay,
-                native video controls remain available.
-            */
-
-        });
-
-    },150);
+    video.play().catch(()=>{});
 }
 
 
 /* =========================================================
-   TRANSITION
+   NEXT
 ========================================================= */
 
-function transitionToNext(callback){
+function moveForward(){
 
-    transition.classList.add("active");
+    if(movingForward) return;
 
-    whooshSound();
+    movingForward = true;
+
+    clickSound();
+
+    video.pause();
+
+    videoScreen.classList.remove("show");
 
     setTimeout(()=>{
 
-        callback();
+        current++;
 
-        setTimeout(()=>{
-
-            transition.classList.remove("active");
-
-        },100);
-
-    },420);
-}
-
-
-/* =========================================================
-   NEXT STORY
-========================================================= */
-
-function nextStory(){
-
-    if(moving)
-        return;
-
-    moving=true;
-
-    const current =
-        story[currentStory];
-
-
-    /* Special transition after intro warning */
-
-    if(current.transition){
-
-        transitionToNext(()=>{
-
-            currentStory++;
-
-            moving=false;
-
-            showPopup(
-                story[currentStory]
-            );
-
-        });
-
-        return;
-    }
-
-
-    currentStory++;
-
-
-    setTimeout(()=>{
-
-        if(
-            currentStory >=
-            story.length
-        ){
-
-            moving=false;
+        if(current >= stories.length){
 
             showBirthday();
 
-            return;
-        }
-
-
-        const next =
-            story[currentStory];
-
-
-        if(next.video){
-
-            moving=false;
-
-            showVideo(next);
-
         }else{
 
-            moving=false;
+            const next = stories[current];
 
-            showPopup(next);
+            if(next.type === "video"){
+
+                showVideo(next);
+
+            }else{
+
+                showStory();
+
+            }
+
         }
 
-    },120);
+        movingForward = false;
+
+    },450);
 }
 
 
@@ -3033,110 +2056,85 @@ function nextStory(){
    POPUP BUTTON
 ========================================================= */
 
-popupButton.addEventListener(
-    "click",
-    ()=>{
+button.addEventListener("click",()=>{
 
-        clickSound();
+    initAudio();
 
-        nextStory();
+    const item = stories[current];
+
+    clickSound();
+
+    if(item.final){
+
+        setTimeout(()=>{
+            current++;
+
+            showVideo(stories[current]);
+        },300);
+
+        return;
+    }
+
+    current++;
+
+    const next = stories[current];
+
+    if(next.type === "video"){
+
+        setTimeout(()=>{
+            showVideo(next);
+        },250);
+
+    }else{
+
+        setTimeout(()=>{
+            showStory();
+        },220);
 
     }
-);
+
+});
 
 
 /* =========================================================
-   VIDEO ADVANCE
+   SKIP / FINISH
 ========================================================= */
 
-function advanceVideo(){
+skipButton.addEventListener("click",()=>{
 
-    if(moving)
-        return;
-
-    moving=true;
+    initAudio();
 
     videoEndSound();
 
-    mainVideo.pause();
+    moveForward();
 
-
-    const current =
-        story[currentStory];
-
-
-    /* FINAL VIDEO */
-
-    if(current.final){
-
-        setTimeout(()=>{
-
-            moving=false;
-
-            showBirthday();
-
-        },650);
-
-        return;
-    }
-
-
-    /* NORMAL VIDEO */
-
-    setTimeout(()=>{
-
-        currentStory++;
-
-        moving=false;
-
-
-        if(
-            currentStory >=
-            story.length
-        ){
-
-            showBirthday();
-
-            return;
-        }
-
-
-        showPopup(
-            story[currentStory]
-        );
-
-    },450);
-}
+});
 
 
 /* =========================================================
-   VIDEO NATURAL END
+   NATURAL VIDEO END
 ========================================================= */
 
-mainVideo.addEventListener(
-    "ended",
-    ()=>{
+video.addEventListener("ended",()=>{
 
-        advanceVideo();
+    initAudio();
 
-    }
-);
+    videoEndSound();
+
+    moveForward();
+
+});
 
 
 /* =========================================================
-   SKIP BUTTON
+   VIDEO ERROR
 ========================================================= */
 
-skipButton.addEventListener(
-    "click",
-    ()=>{
+video.addEventListener("error",()=>{
 
-        clickSound();
+    videoError.classList.add("show");
 
-        advanceVideo();
-
-    }
-);
+});
 
 
 /* =========================================================
@@ -3145,85 +2143,35 @@ skipButton.addEventListener(
 
 function showBirthday(){
 
-    mainVideo.pause();
-
-    videoScreen.classList.remove("active");
-
-    storyScreen.classList.remove("active");
+    videoScreen.classList.remove("show");
 
     birthday.classList.add("show");
 
     celebrationSound();
 
-    createBirthdayParticles();
 }
 
 
 /* =========================================================
-   BIRTHDAY PARTICLES
+   START
 ========================================================= */
 
-function createBirthdayParticles(){
+document.addEventListener(
+    "click",
+    initAudio,
+    {once:true}
+);
 
-    const symbols=[
-        "❤️",
-        "♡",
-        "✦",
-        "✧",
-        "🌸",
-        "✨",
-        "💗",
-        "🌹",
-        "❀",
-        "♥"
-    ];
-
-
-    for(
-        let i=0;
-        i<45;
-        i++
-    ){
-
-        const element =
-            document.createElement("div");
-
-        element.className =
-            "birthday-particle";
-
-        element.textContent =
-            symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
-            ];
-
-        element.style.left =
-            Math.random()*100 +
-            "%";
-
-        element.style.animationDuration =
-            (4 + Math.random()*5) +
-            "s";
-
-        element.style.animationDelay =
-            (-Math.random()*7) +
-            "s";
-
-        birthdayParticles.appendChild(
-            element
-        );
-    }
-}
+showStory();
 
 
 /* =========================================================
-   INITIALIZE
+   PREVENT ACCIDENTAL DOUBLE TAP
 ========================================================= */
 
-showPopup(
-    story[0]
+document.addEventListener(
+    "dblclick",
+    e => e.preventDefault()
 );
 
 </script>
