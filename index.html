@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Tisha — Private Screening</title>
+<title>For Tisha — Private Screening ❤️</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,25 +33,33 @@
     padding:0;
 }
 
-html,body{
+html,
+body{
     width:100%;
     height:100%;
 }
 
 body{
     overflow:hidden;
+
     font-family:"DM Sans",sans-serif;
     color:var(--text);
 
     background:
-        radial-gradient(circle at 50% 5%, #ffffff 0%, #fff8f9 22%, transparent 48%),
-        radial-gradient(circle at 10% 70%, rgba(255,151,177,.25), transparent 38%),
-        radial-gradient(circle at 90% 30%, rgba(255,194,210,.30), transparent 38%),
-        linear-gradient(135deg,#fffafa 0%,#fff0f4 42%,#ffe1e7 72%,#ffd2dc 100%);
+        radial-gradient(circle at 50% 5%,#ffffff 0%,#fff8f9 22%,transparent 48%),
+        radial-gradient(circle at 10% 70%,rgba(255,151,177,.25),transparent 38%),
+        radial-gradient(circle at 90% 30%,rgba(255,194,210,.30),transparent 38%),
+        linear-gradient(
+            135deg,
+            #fffafa 0%,
+            #fff0f4 42%,
+            #ffe1e7 72%,
+            #ffd2dc 100%
+        );
 }
 
 /* =========================================================
-   BACKGROUND WORLD
+   BACKGROUND
 ========================================================= */
 
 .bg{
@@ -62,14 +70,16 @@ body{
     z-index:0;
 }
 
-/* soft cinematic glow */
+/* Aurora */
 
 .aurora{
     position:absolute;
     border-radius:50%;
     filter:blur(80px);
     opacity:.45;
-    animation:auroraFloat 12s ease-in-out infinite alternate;
+
+    animation:
+        auroraFloat 12s ease-in-out infinite alternate;
 }
 
 .aurora.one{
@@ -99,13 +109,18 @@ body{
 }
 
 @keyframes auroraFloat{
-    from{transform:translate(0,0) scale(1);}
-    to{transform:translate(40px,-25px) scale(1.12);}
+
+    from{
+        transform:translate(0,0) scale(1);
+    }
+
+    to{
+        transform:translate(40px,-25px) scale(1.12);
+    }
+
 }
 
-/* =========================================================
-   GRID / GRAIN
-========================================================= */
+/* Grid */
 
 .grid{
     position:absolute;
@@ -113,23 +128,34 @@ body{
     opacity:.22;
 
     background-image:
-        linear-gradient(rgba(125,24,52,.045) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(125,24,52,.045) 1px,transparent 1px);
+        linear-gradient(
+            rgba(125,24,52,.045) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(125,24,52,.045) 1px,
+            transparent 1px
+        );
 
     background-size:42px 42px;
 
-    mask-image:linear-gradient(
-        to bottom,
-        transparent,
-        black 15%,
-        black 85%,
-        transparent
-    );
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 15%,
+            black 85%,
+            transparent
+        );
 }
+
+/* Grain */
 
 .grain{
     position:absolute;
     inset:-50%;
+
     opacity:.08;
 
     background-image:
@@ -141,15 +167,32 @@ body{
             transparent 4px
         );
 
-    animation:grainMove 1.2s steps(2) infinite;
+    animation:
+        grainMove 1.2s steps(2) infinite;
 }
 
 @keyframes grainMove{
-    0%{transform:translate(0,0);}
-    25%{transform:translate(2%,1%);}
-    50%{transform:translate(-1%,2%);}
-    75%{transform:translate(1%,-2%);}
-    100%{transform:translate(0,0);}
+
+    0%{
+        transform:translate(0,0);
+    }
+
+    25%{
+        transform:translate(2%,1%);
+    }
+
+    50%{
+        transform:translate(-1%,2%);
+    }
+
+    75%{
+        transform:translate(1%,-2%);
+    }
+
+    100%{
+        transform:translate(0,0);
+    }
+
 }
 
 /* =========================================================
@@ -158,19 +201,23 @@ body{
 
 .sun{
     position:absolute;
+
     width:145px;
     height:145px;
-    border-radius:50%;
 
     right:8%;
     top:7%;
 
+    border-radius:50%;
+
     background:
-        radial-gradient(circle,
+        radial-gradient(
+            circle,
             rgba(255,255,255,.98) 0%,
             rgba(255,240,193,.95) 23%,
             rgba(255,207,120,.45) 52%,
-            transparent 72%);
+            transparent 72%
+        );
 
     box-shadow:
         0 0 45px rgba(255,202,100,.38),
@@ -181,153 +228,257 @@ body{
 
 .sun::before{
     content:"";
+
     position:absolute;
     inset:-28px;
 
-    border:1px solid rgba(183,106,60,.13);
+    border:
+        1px solid rgba(183,106,60,.13);
+
     border-radius:50%;
 
     box-shadow:
         0 0 0 15px rgba(183,106,60,.035),
         0 0 0 30px rgba(183,106,60,.025);
 
-    animation:sunSpin 20s linear infinite;
+    animation:
+        sunSpin 20s linear infinite;
 }
 
 @keyframes sunSpin{
-    to{transform:rotate(360deg);}
+
+    to{
+        transform:rotate(360deg);
+    }
+
 }
 
 /* =========================================================
-   ORBIT RINGS
+   ORBITS
 ========================================================= */
 
 .orbit{
     position:absolute;
-    border:1px solid rgba(125,24,52,.10);
+
+    border:
+        1px solid rgba(125,24,52,.10);
+
     border-radius:50%;
 }
 
 .orbit.o1{
     width:500px;
     height:170px;
+
     left:50%;
     top:50%;
-    transform:translate(-50%,-50%) rotate(-18deg);
-    animation:orbit 18s linear infinite;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-18deg);
+
+    animation:
+        orbit 18s linear infinite;
 }
 
 .orbit.o2{
     width:720px;
     height:250px;
+
     left:50%;
     top:50%;
-    transform:translate(-50%,-50%) rotate(22deg);
-    animation:orbitReverse 24s linear infinite;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(22deg);
+
+    animation:
+        orbitReverse 24s linear infinite;
 }
 
 .orbit.o3{
     width:900px;
     height:330px;
+
     left:50%;
     top:50%;
-    transform:translate(-50%,-50%) rotate(-35deg);
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-35deg);
+
     opacity:.45;
 }
 
 @keyframes orbit{
-    to{transform:translate(-50%,-50%) rotate(342deg);}
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            rotate(342deg);
+    }
+
 }
 
 @keyframes orbitReverse{
-    to{transform:translate(-50%,-50%) rotate(-338deg);}
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            rotate(-338deg);
+    }
+
 }
 
 /* =========================================================
-   CAMERA DECORATIONS
+   CSS CAMERAS
 ========================================================= */
 
 .camera{
     position:absolute;
+
     width:92px;
     height:62px;
-    border:2px solid rgba(125,24,52,.20);
+
+    border:
+        2px solid rgba(125,24,52,.20);
+
     border-radius:18px;
+
     opacity:.35;
+
     transform:rotate(-12deg);
 }
 
 .camera::before{
     content:"";
+
     position:absolute;
+
     width:28px;
     height:13px;
+
     left:12px;
     top:-13px;
 
     background:rgba(125,24,52,.12);
-    border:2px solid rgba(125,24,52,.18);
+
+    border:
+        2px solid rgba(125,24,52,.18);
+
     border-bottom:0;
+
     border-radius:7px 7px 0 0;
 }
 
 .camera::after{
     content:"";
+
     position:absolute;
+
     width:29px;
     height:29px;
-    border:2px solid rgba(125,24,52,.23);
+
+    border:
+        2px solid rgba(125,24,52,.23);
+
     border-radius:50%;
+
     left:29px;
     top:15px;
-    box-shadow:inset 0 0 0 7px rgba(125,24,52,.035);
+
+    box-shadow:
+        inset 0 0 0 7px rgba(125,24,52,.035);
 }
 
 .camera.c1{
     left:5%;
     top:17%;
-    animation:cameraFloat 7s ease-in-out infinite;
+
+    animation:
+        cameraFloat 7s ease-in-out infinite;
 }
 
 .camera.c2{
     right:4%;
     bottom:17%;
-    transform:rotate(14deg) scale(.75);
-    animation:cameraFloat 9s ease-in-out infinite reverse;
+
+    transform:
+        rotate(14deg)
+        scale(.75);
+
+    animation:
+        cameraFloat 9s ease-in-out infinite reverse;
 }
 
 .camera.c3{
     left:12%;
     bottom:7%;
-    transform:rotate(-25deg) scale(.55);
+
+    transform:
+        rotate(-25deg)
+        scale(.55);
+
     opacity:.2;
 }
 
 @keyframes cameraFloat{
-    0%,100%{translate:0 0;}
-    50%{translate:0 -18px;}
-}
 
-/* camera flash */
+    0%,100%{
+        translate:0 0;
+    }
+
+    50%{
+        translate:0 -18px;
+    }
+
+}
 
 .cameraFlash{
     position:absolute;
+
     width:7px;
     height:7px;
+
     border-radius:50%;
+
     background:white;
-    box-shadow:0 0 15px white;
+
+    box-shadow:
+        0 0 15px white;
+
     opacity:.5;
-    animation:flash 4s ease-in-out infinite;
+
+    animation:
+        flash 4s ease-in-out infinite;
 }
 
-.cameraFlash.f1{left:7%;top:15%;}
-.cameraFlash.f2{right:7%;bottom:22%;animation-delay:2s;}
+.cameraFlash.f1{
+    left:7%;
+    top:15%;
+}
+
+.cameraFlash.f2{
+    right:7%;
+    bottom:22%;
+
+    animation-delay:2s;
+}
 
 @keyframes flash{
-    0%,85%,100%{opacity:.15;}
-    88%{opacity:1;}
-    92%{opacity:.1;}
+
+    0%,85%,100%{
+        opacity:.15;
+    }
+
+    88%{
+        opacity:1;
+    }
+
+    92%{
+        opacity:.1;
+    }
+
 }
 
 /* =========================================================
@@ -336,21 +487,27 @@ body{
 
 .flower{
     position:absolute;
+
     width:70px;
     height:70px;
+
     opacity:.48;
-    animation:flowerFloat 9s ease-in-out infinite;
+
+    animation:
+        flowerFloat 9s ease-in-out infinite;
 }
 
 .flower span{
     position:absolute;
+
     width:24px;
     height:38px;
 
     left:23px;
     top:15px;
 
-    border-radius:50% 50% 45% 45%;
+    border-radius:
+        50% 50% 45% 45%;
 
     background:
         linear-gradient(
@@ -365,33 +522,109 @@ body{
     transform-origin:50% 100%;
 }
 
-.flower span:nth-child(1){transform:rotate(0deg) translateY(-17px);}
-.flower span:nth-child(2){transform:rotate(60deg) translateY(-17px);}
-.flower span:nth-child(3){transform:rotate(120deg) translateY(-17px);}
-.flower span:nth-child(4){transform:rotate(180deg) translateY(-17px);}
-.flower span:nth-child(5){transform:rotate(240deg) translateY(-17px);}
-.flower span:nth-child(6){transform:rotate(300deg) translateY(-17px);}
+.flower span:nth-child(1){
+    transform:
+        rotate(0deg)
+        translateY(-17px);
+}
+
+.flower span:nth-child(2){
+    transform:
+        rotate(60deg)
+        translateY(-17px);
+}
+
+.flower span:nth-child(3){
+    transform:
+        rotate(120deg)
+        translateY(-17px);
+}
+
+.flower span:nth-child(4){
+    transform:
+        rotate(180deg)
+        translateY(-17px);
+}
+
+.flower span:nth-child(5){
+    transform:
+        rotate(240deg)
+        translateY(-17px);
+}
+
+.flower span:nth-child(6){
+    transform:
+        rotate(300deg)
+        translateY(-17px);
+}
 
 .flower i{
     position:absolute;
+
     width:13px;
     height:13px;
+
     border-radius:50%;
+
     background:#e9b55c;
+
     left:29px;
     top:29px;
-    box-shadow:0 0 15px rgba(233,181,92,.4);
+
+    box-shadow:
+        0 0 15px rgba(233,181,92,.4);
 }
 
-.flower.f1{left:1%;top:35%;transform:scale(.75);}
-.flower.f2{right:2%;top:52%;transform:scale(.95);animation-delay:-3s;}
-.flower.f3{left:17%;top:5%;transform:scale(.5);animation-delay:-5s;}
-.flower.f4{right:18%;bottom:3%;transform:scale(.65);animation-delay:-2s;}
-.flower.f5{left:40%;bottom:2%;transform:scale(.45);animation-delay:-7s;}
+.flower.f1{
+    left:1%;
+    top:35%;
+    transform:scale(.75);
+}
+
+.flower.f2{
+    right:2%;
+    top:52%;
+    transform:scale(.95);
+
+    animation-delay:-3s;
+}
+
+.flower.f3{
+    left:17%;
+    top:5%;
+    transform:scale(.5);
+
+    animation-delay:-5s;
+}
+
+.flower.f4{
+    right:18%;
+    bottom:3%;
+    transform:scale(.65);
+
+    animation-delay:-2s;
+}
+
+.flower.f5{
+    left:40%;
+    bottom:2%;
+    transform:scale(.45);
+
+    animation-delay:-7s;
+}
 
 @keyframes flowerFloat{
-    0%,100%{translate:0 0 rotate(0deg);}
-    50%{translate:8px -15px rotate(7deg);}
+
+    0%,100%{
+        translate:0 0;
+        rotate:0deg;
+    }
+
+    50%{
+        translate:8px -15px;
+        rotate:7deg;
+    }
+
 }
 
 /* =========================================================
@@ -400,6 +633,7 @@ body{
 
 .petal{
     position:absolute;
+
     width:12px;
     height:20px;
 
@@ -410,33 +644,92 @@ body{
             rgba(239,174,190,.55)
         );
 
-    border-radius:80% 20% 80% 20%;
+    border-radius:
+        80% 20% 80% 20%;
+
     opacity:.65;
 
-    animation:petalDrift linear infinite;
+    animation:
+        petalDrift linear infinite;
 }
 
-.p1{left:8%;top:-5%;animation-duration:12s;animation-delay:1s;}
-.p2{left:25%;top:-10%;animation-duration:16s;animation-delay:4s;}
-.p3{left:47%;top:-8%;animation-duration:14s;animation-delay:2s;}
-.p4{left:68%;top:-12%;animation-duration:18s;animation-delay:7s;}
-.p5{left:83%;top:-6%;animation-duration:13s;animation-delay:3s;}
-.p6{left:92%;top:-15%;animation-duration:20s;animation-delay:8s;}
-.p7{left:35%;top:-15%;animation-duration:17s;animation-delay:9s;}
+.p1{
+    left:8%;
+    top:-5%;
+    animation-duration:12s;
+    animation-delay:1s;
+}
+
+.p2{
+    left:25%;
+    top:-10%;
+    animation-duration:16s;
+    animation-delay:4s;
+}
+
+.p3{
+    left:47%;
+    top:-8%;
+    animation-duration:14s;
+    animation-delay:2s;
+}
+
+.p4{
+    left:68%;
+    top:-12%;
+    animation-duration:18s;
+    animation-delay:7s;
+}
+
+.p5{
+    left:83%;
+    top:-6%;
+    animation-duration:13s;
+    animation-delay:3s;
+}
+
+.p6{
+    left:92%;
+    top:-15%;
+    animation-duration:20s;
+    animation-delay:8s;
+}
+
+.p7{
+    left:35%;
+    top:-15%;
+    animation-duration:17s;
+    animation-delay:9s;
+}
 
 @keyframes petalDrift{
+
     0%{
-        transform:translate3d(0,-30px,0) rotate(0);
+        transform:
+            translate3d(0,-30px,0)
+            rotate(0);
+
         opacity:0;
     }
-    10%{opacity:.7;}
+
+    10%{
+        opacity:.7;
+    }
+
     50%{
-        transform:translate3d(70px,50vh,0) rotate(180deg);
+        transform:
+            translate3d(70px,50vh,0)
+            rotate(180deg);
     }
+
     100%{
-        transform:translate3d(-40px,110vh,0) rotate(360deg);
+        transform:
+            translate3d(-40px,110vh,0)
+            rotate(360deg);
+
         opacity:0;
     }
+
 }
 
 /* =========================================================
@@ -445,63 +738,173 @@ body{
 
 .star{
     position:absolute;
+
     color:white;
+
     text-shadow:
         0 0 5px rgba(255,255,255,.9),
         0 0 16px rgba(213,93,126,.35);
 
-    animation:twinkle 3s ease-in-out infinite;
+    animation:
+        twinkle 3s ease-in-out infinite;
 }
 
 .star::before{
     content:"✦";
 }
 
-.s1{left:13%;top:11%;font-size:16px;}
-.s2{left:29%;top:21%;font-size:9px;animation-delay:-1s;}
-.s3{left:74%;top:19%;font-size:18px;animation-delay:-2s;}
-.s4{right:15%;top:38%;font-size:10px;animation-delay:-.5s;}
-.s5{left:8%;top:65%;font-size:13px;animation-delay:-1.7s;}
-.s6{left:27%;bottom:19%;font-size:17px;animation-delay:-2.5s;}
-.s7{right:29%;bottom:14%;font-size:9px;animation-delay:-.8s;}
-.s8{right:6%;bottom:7%;font-size:16px;animation-delay:-1.3s;}
-.s9{left:52%;top:9%;font-size:8px;animation-delay:-2.2s;}
-.s10{left:58%;bottom:7%;font-size:12px;animation-delay:-1.1s;}
+.s1{
+    left:13%;
+    top:11%;
+    font-size:16px;
+}
+
+.s2{
+    left:29%;
+    top:21%;
+    font-size:9px;
+    animation-delay:-1s;
+}
+
+.s3{
+    left:74%;
+    top:19%;
+    font-size:18px;
+    animation-delay:-2s;
+}
+
+.s4{
+    right:15%;
+    top:38%;
+    font-size:10px;
+    animation-delay:-.5s;
+}
+
+.s5{
+    left:8%;
+    top:65%;
+    font-size:13px;
+    animation-delay:-1.7s;
+}
+
+.s6{
+    left:27%;
+    bottom:19%;
+    font-size:17px;
+    animation-delay:-2.5s;
+}
+
+.s7{
+    right:29%;
+    bottom:14%;
+    font-size:9px;
+    animation-delay:-.8s;
+}
+
+.s8{
+    right:6%;
+    bottom:7%;
+    font-size:16px;
+    animation-delay:-1.3s;
+}
+
+.s9{
+    left:52%;
+    top:9%;
+    font-size:8px;
+    animation-delay:-2.2s;
+}
+
+.s10{
+    left:58%;
+    bottom:7%;
+    font-size:12px;
+    animation-delay:-1.1s;
+}
 
 @keyframes twinkle{
+
     0%,100%{
         opacity:.25;
         transform:scale(.7);
     }
+
     50%{
         opacity:1;
         transform:scale(1.25);
     }
+
 }
 
 /* =========================================================
-   FLOATING HEARTS / SPARKLES
+   SPARKLES
 ========================================================= */
 
 .spark{
     position:absolute;
+
     color:rgba(125,24,52,.25);
-    animation:sparkFloat 8s ease-in-out infinite;
+
+    animation:
+        sparkFloat 8s ease-in-out infinite;
 }
 
 .spark::before{
     content:"✧";
 }
 
-.sp1{left:20%;top:43%;font-size:22px;}
-.sp2{right:20%;top:66%;font-size:15px;animation-delay:-3s;}
-.sp3{left:6%;bottom:32%;font-size:19px;animation-delay:-5s;}
-.sp4{right:8%;top:72%;font-size:24px;animation-delay:-2s;}
-.sp5{left:45%;top:15%;font-size:13px;animation-delay:-6s;}
+.sp1{
+    left:20%;
+    top:43%;
+    font-size:22px;
+}
+
+.sp2{
+    right:20%;
+    top:66%;
+    font-size:15px;
+    animation-delay:-3s;
+}
+
+.sp3{
+    left:6%;
+    bottom:32%;
+    font-size:19px;
+    animation-delay:-5s;
+}
+
+.sp4{
+    right:8%;
+    top:72%;
+    font-size:24px;
+    animation-delay:-2s;
+}
+
+.sp5{
+    left:45%;
+    top:15%;
+    font-size:13px;
+    animation-delay:-6s;
+}
 
 @keyframes sparkFloat{
-    0%,100%{transform:translateY(0) rotate(0);opacity:.25;}
-    50%{transform:translateY(-15px) rotate(15deg);opacity:.7;}
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(0);
+
+        opacity:.25;
+    }
+
+    50%{
+        transform:
+            translateY(-15px)
+            rotate(15deg);
+
+        opacity:.7;
+    }
+
 }
 
 /* =========================================================
@@ -510,22 +913,55 @@ body{
 
 .streak{
     position:absolute;
+
     width:300px;
     height:1px;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.9),
+            transparent
+        );
+
     filter:blur(.4px);
+
     opacity:.5;
+
     transform:rotate(-25deg);
-    animation:streakMove 10s linear infinite;
+
+    animation:
+        streakMove 10s linear infinite;
 }
 
-.streak.a{left:-250px;top:35%;}
-.streak.b{right:-250px;top:70%;animation-delay:4s;}
-.streak.c{left:25%;top:-50px;animation-delay:7s;}
+.streak.a{
+    left:-250px;
+    top:35%;
+}
+
+.streak.b{
+    right:-250px;
+    top:70%;
+    animation-delay:4s;
+}
+
+.streak.c{
+    left:25%;
+    top:-50px;
+    animation-delay:7s;
+}
 
 @keyframes streakMove{
-    from{translate:0 0;}
-    to{translate:700px 300px;}
+
+    from{
+        translate:0 0;
+    }
+
+    to{
+        translate:700px 300px;
+    }
+
 }
 
 /* =========================================================
@@ -534,52 +970,79 @@ body{
 
 .corner{
     position:absolute;
+
     width:120px;
     height:120px;
+
     opacity:.18;
 }
 
 .corner::before,
 .corner::after{
     content:"";
+
     position:absolute;
+
     border-color:var(--burgundy);
 }
 
 .corner::before{
     inset:0;
+
     border-top:1px solid;
     border-left:1px solid;
 }
 
 .corner::after{
     inset:12px;
+
     border-top:1px solid;
     border-left:1px solid;
 }
 
-.corner.tl{top:22px;left:22px;}
-.corner.tr{top:22px;right:22px;transform:rotate(90deg);}
-.corner.bl{bottom:22px;left:22px;transform:rotate(-90deg);}
-.corner.br{bottom:22px;right:22px;transform:rotate(180deg);}
+.corner.tl{
+    top:22px;
+    left:22px;
+}
+
+.corner.tr{
+    top:22px;
+    right:22px;
+    transform:rotate(90deg);
+}
+
+.corner.bl{
+    bottom:22px;
+    left:22px;
+    transform:rotate(-90deg);
+}
+
+.corner.br{
+    bottom:22px;
+    right:22px;
+    transform:rotate(180deg);
+}
 
 /* =========================================================
-   MAIN APP
+   APP
 ========================================================= */
 
 .app{
     position:relative;
+
     z-index:10;
+
     width:100%;
     height:100%;
 }
 
 /* =========================================================
-   STORY OVERLAY
+   POPUP
 ========================================================= */
 
 .storyOverlay{
     position:absolute;
+
     inset:0;
 
     display:flex;
@@ -603,6 +1066,7 @@ body{
 
 .storyCard{
     position:relative;
+
     width:min(620px,94vw);
     max-height:88vh;
 
@@ -619,22 +1083,28 @@ body{
             rgba(255,246,248,.83)
         );
 
-    border:1px solid rgba(255,255,255,.95);
+    border:
+        1px solid rgba(255,255,255,.95);
 
     box-shadow:
         0 30px 90px rgba(125,24,52,.18),
         0 8px 30px rgba(125,24,52,.10),
         inset 0 1px 0 white;
 
-    animation:cardIn .65s cubic-bezier(.2,.9,.25,1) both;
+    animation:
+        cardIn .65s cubic-bezier(.2,.9,.25,1) both;
 }
 
 .storyCard::before{
     content:"";
+
     position:absolute;
+
     inset:7px;
 
-    border:1px solid rgba(125,24,52,.10);
+    border:
+        1px solid rgba(125,24,52,.10);
+
     border-radius:24px;
 
     pointer-events:none;
@@ -642,7 +1112,9 @@ body{
 
 .storyCard::after{
     content:"";
+
     position:absolute;
+
     width:220px;
     height:220px;
 
@@ -652,45 +1124,64 @@ body{
     transform:translateX(-50%);
 
     background:rgba(255,157,180,.22);
+
     filter:blur(70px);
 
     pointer-events:none;
 }
 
 @keyframes cardIn{
+
     from{
         opacity:0;
-        transform:translateY(25px) scale(.94);
+
+        transform:
+            translateY(25px)
+            scale(.94);
+
         filter:blur(8px);
     }
+
     to{
         opacity:1;
-        transform:translateY(0) scale(1);
+
+        transform:
+            translateY(0)
+            scale(1);
+
         filter:blur(0);
     }
+
 }
 
 .storyInner{
     position:relative;
+
     z-index:2;
+
     text-align:center;
 }
 
 .episode{
     display:inline-flex;
+
     align-items:center;
     gap:8px;
 
     padding:8px 14px;
+
     border-radius:999px;
 
     background:rgba(125,24,52,.055);
-    border:1px solid rgba(125,24,52,.10);
+
+    border:
+        1px solid rgba(125,24,52,.10);
 
     color:var(--burgundy);
 
     font-size:10px;
     font-weight:700;
+
     letter-spacing:2px;
     text-transform:uppercase;
 
@@ -700,46 +1191,70 @@ body{
 .episodeDot{
     width:7px;
     height:7px;
+
     border-radius:50%;
+
     background:var(--rose2);
-    box-shadow:0 0 10px rgba(181,45,81,.5);
+
+    box-shadow:
+        0 0 10px rgba(181,45,81,.5);
 }
 
 .storyIcon{
     font-size:34px;
+
     margin-bottom:8px;
 
-    animation:iconPulse 2.5s ease-in-out infinite;
+    animation:
+        iconPulse 2.5s ease-in-out infinite;
 }
 
 @keyframes iconPulse{
-    50%{transform:translateY(-3px) scale(1.04);}
+
+    50%{
+        transform:
+            translateY(-3px)
+            scale(1.04);
+    }
+
 }
 
 .storyEyebrow{
     color:var(--rose2);
+
     font-size:11px;
     font-weight:700;
+
     letter-spacing:2.5px;
     text-transform:uppercase;
+
     margin-bottom:8px;
 }
 
 .storyTitle{
     font-family:"Cormorant Garamond",serif;
-    font-size:clamp(38px,7vw,62px);
+
+    font-size:
+        clamp(38px,7vw,62px);
+
     line-height:.94;
+
     font-weight:600;
+
     color:var(--burgundy);
+
     margin-bottom:18px;
 }
 
 .storyText{
     max-width:500px;
+
     margin:auto;
 
     font-size:15px;
+
     line-height:1.75;
+
     color:#633040;
 }
 
@@ -753,6 +1268,7 @@ body{
     min-width:170px;
 
     border:0;
+
     border-radius:999px;
 
     padding:14px 25px;
@@ -767,8 +1283,10 @@ body{
     color:white;
 
     font-family:"DM Sans",sans-serif;
+
     font-size:11px;
     font-weight:700;
+
     letter-spacing:1.5px;
 
     cursor:pointer;
@@ -781,26 +1299,35 @@ body{
 
 .storyButton:hover{
     transform:translateY(-3px);
+
     box-shadow:
         0 16px 35px rgba(125,24,52,.30);
 }
 
 .storyButton:active{
-    transform:translateY(0) scale(.97);
+    transform:
+        translateY(0)
+        scale(.97);
 }
 
 .progress{
     display:flex;
+
     justify-content:center;
+
     gap:6px;
+
     margin-top:26px;
 }
 
 .progress span{
     width:24px;
     height:3px;
+
     border-radius:20px;
-    background:rgba(125,24,52,.12);
+
+    background:
+        rgba(125,24,52,.12);
 }
 
 .progress span.active{
@@ -808,14 +1335,16 @@ body{
 }
 
 /* =========================================================
-   VIDEO SCREEN
+   VIDEO
 ========================================================= */
 
 .videoScreen{
     position:absolute;
+
     inset:0;
 
     display:none;
+
     align-items:center;
     justify-content:center;
 
@@ -826,12 +1355,21 @@ body{
 
 .videoScreen.show{
     display:flex;
-    animation:videoScreenIn .5s ease both;
+
+    animation:
+        videoScreenIn .5s ease both;
 }
 
 @keyframes videoScreenIn{
-    from{opacity:0;}
-    to{opacity:1;}
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
 }
 
 .videoShell{
@@ -849,7 +1387,8 @@ body{
             rgba(255,238,243,.91)
         );
 
-    border:1px solid rgba(255,255,255,.95);
+    border:
+        1px solid rgba(255,255,255,.95);
 
     box-shadow:
         0 30px 100px rgba(125,24,52,.20),
@@ -858,6 +1397,7 @@ body{
 
 .videoHeader{
     display:flex;
+
     align-items:center;
     justify-content:space-between;
 
@@ -866,44 +1406,63 @@ body{
 
 .videoLabel{
     color:var(--burgundy);
+
     font-family:"Cormorant Garamond",serif;
+
     font-size:24px;
     font-weight:600;
 }
 
 .rec{
     display:flex;
+
     align-items:center;
+
     gap:6px;
 
     font-size:9px;
+
     letter-spacing:2px;
+
     font-weight:700;
+
     color:var(--rose2);
 }
 
 .recDot{
     width:7px;
     height:7px;
+
     background:#d22b4e;
+
     border-radius:50%;
-    box-shadow:0 0 9px rgba(210,43,78,.6);
-    animation:recBlink 1.2s infinite;
+
+    box-shadow:
+        0 0 9px rgba(210,43,78,.6);
+
+    animation:
+        recBlink 1.2s infinite;
 }
 
 @keyframes recBlink{
-    50%{opacity:.25;}
+
+    50%{
+        opacity:.25;
+    }
+
 }
 
 .videoFrame{
     position:relative;
+
     overflow:hidden;
 
     border-radius:20px;
 
     background:#16070d;
 
-    border:4px solid rgba(125,24,52,.08);
+    border:
+        4px solid rgba(125,24,52,.08);
 
     box-shadow:
         inset 0 0 0 1px rgba(255,255,255,.08),
@@ -921,6 +1480,7 @@ video{
 
 .videoBottom{
     display:flex;
+
     align-items:center;
     justify-content:space-between;
 
@@ -931,12 +1491,16 @@ video{
 
 .videoHint{
     font-size:10px;
+
     color:#8e6370;
+
     letter-spacing:.6px;
 }
 
 .skipButton{
-    border:1px solid rgba(125,24,52,.15);
+    border:
+        1px solid rgba(125,24,52,.15);
+
     background:white;
 
     color:var(--burgundy);
@@ -947,6 +1511,7 @@ video{
 
     font-size:10px;
     font-weight:700;
+
     letter-spacing:1.3px;
 
     cursor:pointer;
@@ -956,23 +1521,26 @@ video{
 
 .skipButton:hover{
     background:#fff1f4;
+
     transform:translateY(-2px);
 }
 
-/* missing video message */
-
 .videoError{
     position:absolute;
+
     inset:0;
 
     display:none;
+
     align-items:center;
     justify-content:center;
 
     padding:25px;
+
     text-align:center;
 
     background:rgba(25,5,12,.88);
+
     color:white;
 }
 
@@ -986,183 +1554,1233 @@ video{
 
 .videoError strong{
     display:block;
+
     font-family:"Cormorant Garamond",serif;
+
     font-size:30px;
+
     margin-bottom:8px;
 }
 
 .videoError p{
     font-size:12px;
+
     line-height:1.6;
+
     opacity:.75;
 }
 
 /* =========================================================
-   BIRTHDAY ENDING
+   GRAND BIRTHDAY CELEBRATION
 ========================================================= */
 
 .birthday{
     position:absolute;
+
     inset:0;
 
     display:none;
+
     align-items:center;
     justify-content:center;
 
-    padding:25px;
+    padding:20px;
 
-    z-index:200;
+    z-index:300;
+
+    overflow:hidden;
 
     text-align:center;
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(255,255,255,.95) 0%,
+            rgba(255,225,233,.82) 28%,
+            rgba(255,199,213,.60) 58%,
+            rgba(255,180,199,.30) 100%
+        );
 }
 
 .birthday.show{
     display:flex;
-    animation:birthdayIn 1.2s ease both;
+
+    animation:
+        celebrationReveal 1.5s
+        cubic-bezier(.2,.8,.2,1)
+        both;
 }
 
-@keyframes birthdayIn{
-    from{
+@keyframes celebrationReveal{
+
+    0%{
         opacity:0;
-        transform:scale(.96);
+
+        transform:scale(1.08);
+
+        filter:blur(15px);
     }
-    to{
+
+    55%{
+        opacity:1;
+
+        filter:blur(0);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+/* Light burst */
+
+.birthday::before{
+    content:"";
+
+    position:absolute;
+
+    width:30px;
+    height:30px;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 40px 20px rgba(255,255,255,.9),
+        0 0 100px 60px rgba(255,150,180,.45),
+        0 0 220px 100px rgba(255,220,230,.55);
+
+    animation:
+        birthdayBurst 2.2s ease-out both;
+}
+
+@keyframes birthdayBurst{
+
+    0%{
+        opacity:1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.1);
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(35);
+    }
+
+}
+
+/* =========================================================
+   FIREWORKS
+========================================================= */
+
+.celebrationSky{
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+}
+
+.firework{
+    position:absolute;
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    opacity:0;
+}
+
+.firework::before{
+    content:"";
+
+    position:absolute;
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 12px white,
+        0 0 30px rgba(255,180,200,.9);
+}
+
+.fw1{
+    left:17%;
+    top:25%;
+
+    animation:
+        fireworkBoom 3.8s ease-out infinite;
+}
+
+.fw2{
+    right:17%;
+    top:27%;
+
+    animation:
+        fireworkBoom 4.3s ease-out infinite 1.3s;
+}
+
+.fw3{
+    left:50%;
+    top:12%;
+
+    animation:
+        fireworkBoom 4.8s ease-out infinite 2.3s;
+}
+
+.firework i{
+    position:absolute;
+
+    left:3px;
+    top:3px;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,.9);
+
+    transform-origin:0 0;
+}
+
+.firework i:nth-child(1){
+    transform:
+        rotate(0deg)
+        translateX(5px);
+}
+
+.firework i:nth-child(2){
+    transform:
+        rotate(45deg)
+        translateX(5px);
+}
+
+.firework i:nth-child(3){
+    transform:
+        rotate(90deg)
+        translateX(5px);
+}
+
+.firework i:nth-child(4){
+    transform:
+        rotate(135deg)
+        translateX(5px);
+}
+
+.firework i:nth-child(5){
+    transform:
+        rotate(180deg)
+        translateX(5px);
+}
+
+.firework i:nth-child(6){
+    transform:
+        rotate(225deg)
+        translateX(5px);
+}
+
+.firework i:nth-child(7){
+    transform:
+        rotate(270deg)
+        translateX(5px);
+}
+
+.firework i:nth-child(8){
+    transform:
+        rotate(315deg)
+        translateX(5px);
+}
+
+@keyframes fireworkBoom{
+
+    0%{
+        opacity:0;
+        transform:scale(.2);
+    }
+
+    12%{
         opacity:1;
         transform:scale(1);
     }
+
+    65%{
+        opacity:.8;
+        transform:scale(5);
+    }
+
+    100%{
+        opacity:0;
+        transform:scale(7);
+    }
+
 }
 
+/* =========================================================
+   BALLOONS
+========================================================= */
+
+.balloon{
+    position:absolute;
+
+    width:55px;
+    height:68px;
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            rgba(255,255,255,.95),
+            rgba(255,215,225,.65) 35%,
+            rgba(193,65,96,.30) 100%
+        );
+
+    box-shadow:
+        inset -8px -8px 15px rgba(125,24,52,.10),
+        0 10px 30px rgba(125,24,52,.10);
+
+    opacity:.8;
+
+    animation:
+        balloonRise 12s linear infinite;
+}
+
+.balloon::after{
+    content:"";
+
+    position:absolute;
+
+    width:1px;
+    height:180px;
+
+    background:
+        rgba(125,24,52,.15);
+
+    left:50%;
+    top:65px;
+}
+
+.balloon span{
+    position:absolute;
+
+    bottom:-5px;
+    left:50%;
+
+    width:8px;
+    height:8px;
+
+    background:
+        rgba(125,24,52,.18);
+
+    transform:
+        translateX(-50%)
+        rotate(45deg);
+}
+
+.b1{
+    left:4%;
+    bottom:-100px;
+
+    animation-duration:13s;
+}
+
+.b2{
+    left:15%;
+    bottom:-120px;
+
+    transform:scale(.7);
+
+    animation-duration:16s;
+    animation-delay:2s;
+}
+
+.b3{
+    left:29%;
+    bottom:-110px;
+
+    transform:scale(.85);
+
+    animation-duration:14s;
+    animation-delay:5s;
+}
+
+.b4{
+    right:29%;
+    bottom:-110px;
+
+    transform:scale(.72);
+
+    animation-duration:15s;
+    animation-delay:1s;
+}
+
+.b5{
+    right:14%;
+    bottom:-100px;
+
+    animation-duration:13s;
+    animation-delay:4s;
+}
+
+.b6{
+    right:3%;
+    bottom:-120px;
+
+    transform:scale(.65);
+
+    animation-duration:17s;
+    animation-delay:7s;
+}
+
+@keyframes balloonRise{
+
+    0%{
+        transform:
+            translateY(0)
+            rotate(-5deg);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:.75;
+    }
+
+    50%{
+        transform:
+            translateY(-55vh)
+            rotate(7deg);
+    }
+
+    100%{
+        transform:
+            translateY(-125vh)
+            rotate(-8deg);
+
+        opacity:0;
+    }
+
+}
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+.confettiRain{
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+}
+
+.confettiRain i{
+    position:absolute;
+
+    width:7px;
+    height:15px;
+
+    border-radius:3px;
+
+    background:white;
+
+    opacity:0;
+
+    animation:
+        confettiDrop 5s linear infinite;
+}
+
+.confettiRain i:nth-child(1){left:3%;animation-delay:0s;}
+.confettiRain i:nth-child(2){left:7%;animation-delay:1.4s;}
+.confettiRain i:nth-child(3){left:12%;animation-delay:2.2s;}
+.confettiRain i:nth-child(4){left:17%;animation-delay:.7s;}
+.confettiRain i:nth-child(5){left:22%;animation-delay:3s;}
+.confettiRain i:nth-child(6){left:28%;animation-delay:1.9s;}
+.confettiRain i:nth-child(7){left:34%;animation-delay:4s;}
+.confettiRain i:nth-child(8){left:40%;animation-delay:.3s;}
+.confettiRain i:nth-child(9){left:46%;animation-delay:2.7s;}
+.confettiRain i:nth-child(10){left:52%;animation-delay:1.2s;}
+.confettiRain i:nth-child(11){left:58%;animation-delay:3.4s;}
+.confettiRain i:nth-child(12){left:64%;animation-delay:.8s;}
+.confettiRain i:nth-child(13){left:70%;animation-delay:2.5s;}
+.confettiRain i:nth-child(14){left:76%;animation-delay:4.1s;}
+.confettiRain i:nth-child(15){left:82%;animation-delay:1.7s;}
+.confettiRain i:nth-child(16){left:87%;animation-delay:3.2s;}
+.confettiRain i:nth-child(17){left:92%;animation-delay:.5s;}
+.confettiRain i:nth-child(18){left:96%;animation-delay:2.1s;}
+.confettiRain i:nth-child(19){left:25%;animation-delay:4.4s;}
+.confettiRain i:nth-child(20){left:73%;animation-delay:3.7s;}
+.confettiRain i:nth-child(21){left:55%;animation-delay:4.8s;}
+.confettiRain i:nth-child(22){left:10%;animation-delay:5.1s;}
+.confettiRain i:nth-child(23){left:38%;animation-delay:5.6s;}
+.confettiRain i:nth-child(24){left:68%;animation-delay:5.3s;}
+.confettiRain i:nth-child(25){left:90%;animation-delay:4.6s;}
+.confettiRain i:nth-child(26){left:19%;animation-delay:6s;}
+.confettiRain i:nth-child(27){left:48%;animation-delay:5.8s;}
+.confettiRain i:nth-child(28){left:61%;animation-delay:6.3s;}
+.confettiRain i:nth-child(29){left:79%;animation-delay:6.7s;}
+.confettiRain i:nth-child(30){left:32%;animation-delay:7s;}
+
+@keyframes confettiDrop{
+
+    0%{
+        transform:
+            translateY(-30px)
+            rotate(0deg)
+            translateX(0);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:.9;
+    }
+
+    50%{
+        transform:
+            translateY(50vh)
+            rotate(300deg)
+            translateX(35px);
+    }
+
+    100%{
+        transform:
+            translateY(115vh)
+            rotate(700deg)
+            translateX(-40px);
+
+        opacity:0;
+    }
+
+}
+
+/* =========================================================
+   BIRTHDAY CARD
+========================================================= */
+
 .birthdayCard{
-    width:min(720px,94vw);
+    position:relative;
 
-    padding:50px 35px;
+    width:min(700px,94vw);
+    max-height:94vh;
 
-    border-radius:34px;
+    overflow:hidden;
+
+    padding:38px 30px 28px;
+
+    border-radius:38px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.90),
-            rgba(255,237,242,.82)
+            rgba(255,255,255,.94),
+            rgba(255,241,245,.87)
         );
 
-    border:1px solid rgba(255,255,255,.95);
+    border:
+        1px solid rgba(255,255,255,.98);
 
     box-shadow:
-        0 30px 100px rgba(125,24,52,.18);
+        0 35px 110px rgba(125,24,52,.20),
+        0 10px 35px rgba(125,24,52,.12),
+        inset 0 1px 0 white;
 
-    position:relative;
-    overflow:hidden;
+    text-align:center;
+
+    animation:
+        birthdayCardIn 1.1s .35s
+        cubic-bezier(.2,.9,.2,1)
+        both;
+}
+
+@keyframes birthdayCardIn{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(45px)
+            scale(.88);
+
+        filter:blur(10px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:blur(0);
+    }
+
 }
 
 .birthdayCard::before{
     content:"";
+
     position:absolute;
-    width:350px;
-    height:350px;
-    border-radius:50%;
+
+    inset:8px;
+
+    border:
+        1px solid rgba(125,24,52,.10);
+
+    border-radius:30px;
+}
+
+.birthdayGlow{
+    position:absolute;
+
+    width:420px;
+    height:420px;
 
     left:50%;
-    top:-240px;
+    top:-280px;
 
-    transform:translateX(-50%);
+    transform:
+        translateX(-50%);
 
-    background:rgba(255,126,157,.20);
-    filter:blur(60px);
-}
+    border-radius:50%;
 
-.birthdayEyebrow{
-    position:relative;
+    background:
+        rgba(255,145,172,.28);
 
-    color:var(--rose2);
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:4px;
-    margin-bottom:12px;
-}
-
-.birthdayTitle{
-    position:relative;
-
-    font-family:"Cormorant Garamond",serif;
-    font-size:clamp(70px,14vw,130px);
-    line-height:.72;
-
-    color:var(--burgundy);
-
-    margin-bottom:25px;
-}
-
-.birthdayText{
-    position:relative;
-
-    font-size:15px;
-    line-height:1.8;
-    color:#633040;
-
-    max-width:530px;
-    margin:auto;
-}
-
-.birthdayName{
-    position:relative;
-
-    font-family:"Cormorant Garamond",serif;
-    font-size:clamp(42px,8vw,70px);
-    color:var(--rose2);
-
-    margin-top:8px;
-}
-
-.endLine{
-    position:relative;
-
-    margin-top:27px;
-
-    font-size:9px;
-    letter-spacing:3px;
-    color:#9a6c78;
-}
-
-.celebrate{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-}
-
-.confetti{
-    position:absolute;
-    width:7px;
-    height:15px;
-    border-radius:4px;
-
-    background:white;
-
-    animation:confettiFall 4s linear infinite;
-}
-
-.confetti:nth-child(1){left:10%;top:-10%;animation-delay:0s;}
-.confetti:nth-child(2){left:22%;top:-20%;animation-delay:1s;}
-.confetti:nth-child(3){left:36%;top:-15%;animation-delay:2s;}
-.confetti:nth-child(4){left:52%;top:-20%;animation-delay:.5s;}
-.confetti:nth-child(5){left:67%;top:-15%;animation-delay:1.6s;}
-.confetti:nth-child(6){left:81%;top:-20%;animation-delay:2.5s;}
-.confetti:nth-child(7){left:92%;top:-10%;animation-delay:3s;}
-
-@keyframes confettiFall{
-    from{
-        transform:translateY(0) rotate(0);
-        opacity:0;
-    }
-    15%{opacity:1;}
-    to{
-        transform:translateY(110vh) rotate(600deg);
-        opacity:0;
-    }
+    filter:blur(75px);
 }
 
 /* =========================================================
-   RESPONSIVE
+   BIRTHDAY ORBITS
+========================================================= */
+
+.birthdayOrbits{
+    position:absolute;
+
+    left:50%;
+    top:52%;
+
+    width:600px;
+    height:220px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-12deg);
+
+    pointer-events:none;
+
+    opacity:.3;
+}
+
+.birthdayOrbits span{
+    position:absolute;
+
+    inset:0;
+
+    border:
+        1px solid rgba(181,45,81,.16);
+
+    border-radius:50%;
+
+    animation:
+        celebrationOrbit 16s linear infinite;
+}
+
+.birthdayOrbits span:nth-child(2){
+    transform:
+        rotate(55deg)
+        scale(.82);
+
+    animation-duration:21s;
+}
+
+.birthdayOrbits span:nth-child(3){
+    transform:
+        rotate(-45deg)
+        scale(.63);
+
+    animation-duration:13s;
+}
+
+@keyframes celebrationOrbit{
+
+    to{
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+/* =========================================================
+   BIRTHDAY CONTENT
+========================================================= */
+
+.birthdayContent{
+    position:relative;
+
+    z-index:5;
+}
+
+.birthdayEyebrow{
+    color:var(--rose2);
+
+    font-size:10px;
+    font-weight:700;
+
+    letter-spacing:3px;
+
+    margin-bottom:10px;
+}
+
+.celebrationMini{
+    font-size:25px;
+
+    margin-bottom:3px;
+
+    animation:
+        miniBounce 2s ease-in-out infinite;
+}
+
+@keyframes miniBounce{
+
+    50%{
+        transform:
+            translateY(-5px)
+            scale(1.08);
+    }
+
+}
+
+.birthdayTitle{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(62px,12vw,108px);
+
+    line-height:.70;
+
+    font-weight:600;
+
+    color:var(--burgundy);
+
+    letter-spacing:-2px;
+
+    text-shadow:
+        0 5px 20px rgba(125,24,52,.10);
+}
+
+.birthdayName{
+    margin-top:16px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(43px,8vw,70px);
+
+    font-weight:600;
+
+    color:var(--rose2);
+}
+
+.birthdayName span{
+    display:inline-block;
+
+    font-family:Arial,sans-serif;
+
+    font-size:.45em;
+
+    vertical-align:middle;
+
+    animation:
+        heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    15%{
+        transform:scale(1.25);
+    }
+
+    30%{
+        transform:scale(1);
+    }
+
+    45%{
+        transform:scale(1.18);
+    }
+
+}
+
+/* =========================================================
+   CAKE
+========================================================= */
+
+.cake{
+    position:relative;
+
+    width:145px;
+    height:125px;
+
+    margin:
+        8px auto 10px;
+}
+
+.cakePlate{
+    position:absolute;
+
+    bottom:5px;
+    left:50%;
+
+    width:145px;
+    height:14px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:50%;
+
+    background:
+        rgba(125,24,52,.12);
+
+    box-shadow:
+        0 7px 12px rgba(125,24,52,.10);
+}
+
+.cakeBody{
+    position:absolute;
+
+    width:110px;
+    height:57px;
+
+    left:50%;
+    bottom:17px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        10px 10px 15px 15px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff,
+            #ffe1e8
+        );
+
+    border:
+        1px solid rgba(181,45,81,.15);
+
+    box-shadow:
+        0 10px 20px rgba(125,24,52,.12);
+}
+
+.cakeTop{
+    position:absolute;
+
+    width:116px;
+    height:27px;
+
+    left:50%;
+    bottom:64px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            #ffffff 0%,
+            #ffe9ef 70%,
+            #ffd5df 100%
+        );
+
+    border:
+        1px solid rgba(181,45,81,.13);
+}
+
+.cakeCream{
+    position:absolute;
+
+    width:15px;
+    height:22px;
+
+    top:0;
+
+    background:white;
+
+    border-radius:
+        0 0 12px 12px;
+}
+
+.cakeCream.c1{
+    left:20px;
+}
+
+.cakeCream.c2{
+    left:47px;
+    height:27px;
+}
+
+.cakeCream.c3{
+    right:20px;
+    height:18px;
+}
+
+.cakeDecor{
+    position:absolute;
+
+    bottom:14px;
+
+    color:var(--rose2);
+
+    font-size:12px;
+}
+
+.cakeDecor.d1{
+    left:18px;
+}
+
+.cakeDecor.d2{
+    left:48px;
+    font-size:15px;
+}
+
+.cakeDecor.d3{
+    right:18px;
+}
+
+.cakeCandle{
+    position:absolute;
+
+    bottom:78px;
+
+    width:8px;
+    height:28px;
+
+    border-radius:3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #efb6c5,
+            #fff
+        );
+
+    z-index:3;
+}
+
+.cakeCandle.candle1{
+    left:48px;
+}
+
+.cakeCandle.candle2{
+    left:68px;
+    height:34px;
+}
+
+.cakeCandle.candle3{
+    left:88px;
+}
+
+.cakeCandle span{
+    position:absolute;
+
+    width:9px;
+    height:14px;
+
+    left:50%;
+    top:-12px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            ellipse at center bottom,
+            #fff7c2,
+            #f4ad4b 55%,
+            transparent 70%
+        );
+
+    filter:
+        drop-shadow(
+            0 0 6px rgba(255,178,65,.7)
+        );
+
+    animation:
+        candleFlicker .8s
+        ease-in-out infinite alternate;
+}
+
+@keyframes candleFlicker{
+
+    from{
+        transform:
+            translateX(-50%)
+            scale(.9)
+            rotate(-4deg);
+    }
+
+    to{
+        transform:
+            translateX(-50%)
+            scale(1.15)
+            rotate(4deg);
+    }
+
+}
+
+/* =========================================================
+   BIRTHDAY MESSAGE
+========================================================= */
+
+.birthdayMessage{
+    max-width:530px;
+
+    margin:
+        8px auto 0;
+
+    font-size:14px;
+
+    line-height:1.7;
+
+    color:#633040;
+}
+
+.birthdayMessage strong{
+    color:var(--burgundy);
+
+    font-weight:700;
+}
+
+.birthdaySignature{
+    margin-top:18px;
+}
+
+.birthdaySignature span{
+    display:block;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    color:#9a6c78;
+}
+
+.birthdaySignature strong{
+    display:block;
+
+    margin-top:2px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:30px;
+
+    font-weight:600;
+
+    color:var(--burgundy);
+}
+
+.birthdayFooter{
+    margin-top:14px;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    color:#aa7885;
+}
+
+/* =========================================================
+   CELEBRATION FLOWERS
+========================================================= */
+
+.celebrationFlower{
+    position:absolute;
+
+    color:white;
+
+    font-family:serif;
+
+    font-size:45px;
+
+    opacity:.65;
+
+    text-shadow:
+        0 0 15px rgba(255,255,255,.9),
+        0 5px 20px rgba(125,24,52,.12);
+
+    animation:
+        celebrationFlowerFloat 7s
+        ease-in-out infinite;
+}
+
+.cf1{
+    left:4%;
+    top:28%;
+}
+
+.cf2{
+    right:5%;
+    top:20%;
+    animation-delay:-2s;
+}
+
+.cf3{
+    left:9%;
+    bottom:17%;
+
+    font-size:32px;
+
+    animation-delay:-4s;
+}
+
+.cf4{
+    right:9%;
+    bottom:19%;
+
+    font-size:35px;
+
+    animation-delay:-1s;
+}
+
+.cf5{
+    left:48%;
+    top:4%;
+
+    font-size:25px;
+
+    animation-delay:-3s;
+}
+
+@keyframes celebrationFlowerFloat{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translateY(-20px)
+            rotate(15deg)
+            scale(1.08);
+    }
+
+}
+
+/* =========================================================
+   CELEBRATION SPARKS
+========================================================= */
+
+.celebrationSpark{
+    position:absolute;
+
+    color:white;
+
+    font-size:28px;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px rgba(213,93,126,.6);
+
+    animation:
+        celebrationSparkle 2.5s
+        ease-in-out infinite;
+}
+
+.cs1{
+    left:8%;
+    top:12%;
+}
+
+.cs2{
+    left:26%;
+    top:8%;
+    animation-delay:.5s;
+}
+
+.cs3{
+    right:8%;
+    top:12%;
+    animation-delay:1s;
+}
+
+.cs4{
+    right:25%;
+    top:8%;
+    animation-delay:1.5s;
+}
+
+.cs5{
+    left:13%;
+    bottom:8%;
+    animation-delay:2s;
+}
+
+.cs6{
+    right:14%;
+    bottom:8%;
+    animation-delay:.8s;
+}
+
+@keyframes celebrationSparkle{
+
+    0%,100%{
+        opacity:.2;
+
+        transform:
+            scale(.5)
+            rotate(0);
+    }
+
+    50%{
+        opacity:1;
+
+        transform:
+            scale(1.3)
+            rotate(90deg);
+    }
+
+}
+
+/* =========================================================
+   MOBILE
 ========================================================= */
 
 @media(max-width:600px){
@@ -1170,34 +2788,44 @@ video{
     .sun{
         width:100px;
         height:100px;
+
         right:3%;
         top:4%;
     }
 
     .camera{
-        transform:scale(.65) rotate(-12deg);
+        transform:
+            scale(.65)
+            rotate(-12deg);
     }
 
     .camera.c2{
-        transform:scale(.5) rotate(14deg);
+        transform:
+            scale(.5)
+            rotate(14deg);
     }
 
     .storyCard{
-        padding:30px 22px 25px;
+        padding:
+            30px 22px 25px;
+
         border-radius:25px;
     }
 
     .storyTitle{
-        font-size:clamp(36px,11vw,52px);
+        font-size:
+            clamp(36px,11vw,52px);
     }
 
     .storyText{
         font-size:14px;
+
         line-height:1.65;
     }
 
     .videoShell{
         padding:10px;
+
         border-radius:20px;
     }
 
@@ -1222,13 +2850,79 @@ video{
     }
 
     .skipButton{
-        padding:10px 15px;
+        padding:
+            10px 15px;
+    }
+
+    .birthday{
+        padding:12px;
     }
 
     .birthdayCard{
-        padding:45px 20px;
+        padding:
+            30px 20px 22px;
+
+        border-radius:30px;
+
+        max-height:96vh;
     }
+
+    .birthdayEyebrow{
+        font-size:8px;
+        letter-spacing:2px;
+    }
+
+    .celebrationMini{
+        font-size:21px;
+    }
+
+    .birthdayTitle{
+        font-size:
+            clamp(55px,15vw,80px);
+    }
+
+    .birthdayName{
+        margin-top:13px;
+    }
+
+    .cake{
+        transform:scale(.82);
+
+        margin:
+            -3px auto -5px;
+    }
+
+    .birthdayMessage{
+        font-size:12.5px;
+
+        line-height:1.55;
+    }
+
+    .birthdaySignature{
+        margin-top:12px;
+    }
+
+    .birthdayFooter{
+        margin-top:9px;
+    }
+
+    .balloon{
+        transform:scale(.65);
+    }
+
+    .celebrationFlower{
+        font-size:30px;
+    }
+
+    .birthdayOrbits{
+        width:450px;
+    }
+
 }
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1238,15 +2932,17 @@ video{
         animation-duration:.01ms !important;
         animation-iteration-count:1 !important;
     }
+
 }
 
 </style>
 </head>
 
+
 <body>
 
 <!-- =========================================================
-     CINEMATIC CSS BACKGROUND
+     BACKGROUND WORLD
 ========================================================= -->
 
 <div class="bg">
@@ -1265,6 +2961,7 @@ video{
     <div class="orbit o3"></div>
 
     <!-- CAMERAS -->
+
     <div class="camera c1"></div>
     <div class="camera c2"></div>
     <div class="camera c3"></div>
@@ -1273,37 +2970,59 @@ video{
     <div class="cameraFlash f2"></div>
 
     <!-- FLOWERS -->
+
     <div class="flower f1">
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
         <i></i>
     </div>
 
     <div class="flower f2">
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
         <i></i>
     </div>
 
     <div class="flower f3">
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
         <i></i>
     </div>
 
     <div class="flower f4">
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
         <i></i>
     </div>
 
     <div class="flower f5">
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
         <i></i>
     </div>
 
     <!-- PETALS -->
+
     <div class="petal p1"></div>
     <div class="petal p2"></div>
     <div class="petal p3"></div>
@@ -1313,6 +3032,7 @@ video{
     <div class="petal p7"></div>
 
     <!-- STARS -->
+
     <div class="star s1"></div>
     <div class="star s2"></div>
     <div class="star s3"></div>
@@ -1325,18 +3045,21 @@ video{
     <div class="star s10"></div>
 
     <!-- SPARKLES -->
+
     <div class="spark sp1"></div>
     <div class="spark sp2"></div>
     <div class="spark sp3"></div>
     <div class="spark sp4"></div>
     <div class="spark sp5"></div>
 
-    <!-- LIGHT -->
+    <!-- LIGHT STREAKS -->
+
     <div class="streak a"></div>
     <div class="streak b"></div>
     <div class="streak c"></div>
 
     <!-- CORNERS -->
+
     <div class="corner tl"></div>
     <div class="corner tr"></div>
     <div class="corner bl"></div>
@@ -1345,169 +3068,400 @@ video{
 </div>
 
 
-<div class="app">
-
 <!-- =========================================================
-     POPUP SYSTEM
+     APP
 ========================================================= -->
 
-<div class="storyOverlay" id="storyOverlay">
+<div class="app">
 
-    <div class="storyCard">
 
-        <div class="storyInner">
+    <!-- =====================================================
+         STORY POPUP
+    ===================================================== -->
 
-            <div class="storyIcon" id="storyIcon">📼</div>
+    <div class="storyOverlay" id="storyOverlay">
 
-            <div class="episode">
-                <span class="episodeDot"></span>
-                <span id="episodeText">PRIVATE SCREENING</span>
+        <div class="storyCard">
+
+            <div class="storyInner">
+
+                <div class="storyIcon" id="storyIcon">
+                    📼
+                </div>
+
+                <div class="episode">
+
+                    <span class="episodeDot"></span>
+
+                    <span id="episodeText">
+                        PRIVATE SCREENING
+                    </span>
+
+                </div>
+
+                <div class="storyEyebrow" id="storyEyebrow">
+                    PRIVATE SCREENING 📼
+                </div>
+
+                <h1 class="storyTitle" id="storyTitle">
+                    seen our album baby... 🥹❤️
+                </h1>
+
+                <div class="storyText" id="storyText">
+                    Now it's time for you to see something entertaining 📼😂
+                </div>
+
+                <button class="storyButton" id="storyButton">
+                    Okay... show me 👀
+                </button>
+
+                <div class="progress" id="progress"></div>
+
             </div>
-
-            <div class="storyEyebrow" id="storyEyebrow">
-                PRIVATE SCREENING 📼
-            </div>
-
-            <h1 class="storyTitle" id="storyTitle">
-                seen our album baby... 🥹❤️
-            </h1>
-
-            <div class="storyText" id="storyText">
-                Now it's time for you to see something entertaining 📼😂
-            </div>
-
-            <button class="storyButton" id="storyButton">
-                Okay... show me 👀
-            </button>
-
-            <div class="progress" id="progress"></div>
 
         </div>
 
     </div>
 
-</div>
 
+    <!-- =====================================================
+         VIDEO SCREEN
+    ===================================================== -->
 
-<!-- =========================================================
-     VIDEO SCREEN
-========================================================= -->
+    <div class="videoScreen" id="videoScreen">
 
-<div class="videoScreen" id="videoScreen">
+        <div class="videoShell">
 
-    <div class="videoShell">
+            <div class="videoHeader">
 
-        <div class="videoHeader">
+                <div class="videoLabel" id="videoLabel">
+                    THE PATNA VERSION 💃🏻
+                </div>
 
-            <div class="videoLabel" id="videoLabel">
-                THE PATNA VERSION 💃🏻
+                <div class="rec">
+
+                    <span class="recDot"></span>
+
+                    PLAYING
+
+                </div>
+
             </div>
 
-            <div class="rec">
-                <span class="recDot"></span>
-                PLAYING
+            <div class="videoFrame">
+
+                <video
+                    id="mainVideo"
+                    playsinline
+                    controls
+                    preload="metadata">
+                </video>
+
+                <div class="videoError" id="videoError">
+
+                    <div>
+
+                        <strong>
+                            Video missing 📼
+                        </strong>
+
+                        <p>
+                            Put the required MP4 file in the same
+                            folder as this HTML file.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="videoBottom">
+
+                <div class="videoHint">
+                    Watch till the end... or skip if you dare 😏
+                </div>
+
+                <button
+                    class="skipButton"
+                    id="skipButton">
+                    SKIP →
+                </button>
+
             </div>
 
         </div>
 
-        <div class="videoFrame">
+    </div>
 
-            <video
-                id="mainVideo"
-                playsinline
-                controls
-                preload="metadata">
-            </video>
 
-            <div class="videoError" id="videoError">
+    <!-- =====================================================
+         GRAND BIRTHDAY CELEBRATION
+    ===================================================== -->
 
-                <div>
-                    <strong>Video missing 📼</strong>
+    <div class="birthday" id="birthday">
 
-                    <p>
-                        Put the required MP4 file in the same folder
-                        as this HTML file.
-                    </p>
+        <!-- FIREWORK SKY -->
+
+        <div class="celebrationSky">
+
+            <div class="firework fw1">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+
+            <div class="firework fw2">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+
+            <div class="firework fw3">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+
+        </div>
+
+
+        <!-- BALLOONS -->
+
+        <div class="balloon b1">
+            <span></span>
+        </div>
+
+        <div class="balloon b2">
+            <span></span>
+        </div>
+
+        <div class="balloon b3">
+            <span></span>
+        </div>
+
+        <div class="balloon b4">
+            <span></span>
+        </div>
+
+        <div class="balloon b5">
+            <span></span>
+        </div>
+
+        <div class="balloon b6">
+            <span></span>
+        </div>
+
+
+        <!-- CONFETTI -->
+
+        <div class="confettiRain">
+
+            <i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i>
+
+            <i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i>
+
+            <i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i>
+
+        </div>
+
+
+        <!-- BIRTHDAY CARD -->
+
+        <div class="birthdayCard">
+
+            <div class="birthdayGlow"></div>
+
+            <div class="birthdayOrbits">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <div class="birthdayContent">
+
+                <div class="birthdayEyebrow">
+                    ✦ THE SCREENING IS OVER ✦
+                </div>
+
+                <div class="celebrationMini">
+                    ✨ 🎂 ✨
+                </div>
+
+                <div class="birthdayTitle">
+                    HAPPY
+                    <br>
+                    BIRTHDAY
+                </div>
+
+                <div class="birthdayName">
+                    Tisha
+                    <span>❤️</span>
+                </div>
+
+
+                <!-- CAKE -->
+
+                <div class="cake">
+
+                    <div class="cakeCandle candle1">
+                        <span></span>
+                    </div>
+
+                    <div class="cakeCandle candle2">
+                        <span></span>
+                    </div>
+
+                    <div class="cakeCandle candle3">
+                        <span></span>
+                    </div>
+
+                    <div class="cakeTop"></div>
+
+                    <div class="cakeBody">
+
+                        <div class="cakeCream c1"></div>
+                        <div class="cakeCream c2"></div>
+                        <div class="cakeCream c3"></div>
+
+                        <div class="cakeDecor d1">
+                            ✦
+                        </div>
+
+                        <div class="cakeDecor d2">
+                            ♡
+                        </div>
+
+                        <div class="cakeDecor d3">
+                            ✦
+                        </div>
+
+                    </div>
+
+                    <div class="cakePlate"></div>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <div class="birthdayMessage">
+
+                    To the girl who somehow managed to become
+                    <strong>my favourite person</strong>...
+
+                    <br><br>
+
+                    I hope this year gives you countless reasons
+                    to smile, laugh, dream and feel loved.
+
+                    <br><br>
+
+                    And selfishly...
+
+                    <br>
+
+                    I hope I get to be there for
+                    <strong>as many of those moments as possible.</strong>
+
+                    🥹❤️
+
+                </div>
+
+
+                <div class="birthdaySignature">
+
+                    <span>
+                        WITH ALL MY LOVE
+                    </span>
+
+                    <strong>
+                        Ritesh
+                    </strong>
+
+                </div>
+
+
+                <div class="birthdayFooter">
+                    ✦ MADE JUST FOR YOU • 2026 ✦
                 </div>
 
             </div>
 
         </div>
 
-        <div class="videoBottom">
 
-            <div class="videoHint">
-                Watch till the end... or skip if you dare 😏
-            </div>
+        <!-- FLOATING FLOWERS -->
 
-            <button class="skipButton" id="skipButton">
-                SKIP →
-            </button>
+        <div class="celebrationFlower cf1">
+            ✿
+        </div>
 
+        <div class="celebrationFlower cf2">
+            ❀
+        </div>
+
+        <div class="celebrationFlower cf3">
+            ✿
+        </div>
+
+        <div class="celebrationFlower cf4">
+            ❀
+        </div>
+
+        <div class="celebrationFlower cf5">
+            ✿
+        </div>
+
+
+        <!-- SPARKLES -->
+
+        <div class="celebrationSpark cs1">
+            ✦
+        </div>
+
+        <div class="celebrationSpark cs2">
+            ✧
+        </div>
+
+        <div class="celebrationSpark cs3">
+            ✦
+        </div>
+
+        <div class="celebrationSpark cs4">
+            ✧
+        </div>
+
+        <div class="celebrationSpark cs5">
+            ✦
+        </div>
+
+        <div class="celebrationSpark cs6">
+            ✧
         </div>
 
     </div>
-
-</div>
-
-
-<!-- =========================================================
-     BIRTHDAY ENDING
-========================================================= -->
-
-<div class="birthday" id="birthday">
-
-    <div class="birthdayCard">
-
-        <div class="celebrate">
-
-            <div class="confetti"></div>
-            <div class="confetti"></div>
-            <div class="confetti"></div>
-            <div class="confetti"></div>
-            <div class="confetti"></div>
-            <div class="confetti"></div>
-            <div class="confetti"></div>
-
-        </div>
-
-        <div class="birthdayEyebrow">
-            THE END OF OUR LITTLE SCREENING ✨
-        </div>
-
-        <div class="birthdayTitle">
-            HAPPY<br>
-            BIRTHDAY
-        </div>
-
-        <div class="birthdayName">
-            Tisha ❤️
-        </div>
-
-        <div class="birthdayText">
-
-            And after all the teasing, laughing,
-            embarrassing videos and everything in between...
-
-            <br><br>
-
-            I just want you to know that
-            <strong>you are incredibly special to me.</strong>
-
-            <br><br>
-
-            Happy Birthday to my favourite girl.
-            🥹❤️✨
-
-        </div>
-
-        <div class="endLine">
-            MADE WITH LOVE • JUST FOR YOU • RITESH
-        </div>
-
-    </div>
-
-</div>
 
 </div>
 
@@ -1515,12 +3469,11 @@ video{
 <script>
 
 /* =========================================================
-   VIDEO DATA
+   STORY DATA
 ========================================================= */
 
 const stories = [
 
-    /* 0 */
     {
         type:"popup",
         icon:"📼",
@@ -1531,7 +3484,6 @@ const stories = [
         button:"Okay... show me 👀"
     },
 
-    /* 1 */
     {
         type:"popup",
         icon:"⚠️",
@@ -1543,7 +3495,6 @@ const stories = [
         heartbeat:true
     },
 
-    /* 2 */
     {
         type:"popup",
         icon:"❤️‍🔥",
@@ -1554,163 +3505,160 @@ const stories = [
         button:"Continue"
     },
 
-    /* 3 */
     {
         type:"popup",
         icon:"💃🏻",
         episode:"THE PATNA VERSION",
         eyebrow:"THE PATNA VERSION 💃🏻",
         title:"There's a version of you which I saw in Patna... 👀",
-        text:`And that version got me like —
-        <br><br>
-        <strong>"Agr tm bolti baith toh baithte, uth to uthte... and agr bolti naach 💃🏻 toh phir janti ho kya hota..."</strong>
-        😭😂❤️‍🔥`,
+        text:
+            `And that version got me like —
+            <br><br>
+            <strong>
+            "Agr tm bolti baith toh baithte, uth to uthte...
+            and agr bolti naach 💃🏻 toh phir janti ho kya hota..."
+            </strong>
+            😭😂❤️‍🔥`,
         button:"DEKHLO 😏"
     },
 
-    /* 4 VIDEO */
     {
         type:"video",
         file:"dance.mp4",
         label:"THE PATNA VERSION 💃🏻"
     },
 
-    /* 5 */
     {
         type:"popup",
         icon:"🍗",
         episode:"EPISODE 02 • IMPORTANT MATTER",
         eyebrow:"EPISODE 02 • IMPORTANT MATTER 🍗",
         title:"Dekho babyy... 😌",
-        text:"Sawan toh khatam ho gaya hai... ab toh tm daba ke non veg khaa paogi 😋🍗😂",
+        text:
+            "Sawan toh khatam ho gaya hai... ab toh tm daba ke non veg khaa paogi 😋🍗😂",
         button:"Continue"
     },
 
-    /* 6 */
     {
         type:"popup",
         icon:"🤔",
         episode:"THE REAL QUESTION",
         eyebrow:"THE REAL QUESTION 🤔",
         title:"Lekin agr merese koi puche... 👀",
-        text:`Chicken khaoge ya mutton 🍗...
-        <br><br>
-        Janti ho kya choose krenge.... 😏`,
+        text:
+            `Chicken khaoge ya mutton 🍗...
+            <br><br>
+            Janti ho kya choose krenge.... 😏`,
         button:"DEKHLO... 😂"
     },
 
-    /* 7 VIDEO */
     {
         type:"video",
         file:"nonveg.mp4",
         label:"THE CHOICE 🍗"
     },
 
-    /* 8 */
     {
         type:"popup",
         icon:"🧕🏻❤️",
         episode:"EPISODE 03 • CLASSIFIED",
         eyebrow:"EPISODE 03 • CLASSIFIED ❤️",
         title:"Sweetheart... ek baat toh tmhe pata hi hai 🧕🏻❤️",
-        text:"Hum Hindu hai aur tm 🧕🏻. Sbko yeh baat pata hai... 😌",
+        text:
+            "Hum Hindu hai aur tm 🧕🏻. Sbko yeh baat pata hai... 😌",
         button:"Hmm... 👀"
     },
 
-    /* 9 */
     {
         type:"popup",
         icon:"❤️",
         episode:"BUT HERE'S THE THING...",
         eyebrow:"BUT HERE'S THE THING... ❤️",
         title:"Lekin tm kisi bhi religion ki hoti... 🥹",
-        text:`Apna toh terko hi choose krta... ❤️
-        <br><br>
-        Proof deduuu.... 😏`,
+        text:
+            `Apna toh terko hi choose krta... ❤️
+            <br><br>
+            Proof deduuu.... 😏`,
         button:"DEKHLO... 🫶🏻"
     },
 
-    /* 10 VIDEO */
     {
         type:"video",
         file:"religion.mp4",
         label:"NO MATTER WHAT ❤️"
     },
 
-    /* 11 */
     {
         type:"popup",
         icon:"🚨",
         episode:"EPISODE 04 • DANGER ZONE",
         eyebrow:"EPISODE 04 • DANGER ZONE 🚨",
         title:"Babuu... tm jyada gussa krti nhi ho 😭",
-        text:"Tmko hm kbhi aisa gussa mai dekhe nhi h... 😌",
+        text:
+            "Tmko hm kbhi aisa gussa mai dekhe nhi h... 😌",
         button:"Continue"
     },
 
-    /* 12 */
     {
         type:"popup",
         icon:"💀",
         episode:"HYPOTHETICAL SITUATION",
         eyebrow:"HYPOTHETICAL SITUATION 🚨😂",
         title:"Agr achanak ek din dekhe... 👀",
-        text:"Ki tm road mai kisiko gariya rahi... toh yeh toh zaroori hona hai... 😭😂",
+        text:
+            "Ki tm road mai kisiko gariya rahi... toh yeh toh zaroori hona hai... 😭😂",
         button:"DEKHLO... 💀"
     },
 
-    /* 13 VIDEO */
     {
         type:"video",
         file:"abuse.mp4",
         label:"THE ANGRY VERSION 🚨😂"
     },
 
-    /* 14 */
     {
         type:"popup",
         icon:"🕵🏻‍♂️",
         episode:"EPISODE 05 • CASE FILE",
         eyebrow:"EPISODE 05 • CASE FILE 📂",
         title:"Yehi sab cheezon se log apni GF se darte hai... 😭",
-        text:"Aur tm yehi sb ka fayda uthati hai... 😏😂",
+        text:
+            "Aur tm yehi sb ka fayda uthati hai... 😏😂",
         button:"Continue"
     },
 
-    /* 15 */
     {
         type:"popup",
         icon:"📂",
         episode:"CASE FILE: TISHA",
         eyebrow:"CASE FILE: TISHA 🕵🏻‍♂️",
         title:"Tm puri Shatir, Syana, Chalak, Chalbaaz sb ho... 😭😂",
-        text:"Tmhara game hum pakad liye h bhai.... 🤨📂",
+        text:
+            "Tmhara game hum pakad liye h bhai.... 🤨📂",
         button:"DEKHLO 😏"
     },
 
-    /* 16 VIDEO */
     {
         type:"video",
         file:"chalbaaz.mp4",
         label:"CASE FILE: CHALBAAZ 🕵🏻‍♂️"
     },
 
-    /* 17 FINAL POPUP */
     {
         type:"popup",
         icon:"🥹❤️",
         episode:"FINAL EPISODE • NO JOKES THIS TIME",
         eyebrow:"FINAL EPISODE • NO JOKES THIS TIME 🥹",
         title:"Babyy... ❤️",
-        text:`Joh bhi ho mujhe toh tm bhut pasand ho.
-        I love you so so so much 😙❤️.
-        You're a true blessing 🙂‍↕️✨.
-        You're the best thing that happened to me. 🫶🏻`,
+        text:
+            `Joh bhi ho mujhe toh tm bhut pasand ho.
+            I love you so so so much 😙❤️.
+            You're a true blessing 🙂‍↕️✨.
+            You're the best thing that happened to me. 🫶🏻`,
         button:"Next... ❤️",
         final:true
     },
 
-    /* 18 FINAL VIDEO */
     {
         type:"video",
         file:"final.mp4",
@@ -1725,22 +3673,47 @@ const stories = [
    ELEMENTS
 ========================================================= */
 
-const overlay = document.getElementById("storyOverlay");
-const icon = document.getElementById("storyIcon");
-const episodeText = document.getElementById("episodeText");
-const eyebrow = document.getElementById("storyEyebrow");
-const title = document.getElementById("storyTitle");
-const text = document.getElementById("storyText");
-const button = document.getElementById("storyButton");
-const progress = document.getElementById("progress");
+const storyOverlay =
+    document.getElementById("storyOverlay");
 
-const videoScreen = document.getElementById("videoScreen");
-const video = document.getElementById("mainVideo");
-const videoLabel = document.getElementById("videoLabel");
-const skipButton = document.getElementById("skipButton");
-const videoError = document.getElementById("videoError");
+const storyIcon =
+    document.getElementById("storyIcon");
 
-const birthday = document.getElementById("birthday");
+const episodeText =
+    document.getElementById("episodeText");
+
+const storyEyebrow =
+    document.getElementById("storyEyebrow");
+
+const storyTitle =
+    document.getElementById("storyTitle");
+
+const storyText =
+    document.getElementById("storyText");
+
+const storyButton =
+    document.getElementById("storyButton");
+
+const progress =
+    document.getElementById("progress");
+
+const videoScreen =
+    document.getElementById("videoScreen");
+
+const mainVideo =
+    document.getElementById("mainVideo");
+
+const videoLabel =
+    document.getElementById("videoLabel");
+
+const skipButton =
+    document.getElementById("skipButton");
+
+const videoError =
+    document.getElementById("videoError");
+
+const birthday =
+    document.getElementById("birthday");
 
 
 /* =========================================================
@@ -1755,147 +3728,291 @@ function initAudio(){
 
     if(!audioCtx){
 
-        audioCtx = new (
-            window.AudioContext ||
-            window.webkitAudioContext
-        )();
+        audioCtx =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
 
-        sfxGain = audioCtx.createGain();
+        sfxGain =
+            audioCtx.createGain();
 
         sfxGain.gain.value = .16;
 
-        sfxGain.connect(audioCtx.destination);
+        sfxGain.connect(
+            audioCtx.destination
+        );
     }
 
-    if(audioCtx.state === "suspended"){
+    if(
+        audioCtx.state ===
+        "suspended"
+    ){
+
         audioCtx.resume();
+
     }
+
 }
 
 
-function tone(freq,duration=.08,type="sine",volume=.08){
+function tone(
+    freq,
+    duration=.08,
+    type="sine",
+    volume=.08
+){
 
     if(!audioCtx) return;
 
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
+    const osc =
+        audioCtx.createOscillator();
+
+    const gain =
+        audioCtx.createGain();
 
     osc.type = type;
-    osc.frequency.value = freq;
 
-    gain.gain.setValueAtTime(0,audioCtx.currentTime);
+    osc.frequency.value =
+        freq;
+
+    gain.gain.setValueAtTime(
+        0,
+        audioCtx.currentTime
+    );
 
     gain.gain.linearRampToValueAtTime(
         volume,
-        audioCtx.currentTime+.01
+        audioCtx.currentTime + .01
     );
 
     gain.gain.exponentialRampToValueAtTime(
         .001,
-        audioCtx.currentTime+duration
+        audioCtx.currentTime + duration
     );
 
     osc.connect(gain);
+
     gain.connect(sfxGain);
 
     osc.start();
-    osc.stop(audioCtx.currentTime+duration+.02);
+
+    osc.stop(
+        audioCtx.currentTime +
+        duration +
+        .02
+    );
+
 }
 
 
 function clickSound(){
 
-    tone(650,.045,"sine",.07);
+    tone(
+        650,
+        .045,
+        "sine",
+        .07
+    );
 
     setTimeout(()=>{
-        tone(850,.055,"sine",.045);
+        tone(
+            850,
+            .055,
+            "sine",
+            .045
+        );
     },35);
+
 }
 
 
 function popupSound(){
 
-    tone(390,.08,"sine",.06);
+    tone(
+        390,
+        .08,
+        "sine",
+        .06
+    );
 
     setTimeout(()=>{
-        tone(520,.12,"sine",.045);
+        tone(
+            520,
+            .12,
+            "sine",
+            .045
+        );
     },55);
+
 }
 
 
 function shimmer(){
 
-    tone(700,.12,"sine",.045);
+    tone(
+        700,
+        .12,
+        "sine",
+        .045
+    );
 
     setTimeout(()=>{
-        tone(900,.13,"sine",.035);
+        tone(
+            900,
+            .13,
+            "sine",
+            .035
+        );
     },80);
 
     setTimeout(()=>{
-        tone(1100,.16,"sine",.025);
+        tone(
+            1100,
+            .16,
+            "sine",
+            .025
+        );
     },160);
+
 }
 
 
 function funnyPop(){
 
-    tone(180,.08,"triangle",.07);
+    tone(
+        180,
+        .08,
+        "triangle",
+        .07
+    );
 
     setTimeout(()=>{
-        tone(110,.12,"triangle",.045);
+        tone(
+            110,
+            .12,
+            "triangle",
+            .045
+        );
     },70);
+
 }
 
 
 function heartbeat(){
 
-    tone(90,.09,"sine",.08);
+    tone(
+        90,
+        .09,
+        "sine",
+        .08
+    );
 
     setTimeout(()=>{
-        tone(75,.10,"sine",.065);
+        tone(
+            75,
+            .10,
+            "sine",
+            .065
+        );
     },160);
 
     setTimeout(()=>{
-        tone(90,.09,"sine",.08);
+        tone(
+            90,
+            .09,
+            "sine",
+            .08
+        );
     },470);
 
     setTimeout(()=>{
-        tone(75,.10,"sine",.065);
+        tone(
+            75,
+            .10,
+            "sine",
+            .065
+        );
     },630);
+
 }
 
 
 function videoOpenSound(){
 
-    tone(220,.12,"sine",.05);
+    tone(
+        220,
+        .12,
+        "sine",
+        .05
+    );
 
     setTimeout(()=>{
-        tone(330,.14,"sine",.04);
+        tone(
+            330,
+            .14,
+            "sine",
+            .04
+        );
     },90);
 
     setTimeout(()=>{
-        tone(490,.18,"sine",.025);
+        tone(
+            490,
+            .18,
+            "sine",
+            .025
+        );
     },190);
+
 }
 
 
 function videoEndSound(){
 
-    tone(500,.1,"sine",.05);
+    tone(
+        500,
+        .10,
+        "sine",
+        .05
+    );
 
     setTimeout(()=>{
-        tone(700,.13,"sine",.04);
+        tone(
+            700,
+            .13,
+            "sine",
+            .04
+        );
     },100);
+
 }
 
 
 function celebrationSound(){
 
-    [520,660,780,980].forEach((f,i)=>{
-        setTimeout(()=>{
-            tone(f,.16,"sine",.045);
-        },i*90);
-    });
+    [
+        520,
+        660,
+        780,
+        980
+    ].forEach(
+        (frequency,index)=>{
+
+            setTimeout(()=>{
+
+                tone(
+                    frequency,
+                    .16,
+                    "sine",
+                    .045
+                );
+
+            },index * 90);
+
+        }
+    );
+
 }
 
 
@@ -1904,6 +4021,7 @@ function celebrationSound(){
 ========================================================= */
 
 let current = 0;
+
 let movingForward = false;
 
 
@@ -1915,59 +4033,98 @@ function renderProgress(){
 
     progress.innerHTML = "";
 
-    const popupNumber = Math.min(
-        Math.floor(current / 1.5),
-        12
-    );
+    const popupNumber =
+        Math.min(
+            Math.floor(current / 1.5),
+            12
+        );
 
-    for(let i=0;i<6;i++){
+    for(
+        let i=0;
+        i<6;
+        i++
+    ){
 
-        const dot = document.createElement("span");
+        const dot =
+            document.createElement("span");
 
         if(i <= popupNumber){
-            dot.classList.add("active");
+
+            dot.classList.add(
+                "active"
+            );
+
         }
 
         progress.appendChild(dot);
+
     }
+
 }
 
 
 /* =========================================================
-   SHOW STORY
+   SHOW POPUP
 ========================================================= */
 
 function showStory(){
 
-    const item = stories[current];
+    const item =
+        stories[current];
 
-    overlay.style.display = "flex";
+    storyOverlay.style.display =
+        "flex";
 
-    icon.textContent = item.icon || "❤️";
-    episodeText.textContent = item.episode || "";
-    eyebrow.textContent = item.eyebrow || "";
-    title.innerHTML = item.title || "";
-    text.innerHTML = item.text || "";
-    button.textContent = item.button || "Continue";
+    storyIcon.textContent =
+        item.icon || "❤️";
+
+    episodeText.textContent =
+        item.episode || "";
+
+    storyEyebrow.textContent =
+        item.eyebrow || "";
+
+    storyTitle.innerHTML =
+        item.title || "";
+
+    storyText.innerHTML =
+        item.text || "";
+
+    storyButton.textContent =
+        item.button ||
+        "Continue";
 
     renderProgress();
 
-    /* restart animation */
 
-    const card = document.querySelector(".storyCard");
+    /* Restart popup animation */
 
-    card.style.animation = "none";
+    const card =
+        document.querySelector(
+            ".storyCard"
+        );
+
+    card.style.animation =
+        "none";
 
     void card.offsetWidth;
 
     card.style.animation =
         "cardIn .65s cubic-bezier(.2,.9,.25,1) both";
 
+
     popupSound();
 
+
     if(item.heartbeat){
-        setTimeout(heartbeat,180);
+
+        setTimeout(
+            heartbeat,
+            180
+        );
+
     }
+
 }
 
 
@@ -1977,37 +4134,50 @@ function showStory(){
 
 function showVideo(item){
 
-    overlay.style.display = "none";
+    storyOverlay.style.display =
+        "none";
 
-    videoScreen.classList.add("show");
+    videoScreen.classList.add(
+        "show"
+    );
 
-    videoLabel.textContent = item.label;
+    videoLabel.textContent =
+        item.label;
 
     skipButton.textContent =
-        item.final ? "FINISH ❤️" : "SKIP →";
+        item.final
+            ? "FINISH ❤️"
+            : "SKIP →";
 
-    videoError.classList.remove("show");
+    videoError.classList.remove(
+        "show"
+    );
 
-    video.pause();
+    mainVideo.pause();
 
-    video.src = item.file;
+    mainVideo.src =
+        item.file;
 
-    video.load();
+    mainVideo.load();
 
     videoOpenSound();
 
+
     /*
-       The video starts only after a user click
-       so mobile browsers are much more likely
-       to allow audio.
+       The video is opened after
+       a user interaction, allowing
+       its own audio to play.
     */
 
-    video.play().catch(()=>{});
+    mainVideo
+        .play()
+        .catch(()=>{});
+
 }
 
 
 /* =========================================================
-   NEXT
+   ADVANCE
 ========================================================= */
 
 function moveForward(){
@@ -2018,23 +4188,34 @@ function moveForward(){
 
     clickSound();
 
-    video.pause();
+    mainVideo.pause();
 
-    videoScreen.classList.remove("show");
+    videoScreen.classList.remove(
+        "show"
+    );
+
 
     setTimeout(()=>{
 
         current++;
 
-        if(current >= stories.length){
+
+        if(
+            current >=
+            stories.length
+        ){
 
             showBirthday();
 
         }else{
 
-            const next = stories[current];
+            const next =
+                stories[current];
 
-            if(next.type === "video"){
+            if(
+                next.type ===
+                "video"
+            ){
 
                 showVideo(next);
 
@@ -2046,9 +4227,11 @@ function moveForward(){
 
         }
 
+
         movingForward = false;
 
     },450);
+
 }
 
 
@@ -2056,104 +4239,145 @@ function moveForward(){
    POPUP BUTTON
 ========================================================= */
 
-button.addEventListener("click",()=>{
+storyButton.addEventListener(
+    "click",
+    ()=>{
 
-    initAudio();
+        initAudio();
 
-    const item = stories[current];
+        const item =
+            stories[current];
 
-    clickSound();
+        clickSound();
 
-    if(item.final){
 
-        setTimeout(()=>{
-            current++;
+        /* Final emotional popup */
 
-            showVideo(stories[current]);
-        },300);
+        if(item.final){
 
-        return;
+            setTimeout(()=>{
+
+                current++;
+
+                showVideo(
+                    stories[current]
+                );
+
+            },300);
+
+            return;
+        }
+
+
+        current++;
+
+        const next =
+            stories[current];
+
+
+        if(
+            next.type ===
+            "video"
+        ){
+
+            setTimeout(()=>{
+
+                showVideo(next);
+
+            },250);
+
+        }else{
+
+            setTimeout(()=>{
+
+                showStory();
+
+            },220);
+
+        }
+
     }
-
-    current++;
-
-    const next = stories[current];
-
-    if(next.type === "video"){
-
-        setTimeout(()=>{
-            showVideo(next);
-        },250);
-
-    }else{
-
-        setTimeout(()=>{
-            showStory();
-        },220);
-
-    }
-
-});
+);
 
 
 /* =========================================================
    SKIP / FINISH
 ========================================================= */
 
-skipButton.addEventListener("click",()=>{
+skipButton.addEventListener(
+    "click",
+    ()=>{
 
-    initAudio();
+        initAudio();
 
-    videoEndSound();
+        videoEndSound();
 
-    moveForward();
+        moveForward();
 
-});
+    }
+);
 
 
 /* =========================================================
    NATURAL VIDEO END
 ========================================================= */
 
-video.addEventListener("ended",()=>{
+mainVideo.addEventListener(
+    "ended",
+    ()=>{
 
-    initAudio();
+        initAudio();
 
-    videoEndSound();
+        videoEndSound();
 
-    moveForward();
+        moveForward();
 
-});
+    }
+);
 
 
 /* =========================================================
    VIDEO ERROR
 ========================================================= */
 
-video.addEventListener("error",()=>{
+mainVideo.addEventListener(
+    "error",
+    ()=>{
 
-    videoError.classList.add("show");
+        videoError.classList.add(
+            "show"
+        );
 
-});
+    }
+);
 
 
 /* =========================================================
-   BIRTHDAY
+   BIRTHDAY ENDING
 ========================================================= */
 
 function showBirthday(){
 
-    videoScreen.classList.remove("show");
+    videoScreen.classList.remove(
+        "show"
+    );
 
-    birthday.classList.add("show");
+    birthday.classList.add(
+        "show"
+    );
 
-    celebrationSound();
+
+    setTimeout(()=>{
+
+        celebrationSound();
+
+    },350);
 
 }
 
 
 /* =========================================================
-   START
+   INITIALIZE
 ========================================================= */
 
 document.addEventListener(
@@ -2166,12 +4390,14 @@ showStory();
 
 
 /* =========================================================
-   PREVENT ACCIDENTAL DOUBLE TAP
+   PREVENT DOUBLE TAP
 ========================================================= */
 
 document.addEventListener(
     "dblclick",
-    e => e.preventDefault()
+    event=>{
+        event.preventDefault();
+    }
 );
 
 </script>
